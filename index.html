@@ -68,7 +68,7 @@
             position: relative;
             color: white;
             overflow: hidden;
-            background: linear-gradient(135deg, #0a2a44 0%, #1a5f7a 40%, #2a9d8f 100%), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200');
+            background: linear-gradient(135deg, #0a2a44 0%, #1a5f7a 40%, #2a9d8f 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80');
             background-blend-mode: overlay;
             background-size: cover;
             background-position: center;
@@ -222,6 +222,7 @@
         .impact-card { background: white; padding: 30px 24px; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); border-bottom: 4px solid var(--accent); }
         .impact-card:hover { transform: translateY(-6px); }
         .impact-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 12px; }
+        .impact-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; }
 
         .sdg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin-top: 20px; }
         .sdg-item { background: white; padding: 20px 16px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; transition: var(--transition); }
@@ -240,6 +241,7 @@
         .about-block p { color: #4a5a6a; font-size: 1rem; line-height: 1.8; }
         .partner-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
         .partner-tags span { background: var(--light); padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; color: var(--primary); }
+        .about-block img { width: 100%; border-radius: 16px; margin-top: 16px; }
 
         .dark-block { background: linear-gradient(135deg, #0a2a44 0%, #1a5f7a 100%); padding: 32px 28px; border-radius: 20px; box-shadow: var(--shadow); color: white; margin-bottom: 24px; }
         .dark-block h3 { color: white; font-size: 1.4rem; margin-bottom: 12px; }
@@ -298,11 +300,33 @@
         <p class="section-sub" id="aboutSub">We are a multidisciplinary infrastructure platform dedicated to designing, developing, and delivering large-scale integrated water-energy-food-mineral projects for governments, sovereign wealth funds, and institutional investors worldwide.</p>
     </div>
     <div class="fade-in delay-1">
-        <div class="about-block"><h3><i class="fas fa-bullseye" style="color:var(--gold); margin-right:12px;"></i> <span id="missionTitle">Our Mission</span></h3><p id="missionText">AquaNexus is committed to engineering resilient infrastructure that creates lasting value while preserving natural resources for future generations. We specialize in geothermal energy, desalination, lithium extraction, green agriculture, and aquifer storage — delivering turnkey solutions that combine profitability with sustainability.</p></div>
-        <div class="about-block"><h3><i class="fas fa-cogs" style="color:var(--gold); margin-right:12px;"></i> <span id="whatTitle">What We Do</span></h3><p id="whatText">We develop and present comprehensive technical dossiers, financial models, GIS maps, and feasibility studies for governments, sovereign wealth funds, and institutional investors. Our team of experts prepares fully integrated infrastructure solutions — from concept to execution — tailored to the strategic priorities of each nation and institution.</p></div>
-        <div class="about-block"><h3><i class="fas fa-handshake" style="color:var(--accent); margin-right:12px;"></i> <span id="partnerTitleMain">Our Strategic Partners & Investors</span></h3><p style="color:#4a5a6a; font-size:1rem; line-height:1.8; margin-bottom:12px;" id="partnerText">We collaborate with the world's most influential financial institutions, sovereign funds, and energy leaders:</p><div class="partner-tags"><span>🏛️ PIF (Saudi Arabia)</span><span>🏛️ Mubadala (UAE)</span><span>🏛️ ADQ (Abu Dhabi)</span><span>🏛️ Qatar Investment Authority</span><span>🏛️ Kuwait Investment Authority</span><span>🏛️ Oman Investment Authority</span><span>🏛️ Norway GPFG</span><span>🏛️ BlackRock Infrastructure</span><span>🏛️ Brookfield Asset Management</span><span>🏛️ Temasek Holdings</span><span>🏛️ TotalEnergies</span><span>🏛️ Shell</span><span>🏛️ ACWA Power</span><span>🏛️ SLB New Energy</span><span>🏛️ Ormat Technologies</span></div></div>
-        <div class="dark-block"><h3><i class="fas fa-star" style="color:var(--gold); margin-right:12px;"></i> <span id="commitTitle">Our Commitment</span></h3><p id="commitText">We are committed to delivering projects with the best budget, optimal management, and maximum efficiency — completing infrastructure in the shortest possible time while maintaining the highest standards of quality and sustainability.</p><div class="tags"><span>⚡ Power & Speed</span><span>🌍 Global Reach</span><span>🤝 Strategic Partnerships</span><span>💰 Best Budget</span><span>⚙️ Optimal Management</span><span>🚀 Fastest Delivery</span></div></div>
-        <div class="about-block"><h3><i class="fas fa-flag" style="color:var(--gold); margin-right:12px;"></i> <span id="sovereignTitle">Sovereign & Government Engagement</span></h3><p id="sovereignText">AquaNexus works directly with governments, ministries, and state-owned enterprises across the Middle East, Europe, and Asia. Our dossiers are designed to meet the strategic needs of nations — aligning with Vision 2030 (Saudi Arabia), UAE Energy Strategy 2050, Oman Vision 2040, Qatar National Vision 2030, and Kuwait 2035.</p><div class="partner-tags"><span>🇸🇦 Saudi Arabia</span><span>🇦🇪 UAE</span><span>🇴🇲 Oman</span><span>🇶🇦 Qatar</span><span>🇰🇼 Kuwait</span><span>🇧🇭 Bahrain</span><span>🇬🇧 UK</span><span>🇸🇪 Sweden</span><span>🇳🇴 Norway</span><span>🇫🇷 France</span><span>🇩🇪 Germany</span><span>🇸🇬 Singapore</span></div></div>
+        <div class="about-block">
+            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80" alt="Water-Energy-Food Nexus">
+            <h3><i class="fas fa-bullseye" style="color:var(--gold); margin-right:12px;"></i> <span id="missionTitle">Our Mission</span></h3>
+            <p id="missionText">AquaNexus is committed to engineering resilient infrastructure that creates lasting value while preserving natural resources for future generations. We specialize in geothermal energy, desalination, lithium extraction, green agriculture, and aquifer storage — delivering turnkey solutions that combine profitability with sustainability.</p>
+        </div>
+        <div class="about-block">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80" alt="Infrastructure">
+            <h3><i class="fas fa-cogs" style="color:var(--gold); margin-right:12px;"></i> <span id="whatTitle">What We Do</span></h3>
+            <p id="whatText">We develop and present comprehensive technical dossiers, financial models, GIS maps, and feasibility studies for governments, sovereign wealth funds, and institutional investors. Our team of experts prepares fully integrated infrastructure solutions — from concept to execution — tailored to the strategic priorities of each nation and institution.</p>
+        </div>
+        <div class="about-block">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80" alt="Partners">
+            <h3><i class="fas fa-handshake" style="color:var(--accent); margin-right:12px;"></i> <span id="partnerTitleMain">Our Strategic Partners & Investors</span></h3>
+            <p style="color:#4a5a6a; font-size:1rem; line-height:1.8; margin-bottom:12px;" id="partnerText">We collaborate with the world's most influential financial institutions, sovereign funds, and energy leaders:</p>
+            <div class="partner-tags"><span>🏛️ PIF (Saudi Arabia)</span><span>🏛️ Mubadala (UAE)</span><span>🏛️ ADQ (Abu Dhabi)</span><span>🏛️ Qatar Investment Authority</span><span>🏛️ Kuwait Investment Authority</span><span>🏛️ Oman Investment Authority</span><span>🏛️ Norway GPFG</span><span>🏛️ BlackRock Infrastructure</span><span>🏛️ Brookfield Asset Management</span><span>🏛️ Temasek Holdings</span><span>🏛️ TotalEnergies</span><span>🏛️ Shell</span><span>🏛️ ACWA Power</span><span>🏛️ SLB New Energy</span><span>🏛️ Ormat Technologies</span></div>
+        </div>
+        <div class="dark-block">
+            <h3><i class="fas fa-star" style="color:var(--gold); margin-right:12px;"></i> <span id="commitTitle">Our Commitment</span></h3>
+            <p id="commitText">We are committed to delivering projects with the best budget, optimal management, and maximum efficiency — completing infrastructure in the shortest possible time while maintaining the highest standards of quality and sustainability.</p>
+            <div class="tags"><span>⚡ Power & Speed</span><span>🌍 Global Reach</span><span>🤝 Strategic Partnerships</span><span>💰 Best Budget</span><span>⚙️ Optimal Management</span><span>🚀 Fastest Delivery</span></div>
+        </div>
+        <div class="about-block">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Government Engagement">
+            <h3><i class="fas fa-flag" style="color:var(--gold); margin-right:12px;"></i> <span id="sovereignTitle">Sovereign & Government Engagement</span></h3>
+            <p id="sovereignText">AquaNexus works directly with governments, ministries, and state-owned enterprises across the Middle East, Europe, and Asia. Our dossiers are designed to meet the strategic needs of nations — aligning with Vision 2030 (Saudi Arabia), UAE Energy Strategy 2050, Oman Vision 2040, Qatar National Vision 2030, and Kuwait 2035.</p>
+            <div class="partner-tags"><span>🇸🇦 Saudi Arabia</span><span>🇦🇪 UAE</span><span>🇴🇲 Oman</span><span>🇶🇦 Qatar</span><span>🇰🇼 Kuwait</span><span>🇧🇭 Bahrain</span><span>🇬🇧 UK</span><span>🇸🇪 Sweden</span><span>🇳🇴 Norway</span><span>🇫🇷 France</span><span>🇩🇪 Germany</span><span>🇸🇬 Singapore</span></div>
+        </div>
     </div>
 </section>
 
@@ -314,11 +338,11 @@
     <div class="text-center fade-in"><h2 class="section-title" id="projectsTitle">Our <span class="highlight">Projects</span></h2><p class="section-sub" id="projectsSub">Turnkey solutions ready for implementation — designed for resilience, profitability, and planet‑positive impact.</p></div>
     <div class="grid-2 fade-in delay-1">
         <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600" alt="AquaNexus Project">
+            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=80" alt="AquaNexus Project">
             <div class="info"><span class="tag">🇸🇦 KSA · 🇦🇪 UAE · 🇴🇲 Oman · 🇬🇧 UK · 🇸🇪 Sweden</span><h3>AquaNexus</h3><p>100 MW geothermal + 50,000 m³/day water + 12,000 t/year lithium + 100 ha agriculture. A complete economic hub.</p><p><strong>$10B</strong> pilot value · <strong>13‑month</strong> payback · <strong>38‑45%</strong> IRR</p></div>
         </div>
         <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600" alt="Aqua Guardian">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1200&q=80" alt="Aqua Guardian">
             <div class="info"><span class="tag">🌍 Global Scalable</span><h3>Aqua Guardian</h3><p>Decentralised closed‑loop water management with AI monitoring. 67% water reduction, 120 kg food/household/year.</p><p>Piloted with <strong>50 households</strong> · 2.8 t CO₂ saved per household/year</p></div>
         </div>
     </div>
@@ -341,10 +365,30 @@
 <section class="section" id="legacy" style="background:var(--light); border-radius:var(--radius);">
     <div class="text-center fade-in"><h2 class="section-title" id="legacyTitle">🌍 <span class="highlight">Environmental Legacy</span></h2><p class="section-sub" id="legacySub">We don't just build infrastructure — we restore the natural balance of our planet for future generations.</p></div>
     <div class="impact-grid fade-in delay-1">
-        <div class="impact-card"><i class="fas fa-water" style="color:#1a6fb5;"></i><h3 id="l1t">Aquifer Recharge</h3><p id="l1d">Injecting billions of liters of fresh water into underground reserves — ensuring water security for generations to come.</p></div>
-        <div class="impact-card"><i class="fas fa-leaf" style="color:#2a9d8f;"></i><h3 id="l2t">Carbon Reduction</h3><p id="l2d">Eliminating fossil fuel dependence. Each household saves 2.8 tonnes of CO₂ annually. Pure, clean energy.</p></div>
-        <div class="impact-card"><i class="fas fa-recycle" style="color:#e9c46a;"></i><h3 id="l3t">Restoring Natural Cycles</h3><p id="l3d">Helping the earth's natural hydrological and thermal cycles — protecting ecosystems and biodiversity.</p></div>
-        <div class="impact-card"><i class="fas fa-seedling" style="color:#2a9d8f;"></i><h3 id="l4t">Soil & Biodiversity</h3><p id="l4d">Green agriculture and controlled environment farming prevent soil degradation and preserve local flora and fauna.</p></div>
+        <div class="impact-card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Aquifer Recharge">
+            <i class="fas fa-water" style="color:#1a6fb5;"></i>
+            <h3 id="l1t">Aquifer Recharge</h3>
+            <p id="l1d">Injecting billions of liters of fresh water into underground reserves — ensuring water security for generations to come.</p>
+        </div>
+        <div class="impact-card">
+            <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=800&q=80" alt="Carbon Reduction">
+            <i class="fas fa-leaf" style="color:#2a9d8f;"></i>
+            <h3 id="l2t">Carbon Reduction</h3>
+            <p id="l2d">Eliminating fossil fuel dependence. Each household saves 2.8 tonnes of CO₂ annually. Pure, clean energy.</p>
+        </div>
+        <div class="impact-card">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Natural Cycles">
+            <i class="fas fa-recycle" style="color:#e9c46a;"></i>
+            <h3 id="l3t">Restoring Natural Cycles</h3>
+            <p id="l3d">Helping the earth's natural hydrological and thermal cycles — protecting ecosystems and biodiversity.</p>
+        </div>
+        <div class="impact-card">
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80" alt="Soil & Biodiversity">
+            <i class="fas fa-seedling" style="color:#2a9d8f;"></i>
+            <h3 id="l4t">Soil & Biodiversity</h3>
+            <p id="l4d">Green agriculture and controlled environment farming prevent soil degradation and preserve local flora and fauna.</p>
+        </div>
     </div>
 </section>
 
@@ -365,10 +409,10 @@
 <section class="section" id="knowledge">
     <div class="text-center fade-in"><h2 class="section-title" id="knowTitle">📚 <span class="highlight">Knowledge Center</span></h2><p class="section-sub" id="knowSub">Peer‑reviewed publications, white papers, and technical reports from our research team.</p></div>
     <div class="grid-2 fade-in delay-1">
-        <div class="card"><img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=400" alt="White Papers"><i class="fas fa-file-alt" style="color:var(--gold);"></i><h3 id="know1t">White Papers</h3><p id="know1d">Access our technical whitepapers on geothermal desalination, lithium extraction, and aquifer storage.</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400" alt="Publications"><i class="fas fa-book-open" style="color:var(--gold);"></i><h3 id="know2t">Publications</h3><p id="know2d">48 peer‑reviewed articles on Zenodo, PhilPapers, and Figshare — including the BioCode and AquaNumerica frameworks.</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400" alt="Financial Models"><i class="fas fa-chart-bar" style="color:var(--gold);"></i><h3 id="know3t">Financial Models</h3><p id="know3d">30‑sheet Excel models with fully linked formulas — available for qualified investors upon request.</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400" alt="Certifications"><i class="fas fa-certificate" style="color:var(--gold);"></i><h3 id="know4t">Certifications</h3><p id="know4d">180+ international certifications from UCL, Oxford, Johns Hopkins, and Wellcome Connecting Science.</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=800&q=80" alt="White Papers"><i class="fas fa-file-alt" style="color:var(--gold);"></i><h3 id="know1t">White Papers</h3><p id="know1d">Access our technical whitepapers on geothermal desalination, lithium extraction, and aquifer storage.</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=80" alt="Publications"><i class="fas fa-book-open" style="color:var(--gold);"></i><h3 id="know2t">Publications</h3><p id="know2d">48 peer‑reviewed articles on Zenodo, PhilPapers, and Figshare — including the BioCode and AquaNumerica frameworks.</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Financial Models"><i class="fas fa-chart-bar" style="color:var(--gold);"></i><h3 id="know3t">Financial Models</h3><p id="know3d">30‑sheet Excel models with fully linked formulas — available for qualified investors upon request.</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" alt="Certifications"><i class="fas fa-certificate" style="color:var(--gold);"></i><h3 id="know4t">Certifications</h3><p id="know4d">180+ international certifications from UCL, Oxford, Johns Hopkins, and Wellcome Connecting Science.</p></div>
     </div>
 </section>
 
@@ -420,7 +464,16 @@
 <!-- ===== AWARDS ===== -->
 <section class="section" id="awards">
     <div class="text-center fade-in"><h2 class="section-title" id="awardsTitle">🏆 <span class="highlight">Recognition</span></h2><p class="section-sub" id="awardsSub">Global acknowledgements of excellence in sustainability and innovation.</p></div>
-    <div class="card fade-in delay-1"><img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=600" alt="Awards"><ul class="award-list" id="awardList"><li><i class="fas fa-award"></i> <span>Energy Globe Award 2024 — National Winner (Iran)</span></li><li><i class="fas fa-award"></i> <span>Zayed Sustainability Prize 2026 — Semi‑Finalist</span></li><li><i class="fas fa-award"></i> <span>Top 8 Finalist — Temasek Carbon Less (1,500+ teams, 130 countries)</span></li><li><i class="fas fa-award"></i> <span>Invited Host Researcher — Alexander von Humboldt Foundation</span></li><li><i class="fas fa-award"></i> <span>48 Peer‑Reviewed Publications · 180+ Certifications</span></li></ul></div>
+    <div class="card fade-in delay-1">
+        <img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=1200&q=80" alt="Awards">
+        <ul class="award-list" id="awardList">
+            <li><i class="fas fa-award"></i> <span>Energy Globe Award 2024 — National Winner (Iran)</span></li>
+            <li><i class="fas fa-award"></i> <span>Zayed Sustainability Prize 2026 — Semi‑Finalist</span></li>
+            <li><i class="fas fa-award"></i> <span>Top 8 Finalist — Temasek Carbon Less (1,500+ teams, 130 countries)</span></li>
+            <li><i class="fas fa-award"></i> <span>Invited Host Researcher — Alexander von Humboldt Foundation</span></li>
+            <li><i class="fas fa-award"></i> <span>48 Peer‑Reviewed Publications · 180+ Certifications</span></li>
+        </ul>
+    </div>
 </section>
 
 <!-- ===== FAQ ===== -->
