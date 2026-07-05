@@ -420,14 +420,16 @@
             background: #dc2626;
             color: white;
             border: none;
-            padding: 10px 24px;
+            padding: 14px 32px;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             transition: var(--transition);
             box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-            margin-top: 10px;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 300px;
         }
         .emergency-email-btn:hover {
             background: #b91c1c;
@@ -436,30 +438,43 @@
         }
         .emergency-email-box {
             display: none;
-            margin-top: 15px;
-            padding: 18px 22px;
+            margin-top: 18px;
+            padding: 22px 24px;
             background: #fef2f2;
-            border-radius: 12px;
+            border-radius: 16px;
             border: 2px solid #fca5a5;
             text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .emergency-email-box.show {
             display: block;
             animation: fadeIn 0.4s ease-out;
         }
+        .emergency-email-box .brand-header {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .emergency-email-box .brand-header .aqua { color: #0a2a44; }
+        .emergency-email-box .brand-header .nexus { color: #e9c46a; }
+        .emergency-email-box .brand-header .guardian { color: #2a9d8f; }
         .emergency-email-box .email-link {
             color: #dc2626;
             font-weight: 700;
             font-size: 1.2rem;
             text-decoration: underline;
             word-break: break-all;
+            display: block;
+            margin: 8px 0;
         }
         .emergency-email-box .note {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #475569;
             display: block;
-            margin-top: 8px;
-            line-height: 1.8;
+            line-height: 1.9;
         }
         .emergency-email-box .note strong {
             color: #1e293b;
@@ -477,6 +492,7 @@
             .water-drops span { font-size: 1.5rem; }
             .stat-number { font-size: 2.2rem; }
             .calc-grid { grid-template-columns: 1fr; }
+            .emergency-email-btn { max-width: 100%; }
         }
     </style>
 </head>
@@ -859,7 +875,7 @@
         </section>
     </div>
 
-    <!-- ==================== CONTACT (با دکمه قرمز تماس فوری در پایین) ==================== -->
+    <!-- ==================== CONTACT (فقط دکمه تماس فوری در پایین) ==================== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
@@ -928,20 +944,22 @@
                 <div id="formStatus" style="margin-top: 25px; padding: 16px 20px; border-radius: 12px; display: none; font-weight: 600; text-align: center; transition: all 0.3s ease;">
                 </div>
 
-                <!-- ⚠️ دکمه قرمز "تماس فوری" در پایین فرم -->
-                <div style="text-align: center; margin-top: 20px;">
+                <!-- دکمه "تماس فوری" در پایین‌ترین بخش -->
+                <div style="text-align: center; margin-top: 25px;">
                     <button onclick="toggleEmergencyEmail()" class="emergency-email-btn" id="emergencyToggleBtn">
                         🚨 تماس فوری
                     </button>
                     <div id="emergencyEmailBox" class="emergency-email-box">
-                        <i class="fas fa-envelope" style="color: #dc2626; font-size: 1.5rem; display: block; margin-bottom: 8px;"></i>
+                        <div class="brand-header">
+                            <span class="aqua">Aqua</span><span class="nexus">Nexus</span> <span style="color: #2a9d8f;">+</span> <span class="guardian">Aqua Guardian</span>
+                        </div>
                         <a href="mailto:vahid.aquanexus@protonmail.com" class="email-link">vahid.aquanexus@protonmail.com</a>
                         <span class="note">
-                            <strong>🔒 فیلترینگ برای هرزنامه انجام شده است</strong><br>
-                            ✅ فقط از دامنه‌های معتبر ارسال شود<br>
-                            ❌ ایمیل‌های نامعتبر خودکار دریافت نمی‌شوند<br>
-                            ⏳ زمان پاسخ‌گویی ممکن است طولانی شود<br>
-                            🙏 از صبر شما سپاس‌گزاریم
+                            <strong>📌 توجه:</strong> قبل از تماس فوری، حتماً <strong>موضوع و فوریت</strong> را قید کنید.<br>
+                            ✅ <strong>از دامنه معتبر ارسال کنید</strong> – خودکار سیستم فیلتر میکند.<br>
+                            ❌ ایمیل‌های نامعتبر <strong>تحویل داده نمی‌شوند</strong>.<br>
+                            ⏳ زمان پاسخ‌گویی ممکن است <strong>طولانی</strong> شود.<br>
+                            🙏 از صبوری شما سپاس‌گزاریم.
                         </span>
                     </div>
                 </div>
