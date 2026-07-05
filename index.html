@@ -367,21 +367,18 @@
             font-size: 1.1rem;
             color: #4a5a6a;
         }
-        .opex-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+
+        /* Glass effect for hero image */
+        .hero-video::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 0;
+            pointer-events: none;
         }
-        .opex-item {
-            background: white;
-            padding: 12px 18px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            font-size: 0.9rem;
-            border-bottom: 3px solid var(--gold);
-        }
-        .opex-item strong { color: var(--primary); }
 
         @media (max-width: 640px) {
             .hero-content .logo-text { font-size: 2.4rem; }
@@ -407,7 +404,7 @@
     <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">🇸🇦 ع</button>
 </div>
 
-<!-- HERO با تصویر توپوگرافی -->
+<!-- HERO with glass effect -->
 <section class="hero-video" id="home">
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -434,82 +431,84 @@
 <!-- MAIN CONTENT -->
 <section id="main-content" style="padding-top:40px;">
     <div class="text-center">
-        <h2 class="section-title" id="navTitle">Introducing <span class="highlight">AquaNexus</span></h2>
+        <h2 class="section-title" id="introTitle">Introducing <span class="highlight">AquaNexus</span></h2>
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showSection('journey', this)">🌊 Water Journey</button>
-            <button class="nav-tab" onclick="showSection('waterarch', this)">🏗️ Water Arch</button>
-            <button class="nav-tab" onclick="showSection('opex', this)">📊 Revenue & Value</button>
-            <button class="nav-tab" onclick="showSection('lithium', this)">🔋 Lithium</button>
-            <button class="nav-tab" onclick="showSection('cooling', this)">❄️ Cooling</button>
-            <button class="nav-tab" onclick="showSection('agri', this)">🌱 Agri</button>
-            <button class="nav-tab" onclick="showSection('deploy', this)">🗺️ Global</button>
-            <button class="nav-tab" onclick="showSection('valuation', this)">💼 Valuation</button>
-            <button class="nav-tab" onclick="showSection('technical', this)">🔬 Technical</button>
-            <button class="nav-tab" onclick="showSection('contact', this)">📬 Contact</button>
+            <button class="nav-tab active" onclick="showSection('journey', this)" data-i18n="tabJourney">🌊 Water Journey</button>
+            <button class="nav-tab" onclick="showSection('waterarch', this)" data-i18n="tabWaterArch">🏗️ Water Arch</button>
+            <button class="nav-tab" onclick="showSection('opex', this)" data-i18n="tabRevenue">📊 Revenue & Value</button>
+            <button class="nav-tab" onclick="showSection('lithium', this)" data-i18n="tabLithium">🔋 Lithium</button>
+            <button class="nav-tab" onclick="showSection('cooling', this)" data-i18n="tabCooling">❄️ Cooling</button>
+            <button class="nav-tab" onclick="showSection('agri', this)" data-i18n="tabAgri">🌱 Agri</button>
+            <button class="nav-tab" onclick="showSection('deploy', this)" data-i18n="tabDeploy">🗺️ Global</button>
+            <button class="nav-tab" onclick="showSection('valuation', this)" data-i18n="tabValuation">💼 Valuation</button>
+            <button class="nav-tab" onclick="showSection('technical', this)" data-i18n="tabTechnical">🔬 Technical</button>
+            <button class="nav-tab" onclick="showSection('geothermal', this)" data-i18n="tabGeothermal">🔥 Why Geothermal</button>
+            <button class="nav-tab" onclick="showSection('articles', this)" data-i18n="tabArticles">📄 Articles</button>
+            <button class="nav-tab" onclick="showSection('contact', this)" data-i18n="tabContact">📬 Contact</button>
         </div>
     </div>
 
     <!-- ===== WATER JOURNEY ===== -->
     <div id="section-journey" class="toggle-section active">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title"><span class="highlight">The Water Journey</span></h2><p class="section-sub">From ocean to aquifer – a sustainable, circular economy.</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="journeyTitle"><span class="highlight">The Water Journey</span></h2><p class="section-sub" data-i18n="journeySub">From ocean to aquifer – a sustainable, circular economy.</p></div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
-                <div class="card" style="text-align:center;"><i class="fas fa-water"></i><h3>Desalination</h3><p>Industrial-scale freshwater</p></div>
-                <div class="card" style="text-align:center;"><i class="fas fa-database"></i><h3>ASR Storage</h3><p>Aquifer recharge & recovery</p></div>
-                <div class="card" style="text-align:center;"><i class="fas fa-seedling"></i><h3>Agriculture</h3><p>4-season greenhouses</p></div>
-                <div class="card" style="text-align:center;"><i class="fas fa-city"></i><h3>Cities</h3><p>Municipal & industrial supply</p></div>
+                <div class="card" style="text-align:center;"><i class="fas fa-water"></i><h3 data-i18n="journeyDesal">Desalination</h3><p data-i18n="journeyDesalP">Industrial-scale freshwater</p></div>
+                <div class="card" style="text-align:center;"><i class="fas fa-database"></i><h3 data-i18n="journeyASR">ASR Storage</h3><p data-i18n="journeyASRP">Aquifer recharge & recovery</p></div>
+                <div class="card" style="text-align:center;"><i class="fas fa-seedling"></i><h3 data-i18n="journeyAgri">Agriculture</h3><p data-i18n="journeyAgriP">4-season greenhouses</p></div>
+                <div class="card" style="text-align:center;"><i class="fas fa-city"></i><h3 data-i18n="journeyCities">Cities</h3><p data-i18n="journeyCitiesP">Municipal & industrial supply</p></div>
             </div>
         </section>
     </div>
 
-    <!-- ===== WATER ARCHITECTURE (بدون اعداد دقیق) ===== -->
+    <!-- ===== WATER ARCHITECTURE ===== -->
     <div id="section-waterarch" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">🏗️ <span class="highlight">Water Allocation Architecture</span></h2><p class="section-sub">ASR · Domestic · Agriculture · Industry · Strategic Reserve</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="waterArchTitle">🏗️ <span class="highlight">Water Allocation Architecture</span></h2><p class="section-sub" data-i18n="waterArchSub">ASR · Domestic · Agriculture · Industry · Strategic Reserve</p></div>
             <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>🏠 Domestic Supply</h4><p>Municipal water security</p><span class="value">Primary allocation</span></div>
-                <div class="data-card"><h4>🌾 Agricultural Supply</h4><p>Irrigation for greenhouses</p><span class="value">Secondary allocation</span></div>
-                <div class="data-card"><h4>🏭 Industrial Supply</h4><p>Process water & cooling</p><span class="value">Tertiary allocation</span></div>
-                <div class="data-card"><h4>♻️ ASR Recovery</h4><p>Aquifer Storage & Recovery</p><span class="value">Strategic reserve</span></div>
-                <div class="data-card"><h4>⛑️ Strategic Reserve</h4><p>Drought & emergency</p><span class="value">National security</span></div>
-                <div class="data-card"><h4>🌍 Climate Resilience</h4><p>Seasonal balancing</p><span class="value">✓</span></div>
+                <div class="data-card"><h4 data-i18n="waterDomestic">🏠 Domestic Supply</h4><p data-i18n="waterDomesticP">Municipal water security</p><span class="value" data-i18n="waterDomesticV">Primary allocation</span></div>
+                <div class="data-card"><h4 data-i18n="waterAgri">🌾 Agricultural Supply</h4><p data-i18n="waterAgriP">Irrigation for greenhouses</p><span class="value" data-i18n="waterAgriV">Secondary allocation</span></div>
+                <div class="data-card"><h4 data-i18n="waterIndustrial">🏭 Industrial Supply</h4><p data-i18n="waterIndustrialP">Process water & cooling</p><span class="value" data-i18n="waterIndustrialV">Tertiary allocation</span></div>
+                <div class="data-card"><h4 data-i18n="waterASR">♻️ ASR Recovery</h4><p data-i18n="waterASRP">Aquifer Storage & Recovery</p><span class="value" data-i18n="waterASRV">Strategic reserve</span></div>
+                <div class="data-card"><h4 data-i18n="waterReserve">⛑️ Strategic Reserve</h4><p data-i18n="waterReserveP">Drought & emergency</p><span class="value" data-i18n="waterReserveV">National security</span></div>
+                <div class="data-card"><h4 data-i18n="waterClimate">🌍 Climate Resilience</h4><p data-i18n="waterClimateP">Seasonal balancing</p><span class="value">✓</span></div>
             </div>
-            <p style="margin-top:20px; color:#4a5a6a;"><strong>Key Benefits:</strong> Municipal Security · Agricultural Stabilization · Industrial Continuity · Climate Adaptation</p>
+            <p style="margin-top:20px; color:#4a5a6a;"><strong data-i18n="waterBenefits">Key Benefits:</strong> <span data-i18n="waterBenefitsList">Municipal Security · Agricultural Stabilization · Industrial Continuity · Climate Adaptation</span></p>
         </section>
     </div>
 
-    <!-- ===== REVENUE & VALUE (حذف اعداد حساس) ===== -->
+    <!-- ===== REVENUE & VALUE ===== -->
     <div id="section-opex" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">📊 <span class="highlight">Revenue & Platform Value</span></h2><p class="section-sub">Multi-billion dollar sovereign infrastructure asset.</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="revenueTitle">📊 <span class="highlight">Revenue & Platform Value</span></h2><p class="section-sub" data-i18n="revenueSub">Multi-billion dollar sovereign infrastructure asset.</p></div>
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" class="concept-img">
             <div style="background:white; padding:30px; border-radius:var(--radius); box-shadow:var(--shadow); margin:15px 0; text-align:center;">
                 <div class="stat-number">USD 10 Billion</div>
-                <div class="stat-label">Total Sovereign Platform Value (Full Deployment)</div>
+                <div class="stat-label" data-i18n="revenueLabel">Total Sovereign Platform Value (Full Deployment)</div>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
                 <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--secondary);">
-                    <h4>📈 Revenue Streams</h4>
+                    <h4 data-i18n="revenueStreams">📈 Revenue Streams</h4>
                     <ul style="list-style:none; padding:0; text-align:left;">
-                        <li>⚡ Geothermal Electricity</li>
-                        <li>💧 Desalinated Water</li>
-                        <li>❄️ District Cooling</li>
-                        <li>🔋 Battery-Grade Lithium</li>
-                        <li>🌱 Controlled Agriculture</li>
-                        <li>🌍 Carbon Credits</li>
-                        <li>🏨 Eco-Tourism & Health</li>
-                        <li>🧂 Salt & Precious Metals</li>
+                        <li data-i18n="rev1">⚡ Geothermal Electricity</li>
+                        <li data-i18n="rev2">💧 Desalinated Water</li>
+                        <li data-i18n="rev3">❄️ District Cooling</li>
+                        <li data-i18n="rev4">🔋 Battery-Grade Lithium</li>
+                        <li data-i18n="rev5">🌱 Controlled Agriculture</li>
+                        <li data-i18n="rev6">🌍 Carbon Credits</li>
+                        <li data-i18n="rev7">🏨 Eco-Tourism & Health</li>
+                        <li data-i18n="rev8">🧂 Salt & Precious Metals</li>
                     </ul>
                 </div>
                 <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--gold);">
-                    <h4>📌 Financial Highlights</h4>
+                    <h4 data-i18n="financialHighlights">📌 Financial Highlights</h4>
                     <ul style="list-style:none; padding:0; text-align:left;">
-                        <li>✅ Infrastructure-grade cash flows</li>
-                        <li>✅ Strong operating leverage</li>
-                        <li>✅ High-margin upside potential</li>
-                        <li>✅ 30–50 year asset life</li>
-                        <li>✅ Sovereign & institutional backing</li>
+                        <li data-i18n="fin1">✅ Infrastructure-grade cash flows</li>
+                        <li data-i18n="fin2">✅ Strong operating leverage</li>
+                        <li data-i18n="fin3">✅ High-margin upside potential</li>
+                        <li data-i18n="fin4">✅ 30–50 year asset life</li>
+                        <li data-i18n="fin5">✅ Sovereign & institutional backing</li>
                     </ul>
                 </div>
             </div>
@@ -519,14 +518,14 @@
     <!-- ===== LITHIUM ===== -->
     <div id="section-lithium" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">🔋 <span class="highlight">Lithium Extraction & Export</span></h2><p class="section-sub">DLE System · Battery-Grade LCE · Global Supply Chain</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="lithiumTitle">🔋 <span class="highlight">Lithium Extraction & Export</span></h2><p class="section-sub" data-i18n="lithiumSub">DLE System · Battery-Grade LCE · Global Supply Chain</p></div>
             <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>⚙️ DLE System</h4><p>Direct Lithium Extraction</p><span class="value">Industrial scale</span></div>
-                <div class="data-card"><h4>🔋 Battery-Grade LCE</h4><p>Lithium Carbonate Equivalent</p><span class="value">High recovery rate</span></div>
-                <div class="data-card"><h4>♻️ Brine Recovery</h4><p>Closed-loop reinjection</p><span class="value">100% reinjected</span></div>
-                <div class="data-card"><h4>🚢 Export Hub</h4><p>Sohar Port, Oman</p><span class="value">Strategic logistics</span></div>
-                <div class="data-card"><h4>🌿 Low Impact</h4><p>Minimal environmental footprint</p><span class="value">✓</span></div>
+                <div class="data-card"><h4 data-i18n="lithiumDLE">⚙️ DLE System</h4><p data-i18n="lithiumDLEP">Direct Lithium Extraction</p><span class="value" data-i18n="lithiumDLEV">Industrial scale</span></div>
+                <div class="data-card"><h4 data-i18n="lithiumGrade">🔋 Battery-Grade LCE</h4><p data-i18n="lithiumGradeP">Lithium Carbonate Equivalent</p><span class="value" data-i18n="lithiumGradeV">High recovery rate</span></div>
+                <div class="data-card"><h4 data-i18n="lithiumBrine">♻️ Brine Recovery</h4><p data-i18n="lithiumBrineP">Closed-loop reinjection</p><span class="value" data-i18n="lithiumBrineV">100% reinjected</span></div>
+                <div class="data-card"><h4 data-i18n="lithiumExport">🚢 Export Hub</h4><p data-i18n="lithiumExportP">Sohar Port, Oman</p><span class="value" data-i18n="lithiumExportV">Strategic logistics</span></div>
+                <div class="data-card"><h4 data-i18n="lithiumImpact">🌿 Low Impact</h4><p data-i18n="lithiumImpactP">Minimal environmental footprint</p><span class="value">✓</span></div>
             </div>
         </section>
     </div>
@@ -534,13 +533,13 @@
     <!-- ===== COOLING ===== -->
     <div id="section-cooling" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">❄️ <span class="highlight">District Cooling Infrastructure</span></h2><p class="section-sub">Geothermal Absorption Chillers · Data Centers · Industrial</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="coolingTitle">❄️ <span class="highlight">District Cooling Infrastructure</span></h2><p class="section-sub" data-i18n="coolingSub">Geothermal Absorption Chillers · Data Centers · Industrial</p></div>
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>❄️ Cooling Capacity</h4><span class="value">20 MW</span></div>
-                <div class="data-card"><h4>🔄 Continuous Operation</h4><p>24/7 geothermal</p><span class="value">✓</span></div>
-                <div class="data-card"><h4>🏢 Data Centers</h4><p>Stable, high-margin revenue</p><span class="value">Anchor tenants</span></div>
-                <div class="data-card"><h4>🌿 Low-Carbon</h4><p>Zero direct emissions</p><span class="value">✓</span></div>
+                <div class="data-card"><h4 data-i18n="coolingCap">❄️ Cooling Capacity</h4><span class="value">20 MW</span></div>
+                <div class="data-card"><h4 data-i18n="coolingContinuous">🔄 Continuous Operation</h4><p data-i18n="coolingContinuousP">24/7 geothermal</p><span class="value">✓</span></div>
+                <div class="data-card"><h4 data-i18n="coolingData">🏢 Data Centers</h4><p data-i18n="coolingDataP">Stable, high-margin revenue</p><span class="value" data-i18n="coolingDataV">Anchor tenants</span></div>
+                <div class="data-card"><h4 data-i18n="coolingCarbon">🌿 Low-Carbon</h4><p data-i18n="coolingCarbonP">Zero direct emissions</p><span class="value">✓</span></div>
             </div>
         </section>
     </div>
@@ -548,13 +547,13 @@
     <!-- ===== AGRICULTURE ===== -->
     <div id="section-agri" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">🌱 <span class="highlight">Geothermal Agriculture</span></h2><p class="section-sub">Year-round production · Food security · Water efficiency</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="agriTitle">🌱 <span class="highlight">Geothermal Agriculture</span></h2><p class="section-sub" data-i18n="agriSub">Year-round production · Food security · Water efficiency</p></div>
             <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>📅 Year-round</h4><p>4 seasons production</p><span class="value">Continuous</span></div>
-                <div class="data-card"><h4>💧 Water Efficiency</h4><p>Drip irrigation</p><span class="value">High efficiency</span></div>
-                <div class="data-card"><h4>🌿 Low-Carbon</h4><p>Geothermal heating</p><span class="value">Zero fossil fuel</span></div>
-                <div class="data-card"><h4>🍎 Food Security</h4><p>Reduced import dependency</p><span class="value">National priority</span></div>
+                <div class="data-card"><h4 data-i18n="agriYear">📅 Year-round</h4><p data-i18n="agriYearP">4 seasons production</p><span class="value" data-i18n="agriYearV">Continuous</span></div>
+                <div class="data-card"><h4 data-i18n="agriWater">💧 Water Efficiency</h4><p data-i18n="agriWaterP">Drip irrigation</p><span class="value" data-i18n="agriWaterV">High efficiency</span></div>
+                <div class="data-card"><h4 data-i18n="agriCarbon">🌿 Low-Carbon</h4><p data-i18n="agriCarbonP">Geothermal heating</p><span class="value" data-i18n="agriCarbonV">Zero fossil fuel</span></div>
+                <div class="data-card"><h4 data-i18n="agriFood">🍎 Food Security</h4><p data-i18n="agriFoodP">Reduced import dependency</p><span class="value" data-i18n="agriFoodV">National priority</span></div>
             </div>
         </section>
     </div>
@@ -562,39 +561,39 @@
     <!-- ===== GLOBAL DEPLOYMENT ===== -->
     <div id="section-deploy" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">🗺️ <span class="highlight">Global Deployment Architecture</span></h2><p class="section-sub">Oman · UAE · Sweden · Saudi Arabia</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="deployTitle">🗺️ <span class="highlight">Global Deployment Architecture</span></h2><p class="section-sub" data-i18n="deploySub">Oman · UAE · Sweden · Saudi Arabia</p></div>
             <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>🇴🇲 Oman</h4><p>Sohar, Duqm</p><span class="value">High-temperature hubs</span></div>
-                <div class="data-card"><h4>🇦🇪 UAE</h4><p>Abu Dhabi, Masdar Corridor</p><span class="value">Urban energy & water</span></div>
-                <div class="data-card"><h4>🇸🇪 Sweden</h4><p>Gothenburg</p><span class="value">Cold-climate optimization</span></div>
-                <div class="data-card"><h4>🇸🇦 Saudi Arabia</h4><p>Al-Wajh, NEOM</p><span class="value">Industrial decarbonization</span></div>
+                <div class="data-card"><h4 data-i18n="deployOman">🇴🇲 Oman</h4><p data-i18n="deployOmanP">Sohar, Duqm</p><span class="value" data-i18n="deployOmanV">High-temperature hubs</span></div>
+                <div class="data-card"><h4 data-i18n="deployUAE">🇦🇪 UAE</h4><p data-i18n="deployUAEP">Abu Dhabi, Masdar Corridor</p><span class="value" data-i18n="deployUAEV">Urban energy & water</span></div>
+                <div class="data-card"><h4 data-i18n="deploySweden">🇸🇪 Sweden</h4><p data-i18n="deploySwedenP">Gothenburg</p><span class="value" data-i18n="deploySwedenV">Cold-climate optimization</span></div>
+                <div class="data-card"><h4 data-i18n="deployKSA">🇸🇦 Saudi Arabia</h4><p data-i18n="deployKSAP">Al-Wajh, NEOM</p><span class="value" data-i18n="deployKSAV">Industrial decarbonization</span></div>
             </div>
         </section>
     </div>
 
-    <!-- ===== VALUATION & JOBS (متمرکز بر ۱۰ میلیارد) ===== -->
+    <!-- ===== VALUATION & JOBS ===== -->
     <div id="section-valuation" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">💼 <span class="highlight">Valuation, Employment & Investors</span></h2><p class="section-sub">Sovereign-scale platform with massive job creation.</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="valuationTitle">💼 <span class="highlight">Valuation, Employment & Investors</span></h2><p class="section-sub" data-i18n="valuationSub">Sovereign-scale platform with massive job creation.</p></div>
             <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" class="concept-img">
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
                 <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>👷 Employment Creation</h4>
-                    <p>Pilot Phase: <span class="value">Significant</span></p>
-                    <p>National Scale: <span class="value">Thousands of direct jobs</span></p>
-                    <p>Total Ecosystem: <span class="value">100,000+ (direct & indirect)</span></p>
+                    <h4 data-i18n="valuationJobs">👷 Employment Creation</h4>
+                    <p data-i18n="valuationJobsPilot">Pilot Phase: <span class="value" data-i18n="valuationJobsPilotV">Significant</span></p>
+                    <p data-i18n="valuationJobsNational">National Scale: <span class="value" data-i18n="valuationJobsNationalV">Thousands of direct jobs</span></p>
+                    <p data-i18n="valuationJobsTotal">Total Ecosystem: <span class="value" data-i18n="valuationJobsTotalV">100,000+ (direct & indirect)</span></p>
                 </div>
                 <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>💰 Strategic Valuation</h4>
-                    <p>Combined Platform Value: <span class="value">USD 10 Billion</span></p>
-                    <p>Asset Life: <span class="value">30–50 Years</span></p>
-                    <p>Internal Rate of Return (IRR): <span class="value">Exceptional</span></p>
-                    <p>Long-Term Sovereign Exit: <span class="value">USD 10B+</span></p>
+                    <h4 data-i18n="valuationValue">💰 Strategic Valuation</h4>
+                    <p data-i18n="valuationValuePlatform">Combined Platform Value: <span class="value">USD 10 Billion</span></p>
+                    <p data-i18n="valuationValueLife">Asset Life: <span class="value" data-i18n="valuationValueLifeV">30–50 Years</span></p>
+                    <p data-i18n="valuationValueIRR">Internal Rate of Return (IRR): <span class="value" data-i18n="valuationValueIRRV">Exceptional</span></p>
+                    <p data-i18n="valuationValueExit">Long-Term Sovereign Exit: <span class="value" data-i18n="valuationValueExitV">USD 10B+</span></p>
                 </div>
             </div>
             <div style="margin-top:20px; background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                <h4>🤝 Strategic Investor & Buyer Universe</h4>
+                <h4 data-i18n="valuationInvestors">🤝 Strategic Investor & Buyer Universe</h4>
                 <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
                     <span class="partner-item">🇸🇦 PIF</span><span class="partner-item">🇦🇪 Mubadala</span>
                     <span class="partner-item">🇦🇪 ADQ</span><span class="partner-item">🇸🇬 Temasek</span>
@@ -610,15 +609,76 @@
     <!-- ===== TECHNICAL ===== -->
     <div id="section-technical" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">🔬 <span class="highlight">Technical Insights</span></h2><p class="section-sub">Geothermal reservoir · Wells · Advanced materials</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="technicalTitle">🔬 <span class="highlight">Technical Insights</span></h2><p class="section-sub" data-i18n="technicalSub">Geothermal reservoir · Wells · Advanced materials</p></div>
             <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>🌡️ Temperature</h4><span class="value">165–210°C</span></div>
-                <div class="data-card"><h4>⛏️ Depth</h4><span class="value">2,500–4,000 m</span></div>
-                <div class="data-card"><h4>🔄 Flow Rate</h4><span class="value">110–140 L/s</span></div>
-                <div class="data-card"><h4>⚙️ Materials</h4><span class="value">Titanium Grade 29, Inconel 67</span></div>
-                <div class="data-card"><h4>♻️ Reinjection</h4><span class="value">Closed-loop</span></div>
-                <div class="data-card"><h4>🌿 Carbon Footprint</h4><span class="value">Ultra-low</span></div>
+                <div class="data-card"><h4 data-i18n="techTemp">🌡️ Temperature</h4><span class="value">165–210°C</span></div>
+                <div class="data-card"><h4 data-i18n="techDepth">⛏️ Depth</h4><span class="value">2,500–4,000 m</span></div>
+                <div class="data-card"><h4 data-i18n="techFlow">🔄 Flow Rate</h4><span class="value">110–140 L/s</span></div>
+                <div class="data-card"><h4 data-i18n="techMaterials">⚙️ Materials</h4><span class="value">Titanium Grade 29, Inconel 67</span></div>
+                <div class="data-card"><h4 data-i18n="techReinject">♻️ Reinjection</h4><span class="value" data-i18n="techReinjectV">Closed-loop</span></div>
+                <div class="data-card"><h4 data-i18n="techCarbon">🌿 Carbon Footprint</h4><span class="value" data-i18n="techCarbonV">Ultra-low</span></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== WHY GEOTHERMAL ===== -->
+    <div id="section-geothermal" class="toggle-section">
+        <section class="section scroll-animate">
+            <div class="text-center">
+                <h2 class="section-title" data-i18n="geoTitle">🔥 <span class="highlight">Why Geothermal?</span></h2>
+                <p class="section-sub" data-i18n="geoSub">24/7 baseload power – the only renewable energy source that never stops.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1200&q=80" class="concept-img">
+
+            <div style="background:white; padding:25px; border-radius:var(--radius); box-shadow:var(--shadow); margin:20px 0;">
+                <h3 style="color:var(--primary);" data-i18n="geoAdvTitle">✅ Key Advantages of Geothermal Energy</h3>
+                <div class="data-grid">
+                    <div class="data-card"><h4 data-i18n="geoAdv1">⏱ 24/7 Baseload</h4><p data-i18n="geoAdv1P">Independent of sunlight, wind, or rain. The most stable renewable source.</p></div>
+                    <div class="data-card"><h4 data-i18n="geoAdv2">🌿 Lowest Carbon Footprint</h4><p data-i18n="geoAdv2P">~5% of gas plants, ~1% of coal plants. Ultra-low emissions.</p></div>
+                    <div class="data-card"><h4 data-i18n="geoAdv3">🏗️ High Capacity Factor</h4><p data-i18n="geoAdv3P">70–90% vs. 20–30% for solar and 30–40% for wind.</p></div>
+                    <div class="data-card"><h4 data-i18n="geoAdv4">💰 Low Operating Cost</h4><p data-i18n="geoAdv4P">Zero fuel cost, very low maintenance after initial investment.</p></div>
+                    <div class="data-card"><h4 data-i18n="geoAdv5">🌍 Small Land Footprint</h4><p data-i18n="geoAdv5P">Much less surface area than solar farms or wind turbines.</p></div>
+                    <div class="data-card"><h4 data-i18n="geoAdv6">♻️ Circular Economy</h4><p data-i18n="geoAdv6P">Co-extraction of lithium, gold, silver, and minerals from brine.</p></div>
+                </div>
+            </div>
+
+            <div style="background:white; padding:25px; border-radius:var(--radius); box-shadow:var(--shadow); margin:20px 0;">
+                <h3 style="color:var(--primary);" data-i18n="geoLimTitle">⚠️ Limitations of Other Renewables</h3>
+                <div class="data-grid">
+                    <div class="data-card" style="border-left-color: #f4a261;"><h4 data-i18n="geoLimSolar">☀️ Solar</h4><p data-i18n="geoLimSolarP">Zero production at night, reduced output on cloudy days. Efficiency drops 10–20% in extreme heat. Requires expensive storage.</p></div>
+                    <div class="data-card" style="border-left-color: #87CEEB;"><h4 data-i18n="geoLimWind">💨 Wind</h4><p data-i18n="geoLimWindP">Zero production on calm days. Highly variable output. Environmental impact on birds, noise, and visual pollution. Creates "wind shadows".</p></div>
+                    <div class="data-card" style="border-left-color: #2a9d8f;"><h4 data-i18n="geoLimHydro">🌊 Hydropower</h4><p data-i18n="geoLimHydroP">Dependent on rainfall – droughts reduce capacity. Massive ecosystem disruption, fish migration obstruction, and population displacement.</p></div>
+                </div>
+            </div>
+
+            <div style="background:var(--primary); padding:30px; border-radius:var(--radius); color:white; text-align:center; margin-top:20px;">
+                <h3 style="color:var(--gold);" data-i18n="geoSummary">🎯 Geothermal is the only renewable that provides true baseload power 24/7</h3>
+                <p style="color:rgba(255,255,255,0.8); margin-top:10px;" data-i18n="geoSummaryP">Without expensive batteries, without weather dependence, and with the lowest environmental impact. <strong style="color:white;">AquaNexus</strong> is built on this foundation.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== ARTICLES SECTION ===== -->
+    <div id="section-articles" class="toggle-section">
+        <section class="section scroll-animate">
+            <div class="text-center">
+                <h2 class="section-title" data-i18n="articlesTitle">📄 <span class="highlight">Curated Articles & Reports</span></h2>
+                <p class="section-sub" data-i18n="articlesSub">Top peer-reviewed publications and industry insights – updated 2026.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" class="concept-img">
+            <div style="background:white; padding:25px; border-radius:var(--radius); box-shadow:var(--shadow); margin:20px 0;">
+                <ul style="list-style:none; padding:0;">
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.nature.com/articles/s44435-026-00009-2" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">🔬 Nature: Smart, Hybrid, Integrated, and Engineered Geothermal (SHIEG) Systems</a> <span style="color:#4a5a6a;" data-i18n="article1Desc">– Next-gen 24/7 geothermal.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.nature.com/articles/s41598-026-47489-4" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">🔬 Scientific Reports: Low-enthalpy geothermal in arid climates</a> <span style="color:#4a5a6a;" data-i18n="article2Desc">– 45% better performance in deserts.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0196890426007442" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">📘 Elsevier: Ejector-assisted dual-flash geothermal for power & hydrogen</a> <span style="color:#4a5a6a;" data-i18n="article3Desc">– 4–7% efficiency boost.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.irena.org/News/pressreleases/2026/Apr/Moving-from-Energy-Crisis-to-Energy-Security-with-Renewables" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">📊 IRENA: Moving from Energy Crisis to Energy Security with Renewables</a> <span style="color:#4a5a6a;" data-i18n="article4Desc">– 692 GW added in 2025.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.spglobal.com/ratings/en/regulatory/article/industry-report-card-solar-and-wind-performance-beyond-resource-availability-emerging-threats-to-expectations-s101681175" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">📈 S&P Global: Solar and Wind Performance Report Card</a> <span style="color:#4a5a6a;" data-i18n="article5Desc">– Underperformance since 2003.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.nature.com/articles/s41893-026-01836-5" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">🌍 Nature Sustainability: Coal plants as barrier to solar transition</a> <span style="color:#4a5a6a;" data-i18n="article6Desc">– 5.8% global solar reduction.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://carnegiescience.edu" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">🏗️ Carnegie Science: Dams can't meet future water storage needs</a> <span style="color:#4a5a6a;" data-i18n="article7Desc">– Hydropower limitations.</span></li>
+                    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;"><a href="https://www.newscientist.com/article/2511979-world-is-entering-an-era-of-water-bankruptcy" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">💧 New Scientist: World entering 'water bankruptcy'</a> <span style="color:#4a5a6a;" data-i18n="article8Desc">– 4 billion face water scarcity.</span></li>
+                    <li style="padding:12px 0;"><a href="https://www.iea.org/commentaries/wired-for-water-how-electrification-is-transforming-desalination" target="_blank" style="color:var(--secondary); font-weight:600; text-decoration:none;">⚡ IEA: Wired for water – Electrification transforming desalination</a> <span style="color:#4a5a6a;" data-i18n="article9Desc">– 4,000+ billion m³/year.</span></li>
+                </ul>
             </div>
         </section>
     </div>
@@ -626,15 +686,15 @@
     <!-- ===== CONTACT ===== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center"><h2 class="section-title">📬 <span class="highlight">Contact for Acquisition & Partnership</span></h2><p class="section-sub">Interested in acquiring or investing in this sovereign platform? Reach out.</p></div>
+            <div class="text-center"><h2 class="section-title" data-i18n="contactTitle">📬 <span class="highlight">Contact for Acquisition & Partnership</span></h2><p class="section-sub" data-i18n="contactSub">Interested in acquiring or investing in this sovereign platform? Reach out.</p></div>
             <div class="contact-card general">
-                <div class="card-header"><i class="fas fa-envelope"></i><h3>General Inquiries</h3></div>
-                <button class="email-reveal-btn" onclick="toggleEmail('email1')">📧 Show Email</button>
+                <div class="card-header"><i class="fas fa-envelope"></i><h3 data-i18n="contactGeneral">General Inquiries</h3></div>
+                <button class="email-reveal-btn" onclick="toggleEmail('email1')" data-i18n="contactShowEmail">📧 Show Email</button>
                 <div class="email-hidden" id="email1"><a href="mailto:vahid.aquanexus@protonmail.com">vahid.aquanexus@protonmail.com</a></div>
             </div>
             <div class="contact-card partner">
-                <div class="card-header"><i class="fas fa-handshake"></i><h3>Strategic Partnerships & Investment</h3></div>
-                <button class="email-reveal-btn" onclick="toggleEmail('email2')">📧 Show Email</button>
+                <div class="card-header"><i class="fas fa-handshake"></i><h3 data-i18n="contactPartnership">Strategic Partnerships & Investment</h3></div>
+                <button class="email-reveal-btn" onclick="toggleEmail('email2')" data-i18n="contactShowEmail">📧 Show Email</button>
                 <div class="email-hidden" id="email2"><a href="mailto:vahid.nezamivand.chegane@gmail.com">vahid.nezamivand.chegane@gmail.com</a></div>
             </div>
         </section>
@@ -643,31 +703,489 @@
 
 <!-- FOOTER -->
 <footer class="footer-new">
-    <div class="brand"><span class="aqua">Aqua</span><span class="nexus">Nexus</span> + <span style="color:var(--gold);">Aqua Guardian</span></div>
-    <div class="lines"><span>Engineering Water</span> · <span>Powering Nations</span> · <span>Building Tomorrow</span></div>
-    <p style="margin-top:20px; opacity:0.4; font-size:0.8rem;">© 2026 Vahid Nezamivand Chegane · Confidential · For Qualified Investors Only</p>
+    <div class="brand"><span class="aqua" id="footerAqua">Aqua</span><span class="nexus" id="footerNexus">Nexus</span> + <span style="color:var(--gold);" id="footerGuardian">Aqua Guardian</span></div>
+    <div class="lines"><span id="footerLine1">Engineering Water</span> · <span id="footerLine2">Powering Nations</span> · <span id="footerLine3">Building Tomorrow</span></div>
+    <p style="margin-top:20px; opacity:0.4; font-size:0.8rem;" id="footerCopy">© 2026 Vahid Nezamivand Chegane · Confidential · For Qualified Investors Only</p>
 </footer>
 
 <script>
-    // ===== LANGUAGE SWITCHER =====
+    // ===== COMPLETE TRANSLATIONS FOR ALL SECTIONS =====
     const translations = {
         en: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Sovereign Infrastructure · Climate Technology · Global Impact',heroSub:'AquaNexus + Aqua Guardian · Valuation: USD 10 Billion',btnExplore:'Explore the Platform',navTitle:'Introducing <span class="highlight">AquaNexus</span>'
+            brandAqua: 'Aqua', brandNexus: 'Nexus', footerAqua: 'Aqua', footerNexus: 'Nexus', footerGuardian: 'Aqua Guardian',
+            heroTagline: 'Sovereign Infrastructure · Climate Technology · Global Impact',
+            heroSub: 'AquaNexus + Aqua Guardian · Valuation: USD 10 Billion',
+            btnExplore: 'Explore the Platform',
+            introTitle: 'Introducing <span class="highlight">AquaNexus</span>',
+            tabJourney: '🌊 Water Journey', tabWaterArch: '🏗️ Water Arch', tabRevenue: '📊 Revenue & Value',
+            tabLithium: '🔋 Lithium', tabCooling: '❄️ Cooling', tabAgri: '🌱 Agri',
+            tabDeploy: '🗺️ Global', tabValuation: '💼 Valuation', tabTechnical: '🔬 Technical',
+            tabGeothermal: '🔥 Why Geothermal', tabArticles: '📄 Articles', tabContact: '📬 Contact',
+            journeyTitle: '<span class="highlight">The Water Journey</span>', journeySub: 'From ocean to aquifer – a sustainable, circular economy.',
+            journeyDesal: 'Desalination', journeyDesalP: 'Industrial-scale freshwater',
+            journeyASR: 'ASR Storage', journeyASRP: 'Aquifer recharge & recovery',
+            journeyAgri: 'Agriculture', journeyAgriP: '4-season greenhouses',
+            journeyCities: 'Cities', journeyCitiesP: 'Municipal & industrial supply',
+            waterArchTitle: '🏗️ <span class="highlight">Water Allocation Architecture</span>',
+            waterArchSub: 'ASR · Domestic · Agriculture · Industry · Strategic Reserve',
+            waterDomestic: '🏠 Domestic Supply', waterDomesticP: 'Municipal water security', waterDomesticV: 'Primary allocation',
+            waterAgri: '🌾 Agricultural Supply', waterAgriP: 'Irrigation for greenhouses', waterAgriV: 'Secondary allocation',
+            waterIndustrial: '🏭 Industrial Supply', waterIndustrialP: 'Process water & cooling', waterIndustrialV: 'Tertiary allocation',
+            waterASR: '♻️ ASR Recovery', waterASRP: 'Aquifer Storage & Recovery', waterASRV: 'Strategic reserve',
+            waterReserve: '⛑️ Strategic Reserve', waterReserveP: 'Drought & emergency', waterReserveV: 'National security',
+            waterClimate: '🌍 Climate Resilience', waterClimateP: 'Seasonal balancing',
+            waterBenefits: 'Key Benefits:', waterBenefitsList: 'Municipal Security · Agricultural Stabilization · Industrial Continuity · Climate Adaptation',
+            revenueTitle: '📊 <span class="highlight">Revenue & Platform Value</span>',
+            revenueSub: 'Multi-billion dollar sovereign infrastructure asset.',
+            revenueLabel: 'Total Sovereign Platform Value (Full Deployment)',
+            revenueStreams: '📈 Revenue Streams',
+            rev1: '⚡ Geothermal Electricity', rev2: '💧 Desalinated Water', rev3: '❄️ District Cooling',
+            rev4: '🔋 Battery-Grade Lithium', rev5: '🌱 Controlled Agriculture', rev6: '🌍 Carbon Credits',
+            rev7: '🏨 Eco-Tourism & Health', rev8: '🧂 Salt & Precious Metals',
+            financialHighlights: '📌 Financial Highlights',
+            fin1: '✅ Infrastructure-grade cash flows', fin2: '✅ Strong operating leverage',
+            fin3: '✅ High-margin upside potential', fin4: '✅ 30–50 year asset life',
+            fin5: '✅ Sovereign & institutional backing',
+            lithiumTitle: '🔋 <span class="highlight">Lithium Extraction & Export</span>',
+            lithiumSub: 'DLE System · Battery-Grade LCE · Global Supply Chain',
+            lithiumDLE: '⚙️ DLE System', lithiumDLEP: 'Direct Lithium Extraction', lithiumDLEV: 'Industrial scale',
+            lithiumGrade: '🔋 Battery-Grade LCE', lithiumGradeP: 'Lithium Carbonate Equivalent', lithiumGradeV: 'High recovery rate',
+            lithiumBrine: '♻️ Brine Recovery', lithiumBrineP: 'Closed-loop reinjection', lithiumBrineV: '100% reinjected',
+            lithiumExport: '🚢 Export Hub', lithiumExportP: 'Sohar Port, Oman', lithiumExportV: 'Strategic logistics',
+            lithiumImpact: '🌿 Low Impact', lithiumImpactP: 'Minimal environmental footprint',
+            coolingTitle: '❄️ <span class="highlight">District Cooling Infrastructure</span>',
+            coolingSub: 'Geothermal Absorption Chillers · Data Centers · Industrial',
+            coolingCap: '❄️ Cooling Capacity', coolingContinuous: '🔄 Continuous Operation',
+            coolingContinuousP: '24/7 geothermal', coolingData: '🏢 Data Centers', coolingDataP: 'Stable, high-margin revenue',
+            coolingDataV: 'Anchor tenants', coolingCarbon: '🌿 Low-Carbon', coolingCarbonP: 'Zero direct emissions',
+            agriTitle: '🌱 <span class="highlight">Geothermal Agriculture</span>',
+            agriSub: 'Year-round production · Food security · Water efficiency',
+            agriYear: '📅 Year-round', agriYearP: '4 seasons production', agriYearV: 'Continuous',
+            agriWater: '💧 Water Efficiency', agriWaterP: 'Drip irrigation', agriWaterV: 'High efficiency',
+            agriCarbon: '🌿 Low-Carbon', agriCarbonP: 'Geothermal heating', agriCarbonV: 'Zero fossil fuel',
+            agriFood: '🍎 Food Security', agriFoodP: 'Reduced import dependency', agriFoodV: 'National priority',
+            deployTitle: '🗺️ <span class="highlight">Global Deployment Architecture</span>',
+            deploySub: 'Oman · UAE · Sweden · Saudi Arabia',
+            deployOman: '🇴🇲 Oman', deployOmanP: 'Sohar, Duqm', deployOmanV: 'High-temperature hubs',
+            deployUAE: '🇦🇪 UAE', deployUAEP: 'Abu Dhabi, Masdar Corridor', deployUAEV: 'Urban energy & water',
+            deploySweden: '🇸🇪 Sweden', deploySwedenP: 'Gothenburg', deploySwedenV: 'Cold-climate optimization',
+            deployKSA: '🇸🇦 Saudi Arabia', deployKSAP: 'Al-Wajh, NEOM', deployKSAV: 'Industrial decarbonization',
+            valuationTitle: '💼 <span class="highlight">Valuation, Employment & Investors</span>',
+            valuationSub: 'Sovereign-scale platform with massive job creation.',
+            valuationJobs: '👷 Employment Creation',
+            valuationJobsPilot: 'Pilot Phase: <span class="value">Significant</span>',
+            valuationJobsNational: 'National Scale: <span class="value">Thousands of direct jobs</span>',
+            valuationJobsTotal: 'Total Ecosystem: <span class="value">100,000+ (direct & indirect)</span>',
+            valuationValue: '💰 Strategic Valuation',
+            valuationValuePlatform: 'Combined Platform Value: <span class="value">USD 10 Billion</span>',
+            valuationValueLife: 'Asset Life: <span class="value">30–50 Years</span>',
+            valuationValueIRR: 'Internal Rate of Return (IRR): <span class="value">Exceptional</span>',
+            valuationValueExit: 'Long-Term Sovereign Exit: <span class="value">USD 10B+</span>',
+            valuationInvestors: '🤝 Strategic Investor & Buyer Universe',
+            technicalTitle: '🔬 <span class="highlight">Technical Insights</span>',
+            technicalSub: 'Geothermal reservoir · Wells · Advanced materials',
+            techTemp: '🌡️ Temperature', techDepth: '⛏️ Depth', techFlow: '🔄 Flow Rate',
+            techMaterials: '⚙️ Materials', techReinject: '♻️ Reinjection', techReinjectV: 'Closed-loop',
+            techCarbon: '🌿 Carbon Footprint', techCarbonV: 'Ultra-low',
+            geoTitle: '🔥 <span class="highlight">Why Geothermal?</span>',
+            geoSub: '24/7 baseload power – the only renewable energy source that never stops.',
+            geoAdvTitle: '✅ Key Advantages of Geothermal Energy',
+            geoAdv1: '⏱ 24/7 Baseload', geoAdv1P: 'Independent of sunlight, wind, or rain. The most stable renewable source.',
+            geoAdv2: '🌿 Lowest Carbon Footprint', geoAdv2P: '~5% of gas plants, ~1% of coal plants. Ultra-low emissions.',
+            geoAdv3: '🏗️ High Capacity Factor', geoAdv3P: '70–90% vs. 20–30% for solar and 30–40% for wind.',
+            geoAdv4: '💰 Low Operating Cost', geoAdv4P: 'Zero fuel cost, very low maintenance after initial investment.',
+            geoAdv5: '🌍 Small Land Footprint', geoAdv5P: 'Much less surface area than solar farms or wind turbines.',
+            geoAdv6: '♻️ Circular Economy', geoAdv6P: 'Co-extraction of lithium, gold, silver, and minerals from brine.',
+            geoLimTitle: '⚠️ Limitations of Other Renewables',
+            geoLimSolar: '☀️ Solar', geoLimSolarP: 'Zero production at night, reduced output on cloudy days. Efficiency drops 10–20% in extreme heat. Requires expensive storage.',
+            geoLimWind: '💨 Wind', geoLimWindP: 'Zero production on calm days. Highly variable output. Environmental impact on birds, noise, and visual pollution. Creates "wind shadows".',
+            geoLimHydro: '🌊 Hydropower', geoLimHydroP: 'Dependent on rainfall – droughts reduce capacity. Massive ecosystem disruption, fish migration obstruction, and population displacement.',
+            geoSummary: '🎯 Geothermal is the only renewable that provides true baseload power 24/7',
+            geoSummaryP: 'Without expensive batteries, without weather dependence, and with the lowest environmental impact. <strong style="color:white;">AquaNexus</strong> is built on this foundation.',
+            articlesTitle: '📄 <span class="highlight">Curated Articles & Reports</span>',
+            articlesSub: 'Top peer-reviewed publications and industry insights – updated 2026.',
+            article1Desc: '– Next-gen 24/7 geothermal.',
+            article2Desc: '– 45% better performance in deserts.',
+            article3Desc: '– 4–7% efficiency boost.',
+            article4Desc: '– 692 GW added in 2025.',
+            article5Desc: '– Underperformance since 2003.',
+            article6Desc: '– 5.8% global solar reduction.',
+            article7Desc: '– Hydropower limitations.',
+            article8Desc: '– 4 billion face water scarcity.',
+            article9Desc: '– 4,000+ billion m³/year.',
+            contactTitle: '📬 <span class="highlight">Contact for Acquisition & Partnership</span>',
+            contactSub: 'Interested in acquiring or investing in this sovereign platform? Reach out.',
+            contactGeneral: 'General Inquiries',
+            contactPartnership: 'Strategic Partnerships & Investment',
+            contactShowEmail: '📧 Show Email',
+            footerLine1: 'Engineering Water', footerLine2: 'Powering Nations', footerLine3: 'Building Tomorrow',
+            footerCopy: '© 2026 Vahid Nezamivand Chegane · Confidential · For Qualified Investors Only'
         },
         fr: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Infrastructure Souveraine · Technologie Climatique · Impact Mondial',heroSub:'AquaNexus + Aqua Guardian · Valorisation: 10 Milliards USD',btnExplore:'Explorer la Plateforme',navTitle:'Présentation de <span class="highlight">AquaNexus</span>'
+            brandAqua: 'Aqua', brandNexus: 'Nexus', footerAqua: 'Aqua', footerNexus: 'Nexus', footerGuardian: 'Aqua Guardian',
+            heroTagline: 'Infrastructure Souveraine · Technologie Climatique · Impact Mondial',
+            heroSub: 'AquaNexus + Aqua Guardian · Valorisation: 10 Milliards USD',
+            btnExplore: 'Explorer la Plateforme',
+            introTitle: 'Présentation de <span class="highlight">AquaNexus</span>',
+            tabJourney: '🌊 Voyage de l\'Eau', tabWaterArch: '🏗️ Architecture Eau', tabRevenue: '📊 Revenus & Valeur',
+            tabLithium: '🔋 Lithium', tabCooling: '❄️ Refroidissement', tabAgri: '🌱 Agriculture',
+            tabDeploy: '🗺️ Global', tabValuation: '💼 Valorisation', tabTechnical: '🔬 Technique',
+            tabGeothermal: '🔥 Pourquoi Géothermique', tabArticles: '📄 Articles', tabContact: '📬 Contact',
+            journeyTitle: '<span class="highlight">Le Voyage de l\'Eau</span>', journeySub: 'De l\'océan à l\'aquifère – une économie circulaire durable.',
+            journeyDesal: 'Dessalement', journeyDesalP: 'Eau douce à échelle industrielle',
+            journeyASR: 'Stockage ASR', journeyASRP: 'Recharge des aquifères',
+            journeyAgri: 'Agriculture', journeyAgriP: 'Serres 4 saisons',
+            journeyCities: 'Villes', journeyCitiesP: 'Approvisionnement municipal & industriel',
+            waterArchTitle: '🏗️ <span class="highlight">Architecture d\'Allocation de l\'Eau</span>',
+            waterArchSub: 'ASR · Domestique · Agriculture · Industrie · Réserve Stratégique',
+            waterDomestic: '🏠 Approvisionnement Domestique', waterDomesticP: 'Sécurité de l\'eau municipale', waterDomesticV: 'Allocation primaire',
+            waterAgri: '🌾 Approvisionnement Agricole', waterAgriP: 'Irrigation des serres', waterAgriV: 'Allocation secondaire',
+            waterIndustrial: '🏭 Approvisionnement Industriel', waterIndustrialP: 'Eau de procédé & refroidissement', waterIndustrialV: 'Allocation tertiaire',
+            waterASR: '♻️ Récupération ASR', waterASRP: 'Stockage et récupération dans les aquifères', waterASRV: 'Réserve stratégique',
+            waterReserve: '⛑️ Réserve Stratégique', waterReserveP: 'Sécheresse & urgences', waterReserveV: 'Sécurité nationale',
+            waterClimate: '🌍 Résilience Climatique', waterClimateP: 'Équilibrage saisonnier',
+            waterBenefits: 'Avantages clés :', waterBenefitsList: 'Sécurité Municipale · Stabilisation Agricole · Continuité Industrielle · Adaptation Climatique',
+            revenueTitle: '📊 <span class="highlight">Revenus et Valeur de la Plateforme</span>',
+            revenueSub: 'Actif d\'infrastructure souverain de plusieurs milliards de dollars.',
+            revenueLabel: 'Valeur Totale de la Plateforme Souveraine (Déploiement Complet)',
+            revenueStreams: '📈 Flux de Revenus',
+            rev1: '⚡ Électricité Géothermique', rev2: '💧 Eau Dessalée', rev3: '❄️ Refroidissement Urbain',
+            rev4: '🔋 Lithium de Qualité Batterie', rev5: '🌱 Agriculture Contrôlée', rev6: '🌍 Crédits Carbone',
+            rev7: '🏨 Écotourisme & Santé', rev8: '🧂 Sel & Métaux Précieux',
+            financialHighlights: '📌 Points Forts Financiers',
+            fin1: '✅ Flux de trésorerie de qualité infrastructure', fin2: '✅ Effet de levier opérationnel fort',
+            fin3: '✅ Potentiel de hausse à forte marge', fin4: '✅ Durée de vie de l\'actif 30–50 ans',
+            fin5: '✅ Soutien souverain et institutionnel',
+            lithiumTitle: '🔋 <span class="highlight">Extraction et Exportation de Lithium</span>',
+            lithiumSub: 'Système DLE · LCE de Qualité Batterie · Chaîne d\'Approvisionnement Mondiale',
+            lithiumDLE: '⚙️ Système DLE', lithiumDLEP: 'Extraction Directe de Lithium', lithiumDLEV: 'Échelle industrielle',
+            lithiumGrade: '🔋 LCE Qualité Batterie', lithiumGradeP: 'Équivalent Carbonate de Lithium', lithiumGradeV: 'Taux de récupération élevé',
+            lithiumBrine: '♻️ Récupération de Saumure', lithiumBrineP: 'Réinjection en circuit fermé', lithiumBrineV: '100% réinjectée',
+            lithiumExport: '🚢 Hub d\'Exportation', lithiumExportP: 'Port de Sohar, Oman', lithiumExportV: 'Logistique stratégique',
+            lithiumImpact: '🌿 Faible Impact', lithiumImpactP: 'Empreinte environnementale minimale',
+            coolingTitle: '❄️ <span class="highlight">Infrastructure de Refroidissement Urbain</span>',
+            coolingSub: 'Refroidisseurs à Absorption Géothermique · Centres de Données · Industriel',
+            coolingCap: '❄️ Capacité de Refroidissement', coolingContinuous: '🔄 Fonctionnement Continu',
+            coolingContinuousP: 'Géothermique 24/7', coolingData: '🏢 Centres de Données', coolingDataP: 'Revenus stables à haute marge',
+            coolingDataV: 'Locataires principaux', coolingCarbon: '🌿 Bas Carbone', coolingCarbonP: 'Zéro émission directe',
+            agriTitle: '🌱 <span class="highlight">Agriculture Géothermique</span>',
+            agriSub: 'Production toute l\'année · Sécurité alimentaire · Efficacité hydrique',
+            agriYear: '📅 Toute l\'année', agriYearP: 'Production 4 saisons', agriYearV: 'Continue',
+            agriWater: '💧 Efficacité hydrique', agriWaterP: 'Irrigation goutte à goutte', agriWaterV: 'Haute efficacité',
+            agriCarbon: '🌿 Bas Carbone', agriCarbonP: 'Chauffage géothermique', agriCarbonV: 'Zéro combustible fossile',
+            agriFood: '🍎 Sécurité Alimentaire', agriFoodP: 'Réduction de la dépendance aux importations', agriFoodV: 'Priorité nationale',
+            deployTitle: '🗺️ <span class="highlight">Architecture de Déploiement Mondial</span>',
+            deploySub: 'Oman · EAU · Suède · Arabie Saoudite',
+            deployOman: '🇴🇲 Oman', deployOmanP: 'Sohar, Duqm', deployOmanV: 'Centres à haute température',
+            deployUAE: '🇦🇪 EAU', deployUAEP: 'Abou Dabi, Corridor Masdar', deployUAEV: 'Énergie et eau urbaines',
+            deploySweden: '🇸🇪 Suède', deploySwedenP: 'Göteborg', deploySwedenV: 'Optimisation climat froid',
+            deployKSA: '🇸🇦 Arabie Saoudite', deployKSAP: 'Al-Wajh, NEOM', deployKSAV: 'Décarbonation industrielle',
+            valuationTitle: '💼 <span class="highlight">Valorisation, Emploi et Investisseurs</span>',
+            valuationSub: 'Plateforme à l\'échelle souveraine avec création massive d\'emplois.',
+            valuationJobs: '👷 Création d\'Emplois',
+            valuationJobsPilot: 'Phase Pilote : <span class="value">Significative</span>',
+            valuationJobsNational: 'Échelle Nationale : <span class="value">Des milliers d\'emplois directs</span>',
+            valuationJobsTotal: 'Écosystème Total : <span class="value">100 000+ (directs et indirects)</span>',
+            valuationValue: '💰 Valorisation Stratégique',
+            valuationValuePlatform: 'Valeur de la Plateforme Combinée : <span class="value">10 Milliards USD</span>',
+            valuationValueLife: 'Durée de vie de l\'actif : <span class="value">30–50 Ans</span>',
+            valuationValueIRR: 'Taux de Rendement Interne (TRI) : <span class="value">Exceptionnel</span>',
+            valuationValueExit: 'Sortie Souveraine à Long Terme : <span class="value">10Mrd USD+</span>',
+            valuationInvestors: '🤝 Investisseurs Stratégiques et Acheteurs Potentiels',
+            technicalTitle: '🔬 <span class="highlight">Aperçus Techniques</span>',
+            technicalSub: 'Réservoir géothermique · Puits · Matériaux avancés',
+            techTemp: '🌡️ Température', techDepth: '⛏️ Profondeur', techFlow: '🔄 Débit',
+            techMaterials: '⚙️ Matériaux', techReinject: '♻️ Réinjection', techReinjectV: 'Circuit fermé',
+            techCarbon: '🌿 Empreinte Carbone', techCarbonV: 'Ultra-faible',
+            geoTitle: '🔥 <span class="highlight">Pourquoi la Géothermique ?</span>',
+            geoSub: 'Énergie de base 24/7 – la seule source d\'énergie renouvelable qui ne s\'arrête jamais.',
+            geoAdvTitle: '✅ Principaux Avantages de l\'Énergie Géothermique',
+            geoAdv1: '⏱ Base 24/7', geoAdv1P: 'Indépendant du soleil, du vent ou de la pluie. La source renouvelable la plus stable.',
+            geoAdv2: '🌿 Empreinte Carbone la plus Faible', geoAdv2P: '~5% des centrales à gaz, ~1% des centrales à charbon. Émissions ultra-faibles.',
+            geoAdv3: '🏗️ Facteur de Capacité Élevé', geoAdv3P: '70–90% contre 20–30% pour le solaire et 30–40% pour l\'éolien.',
+            geoAdv4: '💰 Coût d\'Exploitation Faible', geoAdv4P: 'Coût du combustible nul, très faible entretien après l\'investissement initial.',
+            geoAdv5: '🌍 Empreinte Foncière Réduite', geoAdv5P: 'Beaucoup moins de surface que les parcs solaires ou les éoliennes.',
+            geoAdv6: '♻️ Économie Circulaire', geoAdv6P: 'Co-extraction de lithium, d\'or, d\'argent et de minéraux de la saumure.',
+            geoLimTitle: '⚠️ Limites des Autres Énergies Renouvelables',
+            geoLimSolar: '☀️ Solaire', geoLimSolarP: 'Production nulle la nuit, rendement réduit les jours nuageux. Le rendement chute de 10 à 20 % par forte chaleur. Nécessite un stockage coûteux.',
+            geoLimWind: '💨 Éolien', geoLimWindP: 'Production nulle les jours sans vent. Production très variable. Impact environnemental sur les oiseaux, bruit et pollution visuelle. Crée des "ombres éoliennes".',
+            geoLimHydro: '🌊 Hydroélectrique', geoLimHydroP: 'Dépendant des précipitations – les sécheresses réduisent la capacité. Perturbation massive des écosystèmes, obstruction de la migration des poissons et déplacement de populations.',
+            geoSummary: '🎯 La géothermique est la seule énergie renouvelable qui fournit une véritable puissance de base 24/7',
+            geoSummaryP: 'Sans batteries coûteuses, sans dépendance météorologique et avec le plus faible impact environnemental. <strong style="color:white;">AquaNexus</strong> est construit sur cette base.',
+            articlesTitle: '📄 <span class="highlight">Articles et Rapports Sélectionnés</span>',
+            articlesSub: 'Publications évaluées par des pairs et analyses sectorielles – mises à jour 2026.',
+            article1Desc: '– Géothermique nouvelle génération 24/7.',
+            article2Desc: '– Performance 45% meilleure dans les déserts.',
+            article3Desc: '– Gain d\'efficacité de 4 à 7%.',
+            article4Desc: '– 692 GW ajoutés en 2025.',
+            article5Desc: '– Sous-performance depuis 2003.',
+            article6Desc: '– Réduction solaire mondiale de 5,8%.',
+            article7Desc: '– Limites de l\'hydroélectricité.',
+            article8Desc: '– 4 milliards de personnes confrontées à la pénurie d\'eau.',
+            article9Desc: '– Plus de 4 000 milliards de m³/an.',
+            contactTitle: '📬 <span class="highlight">Contact pour Acquisition et Partenariat</span>',
+            contactSub: 'Intéressé par l\'acquisition ou l\'investissement dans cette plateforme souveraine ? Contactez-nous.',
+            contactGeneral: 'Demandes Générales',
+            contactPartnership: 'Partenariats Stratégiques et Investissement',
+            contactShowEmail: '📧 Afficher l\'email',
+            footerLine1: 'Ingénierie de l\'Eau', footerLine2: 'Alimenter les Nations', footerLine3: 'Construire Demain',
+            footerCopy: '© 2026 Vahid Nezamivand Chegane · Confidentiel · Réservé aux Investisseurs Qualifiés'
         },
         de: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Souveräne Infrastruktur · Klimatechnologie · Globaler Einfluss',heroSub:'AquaNexus + Aqua Guardian · Bewertung: 10 Milliarden USD',btnExplore:'Plattform Erkunden',navTitle:'Einführung <span class="highlight">AquaNexus</span>'
+            brandAqua: 'Aqua', brandNexus: 'Nexus', footerAqua: 'Aqua', footerNexus: 'Nexus', footerGuardian: 'Aqua Guardian',
+            heroTagline: 'Souveräne Infrastruktur · Klimatechnologie · Globaler Einfluss',
+            heroSub: 'AquaNexus + Aqua Guardian · Bewertung: 10 Milliarden USD',
+            btnExplore: 'Plattform Erkunden',
+            introTitle: 'Einführung <span class="highlight">AquaNexus</span>',
+            tabJourney: '🌊 Wasserreise', tabWaterArch: '🏗️ Wasserarchitektur', tabRevenue: '📊 Einnahmen & Wert',
+            tabLithium: '🔋 Lithium', tabCooling: '❄️ Kühlung', tabAgri: '🌱 Landwirtschaft',
+            tabDeploy: '🗺️ Global', tabValuation: '💼 Bewertung', tabTechnical: '🔬 Technisch',
+            tabGeothermal: '🔥 Warum Geothermie', tabArticles: '📄 Artikel', tabContact: '📬 Kontakt',
+            journeyTitle: '<span class="highlight">Die Wasserreise</span>', journeySub: 'Vom Ozean zum Grundwasserleiter – eine nachhaltige Kreislaufwirtschaft.',
+            journeyDesal: 'Entsalzung', journeyDesalP: 'Industrielles Süßwasser',
+            journeyASR: 'ASR-Speicher', journeyASRP: 'Grundwasserneubildung',
+            journeyAgri: 'Landwirtschaft', journeyAgriP: '4-Jahreszeiten-Gewächshäuser',
+            journeyCities: 'Städte', journeyCitiesP: 'Kommunale & industrielle Versorgung',
+            waterArchTitle: '🏗️ <span class="highlight">Wasserzuteilungsarchitektur</span>',
+            waterArchSub: 'ASR · Haushalt · Landwirtschaft · Industrie · Strategische Reserve',
+            waterDomestic: '🏠 Haushaltsversorgung', waterDomesticP: 'Kommunale Wassersicherheit', waterDomesticV: 'Primärzuweisung',
+            waterAgri: '🌾 Landwirtschaftliche Versorgung', waterAgriP: 'Bewässerung von Gewächshäusern', waterAgriV: 'Sekundärzuweisung',
+            waterIndustrial: '🏭 Industrielle Versorgung', waterIndustrialP: 'Prozesswasser & Kühlung', waterIndustrialV: 'Tertiärzuweisung',
+            waterASR: '♻️ ASR-Rückgewinnung', waterASRP: 'Grundwasserspeicher & -rückgewinnung', waterASRV: 'Strategische Reserve',
+            waterReserve: '⛑️ Strategische Reserve', waterReserveP: 'Dürre & Notfälle', waterReserveV: 'Nationale Sicherheit',
+            waterClimate: '🌍 Klimaresilienz', waterClimateP: 'Saisonales Gleichgewicht',
+            waterBenefits: 'Hauptvorteile:', waterBenefitsList: 'Kommunale Sicherheit · Landwirtschaftliche Stabilisierung · Industrielle Kontinuität · Klimaanpassung',
+            revenueTitle: '📊 <span class="highlight">Einnahmen & Plattformwert</span>',
+            revenueSub: 'Mehrere Milliarden Dollar wertvolle souveräne Infrastruktur.',
+            revenueLabel: 'Gesamtwert der Souveränen Plattform (Vollausbau)',
+            revenueStreams: '📈 Einnahmequellen',
+            rev1: '⚡ Geothermischer Strom', rev2: '💧 Entsalztes Wasser', rev3: '❄️ Fernkühlung',
+            rev4: '🔋 Batterie-Lithium', rev5: '🌱 Kontrollierte Landwirtschaft', rev6: '🌍 CO₂-Zertifikate',
+            rev7: '🏨 Ökotourismus & Gesundheit', rev8: '🧂 Salz & Edelmetalle',
+            financialHighlights: '📌 Finanzielle Höhepunkte',
+            fin1: '✅ Infrastrukturgrade Cashflows', fin2: '✅ Starke operative Hebelwirkung',
+            fin3: '✅ Hochmargiges Aufwärtspotential', fin4: '✅ 30–50 Jahre Asset-Lebensdauer',
+            fin5: '✅ Souveräne & institutionelle Unterstützung',
+            lithiumTitle: '🔋 <span class="highlight">Lithiumgewinnung & Export</span>',
+            lithiumSub: 'DLE-System · Batterie-LCE · Globale Lieferkette',
+            lithiumDLE: '⚙️ DLE-System', lithiumDLEP: 'Direkte Lithiumextraktion', lithiumDLEV: 'Industrieller Maßstab',
+            lithiumGrade: '🔋 Batterie-LCE', lithiumGradeP: 'Lithiumcarbonat-Äquivalent', lithiumGradeV: 'Hohe Rückgewinnungsrate',
+            lithiumBrine: '♻️ Sole-Rückgewinnung', lithiumBrineP: 'Geschlossene Reinjektion', lithiumBrineV: '100% reinjiziert',
+            lithiumExport: '🚢 Exporthub', lithiumExportP: 'Hafen von Sohar, Oman', lithiumExportV: 'Strategische Logistik',
+            lithiumImpact: '🌿 Geringe Auswirkungen', lithiumImpactP: 'Minimaler ökologischer Fußabdruck',
+            coolingTitle: '❄️ <span class="highlight">Fernkühlinfrastruktur</span>',
+            coolingSub: 'Geothermische Absorptionskältemaschinen · Rechenzentren · Industrie',
+            coolingCap: '❄️ Kühlkapazität', coolingContinuous: '🔄 Dauerbetrieb',
+            coolingContinuousP: '24/7 Geothermie', coolingData: '🏢 Rechenzentren', coolingDataP: 'Stabile, hochmargige Einnahmen',
+            coolingDataV: 'Ankermieter', coolingCarbon: '🌿 Kohlenstoffarm', coolingCarbonP: 'Keine direkten Emissionen',
+            agriTitle: '🌱 <span class="highlight">Geothermische Landwirtschaft</span>',
+            agriSub: 'Ganzjährige Produktion · Ernährungssicherheit · Wassereffizienz',
+            agriYear: '📅 Ganzjährig', agriYearP: 'Produktion in 4 Jahreszeiten', agriYearV: 'Kontinuierlich',
+            agriWater: '💧 Wassereffizienz', agriWaterP: 'Tröpfchenbewässerung', agriWaterV: 'Hohe Effizienz',
+            agriCarbon: '🌿 Kohlenstoffarm', agriCarbonP: 'Geothermische Heizung', agriCarbonV: 'Keine fossilen Brennstoffe',
+            agriFood: '🍎 Ernährungssicherheit', agriFoodP: 'Reduzierte Importabhängigkeit', agriFoodV: 'Nationale Priorität',
+            deployTitle: '🗺️ <span class="highlight">Globale Einsatzarchitektur</span>',
+            deploySub: 'Oman · VAE · Schweden · Saudi-Arabien',
+            deployOman: '🇴🇲 Oman', deployOmanP: 'Sohar, Duqm', deployOmanV: 'Hochtemperatur-Hubs',
+            deployUAE: '🇦🇪 VAE', deployUAEP: 'Abu Dhabi, Masdar-Korridor', deployUAEV: 'Urbane Energie & Wasser',
+            deploySweden: '🇸🇪 Schweden', deploySwedenP: 'Göteborg', deploySwedenV: 'Optimierung für kaltes Klima',
+            deployKSA: '🇸🇦 Saudi-Arabien', deployKSAP: 'Al-Wajh, NEOM', deployKSAV: 'Industrielle Dekarbonisierung',
+            valuationTitle: '💼 <span class="highlight">Bewertung, Beschäftigung & Investoren</span>',
+            valuationSub: 'Souveräne Plattform mit massiver Arbeitsplatzschaffung.',
+            valuationJobs: '👷 Arbeitsplatzschaffung',
+            valuationJobsPilot: 'Pilotphase: <span class="value">Bedeutend</span>',
+            valuationJobsNational: 'Nationaler Maßstab: <span class="value">Tausende direkte Arbeitsplätze</span>',
+            valuationJobsTotal: 'Gesamtökosystem: <span class="value">100.000+ (direkt & indirekt)</span>',
+            valuationValue: '💰 Strategische Bewertung',
+            valuationValuePlatform: 'Kombinierter Plattformwert: <span class="value">10 Milliarden USD</span>',
+            valuationValueLife: 'Asset-Lebensdauer: <span class="value">30–50 Jahre</span>',
+            valuationValueIRR: 'Interner Zinsfuß (IRR): <span class="value">Außergewöhnlich</span>',
+            valuationValueExit: 'Langfristiger Souveräner Exit: <span class="value">10 Mrd USD+</span>',
+            valuationInvestors: '🤝 Strategische Investoren & Käufer',
+            technicalTitle: '🔬 <span class="highlight">Technische Einblicke</span>',
+            technicalSub: 'Geothermisches Reservoir · Bohrungen · Fortschrittliche Materialien',
+            techTemp: '🌡️ Temperatur', techDepth: '⛏️ Tiefe', techFlow: '🔄 Durchflussrate',
+            techMaterials: '⚙️ Materialien', techReinject: '♻️ Reinjektion', techReinjectV: 'Geschlossener Kreislauf',
+            techCarbon: '🌿 CO₂-Fußabdruck', techCarbonV: 'Ultra-niedrig',
+            geoTitle: '🔥 <span class="highlight">Warum Geothermie?</span>',
+            geoSub: '24/7 Grundlast – die einzige erneuerbare Energiequelle, die nie stoppt.',
+            geoAdvTitle: '✅ Hauptvorteile der Geothermie',
+            geoAdv1: '⏱ 24/7 Grundlast', geoAdv1P: 'Unabhängig von Sonne, Wind oder Regen. Die stabilste erneuerbare Quelle.',
+            geoAdv2: '🌿 Niedrigster CO₂-Fußabdruck', geoAdv2P: '~5% von Gaskraftwerken, ~1% von Kohlekraftwerken. Ultra-niedrige Emissionen.',
+            geoAdv3: '🏗️ Hoher Kapazitätsfaktor', geoAdv3P: '70–90% vs. 20–30% für Solar und 30–40% für Wind.',
+            geoAdv4: '💰 Niedrige Betriebskosten', geoAdv4P: 'Keine Brennstoffkosten, sehr geringer Wartungsaufwand nach Anfangsinvestition.',
+            geoAdv5: '🌍 Geringer Flächenverbrauch', geoAdv5P: 'Weniger Fläche als Solarparks oder Windturbinen.',
+            geoAdv6: '♻️ Kreislaufwirtschaft', geoAdv6P: 'Ko-Extraktion von Lithium, Gold, Silber und Mineralien aus Sole.',
+            geoLimTitle: '⚠️ Grenzen anderer Erneuerbarer',
+            geoLimSolar: '☀️ Solar', geoLimSolarP: 'Keine Produktion in der Nacht, reduzierte Leistung bei Bewölkung. Wirkungsgrad sinkt bei extremer Hitze um 10–20%. Erfordert teure Speicher.',
+            geoLimWind: '💨 Wind', geoLimWindP: 'Keine Produktion bei Windstille. Sehr schwankende Leistung. Auswirkungen auf Vögel, Lärm und visuelle Verschmutzung. Erzeugt "Windschatten".',
+            geoLimHydro: '🌊 Wasserkraft', geoLimHydroP: 'Abhängig von Niederschlägen – Dürren reduzieren die Kapazität. Massive Störung der Ökosysteme, Behinderung der Fischwanderung und Umsiedlung von Bevölkerungen.',
+            geoSummary: '🎯 Geothermie ist die einzige erneuerbare Energie, die echte Grundlast 24/7 liefert',
+            geoSummaryP: 'Ohne teure Batterien, ohne Wetterabhängigkeit und mit den geringsten Umweltauswirkungen. <strong style="color:white;">AquaNexus</strong> basiert auf diesem Fundament.',
+            articlesTitle: '📄 <span class="highlight">Ausgewählte Artikel & Berichte</span>',
+            articlesSub: 'Fachzeitschriften und Brancheneinblicke – aktualisiert 2026.',
+            article1Desc: '– Next-Gen 24/7 Geothermie.',
+            article2Desc: '– 45% bessere Leistung in Wüsten.',
+            article3Desc: '– 4–7% Effizienzsteigerung.',
+            article4Desc: '– 692 GW im Jahr 2025 hinzugefügt.',
+            article5Desc: '– Unterdurchschnittliche Performance seit 2003.',
+            article6Desc: '– 5,8% globale Solarreduktion.',
+            article7Desc: '– Grenzen der Wasserkraft.',
+            article8Desc: '– 4 Milliarden von Wasserknappheit betroffen.',
+            article9Desc: '– 4.000+ Milliarden m³/Jahr.',
+            contactTitle: '📬 <span class="highlight">Kontakt für Akquisition & Partnerschaft</span>',
+            contactSub: 'Interessiert an der Übernahme oder Investition in diese souveräne Plattform? Kontaktieren Sie uns.',
+            contactGeneral: 'Allgemeine Anfragen',
+            contactPartnership: 'Strategische Partnerschaften & Investitionen',
+            contactShowEmail: '📧 E-Mail anzeigen',
+            footerLine1: 'Wassertechnik', footerLine2: 'Nationen Versorgen', footerLine3: 'Morgen Bauen',
+            footerCopy: '© 2026 Vahid Nezamivand Chegane · Vertraulich · Nur für qualifizierte Investoren'
         },
         ar: {
-            brandAqua:'أكوا',brandNexus:'نيكسوس',heroTagline:'بنية تحتية سيادية · تكنولوجيا المناخ · تأثير عالمي',heroSub:'أكوا نيكسوس + أكوا غارديان · التقييم: ١٠ مليار دولار',btnExplore:'استكشف المنصة',navTitle:'تقديم <span class="highlight">أكوا نيكسوس</span>'
+            brandAqua: 'أكوا', brandNexus: 'نيكسوس', footerAqua: 'أكوا', footerNexus: 'نيكسوس', footerGuardian: 'أكوا غارديان',
+            heroTagline: 'بنية تحتية سيادية · تكنولوجيا المناخ · تأثير عالمي',
+            heroSub: 'أكوا نيكسوس + أكوا غارديان · التقييم: ١٠ مليار دولار',
+            btnExplore: 'استكشف المنصة',
+            introTitle: 'تقديم <span class="highlight">أكوا نيكسوس</span>',
+            tabJourney: '🌊 رحلة المياه', tabWaterArch: '🏗️ توزيع المياه', tabRevenue: '📊 الإيرادات والقيمة',
+            tabLithium: '🔋 الليثيوم', tabCooling: '❄️ التبريد', tabAgri: '🌱 الزراعة',
+            tabDeploy: '🗺️ النشر العالمي', tabValuation: '💼 التقييم', tabTechnical: '🔬 التقني',
+            tabGeothermal: '🔥 لماذا الحرارة الأرضية', tabArticles: '📄 المقالات', tabContact: '📬 الاتصال',
+            journeyTitle: '<span class="highlight">رحلة المياه</span>', journeySub: 'من المحيط إلى الخزان الجوفي – اقتصاد دائري مستدام.',
+            journeyDesal: 'التحلية', journeyDesalP: 'مياه عذبة على نطاق صناعي',
+            journeyASR: 'تخزين ASR', journeyASRP: 'إعادة تغذية الخزانات الجوفية',
+            journeyAgri: 'الزراعة', journeyAgriP: 'صوبات زراعية ٤ مواسم',
+            journeyCities: 'المدن', journeyCitiesP: 'تزويد بلدي وصناعي',
+            waterArchTitle: '🏗️ <span class="highlight">هندسة توزيع المياه</span>',
+            waterArchSub: 'ASR · محلي · زراعي · صناعي · احتياطي استراتيجي',
+            waterDomestic: '🏠 التزويد المحلي', waterDomesticP: 'أمن المياه البلدي', waterDomesticV: 'تخصيص أولي',
+            waterAgri: '🌾 التزويد الزراعي', waterAgriP: 'ري الصوبات', waterAgriV: 'تخصيص ثانوي',
+            waterIndustrial: '🏭 التزويد الصناعي', waterIndustrialP: 'مياه العمليات والتبريد', waterIndustrialV: 'تخصيص ثالثي',
+            waterASR: '♻️ استخلاص ASR', waterASRP: 'تخزين واستخلاص الخزانات الجوفية', waterASRV: 'احتياطي استراتيجي',
+            waterReserve: '⛑️ احتياطي استراتيجي', waterReserveP: 'حالات الجفاف والطوارئ', waterReserveV: 'الأمن الوطني',
+            waterClimate: '🌍 المرونة المناخية', waterClimateP: 'توازن موسمي',
+            waterBenefits: 'الفوائد الرئيسية:', waterBenefitsList: 'الأمن البلدي · الاستقرار الزراعي · الاستمرارية الصناعية · التكيف المناخي',
+            revenueTitle: '📊 <span class="highlight">الإيرادات وقيمة المنصة</span>',
+            revenueSub: 'أصل بنية تحتية سيادي بقيمة مليارات الدولارات.',
+            revenueLabel: 'القيمة الإجمالية للمنصة السيادية (النشر الكامل)',
+            revenueStreams: '📈 مصادر الإيرادات',
+            rev1: '⚡ كهرباء حرارة أرضية', rev2: '💧 مياه محلاة', rev3: '❄️ تبريد مركزي',
+            rev4: '🔋 ليثيوم درجة بطارية', rev5: '🌱 زراعة محكومة', rev6: '🌍 أرصدة الكربون',
+            rev7: '🏨 سياحة بيئية وصحية', rev8: '🧂 ملح ومعادن ثمينة',
+            financialHighlights: '📌 النقاط المالية البارزة',
+            fin1: '✅ تدفقات نقدية على مستوى البنية التحتية', fin2: '✅ رافعة تشغيلية قوية',
+            fin3: '✅ إمكانات نمو بهامش ربح مرتفع', fin4: '✅ عمر الأصول ٣٠–٥٠ سنة',
+            fin5: '✅ دعم سيادي ومؤسسي',
+            lithiumTitle: '🔋 <span class="highlight">استخراج وتصدير الليثيوم</span>',
+            lithiumSub: 'نظام DLE · LCE درجة بطارية · سلسلة توريد عالمية',
+            lithiumDLE: '⚙️ نظام DLE', lithiumDLEP: 'استخراج الليثيوم المباشر', lithiumDLEV: 'نطاق صناعي',
+            lithiumGrade: '🔋 LCE درجة بطارية', lithiumGradeP: 'مكافئ كربونات الليثيوم', lithiumGradeV: 'نسبة استخلاص عالية',
+            lithiumBrine: '♻️ استخلاص المحلول الملحي', lithiumBrineP: 'إعادة حقن حلقة مغلقة', lithiumBrineV: 'إعادة حقن ١٠٠٪',
+            lithiumExport: '🚢 مركز التصدير', lithiumExportP: 'ميناء صحار، عمان', lithiumExportV: 'خدمات لوجستية استراتيجية',
+            lithiumImpact: '🌿 تأثير منخفض', lithiumImpactP: 'بصمة بيئية ضئيلة',
+            coolingTitle: '❄️ <span class="highlight">بنية التبريد المركزي</span>',
+            coolingSub: 'مبردات امتصاص حرارة أرضية · مراكز بيانات · صناعي',
+            coolingCap: '❄️ سعة التبريد', coolingContinuous: '🔄 تشغيل مستمر',
+            coolingContinuousP: 'حرارة أرضية ٢٤/٧', coolingData: '🏢 مراكز البيانات', coolingDataP: 'إيرادات مستقلة بهامش ربح مرتفع',
+            coolingDataV: 'مستأجرون رئيسيون', coolingCarbon: '🌿 منخفض الكربون', coolingCarbonP: 'صفر انبعاثات مباشرة',
+            agriTitle: '🌱 <span class="highlight">الزراعة الحرارية الأرضية</span>',
+            agriSub: 'إنتاج على مدار العام · أمن غذائي · كفاءة مائية',
+            agriYear: '📅 طوال العام', agriYearP: 'إنتاج ٤ مواسم', agriYearV: 'مستمر',
+            agriWater: '💧 كفاءة مائية', agriWaterP: 'ري بالتنقيط', agriWaterV: 'كفاءة عالية',
+            agriCarbon: '🌿 منخفض الكربون', agriCarbonP: 'تدفئة حرارية أرضية', agriCarbonV: 'صفر وقود أحفوري',
+            agriFood: '🍎 أمن غذائي', agriFoodP: 'تقليل الاعتماد على الواردات', agriFoodV: 'أولوية وطنية',
+            deployTitle: '🗺️ <span class="highlight">هندسة النشر العالمي</span>',
+            deploySub: 'عُمان · الإمارات · السويد · السعودية',
+            deployOman: '🇴🇲 عُمان', deployOmanP: 'صحار، الدقم', deployOmanV: 'مراكز حرارة عالية',
+            deployUAE: '🇦🇪 الإمارات', deployUAEP: 'أبوظبي، ممر مصدر', deployUAEV: 'طاقة ومياه حضرية',
+            deploySweden: '🇸🇪 السويد', deploySwedenP: 'غوتنبرغ', deploySwedenV: 'تحسين المناخ البارد',
+            deployKSA: '🇸🇦 السعودية', deployKSAP: 'الوجه، نيوم', deployKSAV: 'إزالة الكربون الصناعي',
+            valuationTitle: '💼 <span class="highlight">التقييم والتوظيف والمستثمرون</span>',
+            valuationSub: 'منصة سيادية واسعة النطاق مع خلق فرص عمل هائلة.',
+            valuationJobs: '👷 خلق فرص العمل',
+            valuationJobsPilot: 'المرحلة التجريبية: <span class="value">كبيرة</span>',
+            valuationJobsNational: 'النطاق الوطني: <span class="value">آلاف الوظائف المباشرة</span>',
+            valuationJobsTotal: 'النظام البيئي الكلي: <span class="value">أكثر من ١٠٠,٠٠٠ (مباشر وغير مباشر)</span>',
+            valuationValue: '💰 التقييم الاستراتيجي',
+            valuationValuePlatform: 'قيمة المنصة المجمعة: <span class="value">١٠ مليار دولار</span>',
+            valuationValueLife: 'عمر الأصول: <span class="value">٣٠–٥٠ سنة</span>',
+            valuationValueIRR: 'معدل العائد الداخلي (IRR): <span class="value">استثنائي</span>',
+            valuationValueExit: 'الخروج السيادي طويل الأجل: <span class="value">أكثر من ١٠ مليار دولار</span>',
+            valuationInvestors: '🤝 المستثمرون الاستراتيجيون والمشترون المحتملون',
+            technicalTitle: '🔬 <span class="highlight">رؤى تقنية</span>',
+            technicalSub: 'مكمن حراري أرضي · آبار · مواد متطورة',
+            techTemp: '🌡️ درجة الحرارة', techDepth: '⛏️ العمق', techFlow: '🔄 معدل التدفق',
+            techMaterials: '⚙️ المواد', techReinject: '♻️ إعادة الحقن', techReinjectV: 'حلقة مغلقة',
+            techCarbon: '🌿 البصمة الكربونية', techCarbonV: 'منخفضة جداً',
+            geoTitle: '🔥 <span class="highlight">لماذا الطاقة الحرارية الأرضية؟</span>',
+            geoSub: 'طاقة أساسية ٢٤/٧ – مصدر الطاقة المتجددة الوحيد الذي لا يتوقف أبداً.',
+            geoAdvTitle: '✅ المزايا الرئيسية للطاقة الحرارية الأرضية',
+            geoAdv1: '⏱ أساسية ٢٤/٧', geoAdv1P: 'مستقلة عن الشمس أو الرياح أو المطر. المصدر المتجدد الأكثر استقراراً.',
+            geoAdv2: '🌿 أقل بصمة كربونية', geoAdv2P: 'حوالي ٥٪ من محطات الغاز، ١٪ من محطات الفحم. انبعاثات منخفضة جداً.',
+            geoAdv3: '🏗️ عامل سعة عالي', geoAdv3P: '٧٠–٩٠٪ مقابل ٢٠–٣٠٪ للطاقة الشمسية و ٣٠–٤٠٪ للرياح.',
+            geoAdv4: '💰 تكلفة تشغيل منخفضة', geoAdv4P: 'تكلفة وقود صفرية، صيانة منخفضة جداً بعد الاستثمار الأولي.',
+            geoAdv5: '🌍 بصمة أرضية صغيرة', geoAdv5P: 'مساحة سطح أقل بكثير من المزارع الشمسية أو توربينات الرياح.',
+            geoAdv6: '♻️ اقتصاد دائري', geoAdv6P: 'استخلاص مشترك لليثيوم والذهب والفضة والمعادن من المحلول الملحي.',
+            geoLimTitle: '⚠️ قيود مصادر الطاقة المتجددة الأخرى',
+            geoLimSolar: '☀️ الطاقة الشمسية', geoLimSolarP: 'صفر إنتاج في الليل، انخفاض الإنتاج في الأيام الغائمة. تنخفض الكفاءة بنسبة ١٠–٢٠٪ في الحرارة الشديدة. تتطلب تخزيناً مكلفاً.',
+            geoLimWind: '💨 طاقة الرياح', geoLimWindP: 'صفر إنتاج في الأيام الهادئة. إنتاج متغير للغاية. تأثير بيئي على الطيور، ضوضاء وتلوث بصري. تخلق "ظلالاً هوائية".',
+            geoLimHydro: '🌊 الطاقة الكهرومائية', geoLimHydroP: 'تعتمد على هطول الأمطار – الجفاف يقلل السعة. اضطراب هائل للنظم البيئية، عرقلة هجرة الأسماك ونزوح السكان.',
+            geoSummary: '🎯 الحرارة الأرضية هي المصدر المتجدد الوحيد الذي يوفر طاقة أساسية حقيقية ٢٤/٧',
+            geoSummaryP: 'بدون بطاريات باهظة الثمن، بدون اعتماد على الطقس، وبأقل تأثير بيئي. <strong style="color:white;">أكوا نيكسوس</strong> مبني على هذا الأساس.',
+            articlesTitle: '📄 <span class="highlight">مقالات وتقارير منتقاة</span>',
+            articlesSub: 'منشورات محكمة ورؤى صناعية – محدثة ٢٠٢٦.',
+            article1Desc: '– حرارة أرضية من الجيل التالي ٢٤/٧.',
+            article2Desc: '– أداء أفضل بنسبة ٤٥٪ في الصحاري.',
+            article3Desc: '– زيادة الكفاءة بنسبة ٤–٧٪.',
+            article4Desc: '– إضافة ٦٩٢ جيجاوات في ٢٠٢٥.',
+            article5Desc: '– ضعف الأداء منذ ٢٠٠٣.',
+            article6Desc: '– انخفاض الطاقة الشمسية العالمية بنسبة ٥.٨٪.',
+            article7Desc: '– قيود الطاقة الكهرومائية.',
+            article8Desc: '– ٤ مليارات شخص يواجهون ندرة المياه.',
+            article9Desc: '– أكثر من ٤٠٠٠ مليار م³/سنة.',
+            contactTitle: '📬 <span class="highlight">اتصل للاستحواذ أو الشراكة</span>',
+            contactSub: 'مهتم بالاستحواذ أو الاستثمار في هذه المنصة السيادية؟ تواصل معنا.',
+            contactGeneral: 'استفسارات عامة',
+            contactPartnership: 'الشراكات الاستراتيجية والاستثمار',
+            contactShowEmail: '📧 إظهار البريد الإلكتروني',
+            footerLine1: 'هندسة المياه', footerLine2: 'تمكين الأمم', footerLine3: 'بناء الغد',
+            footerCopy: '© ٢٠٢٦ وحيد نظام‌وند چگنه · سري · للمستثمرين المؤهلين فقط'
         }
     };
+
     function switchLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-        const t = translations[lang]; if(!t) return;
-        Object.keys(t).forEach(key => { const el = document.getElementById(key); if(el) { if(key === 'navTitle' || key === 'heroSub') el.innerHTML = t[key]; else el.textContent = t[key]; } });
+        const t = translations[lang];
+        if (!t) return;
+
+        // ترجمه تمام عناصر دارای data-i18n و آی‌دی‌های خاص
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) {
+                el.innerHTML = t[key];
+            }
+        });
+
+        // آی‌دی‌های خاص هدر و فوتر
+        document.getElementById('brandAqua').textContent = t.brandAqua;
+        document.getElementById('brandNexus').textContent = t.brandNexus;
+        document.getElementById('heroTagline').textContent = t.heroTagline;
+        document.getElementById('heroSub').textContent = t.heroSub;
+        document.getElementById('btnExplore').textContent = t.btnExplore;
+        document.getElementById('introTitle').innerHTML = t.introTitle;
+
+        document.getElementById('footerAqua').textContent = t.footerAqua;
+        document.getElementById('footerNexus').textContent = t.footerNexus;
+        document.getElementById('footerGuardian').textContent = t.footerGuardian;
+        document.getElementById('footerLine1').textContent = t.footerLine1;
+        document.getElementById('footerLine2').textContent = t.footerLine2;
+        document.getElementById('footerLine3').textContent = t.footerLine3;
+        document.getElementById('footerCopy').textContent = t.footerCopy;
+
+        // ایمیل‌ها و دکمه‌های خاص
+        document.querySelectorAll('.email-reveal-btn').forEach(btn => {
+            btn.textContent = t.contactShowEmail || '📧 Show Email';
+        });
     }
 
     function showSection(id, btn) {
@@ -683,7 +1201,10 @@
         const el = document.getElementById(id); if(!el) return;
         el.classList.toggle('show');
         const btn = el.previousElementSibling;
-        if(btn && btn.classList.contains('email-reveal-btn')) btn.textContent = el.classList.contains('show') ? '📧 Hide' : '📧 Show';
+        if(btn && btn.classList.contains('email-reveal-btn')) {
+            const lang = document.querySelector('.lang-btn.active')?.dataset.lang || 'en';
+            btn.textContent = el.classList.contains('show') ? '📧 Hide' : (translations[lang]?.contactShowEmail || '📧 Show Email');
+        }
     }
 
     // ===== THREE.JS GLOBE WITH GOLDEN SPOTS =====
@@ -708,16 +1229,10 @@
         const glow = new THREE.Mesh(new THREE.SphereGeometry(1.15, 32, 32), new THREE.MeshBasicMaterial({ color: 0x1a6fb5, transparent: true, opacity: 0.08, side: THREE.BackSide }));
         scene.add(glow);
 
-        // Golden Spots (Strategic Locations)
         const spotPositions = [
-            [0.55, 0.45], // Oman
-            [0.58, 0.42], // UAE
-            [0.53, 0.48], // Saudi
-            [0.45, 0.30], // Sweden
-            [0.52, 0.35], // UK
-            [0.60, 0.50], // India
-            [0.70, 0.30], // China
-            [0.30, 0.55], // USA
+            [0.55, 0.45], [0.58, 0.42], [0.53, 0.48],
+            [0.45, 0.30], [0.52, 0.35], [0.60, 0.50],
+            [0.70, 0.30], [0.30, 0.55]
         ];
         const positions = [];
         spotPositions.forEach(([u, v]) => {
