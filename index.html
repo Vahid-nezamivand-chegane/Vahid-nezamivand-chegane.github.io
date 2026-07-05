@@ -415,46 +415,54 @@
             word-break: break-all;
         }
 
-        /* Emergency Email Button (مخفی در پایین فرم) */
+        /* Emergency Email Button (تماس فوری) */
         .emergency-email-btn {
-            background: transparent;
-            color: #6b7280;
-            border: 1px dashed #cbd5e1;
-            padding: 6px 16px;
-            border-radius: 30px;
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 1rem;
+            font-weight: 700;
             transition: var(--transition);
-            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            margin-top: 10px;
         }
         .emergency-email-btn:hover {
-            background: #f1f5f9;
-            color: var(--primary);
-            border-color: var(--secondary);
+            background: #b91c1c;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         }
         .emergency-email-box {
             display: none;
-            margin-top: 8px;
-            padding: 10px 14px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            margin-top: 15px;
+            padding: 18px 22px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border: 2px solid #fca5a5;
+            text-align: center;
         }
         .emergency-email-box.show {
             display: block;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.4s ease-out;
         }
-        .emergency-email-box a {
-            color: var(--secondary);
-            font-weight: 600;
+        .emergency-email-box .email-link {
+            color: #dc2626;
+            font-weight: 700;
+            font-size: 1.2rem;
             text-decoration: underline;
             word-break: break-all;
         }
         .emergency-email-box .note {
-            font-size: 0.75rem;
-            color: #64748b;
+            font-size: 0.85rem;
+            color: #475569;
             display: block;
-            margin-top: 3px;
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+        .emergency-email-box .note strong {
+            color: #1e293b;
         }
 
         @media (max-width: 640px) {
@@ -587,7 +595,7 @@
             <button class="nav-tab" onclick="showSection('technical', this)"><span id="tabTech">🔬 Technical</span></button>
             <button class="nav-tab" onclick="showSection('geothermal', this)"><span id="tabGeo">🔥 Why Geo</span></button>
             <button class="nav-tab" onclick="showSection('achievements', this)"><span id="tabAchieve">🏆 Achievements</span></button>
-            <button class="nav-tab" onclick="showSection('contact', this)"><span id="tabContact">📬 Contact</span></button>
+            <button class="nav-tab" onclick="showSection('contact', this)"><span id="tabContact">📬 Contact Us</span></button>
         </div>
     </div>
 
@@ -851,12 +859,12 @@
         </section>
     </div>
 
-    <!-- ==================== CONTACT (با ایمیل مخفی در پایین) ==================== -->
+    <!-- ==================== CONTACT (با دکمه قرمز تماس فوری در پایین) ==================== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
-                <h2 class="section-title">📬 <span class="highlight" id="contTitle">Contact Us</span></h2>
-                <p class="section-sub" id="contSub">Choose the appropriate department and send us your message.</p>
+                <h2 class="section-title">📬 <span class="highlight">Contact Us</span></h2>
+                <p class="section-sub">Choose the appropriate department and send us your message.</p>
             </div>
 
             <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px 35px; border-radius: var(--radius); box-shadow: var(--shadow);">
@@ -920,15 +928,21 @@
                 <div id="formStatus" style="margin-top: 25px; padding: 16px 20px; border-radius: 12px; display: none; font-weight: 600; text-align: center; transition: all 0.3s ease;">
                 </div>
 
-                <!-- ⚠️ دکمه مخفی ایمیل اضطراری (پایین فرم) -->
-                <div style="text-align: center; margin-top: 15px;">
+                <!-- ⚠️ دکمه قرمز "تماس فوری" در پایین فرم -->
+                <div style="text-align: center; margin-top: 20px;">
                     <button onclick="toggleEmergencyEmail()" class="emergency-email-btn" id="emergencyToggleBtn">
-                        🔒 Need help? Click for direct email
+                        🚨 تماس فوری
                     </button>
                     <div id="emergencyEmailBox" class="emergency-email-box">
-                        <i class="fas fa-envelope" style="color: var(--secondary);"></i>
-                        <a href="mailto:vahid.aquanexus@protonmail.com">vahid.aquanexus@protonmail.com</a>
-                        <span class="note">📌 Spam filter is active – please use a valid email address.</span>
+                        <i class="fas fa-envelope" style="color: #dc2626; font-size: 1.5rem; display: block; margin-bottom: 8px;"></i>
+                        <a href="mailto:vahid.aquanexus@protonmail.com" class="email-link">vahid.aquanexus@protonmail.com</a>
+                        <span class="note">
+                            <strong>🔒 فیلترینگ برای هرزنامه انجام شده است</strong><br>
+                            ✅ فقط از دامنه‌های معتبر ارسال شود<br>
+                            ❌ ایمیل‌های نامعتبر خودکار دریافت نمی‌شوند<br>
+                            ⏳ زمان پاسخ‌گویی ممکن است طولانی شود<br>
+                            🙏 از صبر شما سپاس‌گزاریم
+                        </span>
                     </div>
                 </div>
 
@@ -952,7 +966,7 @@
         en: {
             brandAqua:'Aqua', brandNexus:'Nexus', heroTagline:'Sovereign Infrastructure · Climate Technology · Global Impact', heroSub:'AquaNexus + Aqua Guardian · Valuation: USD 10 Billion', btnExplore:'Explore the Platform',
             navTitle:'Introducing <span class="highlight">AquaNexus</span>',
-            tabWater:'🌊 Water Journey', tabArch:'🏗️ Water Arch', tabRevenue:'📊 Revenue', tabLithium:'🔋 Lithium', tabCooling:'❄️ Cooling', tabAgri:'🌱 Agri', tabDeploy:'🗺️ Global', tabValuation:'💼 Valuation', tabTech:'🔬 Technical', tabGeo:'🔥 Why Geo', tabAchieve:'🏆 Achievements', tabContact:'📬 Contact',
+            tabWater:'🌊 Water Journey', tabArch:'🏗️ Water Arch', tabRevenue:'📊 Revenue', tabLithium:'🔋 Lithium', tabCooling:'❄️ Cooling', tabAgri:'🌱 Agri', tabDeploy:'🗺️ Global', tabValuation:'💼 Valuation', tabTech:'🔬 Technical', tabGeo:'🔥 Why Geo', tabAchieve:'🏆 Achievements', tabContact:'📬 Contact Us',
             globeText:'🌍 Strategic Hubs: Oman · UAE · Sweden · Saudi Arabia',
             wjTitle:'The Water Journey', wjSub:'From ocean to aquifer – a sustainable, circular economy.',
             wCard1:'Desalination', wCard1Desc:'Industrial-scale freshwater', wCard2:'ASR Storage', wCard2Desc:'Aquifer recharge & recovery', wCard3:'Agriculture', wCard3Desc:'4-season greenhouses', wCard4:'Cities', wCard4Desc:'Municipal & industrial supply',
@@ -1016,7 +1030,7 @@
         fr: {
             brandAqua:'Aqua', brandNexus:'Nexus', heroTagline:'Infrastructure Souveraine · Technologie Climatique · Impact Mondial', heroSub:'AquaNexus + Aqua Guardian · Valorisation: 10 Milliards USD', btnExplore:'Explorer la Plateforme',
             navTitle:'Présentation de <span class="highlight">AquaNexus</span>',
-            tabWater:'🌊 Voyage de l\'Eau', tabArch:'🏗️ Arch Eau', tabRevenue:'📊 Revenu', tabLithium:'🔋 Lithium', tabCooling:'❄️ Refroid.', tabAgri:'🌱 Agri', tabDeploy:'🗺️ Global', tabValuation:'💼 Évaluation', tabTech:'🔬 Technique', tabGeo:'🔥 Pourquoi Geo', tabAchieve:'🏆 Réalisations', tabContact:'📬 Contact',
+            tabWater:'🌊 Voyage de l\'Eau', tabArch:'🏗️ Arch Eau', tabRevenue:'📊 Revenu', tabLithium:'🔋 Lithium', tabCooling:'❄️ Refroid.', tabAgri:'🌱 Agri', tabDeploy:'🗺️ Global', tabValuation:'💼 Évaluation', tabTech:'🔬 Technique', tabGeo:'🔥 Pourquoi Geo', tabAchieve:'🏆 Réalisations', tabContact:'📬 Contactez-nous',
             globeText:'🌍 Pôles Stratégiques: Oman · EAU · Suède · Arabie Saoudite',
             wjTitle:'Le Voyage de l\'Eau', wjSub:'De l\'océan à l\'aquifère – une économie circulaire durable.',
             wCard1:'Dessalement', wCard1Desc:'Eau douce industrielle', wCard2:'Stockage ASR', wCard2Desc:'Recharge des aquifères', wCard3:'Agriculture', wCard3Desc:'Serres 4 saisons', wCard4:'Villes', wCard4Desc:'Approvisionnement municipal et industriel',
@@ -1144,7 +1158,7 @@
         ar: {
             brandAqua:'أكوا', brandNexus:'نيكسوس', heroTagline:'بنية تحتية سيادية · تكنولوجيا المناخ · تأثير عالمي', heroSub:'أكوا نيكسوس + أكوا غارديان · التقييم: ١٠ مليار دولار', btnExplore:'استكشف المنصة',
             navTitle:'تقديم <span class="highlight">أكوا نيكسوس</span>',
-            tabWater:'🌊 رحلة المياه', tabArch:'🏗️ هندسة المياه', tabRevenue:'📊 الإيرادات', tabLithium:'🔋 الليثيوم', tabCooling:'❄️ التبريد', tabAgri:'🌱 الزراعة', tabDeploy:'🗺️ العالمية', tabValuation:'💼 التقييم', tabTech:'🔬 التقنية', tabGeo:'🔥 لماذا الحرارة', tabAchieve:'🏆 الإنجازات', tabContact:'📬 اتصل',
+            tabWater:'🌊 رحلة المياه', tabArch:'🏗️ هندسة المياه', tabRevenue:'📊 الإيرادات', tabLithium:'🔋 الليثيوم', tabCooling:'❄️ التبريد', tabAgri:'🌱 الزراعة', tabDeploy:'🗺️ العالمية', tabValuation:'💼 التقييم', tabTech:'🔬 التقنية', tabGeo:'🔥 لماذا الحرارة', tabAchieve:'🏆 الإنجازات', tabContact:'📬 اتصل بنا',
             globeText:'🌍 المراكز الاستراتيجية: عمان · الإمارات · السويد · السعودية',
             wjTitle:'رحلة المياه', wjSub:'من المحيط إلى الخزان الجوفي – اقتصاد دائري مستدام.',
             wCard1:'التحلية', wCard1Desc:'مياه عذبة صناعية', wCard2:'تخزين ASR', wCard2Desc:'إعادة شحن الخزانات الجوفية', wCard3:'الزراعة', wCard3Desc:'دفيئات ٤ مواسم', wCard4:'المدن', wCard4Desc:'توريد بلدي وصناعي',
@@ -1409,16 +1423,16 @@
     }
 
     // ============================================================
-    //  TOGGLE EMERGENCY EMAIL (مخفی)
+    //  TOGGLE EMERGENCY EMAIL (تماس فوری)
     // ============================================================
     function toggleEmergencyEmail() {
         const box = document.getElementById('emergencyEmailBox');
         const btn = document.getElementById('emergencyToggleBtn');
         box.classList.toggle('show');
         if (box.classList.contains('show')) {
-            btn.textContent = '🔒 Hide direct email';
+            btn.textContent = '🔴 مخفی‌سازی تماس فوری';
         } else {
-            btn.textContent = '🔒 Need help? Click for direct email';
+            btn.textContent = '🚨 تماس فوری';
         }
     }
 
@@ -1507,7 +1521,7 @@
                 statusDiv.style.background = '#fee2e2';
                 statusDiv.style.color = '#991b1b';
                 statusDiv.style.border = '2px solid #fecaca';
-                statusDiv.innerHTML = '❌ Sending failed. Please try again later or use the direct email (click "Need help?" below).';
+                statusDiv.innerHTML = '❌ Sending failed. Please try again later or use the "تماس فوری" button below.';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
