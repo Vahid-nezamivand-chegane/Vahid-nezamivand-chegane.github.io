@@ -370,51 +370,6 @@
         .calc-label { font-weight: 500; }
         .calc-value { font-weight: 700; font-size: 1.2rem; }
 
-        .contact-card {
-            background: white;
-            padding: 32px 28px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin-bottom: 24px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .contact-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.10); }
-        .contact-card .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
-        .contact-card .card-header i { font-size: 2rem; }
-        .contact-card .card-header h3 { font-size: 1.3rem; margin: 0; }
-        .contact-card .card-desc { color: #4a5a6a; margin-top: 10px; font-size: 0.95rem; }
-        .contact-card.general { border-bottom: 4px solid var(--secondary); }
-        .contact-card.partner { border-bottom: 4px solid var(--gold); }
-
-        .email-reveal-btn {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-        .email-reveal-btn:hover { background: var(--primary); transform: scale(1.02); }
-        .email-hidden {
-            display: none;
-            margin-top: 10px;
-        }
-        .email-hidden.show { display: block; }
-        .email-hidden a {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-            word-break: break-all;
-        }
-
         /* Emergency Email Button (تماس فوری) */
         .emergency-email-btn {
             background: #dc2626;
@@ -440,9 +395,9 @@
             display: none;
             margin-top: 18px;
             padding: 22px 24px;
-            background: #fef2f2;
+            background: #f8fafc;
             border-radius: 16px;
-            border: 2px solid #fca5a5;
+            border: 2px solid #cbd5e1;
             text-align: center;
             max-width: 600px;
             margin-left: auto;
@@ -875,7 +830,7 @@
         </section>
     </div>
 
-    <!-- ==================== CONTACT (فقط دکمه تماس فوری در پایین) ==================== -->
+    <!-- ==================== CONTACT (هشدارها حذف شد، فقط دکمه تماس فوری) ==================== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
@@ -944,7 +899,7 @@
                 <div id="formStatus" style="margin-top: 25px; padding: 16px 20px; border-radius: 12px; display: none; font-weight: 600; text-align: center; transition: all 0.3s ease;">
                 </div>
 
-                <!-- دکمه "تماس فوری" در پایین‌ترین بخش -->
+                <!-- دکمه "تماس فوری" در پایین‌ترین بخش (بدون هیچ هشداری) -->
                 <div style="text-align: center; margin-top: 25px;">
                     <button onclick="toggleEmergencyEmail()" class="emergency-email-btn" id="emergencyToggleBtn">
                         🚨 تماس فوری
