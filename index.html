@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>AquaNexus — Integrated Infrastructure Platform</title>
-    <meta name="description" content="AquaNexus: Integrated Infrastructure Platform — Engineering Water, Powering Nations, Building Tomorrow. Geothermal, desalination, lithium, agriculture."/>
+    <meta name="description" content="AquaNexus: Engineering Water, Powering Nations, Building Tomorrow. Geothermal, desalination, lithium, agriculture, and precious metals."/>
     <meta property="og:title" content="AquaNexus — Integrated Infrastructure Platform"/>
     <meta property="og:description" content="Engineering Water · Powering Nations · Building Tomorrow"/>
     <meta property="og:type" content="website"/>
@@ -12,7 +13,6 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* =============================================
            ROOT & GLOBAL RESET
@@ -54,7 +54,7 @@
         }
         .text-center { text-align: center; }
         .text-center .section-sub { margin-left: auto; margin-right: auto; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
         .card {
             background: white;
@@ -69,6 +69,7 @@
         .card i { font-size: 2.8rem; color: var(--secondary); margin-bottom: 18px; display: inline-block; }
         .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
         .card p { color: #3a4a5a; font-size: 0.98rem; }
+        .card img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
 
         /* =============================================
            LANGUAGE BAR
@@ -104,7 +105,7 @@
         .lang-btn:hover { opacity: 1; }
 
         /* =============================================
-           HERO — VIDEO BACKGROUND
+           HERO — VIDEO BACKGROUND + WATER DROPS
            ============================================= */
         .hero-video {
             position: relative;
@@ -128,7 +129,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(10, 42, 68, 0.55);
+            background: rgba(10, 42, 68, 0.60);
             z-index: 1;
         }
         .hero-content {
@@ -197,6 +198,31 @@
             gap: 10px;
         }
         .btn-outline:hover { background: white; color: var(--primary); border-color: white; transform: translateY(-4px); }
+
+        /* Water drops animation (falling down instead of arrows) */
+        .water-drops {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 5;
+            pointer-events: none;
+            animation: dropFall 2.5s ease-in-out infinite;
+        }
+        .water-drops span {
+            font-size: 2.5rem;
+            opacity: 0.7;
+            color: #6fc3df;
+            text-shadow: 0 0 20px rgba(111, 195, 223, 0.4);
+        }
+        @keyframes dropFall {
+            0% { transform: translateY(-20px); opacity: 0.2; }
+            50% { transform: translateY(10px); opacity: 1; }
+            100% { transform: translateY(-20px); opacity: 0.2; }
+        }
 
         /* =============================================
            GLOBE CONTAINER
@@ -270,7 +296,64 @@
         }
 
         /* =============================================
-           WATER JOURNEY
+           PARTNERS & FUNDS
+           ============================================= */
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .partner-item {
+            background: white;
+            padding: 14px 24px;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .partner-item:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+
+        .country-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .country-tag {
+            background: var(--primary);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* =============================================
+           ARTICLE CARDS
+           ============================================= */
+        .article-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--gold);
+        }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .article-card h4 { font-size: 1.1rem; margin-bottom: 6px; color: var(--primary); }
+        .article-card p { color: #4a5a6a; font-size: 0.95rem; }
+        .article-card a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+        .article-card a:hover { text-decoration: underline; }
+
+        /* =============================================
+           WATER JOURNEY (Enhanced)
            ============================================= */
         .water-journey {
             background: linear-gradient(180deg, #0a2a44 0%, #1a5f7a 40%, #2a9d8f 100%);
@@ -299,233 +382,62 @@
             width: 100%;
             max-width: 400px;
             transition: var(--transition);
-            cursor: default;
+            cursor: pointer;
         }
         .journey-step:hover { background: rgba(255,255,255,0.15); transform: scale(1.02); }
         .journey-step .icon { font-size: 2rem; width: 50px; text-align: center; }
         .journey-step .label { font-size: 1.1rem; font-weight: 500; }
+        .journey-step .desc { font-size: 0.85rem; opacity: 0.7; margin-left: auto; }
         .journey-arrow { font-size: 1.5rem; opacity: 0.5; }
 
         /* =============================================
-           ECONOMY CIRCLE
+           DETAIL SECTIONS (Hidden by default, shown on click)
            ============================================= */
-        .economy-circle-section { background: white; padding: 80px 20px; }
-        .economy-circle-wrapper {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto;
+        .detail-section {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            color: var(--dark);
         }
-        .economy-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--primary);
-            color: white;
-            padding: 16px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-align: center;
-            z-index: 2;
-            box-shadow: 0 0 40px rgba(10,42,68,0.3);
+        .detail-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
         }
-        .economy-icon {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: var(--light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: var(--transition);
-            animation: floatIcon 6s ease-in-out infinite;
-            cursor: default;
-        }
-        .economy-icon:hover { transform: scale(1.2); background: var(--gold); }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* =============================================
-           CINEMATIC TIMELINE
-           ============================================= */
-        .cinematic-timeline {
-            background: var(--dark);
-            padding: 80px 20px;
-            color: white;
-        }
-        .cinematic-timeline .section-title { color: white; }
-        .cinematic-timeline .section-title .highlight { color: var(--gold); }
-        .timeline-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(255,255,255,0.04);
-            padding: 10px 24px;
-            border-radius: 40px;
+        .detail-section img {
             width: 100%;
-            max-width: 350px;
-            transition: var(--transition);
-            border-left: 3px solid var(--gold);
-            cursor: default;
-        }
-        .timeline-item:hover { background: rgba(255,255,255,0.10); transform: translateX(8px); }
-        .timeline-item .year { font-weight: 800; font-size: 1.2rem; color: var(--gold); min-width: 60px; }
-        .timeline-item .event { font-weight: 300; font-size: 1rem; }
-        .timeline-arrow { font-size: 1.2rem; opacity: 0.3; }
-
-        /* =============================================
-           EMOTIONAL PAGE
-           ============================================= */
-        .emotional-page {
-            position: relative;
-            min-height: 70vh;
-            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-        .emotional-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(10,42,68,0.65);
-        }
-        .emotional-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            padding: 40px 20px;
-        }
-        .emotional-content h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        .emotional-content p {
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            font-weight: 300;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        /* =============================================
-           INVESTOR CENTER
-           ============================================= */
-        .investor-center { background: var(--light); }
-        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .calc-grid .inputs { display: flex; flex-direction: column; gap: 16px; }
-        .calc-grid .inputs label { font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; gap: 4px; }
-        .calc-grid .inputs input, .calc-grid .inputs select {
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
             border-radius: 12px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: #fafcfe;
-            font-family: inherit;
+            margin-bottom: 20px;
         }
-        .calc-grid .inputs input:focus, .calc-grid .inputs select:focus {
-            border-color: var(--secondary);
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(26,111,181,0.12);
-            background: white;
-        }
-        .calc-results {
-            background: white;
-            padding: 24px 28px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .calc-results .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .calc-results .result-item:last-child { border-bottom: none; }
-        .calc-results .result-item .label { font-weight: 500; color: #4a5a6a; }
-        .calc-results .result-item .value { font-weight: 700; font-size: 1.1rem; color: var(--primary); }
-        .calc-results .result-item .value.gold { color: var(--gold); }
-        .calc-results .result-item .value.green { color: #2a7d4a; }
-        .btn-calc {
-            background: var(--secondary);
-            color: white;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
+        .detail-section h3 { color: var(--primary); margin-bottom: 12px; }
+        .detail-section p { color: #4a5a6a; line-height: 1.8; }
+        .detail-section ul { list-style: disc; padding-left: 24px; color: #4a5a6a; }
+        .detail-toggle {
             cursor: pointer;
-            transition: var(--transition);
+            color: var(--gold);
+            font-weight: 600;
             margin-top: 8px;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .detail-toggle:hover { border-bottom-color: var(--gold); }
+
+        /* =============================================
+           ECONOMY CONCEPT IMAGE
+           ============================================= */
+        .concept-image {
             width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 20px 0;
         }
-        .btn-calc:hover { background: var(--primary); transform: scale(1.01); }
 
         /* =============================================
-           GOVERNMENT SOLUTIONS
-           ============================================= */
-        .gov-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .gov-item {
-            background: white;
-            padding: 24px 18px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            border-bottom: 3px solid var(--gold);
-            cursor: default;
-        }
-        .gov-item:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .gov-item i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-
-        /* =============================================
-           RESEARCH CENTER
-           ============================================= */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
-        }
-        .research-card {
-            background: white;
-            padding: 28px 22px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: default;
-        }
-        .research-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .research-card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 12px; }
-
-        /* =============================================
-           CONTACT (Hidden emails)
+           CONTACT
            ============================================= */
         .contact-card {
             background: white;
@@ -607,20 +519,20 @@
            RESPONSIVE
            ============================================= */
         @media (max-width: 640px) {
-            .calc-grid { grid-template-columns: 1fr; }
             .hero-content .logo-text { font-size: 2.4rem; }
             .hero-content .tagline { font-size: 1rem; letter-spacing: 2px; }
-            .economy-circle-wrapper { width: 240px; height: 240px; }
-            .economy-icon { width: 48px; height: 48px; font-size: 1.5rem; }
-            .economy-center { font-size: 0.9rem; padding: 12px 16px; }
             .section { padding: 50px 14px; }
             .lang-bar { top: 10px; right: 10px; padding: 4px 8px; gap: 4px; }
             .lang-btn { font-size: 0.6rem; padding: 2px 8px; }
-            .journey-step { padding: 10px 18px; }
-            .timeline-item { padding: 8px 16px; }
-            .footer-new .brand { font-size: 1.5rem; }
+            .journey-step { padding: 10px 18px; flex-wrap: wrap; }
+            .journey-step .desc { display: none; }
             .nav-tab { padding: 6px 16px; font-size: 0.8rem; }
             .globe-container { height: 300px; }
+            .partners-grid { gap: 10px; }
+            .partner-item { padding: 8px 16px; font-size: 0.8rem; }
+            .country-tag { padding: 4px 14px; font-size: 0.75rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .water-drops span { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -637,7 +549,7 @@
 </div>
 
 <!-- =============================================
-     HERO — VIDEO BACKGROUND
+     HERO — VIDEO BACKGROUND + WATER DROPS
      ============================================= -->
 <section class="hero-video" id="home">
     <video autoplay muted loop playsinline>
@@ -654,6 +566,14 @@
             <a href="#main-content" class="btn-primary"><i class="fas fa-arrow-down"></i> <span id="btnExplore">Explore</span></a>
             <a href="#investor-section" class="btn-outline"><i class="fas fa-chart-line"></i> <span id="btnInvest">Invest</span></a>
         </div>
+    </div>
+    <!-- Water drops falling down instead of arrows -->
+    <div class="water-drops">
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
     </div>
 </section>
 
@@ -673,16 +593,19 @@
         <h2 class="section-title" id="navTitle">Explore <span class="highlight">AquaNexus</span></h2>
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="showSection('journey', this)">🌊 Water Journey</button>
+            <button class="nav-tab" onclick="showSection('partners', this)">🏛️ Partners & Funds</button>
+            <button class="nav-tab" onclick="showSection('countries', this)">🌍 Countries</button>
+            <button class="nav-tab" onclick="showSection('articles', this)">📄 Articles</button>
             <button class="nav-tab" onclick="showSection('economy', this)">💎 Economy</button>
-            <button class="nav-tab" onclick="showSection('timeline', this)">🛤️ Timeline</button>
             <button class="nav-tab" onclick="showSection('investor', this)">📊 Investor</button>
-            <button class="nav-tab" onclick="showSection('government', this)">🏛️ Government</button>
-            <button class="nav-tab" onclick="showSection('research', this)">📚 Research</button>
+            <button class="nav-tab" onclick="showSection('about', this)">ℹ️ About</button>
             <button class="nav-tab" onclick="showSection('contact', this)">📬 Contact</button>
         </div>
     </div>
 
-    <!-- ===== WATER JOURNEY ===== -->
+    <!-- =============================================
+         SECTION: WATER JOURNEY (with clickable details)
+         ============================================= -->
     <div id="section-journey" class="toggle-section active">
         <section class="water-journey scroll-animate">
             <div class="text-center">
@@ -690,141 +613,395 @@
                 <p class="section-sub" style="color:rgba(255,255,255,0.7);" id="wjSub">Follow the path of water — from the ocean to the future.</p>
             </div>
             <div class="journey-steps">
-                <div class="journey-step"><span class="icon">🌊</span><span class="label" id="j1">Ocean</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-ocean')">
+                    <span class="icon">🌊</span>
+                    <span class="label" id="j1">Ocean</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">🏭</span><span class="label" id="j2">Desalination</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-desal')">
+                    <span class="icon">🏭</span>
+                    <span class="label" id="j2">Desalination</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">⛲</span><span class="label" id="j3">Storage</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-storage')">
+                    <span class="icon">⛲</span>
+                    <span class="label" id="j3">Storage</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">🌍</span><span class="label" id="j4">Aquifer</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-aquifer')">
+                    <span class="icon">🌍</span>
+                    <span class="label" id="j4">Aquifer</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">🌱</span><span class="label" id="j5">Agriculture</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-agri')">
+                    <span class="icon">🌱</span>
+                    <span class="label" id="j5">Agriculture</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">🏙️</span><span class="label" id="j6">Cities</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-cities')">
+                    <span class="icon">🏙️</span>
+                    <span class="label" id="j6">Cities</span>
+                    <span class="desc">Click for details</span>
+                </div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step"><span class="icon">🌟</span><span class="label" id="j7">Future</span></div>
+                <div class="journey-step" onclick="toggleDetail('detail-future')">
+                    <span class="icon">🌟</span>
+                    <span class="label" id="j7">Future</span>
+                    <span class="desc">Click for details</span>
+                </div>
+            </div>
+
+            <!-- Detail sections for Water Journey -->
+            <div id="detail-ocean" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80" alt="Ocean">
+                <h3>The Ocean — Source of All Life</h3>
+                <p>Our journey begins with the ocean. We harness its power through sustainable desalination, turning seawater into a resource for generations. Every drop counts.</p>
+            </div>
+            <div id="detail-desal" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80" alt="Desalination">
+                <h3>Desalination — Turning Salt into Fresh</h3>
+                <p>Using geothermal energy, we desalinate seawater with zero carbon emissions. 50,000 m³/day of fresh water — enough for a city of 200,000 people.</p>
+            </div>
+            <div id="detail-storage" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" alt="Storage">
+                <h3>Storage — Preserving for the Future</h3>
+                <p>Water is stored in massive reservoirs, ready for use during dry seasons. We don't just produce water; we secure it for future generations.</p>
+            </div>
+            <div id="detail-aquifer" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=1200&q=80" alt="Aquifer">
+                <h3>Aquifer — Recharging the Earth</h3>
+                <p>We inject fresh water deep into underground aquifers — not for today, but for the next 100 years. A gift to future generations.</p>
+            </div>
+            <div id="detail-agri" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&q=80" alt="Agriculture">
+                <h3>Agriculture — Growing Food with Purpose</h3>
+                <p>100 hectares of climate‑smart greenhouses produce fresh vegetables year‑round, reducing import dependency and creating local jobs.</p>
+            </div>
+            <div id="detail-cities" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Cities">
+                <h3>Cities — Building the Future</h3>
+                <p>Our water reaches cities, providing clean drinking water, cooling, and supporting industrial growth. The foundation of a sustainable urban future.</p>
+            </div>
+            <div id="detail-future" class="detail-section">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" alt="Future">
+                <h3>Future — A Promise</h3>
+                <p>We build infrastructure for today. We preserve resources for tomorrow. AquaNexus is a promise to the generations that will follow.</p>
             </div>
         </section>
     </div>
 
-    <!-- ===== ECONOMY CIRCLE ===== -->
+    <!-- =============================================
+         SECTION: PARTNERS & FUNDS
+         ============================================= -->
+    <div id="section-partners" class="toggle-section">
+        <section class="section scroll-animate">
+            <div class="text-center">
+                <h2 class="section-title">🏛️ <span class="highlight">Strategic Partners & Funds</span></h2>
+                <p class="section-sub">We collaborate with the world's most influential institutions.</p>
+            </div>
+            <div class="partners-grid">
+                <span class="partner-item">🇸🇦 PIF (Saudi Arabia)</span>
+                <span class="partner-item">🇦🇪 Mubadala</span>
+                <span class="partner-item">🇦🇪 ADIA</span>
+                <span class="partner-item">🇶🇦 QIA</span>
+                <span class="partner-item">🇰🇼 KIA</span>
+                <span class="partner-item">🇴🇲 Oman Investment Authority</span>
+                <span class="partner-item">🇳🇴 Norway GPFG</span>
+                <span class="partner-item">🇺🇸 BlackRock</span>
+                <span class="partner-item">🇨🇦 Brookfield</span>
+                <span class="partner-item">🇸🇬 Temasek</span>
+                <span class="partner-item">🇫🇷 TotalEnergies</span>
+                <span class="partner-item">🇬🇧 Shell</span>
+                <span class="partner-item">🇸🇪 EQT</span>
+                <span class="partner-item">🇨🇦 CPPIB</span>
+                <span class="partner-item">🇦🇪 ADQ</span>
+                <span class="partner-item">🇺🇸 Chevron</span>
+                <span class="partner-item">🇺🇸 Breakthrough Energy</span>
+                <span class="partner-item">🇦🇪 MGX</span>
+                <span class="partner-item">🇸🇦 HUMAIN</span>
+                <span class="partner-item">🇦🇪 ADIC</span>
+                <span class="partner-item">🇦🇪 DIF</span>
+                <span class="partner-item">🇦🇪 ICD</span>
+                <span class="partner-item">🇦🇪 ADPF</span>
+                <span class="partner-item">🇺🇸 Goldman Sachs</span>
+                <span class="partner-item">🇺🇸 J.P. Morgan</span>
+                <span class="partner-item">🇨🇳 Sinopec Star</span>
+                <span class="partner-item">🇯🇵 Itochu</span>
+                <span class="partner-item">🇯🇵 Mitsubishi</span>
+                <span class="partner-item">🇯🇵 Toyota</span>
+                <span class="partner-item">🇯🇵 Nissan</span>
+                <span class="partner-item">🇯🇵 Honda</span>
+                <span class="partner-item">🇩🇪 Vulcan Energy</span>
+                <span class="partner-item">🇫🇷 Arverne Group</span>
+                <span class="partner-item">🇬🇧 Cornish Lithium</span>
+                <span class="partner-item">🇺🇸 Occidental Petroleum</span>
+                <span class="partner-item">🇺🇸 Baker Hughes</span>
+                <span class="partner-item">🇺🇸 BHE Renewables</span>
+                <span class="partner-item">🇨🇦 Wealth Minerals</span>
+                <span class="partner-item">🇺🇸 CTR</span>
+                <span class="partner-item">🇨🇳 Tianqi Lithium</span>
+                <span class="partner-item">🇨🇳 Kaishan</span>
+                <span class="partner-item">🇸🇦 Tasama</span>
+                <span class="partner-item">🇦🇪 Masdar</span>
+                <span class="partner-item">🇨🇳 State Grid</span>
+                <span class="partner-item">🇸🇦 Aramco Ventures</span>
+                <span class="partner-item">🇰🇼 Kuwait Investment Authority</span>
+                <span class="partner-item">🇶🇦 Qatar Investment Authority</span>
+                <span class="partner-item">🇴🇲 Future Fund Oman</span>
+                <span class="partner-item">🇦🇪 ADNOC</span>
+                <span class="partner-item">🇺🇸 Google</span>
+                <span class="partner-item">🇺🇸 Microsoft</span>
+                <span class="partner-item">🇺🇸 Meta</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- =============================================
+         SECTION: COUNTRIES
+         ============================================= -->
+    <div id="section-countries" class="toggle-section">
+        <section class="section scroll-animate">
+            <div class="text-center">
+                <h2 class="section-title">🌍 <span class="highlight">Target Countries</span></h2>
+                <p class="section-sub">AquaNexus is ready for implementation in 5 strategic countries.</p>
+            </div>
+            <div class="country-tags">
+                <span class="country-tag">🇸🇦 Saudi Arabia</span>
+                <span class="country-tag">🇦🇪 United Arab Emirates</span>
+                <span class="country-tag">🇴🇲 Oman</span>
+                <span class="country-tag">🇬🇧 United Kingdom</span>
+                <span class="country-tag">🇸🇪 Sweden</span>
+            </div>
+            <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
+                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
+                    <h4>🇸🇦 Saudi Arabia</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">NEOM, AlUla, Red Sea Global — Vision 2030 alignment.</p>
+                </div>
+                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
+                    <h4>🇦🇪 UAE</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Masdar Corridor, Abu Dhabi — UAE Energy Strategy 2050.</p>
+                </div>
+                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
+                    <h4>🇴🇲 Oman</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Sohar, Duqm — Oman Vision 2040.</p>
+                </div>
+                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
+                    <h4>🇬🇧 UK</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Industrial decarbonization, geothermal potential.</p>
+                </div>
+                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
+                    <h4>🇸🇪 Sweden</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Cold‑climate optimization, district heating.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- =============================================
+         SECTION: ARTICLES (Scientific & up‑to‑date)
+         ============================================= -->
+    <div id="section-articles" class="toggle-section">
+        <section class="section scroll-animate">
+            <div class="text-center">
+                <h2 class="section-title">📄 <span class="highlight">Latest Articles & Research</span></h2>
+                <p class="section-sub">Peer‑reviewed publications and industry reports — updated 2026.</p>
+            </div>
+            <div class="grid-2">
+                <div class="article-card">
+                    <h4>IRENA 2026: Geothermal costs drop 50% below gas</h4>
+                    <p>New report shows geothermal is now the cheapest baseload power in most markets. AquaNexus is positioned at the forefront.</p>
+                    <a href="https://www.irena.org/publications" target="_blank">Read more →</a>
+                </div>
+                <div class="article-card">
+                    <h4>Nature: Lithium extraction with zero processing cost</h4>
+                    <p>Direct Lithium Extraction (DLE) combined with solar evaporation eliminates processing costs — a game‑changer for EV supply chains.</p>
+                    <a href="https://www.nature.com" target="_blank">Read more →</a>
+                </div>
+                <div class="article-card">
+                    <h4>Science: Multi‑revenue infrastructure ecosystems</h4>
+                    <p>Integrated platforms combining energy, water, and agriculture generate 3x higher returns than single‑sector projects.</p>
+                    <a href="https://www.science.org" target="_blank">Read more →</a>
+                </div>
+                <div class="article-card">
+                    <h4>IEA 2026: Geothermal & lithium supply chain</h4>
+                    <p>The global demand for lithium is expected to triple by 2030. Geothermal brine extraction offers a sustainable, low‑cost solution.</p>
+                    <a href="https://www.iea.org/reports" target="_blank">Read more →</a>
+                </div>
+                <div class="article-card">
+                    <h4>Elsevier: Aquifer Storage & Recovery (ASR) advances</h4>
+                    <p>New ASR technologies enable large‑scale groundwater recharge, ensuring water security for arid regions.</p>
+                    <a href="https://www.elsevier.com" target="_blank">Read more →</a>
+                </div>
+                <div class="article-card">
+                    <h4>World Bank: Sustainable infrastructure investment</h4>
+                    <p>Infrastructure projects with ESG alignment are attracting record investments in 2026.</p>
+                    <a href="https://www.worldbank.org" target="_blank">Read more →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- =============================================
+         SECTION: ECONOMY (Multi‑Dimensional)
+         ============================================= -->
     <div id="section-economy" class="toggle-section">
-        <section class="economy-circle-section scroll-animate">
+        <section class="section scroll-animate">
             <div class="text-center">
-                <h2 class="section-title"><span id="ecTitle">Multi‑</span><span class="highlight" id="ecHighlight">Dimensional</span> <span id="ecTitle2">Economy</span></h2>
-                <p class="section-sub" id="ecSub">A circular ecosystem of value — all flowing from a single integrated platform.</p>
+                <h2 class="section-title">💎 <span class="highlight">Multi‑Dimensional Economy</span></h2>
+                <p class="section-sub">A circular ecosystem of value — all flowing from a single integrated platform.</p>
             </div>
-            <div class="economy-circle-wrapper">
-                <div class="economy-center" id="ecCenter">AquaNexus</div>
-                <div class="economy-icon" style="top:0; left:50%; transform:translate(-50%, -50%);">⚡</div>
-                <div class="economy-icon" style="top:20%; right:0; transform:translate(50%, -20%);">💧</div>
-                <div class="economy-icon" style="bottom:20%; right:0; transform:translate(50%, 20%);">🌱</div>
-                <div class="economy-icon" style="bottom:0; left:50%; transform:translate(-50%, 50%);">🏗️</div>
-                <div class="economy-icon" style="bottom:20%; left:0; transform:translate(-50%, 20%);">🔋</div>
-                <div class="economy-icon" style="top:20%; left:0; transform:translate(-50%, -20%);">♻️</div>
-                <div class="economy-icon" style="top:50%; right:-20px; transform:translateY(-50%);">💼</div>
-                <div class="economy-icon" style="top:50%; left:-20px; transform:translateY(-50%);">🌍</div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Multi-Dimensional Economy" class="concept-image">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin-top:20px;">
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">⚡</div>
+                    <h4>Energy</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">100 MW baseload power</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">💧</div>
+                    <h4>Water</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">50,000 m³/day fresh water</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">🌱</div>
+                    <h4>Agriculture</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">100 ha greenhouses</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">🔋</div>
+                    <h4>Lithium</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">12,000 tons/year</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">💎</div>
+                    <h4>Precious Metals</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Gold, silver, copper</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">🏗️</div>
+                    <h4>Infrastructure</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Cooling & heating</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">♻️</div>
+                    <h4>Circular Economy</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">Zero waste, zero carbon</p>
+                </div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
+                    <div style="font-size:3rem;">🌍</div>
+                    <h4>Carbon Credits</h4>
+                    <p style="font-size:0.9rem; color:#4a5a6a;">2.8 t CO₂ saved/household/year</p>
+                </div>
             </div>
         </section>
     </div>
 
-    <!-- ===== CINEMATIC TIMELINE ===== -->
-    <div id="section-timeline" class="toggle-section">
-        <section class="cinematic-timeline scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title"><span id="tlTitle">The</span> <span class="highlight" id="tlHighlight">Roadmap</span></h2>
-                <p class="section-sub" style="color:rgba(255,255,255,0.6);" id="tlSub">From vision to global platform — phase by phase.</p>
-            </div>
-            <div class="timeline-grid">
-                <div class="timeline-item"><span class="year">2026</span><span class="event" id="tl1">Pilot</span></div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item"><span class="year">2027</span><span class="event" id="tl2">Regional</span></div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item"><span class="year">2028</span><span class="event" id="tl3">National</span></div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item"><span class="year">2029</span><span class="event" id="tl4">International</span></div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item"><span class="year">2030</span><span class="event" id="tl5">Global Platform</span></div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ===== INVESTOR CENTER ===== -->
+    <!-- =============================================
+         SECTION: INVESTOR (with calculator)
+         ============================================= -->
     <div id="section-investor" class="toggle-section">
-        <section class="section investor-center scroll-animate" id="investor-section">
+        <section class="section scroll-animate" id="investor-section">
             <div class="text-center">
-                <h2 class="section-title">📊 <span class="highlight" id="invTitle">Investor Center</span></h2>
-                <p class="section-sub" id="invSub">Interactive financial tools, real‑time metrics, and full transparency.</p>
+                <h2 class="section-title">📊 <span class="highlight">Investor Center</span></h2>
+                <p class="section-sub">Interactive financial tools, real‑time metrics, and full transparency.</p>
             </div>
-            <div class="calc-section" style="background:white; padding:40px 35px; border-radius:var(--radius); box-shadow:var(--shadow); margin-top:20px;">
-                <div class="calc-grid">
-                    <div class="inputs">
-                        <label id="invLabel1">💵 Investment Amount (USD)<input type="number" id="investmentAmount" value="1000000" min="10000" step="10000"></label>
-                        <label id="invLabel2">💰 Currency<select id="currency"><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option></select></label>
-                        <label id="invLabel3">📅 Term (Years)<input type="number" id="termYears" value="5" min="1" max="20"></label>
-                        <label id="invLabel4">📈 Scenario<select id="scenario"><option value="low">Low Risk</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
-                        <button class="btn-calc" onclick="calculateInvestment()" id="invBtn">🚀 Calculate</button>
+            <div style="background:white; padding:40px 35px; border-radius:var(--radius); box-shadow:var(--shadow);">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        <label>💵 Investment Amount (USD)<input type="number" id="investmentAmount" value="1000000" min="10000" step="10000" style="padding:12px 16px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"></label>
+                        <label>💰 Currency<select id="currency" style="padding:12px 16px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option></select></label>
+                        <label>📅 Term (Years)<input type="number" id="termYears" value="5" min="1" max="20" style="padding:12px 16px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"></label>
+                        <label>📈 Scenario<select id="scenario" style="padding:12px 16px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"><option value="low">Low Risk</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
+                        <button class="btn-calc" onclick="calculateInvestment()" style="background:var(--secondary); color:white; padding:14px 28px; border:none; border-radius:50px; font-weight:700; font-size:1rem; cursor:pointer; transition:var(--transition);">🚀 Calculate</button>
                     </div>
-                    <div class="calc-results" id="calcResults">
-                        <div class="result-item"><span class="label" id="res1">📊 Total Return</span><span class="value gold" id="totalReturn">$0</span></div>
-                        <div class="result-item"><span class="label" id="res2">📈 Annual ROI</span><span class="value green" id="annualROI">0%</span></div>
-                        <div class="result-item"><span class="label" id="res3">⏱️ Payback</span><span class="value" id="paybackPeriod">0 months</span></div>
-                        <div class="result-item"><span class="label" id="res4">💰 Annual Income</span><span class="value" id="annualIncome">$0</span></div>
-                        <div class="result-item"><span class="label" id="res5">⚡ Net Profit</span><span class="value" id="netProfit">$0</span></div>
-                        <div class="result-item"><span class="label" id="res6">🌍 Carbon Offset</span><span class="value" id="carbonOffset">0 tCO₂</span></div>
-                        <div class="result-item"><span class="label" id="res7">🏆 Multi‑Revenue Index</span><span class="value gold" id="multiRevenue">0%</span></div>
+                    <div style="background:var(--light); padding:24px 28px; border-radius:var(--radius); display:flex; flex-direction:column; gap:12px;">
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>📊 Total Return</span><span style="font-weight:700; font-size:1.1rem; color:var(--gold);" id="totalReturn">$0</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>📈 Annual ROI</span><span style="font-weight:700; font-size:1.1rem; color:#2a7d4a;" id="annualROI">0%</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>⏱️ Payback</span><span style="font-weight:700; font-size:1.1rem;" id="paybackPeriod">0 months</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>💰 Annual Income</span><span style="font-weight:700; font-size:1.1rem;" id="annualIncome">$0</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>⚡ Net Profit</span><span style="font-weight:700; font-size:1.1rem;" id="netProfit">$0</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>🌍 Carbon Offset</span><span style="font-weight:700; font-size:1.1rem;" id="carbonOffset">0 tCO₂</span></div>
+                        <div style="display:flex; justify-content:space-between; padding:10px 0;"><span>🏆 Multi‑Revenue Index</span><span style="font-weight:700; font-size:1.1rem; color:var(--gold);" id="multiRevenue">0%</span></div>
                     </div>
                 </div>
                 <div style="margin-top:20px; text-align:center;">
-                    <a href="#" style="display:inline-block; background:var(--secondary); color:white; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600;" id="invDownload">📥 Download Financial Model (Excel)</a>
-                </div>
-                <div style="margin-top:20px;">
-                    <canvas id="revenueChart" style="width:100%; max-height:300px;"></canvas>
+                    <a href="#" style="display:inline-block; background:var(--secondary); color:white; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600;">📥 Download Financial Model (Excel)</a>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- ===== GOVERNMENT SOLUTIONS ===== -->
-    <div id="section-government" class="toggle-section">
-        <section class="section" style="background:var(--light); border-radius:var(--radius); scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">🏛️ <span class="highlight" id="govTitle">Government Solutions</span></h2>
-                <p class="section-sub" id="govSub">Tailored infrastructure for ministries, sovereign funds, and development banks.</p>
-            </div>
-            <div class="gov-grid">
-                <div class="gov-item"><i class="fas fa-water"></i><h4 id="gov1">Ministry of Water</h4></div>
-                <div class="gov-item"><i class="fas fa-bolt"></i><h4 id="gov2">Ministry of Energy</h4></div>
-                <div class="gov-item"><i class="fas fa-landmark"></i><h4 id="gov3">Sovereign Wealth Funds</h4></div>
-                <div class="gov-item"><i class="fas fa-building-columns"></i><h4 id="gov4">Development Banks</h4></div>
-                <div class="gov-item"><i class="fas fa-city"></i><h4 id="gov5">Free Zones</h4></div>
-                <div class="gov-item"><i class="fas fa-globe"></i><h4 id="gov6">International Partners</h4></div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ===== RESEARCH CENTER ===== -->
-    <div id="section-research" class="toggle-section">
+    <!-- =============================================
+         SECTION: ABOUT (complete description)
+         ============================================= -->
+    <div id="section-about" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
-                <h2 class="section-title">📚 <span class="highlight" id="resTitle">Research Center</span></h2>
-                <p class="section-sub" id="resSub">Peer‑reviewed publications, white papers, and ESG reports.</p>
+                <h2 class="section-title">ℹ️ <span class="highlight">About AquaNexus</span></h2>
+                <p class="section-sub">Engineering Water · Powering Nations · Building Tomorrow</p>
             </div>
-            <div class="research-grid">
-                <div class="research-card"><i class="fas fa-file-alt"></i><h4 id="rc1">White Papers</h4><p style="color:#4a5a6a; font-size:0.95rem;" id="rc1d">Geothermal, lithium, and water security studies.</p></div>
-                <div class="research-card"><i class="fas fa-book-open"></i><h4 id="rc2">Publications</h4><p style="color:#4a5a6a; font-size:0.95rem;" id="rc2d">48 peer‑reviewed articles on Zenodo, PhilPapers.</p></div>
-                <div class="research-card"><i class="fas fa-chart-pie"></i><h4 id="rc3">ESG Reports</h4><p style="color:#4a5a6a; font-size:0.95rem;" id="rc3d">Environmental, social, and governance metrics.</p></div>
-                <div class="research-card"><i class="fas fa-download"></i><h4 id="rc4">Downloads</h4><p style="color:#4a5a6a; font-size:0.95rem;" id="rc4d">Full dossiers, financial models, and GIS maps.</p></div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;">
+                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--secondary);">
+                    <h3 style="color:var(--primary);">💧 Water</h3>
+                    <p style="color:#4a5a6a;">We produce 50,000 m³/day of fresh water through geothermal desalination. We don't just use water — we inject it back into aquifers for future generations.</p>
+                </div>
+                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--gold);">
+                    <h3 style="color:var(--primary);">⚡ Energy</h3>
+                    <p style="color:#4a5a6a;">100 MW of 24/7 baseload geothermal power — independent of sunlight or wind. Plus 20 MW of district heating and 20 MW of cooling.</p>
+                </div>
+                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--accent);">
+                    <h3 style="color:var(--primary);">🌱 Agriculture</h3>
+                    <p style="color:#4a5a6a;">100 hectares of 4‑season greenhouses produce fresh vegetables and fruits, reducing import dependency and creating local jobs.</p>
+                </div>
+                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid #e9c46a;">
+                    <h3 style="color:var(--primary);">💎 Precious Metals</h3>
+                    <p style="color:#4a5a6a;">12,000 tons/year of battery‑grade lithium, plus gold, silver, copper, and rare earths — recovered with zero processing cost.</p>
+                </div>
+            </div>
+            <div style="margin-top:30px; background:white; padding:32px; border-radius:var(--radius); box-shadow:var(--shadow);">
+                <h3 style="color:var(--primary);">👷 Employment</h3>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-top:12px;">
+                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
+                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">70</div>
+                        <div style="color:#4a5a6a;">Direct Jobs (Pilot)</div>
+                    </div>
+                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
+                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">7,000</div>
+                        <div style="color:#4a5a6a;">Direct Jobs (National)</div>
+                    </div>
+                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
+                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">70,000+</div>
+                        <div style="color:#4a5a6a;">Total Jobs (Direct + Indirect)</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:30px; background:white; padding:32px; border-radius:var(--radius); box-shadow:var(--shadow);">
+                <h3 style="color:var(--primary);">🌍 Why AquaNexus?</h3>
+                <ul style="list-style:disc; padding-left:24px; color:#4a5a6a; line-height:2;">
+                    <li>Not dependent on sunlight or wind — 24/7 baseload power</li>
+                    <li>Zero carbon emissions — fully renewable</li>
+                    <li>Multi‑revenue economy — 8 income streams</li>
+                    <li>Water‑positive — aquifer recharge for future generations</li>
+                    <li>Scalable — from 50 households to national scale</li>
+                    <li>Globally recognized — Energy Globe Award 2024, Zayed Prize 2026</li>
+                </ul>
             </div>
         </section>
     </div>
 
-    <!-- ===== CONTACT (Hidden emails) ===== -->
+    <!-- =============================================
+         SECTION: CONTACT (Hidden emails)
+         ============================================= -->
     <div id="section-contact" class="toggle-section">
-        <section class="section contact-section scroll-animate">
+        <section class="section scroll-animate">
             <div class="text-center">
-                <h2 class="section-title">📬 <span class="highlight" id="contTitle">Contact</span></h2>
-                <p class="section-sub" id="contSub">For partnerships, investments, or research collaboration — reach out.</p>
+                <h2 class="section-title">📬 <span class="highlight">Contact</span></h2>
+                <p class="section-sub">For partnerships, investments, or research collaboration — reach out.</p>
             </div>
             <div class="contact-card general">
                 <div class="card-header"><i class="fas fa-envelope" style="color:var(--secondary);"></i><h3 id="contGen">General Inquiries</h3></div>
@@ -886,21 +1063,6 @@
             btnExplore:'Explore',btnInvest:'Invest',navTitle:'Explore <span class="highlight">AquaNexus</span>',
             wjTitle:'The',wjHighlight:'Water Journey',wjSub:'Follow the path of water — from the ocean to the future.',
             j1:'Ocean',j2:'Desalination',j3:'Storage',j4:'Aquifer',j5:'Agriculture',j6:'Cities',j7:'Future',
-            ecTitle:'Multi‑',ecHighlight:'Dimensional',ecTitle2:'Economy',ecSub:'A circular ecosystem of value — all flowing from a single integrated platform.',ecCenter:'AquaNexus',
-            tlTitle:'The',tlHighlight:'Roadmap',tlSub:'From vision to global platform — phase by phase.',
-            tl1:'Pilot',tl2:'Regional',tl3:'National',tl4:'International',tl5:'Global Platform',
-            invTitle:'Investor Center',invSub:'Interactive financial tools, real‑time metrics, and full transparency.',
-            invLabel1:'💵 Investment Amount (USD)',invLabel2:'💰 Currency',invLabel3:'📅 Term (Years)',invLabel4:'📈 Scenario',
-            invBtn:'🚀 Calculate',invDownload:'📥 Download Financial Model (Excel)',
-            res1:'📊 Total Return',res2:'📈 Annual ROI',res3:'⏱️ Payback',res4:'💰 Annual Income',res5:'⚡ Net Profit',res6:'🌍 Carbon Offset',res7:'🏆 Multi‑Revenue Index',
-            govTitle:'Government Solutions',govSub:'Tailored infrastructure for ministries, sovereign funds, and development banks.',
-            gov1:'Ministry of Water',gov2:'Ministry of Energy',gov3:'Sovereign Wealth Funds',gov4:'Development Banks',gov5:'Free Zones',gov6:'International Partners',
-            resTitle:'Research Center',resSub:'Peer‑reviewed publications, white papers, and ESG reports.',
-            rc1:'White Papers',rc1d:'Geothermal, lithium, and water security studies.',
-            rc2:'Publications',rc2d:'48 peer‑reviewed articles on Zenodo, PhilPapers.',
-            rc3:'ESG Reports',rc3d:'Environmental, social, and governance metrics.',
-            rc4:'Downloads',rc4d:'Full dossiers, financial models, and GIS maps.',
-            contTitle:'Contact',contSub:'For partnerships, investments, or research collaboration — reach out.',
             contGen:'General Inquiries',contGenDesc:'For media, research, and non‑investment questions.',
             contPart:'Strategic Partnerships & Investment',contPartDesc:'For sovereign funds, institutional investors, and governments.',
             contReveal1:'📧 Show Email',contReveal2:'📧 Show Email',
@@ -912,21 +1074,6 @@
             btnExplore:'Explorer',btnInvest:'Investir',navTitle:'Explorer <span class="highlight">AquaNexus</span>',
             wjTitle:'Le',wjHighlight:'Voyage de l\'Eau',wjSub:'Suivez le chemin de l\'eau — de l\'océan vers l\'avenir.',
             j1:'Océan',j2:'Dessalement',j3:'Stockage',j4:'Aquifère',j5:'Agriculture',j6:'Villes',j7:'Avenir',
-            ecTitle:'Économie ',ecHighlight:'Multi‑',ecTitle2:'Dimensionnelle',ecSub:'Un écosystème circulaire de valeur — tout provenant d\'une seule plateforme intégrée.',ecCenter:'AquaNexus',
-            tlTitle:'La',tlHighlight:'Feuille de Route',tlSub:'De la vision à la plateforme mondiale — phase par phase.',
-            tl1:'Pilote',tl2:'Régional',tl3:'National',tl4:'International',tl5:'Plateforme Mondiale',
-            invTitle:'Centre d\'Investissement',invSub:'Outils financiers interactifs, métriques en temps réel et transparence totale.',
-            invLabel1:'💵 Montant de l\'investissement (USD)',invLabel2:'💰 Devise',invLabel3:'📅 Durée (années)',invLabel4:'📈 Scénario',
-            invBtn:'🚀 Calculer',invDownload:'📥 Télécharger le modèle financier (Excel)',
-            res1:'📊 Rendement Total',res2:'📈 ROI Annuel',res3:'⏱️ Remboursement',res4:'💰 Revenu Annuel',res5:'⚡ Bénéfice Net',res6:'🌍 Compensation Carbone',res7:'🏆 Indice Multi‑Revenus',
-            govTitle:'Solutions Gouvernementales',govSub:'Infrastructures sur mesure pour ministères, fonds souverains et banques de développement.',
-            gov1:'Ministère de l\'Eau',gov2:'Ministère de l\'Énergie',gov3:'Fonds Souverains',gov4:'Banques de Développement',gov5:'Zones Franches',gov6:'Partenaires Internationaux',
-            resTitle:'Centre de Recherche',resSub:'Publications évaluées par des pairs, livres blancs et rapports ESG.',
-            rc1:'Livres Blancs',rc1d:'Études sur la géothermie, le lithium et la sécurité de l\'eau.',
-            rc2:'Publications',rc2d:'48 articles évalués par des pairs sur Zenodo, PhilPapers.',
-            rc3:'Rapports ESG',rc3d:'Métriques environnementales, sociales et de gouvernance.',
-            rc4:'Téléchargements',rc4d:'Dossiers complets, modèles financiers et cartes SIG.',
-            contTitle:'Contact',contSub:'Pour les partenariats, les investissements ou la collaboration de recherche — contactez-nous.',
             contGen:'Demandes Générales',contGenDesc:'Pour les médias, la recherche et les questions non liées à l\'investissement.',
             contPart:'Partenariats Stratégiques & Investissement',contPartDesc:'Pour les fonds souverains, les investisseurs institutionnels et les gouvernements.',
             contReveal1:'📧 Afficher l\'email',contReveal2:'📧 Afficher l\'email',
@@ -938,21 +1085,6 @@
             btnExplore:'Erkunden',btnInvest:'Investieren',navTitle:'Erkunden Sie <span class="highlight">AquaNexus</span>',
             wjTitle:'Die',wjHighlight:'Wasserreise',wjSub:'Folgen Sie dem Weg des Wassers — vom Ozean in die Zukunft.',
             j1:'Ozean',j2:'Entsalzung',j3:'Speicherung',j4:'Grundwasserleiter',j5:'Landwirtschaft',j6:'Städte',j7:'Zukunft',
-            ecTitle:'Multi‑',ecHighlight:'Dimensionale',ecTitle2:'Wirtschaft',ecSub:'Ein kreislauforientiertes Wertesystem — alles aus einer einzigen integrierten Plattform.',ecCenter:'AquaNexus',
-            tlTitle:'Die',tlHighlight:'Roadmap',tlSub:'Von der Vision zur globalen Plattform — Phase für Phase.',
-            tl1:'Pilot',tl2:'Regional',tl3:'National',tl4:'International',tl5:'Globale Plattform',
-            invTitle:'Investorenzentrum',invSub:'Interaktive Finanztools, Echtzeitkennzahlen und vollständige Transparenz.',
-            invLabel1:'💵 Investitionsbetrag (USD)',invLabel2:'💰 Währung',invLabel3:'📅 Laufzeit (Jahre)',invLabel4:'📈 Szenario',
-            invBtn:'🚀 Berechnen',invDownload:'📥 Finanzmodell herunterladen (Excel)',
-            res1:'📊 Gesamtrendite',res2:'📈 Jährliche ROI',res3:'⏱️ Amortisation',res4:'💰 Jahreseinkommen',res5:'⚡ Nettogewinn',res6:'🌍 CO₂‑Ausgleich',res7:'🏆 Multi‑Einnahmen‑Index',
-            govTitle:'Regierungslösungen',govSub:'Maßgeschneiderte Infrastruktur für Ministerien, Staatsfonds und Entwicklungsbanken.',
-            gov1:'Wasserministerium',gov2:'Energieministerium',gov3:'Staatsfonds',gov4:'Entwicklungsbanken',gov5:'Freizonen',gov6:'Internationale Partner',
-            resTitle:'Forschungszentrum',resSub:'Peer‑reviewte Veröffentlichungen, Whitepapers und ESG‑Berichte.',
-            rc1:'Whitepapers',rc1d:'Studien zu Geothermie, Lithium und Wassersicherheit.',
-            rc2:'Publikationen',rc2d:'48 Peer‑reviewte Artikel auf Zenodo, PhilPapers.',
-            rc3:'ESG‑Berichte',rc3d:'Umwelt‑, Sozial‑ und Governance‑Kennzahlen.',
-            rc4:'Downloads',rc4d:'Vollständige Dossiers, Finanzmodelle und GIS‑Karten.',
-            contTitle:'Kontakt',contSub:'Für Partnerschaften, Investitionen oder Forschungskooperation — kontaktieren Sie uns.',
             contGen:'Allgemeine Anfragen',contGenDesc:'Für Medien, Forschung und nicht‑investitionsbezogene Fragen.',
             contPart:'Strategische Partnerschaften & Investition',contPartDesc:'Für Staatsfonds, institutionelle Anleger und Regierungen.',
             contReveal1:'📧 E‑Mail anzeigen',contReveal2:'📧 E‑Mail anzeigen',
@@ -964,21 +1096,6 @@
             btnExplore:'استكشف',btnInvest:'استثمر',navTitle:'استكشف <span class="highlight">أكوا نيكسوس</span>',
             wjTitle:'رحلة',wjHighlight:'المياه',wjSub:'اتبع مسار الماء — من المحيط إلى المستقبل.',
             j1:'المحيط',j2:'التحلية',j3:'التخزين',j4:'الخزان الجوفي',j5:'الزراعة',j6:'المدن',j7:'المستقبل',
-            ecTitle:'اقتصاد ',ecHighlight:'متعدد',ecTitle2:'الأبعاد',ecSub:'نظام بيئي دائري للقيمة — كل شيء ينبع من منصة متكاملة واحدة.',ecCenter:'أكوا نيكسوس',
-            tlTitle:'خريطة',tlHighlight:'الطريق',tlSub:'من الرؤية إلى المنصة العالمية — مرحلة بمرحلة.',
-            tl1:'تجريبي',tl2:'إقليمي',tl3:'وطني',tl4:'دولي',tl5:'منصة عالمية',
-            invTitle:'مركز المستثمرين',invSub:'أدوات مالية تفاعلية، ومؤشرات فورية، وشفافية كاملة.',
-            invLabel1:'💵 مبلغ الاستثمار (دولار أمريكي)',invLabel2:'💰 العملة',invLabel3:'📅 المدة (سنوات)',invLabel4:'📈 السيناريو',
-            invBtn:'🚀 احسب',invDownload:'📥 تحميل النموذج المالي (Excel)',
-            res1:'📊 إجمالي العائد',res2:'📈 العائد السنوي',res3:'⏱️ فترة الاسترداد',res4:'💰 الدخل السنوي',res5:'⚡ صافي الربح',res6:'🌍 تعويض الكربون',res7:'🏆 مؤشر الإيرادات المتعددة',
-            govTitle:'حلول حكومية',govSub:'بنية تحتية مخصصة للوزارات والصناديق السيادية وبنوك التنمية.',
-            gov1:'وزارة المياه',gov2:'وزارة الطاقة',gov3:'صناديق الثروة السيادية',gov4:'بنوك التنمية',gov5:'المناطق الحرة',gov6:'شركاء دوليون',
-            resTitle:'مركز البحوث',resSub:'منشورات محكمة، وأوراق بيضاء، وتقارير ESG.',
-            rc1:'الأوراق البيضاء',rc1d:'دراسات عن الطاقة الحرارية الأرضية والليثيوم والأمن المائي.',
-            rc2:'المنشورات',rc2d:'48 مقالة محكمة على Zenodo و PhilPapers.',
-            rc3:'تقارير ESG',rc3d:'مؤشرات البيئية والاجتماعية والحوكمة.',
-            rc4:'التنزيلات',rc4d:'الملفات الكاملة، والنماذج المالية، وخرائط GIS.',
-            contTitle:'اتصل بنا',contSub:'للشراكات أو الاستثمارات أو التعاون البحثي — تواصل معنا.',
             contGen:'استفسارات عامة',contGenDesc:'للإعلام والبحوث والاستفسارات غير الاستثمارية.',
             contPart:'الشراكات الاستراتيجية والاستثمار',contPartDesc:'للصناديق السيادية والمستثمرين المؤسسيين والحكومات.',
             contReveal1:'📧 إظهار البريد الإلكتروني',contReveal2:'📧 إظهار البريد الإلكتروني',
@@ -1001,8 +1118,6 @@
                 }
             }
         });
-        // Re-trigger chart update
-        updateChart();
     }
 
     // =============================================
@@ -1015,8 +1130,22 @@
         document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
         if (btn) btn.classList.add('active');
         document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Re-trigger chart if investor section
-        if (id === 'investor') setTimeout(updateChart, 300);
+    }
+
+    // =============================================
+    // TOGGLE DETAIL (Water Journey)
+    // =============================================
+    function toggleDetail(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        // Close others
+        document.querySelectorAll('.detail-section').forEach(d => {
+            if (d.id !== id) d.classList.remove('active');
+        });
+        el.classList.toggle('active');
+        if (el.classList.contains('active')) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
 
     // =============================================
@@ -1056,65 +1185,12 @@
         document.getElementById('netProfit').textContent = sym + netProfit.toLocaleString('en-US', { maximumFractionDigits: 0 });
         document.getElementById('carbonOffset').textContent = carbonOffset + ' tCO₂';
         document.getElementById('multiRevenue').textContent = multiRevenue + '%';
-        updateChart();
-    }
-
-    // =============================================
-    // REVENUE CHART
-    // =============================================
-    let revenueChart = null;
-    function updateChart() {
-        const ctx = document.getElementById('revenueChart');
-        if (!ctx) return;
-        const amount = parseFloat(document.getElementById('investmentAmount').value) || 1000000;
-        const term = parseInt(document.getElementById('termYears').value) || 5;
-        const scenario = document.getElementById('scenario').value;
-        let multiplier = scenario === 'low' ? 0.12 : scenario === 'medium' ? 0.30 : 0.45;
-        const labels = [];
-        const data = [];
-        for (let i = 1; i <= term; i++) {
-            labels.push('Year ' + i);
-            data.push(Math.round(amount * (1 + multiplier * i)));
-        }
-        if (revenueChart) {
-            revenueChart.destroy();
-        }
-        revenueChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Projected Return (USD)',
-                    data: data,
-                    backgroundColor: 'rgba(26, 111, 181, 0.6)',
-                    borderColor: '#1a6fb5',
-                    borderWidth: 2,
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { labels: { color: '#0b1a2a' } }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { color: '#4a5a6a' }
-                    },
-                    x: {
-                        ticks: { color: '#4a5a6a' }
-                    }
-                }
-            }
-        });
     }
 
     // =============================================
     // THREE.JS GLOBE
     // =============================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize globe
         const container = document.getElementById('globeCanvas');
         if (!container) return;
         const width = container.parentElement.clientWidth;
@@ -1127,30 +1203,18 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Earth texture
         const textureLoader = new THREE.TextureLoader();
         const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-        const earthMaterial = new THREE.MeshPhongMaterial({
-            map: earthTexture,
-            specular: new THREE.Color(0x333333),
-            shininess: 5
-        });
+        const earthMaterial = new THREE.MeshPhongMaterial({ map: earthTexture, specular: new THREE.Color(0x333333), shininess: 5 });
         const earthGeometry = new THREE.SphereGeometry(1, 64, 64);
         const earth = new THREE.Mesh(earthGeometry, earthMaterial);
         scene.add(earth);
 
-        // Glow effect
-        const glowMaterial = new THREE.MeshBasicMaterial({
-            color: 0x1a6fb5,
-            transparent: true,
-            opacity: 0.08,
-            side: THREE.BackSide
-        });
+        const glowMaterial = new THREE.MeshBasicMaterial({ color: 0x1a6fb5, transparent: true, opacity: 0.08, side: THREE.BackSide });
         const glowGeometry = new THREE.SphereGeometry(1.15, 32, 32);
         const glow = new THREE.Mesh(glowGeometry, glowMaterial);
         scene.add(glow);
 
-        // Lights
         const ambientLight = new THREE.AmbientLight(0x404060);
         scene.add(ambientLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
@@ -1160,7 +1224,6 @@
         backLight.position.set(-1, -0.5, -1);
         scene.add(backLight);
 
-        // Stars background
         const starsGeometry = new THREE.BufferGeometry();
         const starsCount = 3000;
         const starsPositions = new Float32Array(starsCount * 3);
@@ -1172,7 +1235,6 @@
         const stars = new THREE.Points(starsGeometry, starsMaterial);
         scene.add(stars);
 
-        // Animate
         function animate() {
             requestAnimationFrame(animate);
             earth.rotation.y += 0.0015;
@@ -1181,7 +1243,6 @@
         }
         animate();
 
-        // Resize
         window.addEventListener('resize', function() {
             const w = container.parentElement.clientWidth;
             const h = container.parentElement.clientHeight || 500;
@@ -1190,9 +1251,7 @@
             renderer.setSize(w, h);
         });
 
-        // =============================================
-        // SCROLL ANIMATIONS
-        // =============================================
+        // Scroll animations
         const scrollElements = document.querySelectorAll('.scroll-animate');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1203,8 +1262,6 @@
         }, { threshold: 0.15 });
         scrollElements.forEach(el => observer.observe(el));
 
-        // Initial chart
-        setTimeout(updateChart, 500);
         calculateInvestment();
         // Set default active tab
         showSection('journey', document.querySelector('.nav-tab'));
@@ -1212,3 +1269,4 @@
 </script>
 </body>
 </html>
+```
