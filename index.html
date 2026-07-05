@@ -5,15 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>AquaNexus — Integrated Infrastructure Platform</title>
     <meta name="description" content="AquaNexus: Engineering Water, Powering Nations, Building Tomorrow. Geothermal, desalination, lithium, agriculture, and precious metals."/>
-    <meta property="og:title" content="AquaNexus — Integrated Infrastructure Platform"/>
-    <meta property="og:description" content="Engineering Water · Powering Nations · Building Tomorrow"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://Vahid-niezamivand-chegane.github.io"/>
-    <meta name="twitter:card" content="summary_large_image"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* ===== ROOT & RESET ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #0a2a44;
@@ -52,14 +46,12 @@
         .text-center { text-align: center; }
         .text-center .section-sub { margin-left: auto; margin-right: auto; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
         .card {
             background: white;
             padding: 32px 26px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
             border-bottom: 4px solid var(--secondary);
         }
         .card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.10); }
@@ -68,7 +60,6 @@
         .card p { color: #3a4a5a; font-size: 0.98rem; }
         .card img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
 
-        /* ===== LANGUAGE BAR ===== */
         .lang-bar {
             position: fixed;
             top: 18px;
@@ -82,7 +73,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.10);
             backdrop-filter: blur(4px);
             flex-wrap: wrap;
-            justify-content: center;
         }
         .lang-btn {
             background: transparent;
@@ -99,7 +89,7 @@
         .lang-btn.active { opacity: 1; background: var(--primary); color: white; }
         .lang-btn:hover { opacity: 1; }
 
-        /* ===== HERO – توپوگرافی زمین ===== */
+        /* HERO با تصویر توپوگرافی */
         .hero-video {
             position: relative;
             width: 100%;
@@ -108,12 +98,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1920&q=80') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1920&q=80') center/cover no-repeat, var(--primary);
+            background-blend-mode: overlay;
         }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(10, 42, 68, 0.60);
+            background: rgba(10, 42, 68, 0.65);
             z-index: 1;
         }
         .hero-content {
@@ -167,21 +158,6 @@
             gap: 10px;
         }
         .btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
-        .btn-outline {
-            background: transparent;
-            color: white;
-            padding: 14px 36px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            text-decoration: none;
-            border: 2px solid rgba(255,255,255,0.5);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-outline:hover { background: white; color: var(--primary); border-color: white; transform: translateY(-4px); }
 
         .water-drops {
             position: absolute;
@@ -207,7 +183,6 @@
             100% { transform: translateY(-20px); opacity: 0.2; }
         }
 
-        /* ===== GLOBE ===== */
         .globe-container {
             position: relative;
             width: 100%;
@@ -236,7 +211,6 @@
             text-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* ===== TOGGLE SECTIONS ===== */
         .toggle-section {
             display: none;
             animation: fadeIn 0.6s ease-out;
@@ -272,7 +246,6 @@
             border-color: var(--secondary);
         }
 
-        /* ===== PARTNERS & FUNDS ===== */
         .partners-grid {
             display: flex;
             flex-wrap: wrap;
@@ -310,7 +283,6 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ===== ARTICLE CARDS ===== */
         .article-card {
             background: white;
             padding: 28px 24px;
@@ -325,7 +297,6 @@
         .article-card a { color: var(--secondary); text-decoration: none; font-weight: 600; }
         .article-card a:hover { text-decoration: underline; }
 
-        /* ===== WATER JOURNEY ===== */
         .water-journey {
             background: linear-gradient(180deg, #0a2a44 0%, #1a5f7a 40%, #2a9d8f 100%);
             padding: 80px 20px;
@@ -358,7 +329,6 @@
         .journey-step:hover { background: rgba(255,255,255,0.15); transform: scale(1.02); }
         .journey-step .icon { font-size: 2rem; width: 50px; text-align: center; }
         .journey-step .label { font-size: 1.1rem; font-weight: 500; }
-        .journey-step .desc { font-size: 0.85rem; opacity: 0.7; margin-left: auto; }
         .journey-arrow { font-size: 1.5rem; opacity: 0.5; }
 
         .detail-section {
@@ -382,7 +352,6 @@
         .detail-section h3 { color: var(--primary); margin-bottom: 12px; }
         .detail-section p { color: #4a5a6a; line-height: 1.8; }
 
-        /* ===== CONTACT ===== */
         .contact-card {
             background: white;
             padding: 32px 28px;
@@ -427,9 +396,7 @@
             text-decoration: none;
             word-break: break-all;
         }
-        .email-hidden a:hover { color: var(--secondary); }
 
-        /* ===== SCROLL ANIMATIONS ===== */
         .scroll-animate {
             opacity: 0;
             transform: translateY(40px);
@@ -440,7 +407,6 @@
             transform: translateY(0);
         }
 
-        /* ===== FOOTER ===== */
         .footer-new {
             background: var(--primary);
             padding: 60px 20px 40px;
@@ -453,25 +419,7 @@
         .footer-new .lines { font-size: 1.1rem; font-weight: 300; opacity: 0.7; letter-spacing: 3px; margin-top: 8px; }
         .footer-new .lines span { display: inline-block; margin: 0 12px; }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 640px) {
-            .hero-content .logo-text { font-size: 2.4rem; }
-            .hero-content .tagline { font-size: 1rem; letter-spacing: 2px; }
-            .section { padding: 50px 14px; }
-            .lang-bar { top: 10px; right: 10px; padding: 4px 8px; gap: 4px; }
-            .lang-btn { font-size: 0.6rem; padding: 2px 8px; }
-            .journey-step { padding: 10px 18px; flex-wrap: wrap; }
-            .journey-step .desc { display: none; }
-            .nav-tab { padding: 6px 16px; font-size: 0.8rem; }
-            .globe-container { height: 300px; }
-            .partners-grid { gap: 10px; }
-            .partner-item { padding: 8px 16px; font-size: 0.8rem; }
-            .country-tag { padding: 4px 14px; font-size: 0.75rem; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .water-drops span { font-size: 1.5rem; }
-        }
-
-        /* ===== اضافی برای تصاویر مفهومی ===== */
+        /* استایل‌های جدید برای بخش‌های اضافه‌شده */
         .concept-img {
             width: 100%;
             max-height: 350px;
@@ -482,7 +430,7 @@
         }
         .data-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -496,11 +444,23 @@
         .data-card h4 { color: var(--primary); margin-bottom: 6px; }
         .data-card p { font-size: 0.9rem; color: #4a5a6a; }
         .data-card .value { font-weight: 700; color: var(--secondary); font-size: 1.1rem; }
+
+        @media (max-width: 640px) {
+            .hero-content .logo-text { font-size: 2.4rem; }
+            .hero-content .tagline { font-size: 1rem; letter-spacing: 2px; }
+            .section { padding: 50px 14px; }
+            .lang-bar { top: 10px; right: 10px; padding: 4px 8px; gap: 4px; }
+            .lang-btn { font-size: 0.6rem; padding: 2px 8px; }
+            .nav-tab { padding: 6px 16px; font-size: 0.8rem; }
+            .globe-container { height: 300px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .water-drops span { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
-<!-- ===== LANGUAGE BAR ===== -->
+<!-- Language Bar -->
 <div class="lang-bar">
     <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">🇬🇧 EN</button>
     <button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">🇫🇷 FR</button>
@@ -508,7 +468,7 @@
     <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">🇸🇦 ع</button>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO (فقط دکمه Explore) -->
 <section class="hero-video" id="home">
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -519,7 +479,6 @@
         <div class="sub-tagline" id="heroSub">Integrated Infrastructure Platform</div>
         <div class="btn-group">
             <a href="#main-content" class="btn-primary"><i class="fas fa-arrow-down"></i> <span id="btnExplore">Explore</span></a>
-            <a href="#investor-section" class="btn-outline"><i class="fas fa-chart-line"></i> <span id="btnInvest">Invest</span></a>
         </div>
     </div>
     <div class="water-drops">
@@ -527,13 +486,13 @@
     </div>
 </section>
 
-<!-- ===== GLOBE با نقاط روشن ===== -->
+<!-- GLOBE با نقاط روشن -->
 <section class="globe-container" id="globe">
     <div id="globeCanvas"></div>
-    <div class="globe-overlay-text">🌍 Strategic Countries · 5 Continents · Infinite Impact</div>
+    <div class="globe-overlay-text">🌍 Strategic Locations · Golden Spots · Infinite Impact</div>
 </section>
 
-<!-- ===== MAIN CONTENT – NAVIGATION TABS ===== -->
+<!-- MAIN CONTENT -->
 <section id="main-content" style="padding-top:40px;">
     <div class="text-center">
         <h2 class="section-title" id="navTitle">Explore <span class="highlight">AquaNexus</span></h2>
@@ -553,570 +512,235 @@
         </div>
     </div>
 
-    <!-- =============================================
-         SECTION: WATER JOURNEY (همان قبل با تصاویر)
-         ============================================= -->
+    <!-- WATER JOURNEY -->
     <div id="section-journey" class="toggle-section active">
         <section class="water-journey scroll-animate">
             <div class="text-center">
                 <h2 class="section-title"><span id="wjTitle">The</span> <span class="highlight" id="wjHighlight">Water Journey</span></h2>
-                <p class="section-sub" style="color:rgba(255,255,255,0.7);" id="wjSub">Follow the path of water — from the ocean to the future.</p>
+                <p class="section-sub" style="color:rgba(255,255,255,0.7);" id="wjSub">From ocean to future.</p>
             </div>
             <div class="journey-steps">
-                <div class="journey-step" onclick="toggleDetail('detail-ocean')">
-                    <span class="icon">🌊</span>
-                    <span class="label" id="j1">Ocean</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-ocean')"><span class="icon">🌊</span><span class="label" id="j1">Ocean</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-desal')">
-                    <span class="icon">🏭</span>
-                    <span class="label" id="j2">Desalination</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-desal')"><span class="icon">🏭</span><span class="label" id="j2">Desalination</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-storage')">
-                    <span class="icon">⛲</span>
-                    <span class="label" id="j3">Storage</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-storage')"><span class="icon">⛲</span><span class="label" id="j3">Storage</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-aquifer')">
-                    <span class="icon">🌍</span>
-                    <span class="label" id="j4">Aquifer</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-aquifer')"><span class="icon">🌍</span><span class="label" id="j4">Aquifer</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-agri')">
-                    <span class="icon">🌱</span>
-                    <span class="label" id="j5">Agriculture</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-agri')"><span class="icon">🌱</span><span class="label" id="j5">Agriculture</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-cities')">
-                    <span class="icon">🏙️</span>
-                    <span class="label" id="j6">Cities</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-cities')"><span class="icon">🏙️</span><span class="label" id="j6">Cities</span></div>
                 <div class="journey-arrow">↓</div>
-                <div class="journey-step" onclick="toggleDetail('detail-future')">
-                    <span class="icon">🌟</span>
-                    <span class="label" id="j7">Future</span>
-                    <span class="desc">Click</span>
-                </div>
+                <div class="journey-step" onclick="toggleDetail('detail-future')"><span class="icon">🌟</span><span class="label" id="j7">Future</span></div>
             </div>
-            <div id="detail-ocean" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Ocean" class="concept-img">
-                <h3>The Ocean — Source of All Life</h3>
-                <p>Our journey begins with the ocean. We harness its power through sustainable desalination, turning seawater into a resource for generations.</p>
-            </div>
-            <div id="detail-desal" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=80" alt="Desalination" class="concept-img">
-                <h3>Desalination — Zero Carbon</h3>
-                <p>Using geothermal energy, we desalinate 50,000 m³/day with zero emissions — enough for a city of 200,000.</p>
-            </div>
-            <div id="detail-storage" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Storage" class="concept-img">
-                <h3>Storage — Securing the Future</h3>
-                <p>Massive reservoirs store water for dry seasons. We don't just produce water; we secure it.</p>
-            </div>
-            <div id="detail-aquifer" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=800&q=80" alt="Aquifer" class="concept-img">
-                <h3>Aquifer — For Generations</h3>
-                <p>We inject fresh water into deep aquifers — a 100‑year gift to future generations.</p>
-            </div>
-            <div id="detail-agri" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80" alt="Agriculture" class="concept-img">
-                <h3>4‑Season Greenhouses</h3>
-                <p>100 hectares of climate‑smart greenhouses produce fresh vegetables year‑round, reducing imports.</p>
-            </div>
-            <div id="detail-cities" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Cities" class="concept-img">
-                <h3>Cities — Sustainable Urban</h3>
-                <p>Clean drinking water, cooling, and industrial growth — the foundation of a sustainable urban future.</p>
-            </div>
-            <div id="detail-future" class="detail-section">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Future" class="concept-img">
-                <h3>Future — A Promise</h3>
-                <p>We build for today, preserve for tomorrow. AquaNexus is a promise to generations to come.</p>
-            </div>
+            <div id="detail-ocean" class="detail-section"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" class="concept-img"><h3>Ocean</h3><p>Sustainable desalination from seawater.</p></div>
+            <div id="detail-desal" class="detail-section"><img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=80" class="concept-img"><h3>Desalination</h3><p>Zero carbon, 50,000 m³/day.</p></div>
+            <div id="detail-storage" class="detail-section"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" class="concept-img"><h3>Storage</h3><p>Massive reservoirs for dry seasons.</p></div>
+            <div id="detail-aquifer" class="detail-section"><img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=800&q=80" class="concept-img"><h3>Aquifer</h3><p>Injection for 100-year future.</p></div>
+            <div id="detail-agri" class="detail-section"><img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80" class="concept-img"><h3>Agriculture</h3><p>4-season greenhouses, 100 ha.</p></div>
+            <div id="detail-cities" class="detail-section"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" class="concept-img"><h3>Cities</h3><p>Clean water for urban growth.</p></div>
+            <div id="detail-future" class="detail-section"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" class="concept-img"><h3>Future</h3><p>A promise to generations.</p></div>
         </section>
     </div>
 
-    <!-- ===== SECTION: PARTNERS (همان) ===== -->
+    <!-- PARTNERS -->
     <div id="section-partners" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">🏛️ <span class="highlight">Strategic Partners & Funds</span></h2>
-                <p class="section-sub">Collaborating with the world's most influential institutions.</p>
-            </div>
+            <div class="text-center"><h2 class="section-title">🏛️ <span class="highlight">Partners</span></h2><p class="section-sub">Global institutions.</p></div>
             <div class="partners-grid">
-                <span class="partner-item">🇸🇦 PIF</span><span class="partner-item">🇦🇪 Mubadala</span>
-                <span class="partner-item">🇦🇪 ADIA</span><span class="partner-item">🇶🇦 QIA</span>
-                <span class="partner-item">🇰🇼 KIA</span><span class="partner-item">🇴🇲 OIA</span>
-                <span class="partner-item">🇳🇴 GPFG</span><span class="partner-item">🇺🇸 BlackRock</span>
-                <span class="partner-item">🇨🇦 Brookfield</span><span class="partner-item">🇸🇬 Temasek</span>
-                <span class="partner-item">🇫🇷 TotalEnergies</span><span class="partner-item">🇬🇧 Shell</span>
-                <span class="partner-item">🇸🇪 EQT</span><span class="partner-item">🇨🇦 CPPIB</span>
-                <span class="partner-item">🇦🇪 ADQ</span><span class="partner-item">🇺🇸 Chevron</span>
-                <span class="partner-item">🇺🇸 Breakthrough Energy</span><span class="partner-item">🇦🇪 MGX</span>
-                <span class="partner-item">🇸🇦 HUMAIN</span><span class="partner-item">🇦🇪 ADIC</span>
-                <span class="partner-item">🇦🇪 DIF</span><span class="partner-item">🇦🇪 ICD</span>
-                <span class="partner-item">🇺🇸 Goldman Sachs</span><span class="partner-item">🇺🇸 J.P. Morgan</span>
-                <span class="partner-item">🇨🇳 Sinopec Star</span><span class="partner-item">🇯🇵 Itochu</span>
-                <span class="partner-item">🇯🇵 Mitsubishi</span><span class="partner-item">🇯🇵 Toyota</span>
-                <span class="partner-item">🇩🇪 Vulcan Energy</span><span class="partner-item">🇫🇷 Arverne</span>
-                <span class="partner-item">🇬🇧 Cornish Lithium</span><span class="partner-item">🇺🇸 Occidental</span>
-                <span class="partner-item">🇺🇸 Baker Hughes</span><span class="partner-item">🇺🇸 BHE Renewables</span>
-                <span class="partner-item">🇨🇦 Wealth Minerals</span><span class="partner-item">🇨🇳 Tianqi</span>
-                <span class="partner-item">🇨🇳 Kaishan</span><span class="partner-item">🇸🇦 Tasama</span>
-                <span class="partner-item">🇦🇪 Masdar</span><span class="partner-item">🇨🇳 State Grid</span>
-                <span class="partner-item">🇸🇦 Aramco Ventures</span><span class="partner-item">🇺🇸 Google</span>
-                <span class="partner-item">🇺🇸 Microsoft</span><span class="partner-item">🇺🇸 Meta</span>
+                <span class="partner-item">🇸🇦 PIF</span><span class="partner-item">🇦🇪 Mubadala</span><span class="partner-item">🇦🇪 ADIA</span>
+                <span class="partner-item">🇶🇦 QIA</span><span class="partner-item">🇰🇼 KIA</span><span class="partner-item">🇴🇲 OIA</span>
+                <span class="partner-item">🇺🇸 BlackRock</span><span class="partner-item">🇨🇦 Brookfield</span><span class="partner-item">🇸🇬 Temasek</span>
+                <span class="partner-item">🇫🇷 TotalEnergies</span><span class="partner-item">🇬🇧 Shell</span><span class="partner-item">🇸🇪 EQT</span>
+                <span class="partner-item">🇺🇸 Chevron</span><span class="partner-item">🇺🇸 Breakthrough Energy</span><span class="partner-item">🇦🇪 Masdar</span>
+                <span class="partner-item">🇯🇵 Mitsubishi</span><span class="partner-item">🇩🇪 Vulcan Energy</span><span class="partner-item">🇺🇸 Google</span>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: COUNTRIES (همان) ===== -->
+    <!-- COUNTRIES -->
     <div id="section-countries" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">🌍 <span class="highlight">Target Countries</span></h2>
-                <p class="section-sub">AquaNexus is ready for implementation in 5 strategic countries.</p>
-            </div>
+            <div class="text-center"><h2 class="section-title">🌍 <span class="highlight">Countries</span></h2><p class="section-sub">5 strategic nations.</p></div>
             <div class="country-tags">
-                <span class="country-tag">🇸🇦 Saudi Arabia</span>
-                <span class="country-tag">🇦🇪 UAE</span>
-                <span class="country-tag">🇴🇲 Oman</span>
-                <span class="country-tag">🇬🇧 UK</span>
-                <span class="country-tag">🇸🇪 Sweden</span>
-            </div>
-            <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
-                    <h4>🇸🇦 Saudi Arabia</h4>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">NEOM, AlUla, Red Sea Global — Vision 2030.</p>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
-                    <h4>🇦🇪 UAE</h4>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">Masdar Corridor, Abu Dhabi — Energy Strategy 2050.</p>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
-                    <h4>🇴🇲 Oman</h4>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">Sohar, Duqm — Vision 2040.</p>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
-                    <h4>🇬🇧 UK</h4>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">Industrial decarbonization, geothermal potential.</p>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); border-left:4px solid var(--gold);">
-                    <h4>🇸🇪 Sweden</h4>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">Cold‑climate optimization, district heating.</p>
-                </div>
+                <span class="country-tag">🇸🇦 Saudi Arabia</span><span class="country-tag">🇦🇪 UAE</span>
+                <span class="country-tag">🇴🇲 Oman</span><span class="country-tag">🇬🇧 UK</span><span class="country-tag">🇸🇪 Sweden</span>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: ARTICLES (به‌روز با تصاویر) ===== -->
+    <!-- ARTICLES با تصاویر -->
     <div id="section-articles" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">📄 <span class="highlight">Latest Articles & Research</span></h2>
-                <p class="section-sub">Peer‑reviewed publications and industry reports — updated 2026.</p>
-            </div>
+            <div class="text-center"><h2 class="section-title">📄 <span class="highlight">Articles</span></h2><p class="section-sub">Peer-reviewed 2026.</p></div>
             <div class="grid-2">
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=400&q=80" alt="IRENA" class="concept-img" style="max-height:150px;">
-                    <h4>IRENA 2026: Geothermal costs drop 50%</h4>
-                    <p>Geothermal is now the cheapest baseload power. AquaNexus leads the way.</p>
-                    <a href="https://www.irena.org/publications" target="_blank">Read more →</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Nature" class="concept-img" style="max-height:150px;">
-                    <h4>Nature: Zero‑cost lithium extraction</h4>
-                    <p>DLE + solar evaporation eliminates processing costs — a game‑changer.</p>
-                    <a href="https://www.nature.com" target="_blank">Read more →</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="Science" class="concept-img" style="max-height:150px;">
-                    <h4>Science: Multi‑revenue ecosystems</h4>
-                    <p>Integrated platforms generate 3x higher returns than single‑sector projects.</p>
-                    <a href="https://www.science.org" target="_blank">Read more →</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=400&q=80" alt="IEA" class="concept-img" style="max-height:150px;">
-                    <h4>IEA 2026: Lithium demand triples</h4>
-                    <p>Geothermal brine offers a sustainable, low‑cost solution for EV supply chains.</p>
-                    <a href="https://www.iea.org/reports" target="_blank">Read more →</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd0b?w=400&q=80" alt="Elsevier" class="concept-img" style="max-height:150px;">
-                    <h4>Elsevier: ASR advances</h4>
-                    <p>Aquifer Storage & Recovery enables large‑scale groundwater recharge.</p>
-                    <a href="https://www.elsevier.com" target="_blank">Read more →</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80" alt="World Bank" class="concept-img" style="max-height:150px;">
-                    <h4>World Bank: ESG infrastructure</h4>
-                    <p>ESG‑aligned projects attract record investments in 2026.</p>
-                    <a href="https://www.worldbank.org" target="_blank">Read more →</a>
-                </div>
+                <div class="article-card"><img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=400&q=80" class="concept-img" style="max-height:150px;"><h4>IRENA: Geothermal costs drop 50%</h4><p>Cheapest baseload power.</p><a href="#">Read</a></div>
+                <div class="article-card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" class="concept-img" style="max-height:150px;"><h4>Nature: Zero-cost lithium</h4><p>DLE eliminates processing.</p><a href="#">Read</a></div>
+                <div class="article-card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" class="concept-img" style="max-height:150px;"><h4>Science: Multi-revenue ecosystems</h4><p>3x higher returns.</p><a href="#">Read</a></div>
+                <div class="article-card"><img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=400&q=80" class="concept-img" style="max-height:150px;"><h4>IEA: Lithium demand triples</h4><p>Geothermal brine solution.</p><a href="#">Read</a></div>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: ECONOMY (توسعه‌یافته با تصاویر) ===== -->
+    <!-- ECONOMY -->
     <div id="section-economy" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">💎 <span class="highlight">Multi‑Dimensional Economy</span></h2>
-                <p class="section-sub">A circular ecosystem of value — 8 income streams from one platform.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Economy" class="concept-img">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:20px; margin-top:20px;">
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">⚡</div>
-                    <h4>Energy</h4>
-                    <p style="font-size:0.9rem;">100 MW baseload</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">💧</div>
-                    <h4>Water</h4>
-                    <p style="font-size:0.9rem;">50,000 m³/day</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">🌱</div>
-                    <h4>Agriculture</h4>
-                    <p style="font-size:0.9rem;">100 ha</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">🔋</div>
-                    <h4>Lithium</h4>
-                    <p style="font-size:0.9rem;">12,000 t/y</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">💎</div>
-                    <h4>Metals</h4>
-                    <p style="font-size:0.9rem;">Au, Ag, Cu</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">🏗️</div>
-                    <h4>Heating/Cooling</h4>
-                    <p style="font-size:0.9rem;">20 MW each</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">♻️</div>
-                    <h4>Carbon Credits</h4>
-                    <p style="font-size:0.9rem;">2.8 t/household</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;">
-                    <div style="font-size:3rem;">🧂</div>
-                    <h4>Salt</h4>
-                    <p style="font-size:0.9rem;">50,000 t/y</p>
-                </div>
+            <div class="text-center"><h2 class="section-title">💎 <span class="highlight">Multi-Dimensional Economy</span></h2><p class="section-sub">8 income streams.</p></div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" class="concept-img">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:15px;">
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>⚡ Energy</h4><p>100 MW</p></div>
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>💧 Water</h4><p>50K m³/d</p></div>
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>🌱 Agri</h4><p>100 ha</p></div>
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>🔋 Lithium</h4><p>12K t/y</p></div>
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>💎 Metals</h4><p>Au, Ag, Cu</p></div>
+                <div style="background:white; padding:15px; border-radius:var(--radius); text-align:center;"><h4>🧂 Salt</h4><p>50K t/y</p></div>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: INVESTOR (همان با ماشین‌حساب) ===== -->
+    <!-- INVESTOR -->
     <div id="section-investor" class="toggle-section">
         <section class="section scroll-animate" id="investor-section">
-            <div class="text-center">
-                <h2 class="section-title">📊 <span class="highlight">Investor Center</span></h2>
-                <p class="section-sub">Interactive financial tools, real‑time metrics, and full transparency.</p>
-            </div>
-            <div style="background:white; padding:40px 35px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
-                    <div style="display:flex; flex-direction:column; gap:16px;">
-                        <label>💵 Amount (USD)<input type="number" id="investmentAmount" value="1000000" min="10000" step="10000" style="padding:12px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"></label>
-                        <label>💰 Currency<select id="currency" style="padding:12px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option></select></label>
-                        <label>📅 Term (Years)<input type="number" id="termYears" value="5" min="1" max="20" style="padding:12px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"></label>
-                        <label>📈 Scenario<select id="scenario" style="padding:12px; border:2px solid #e2e8f0; border-radius:12px; font-size:1rem; width:100%;"><option value="low">Low Risk</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
-                        <button class="btn-calc" onclick="calculateInvestment()" style="background:var(--secondary); color:white; padding:14px 28px; border:none; border-radius:50px; font-weight:700; font-size:1rem; cursor:pointer;">🚀 Calculate</button>
-                    </div>
-                    <div style="background:var(--light); padding:24px; border-radius:var(--radius); display:flex; flex-direction:column; gap:12px;">
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>📊 Total Return</span><span style="font-weight:700; color:var(--gold);" id="totalReturn">$0</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>📈 Annual ROI</span><span style="font-weight:700; color:#2a7d4a;" id="annualROI">0%</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>⏱️ Payback</span><span style="font-weight:700;" id="paybackPeriod">0 months</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>💰 Annual Income</span><span style="font-weight:700;" id="annualIncome">$0</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>⚡ Net Profit</span><span style="font-weight:700;" id="netProfit">$0</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);"><span>🌍 Carbon Offset</span><span style="font-weight:700;" id="carbonOffset">0 tCO₂</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0;"><span>🏆 Multi‑Revenue Index</span><span style="font-weight:700; color:var(--gold);" id="multiRevenue">0%</span></div>
-                    </div>
-                </div>
-                <div style="margin-top:20px; text-align:center;">
-                    <a href="#" style="display:inline-block; background:var(--secondary); color:white; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600;">📥 Download Model (Excel)</a>
+            <div class="text-center"><h2 class="section-title">📊 <span class="highlight">Investor</span></h2><p class="section-sub">Calculator.</p></div>
+            <div style="background:white; padding:30px; border-radius:var(--radius); box-shadow:var(--shadow);">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                    <div><label>Amount <input type="number" id="investmentAmount" value="1000000" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;"></label>
+                    <label>Years <input type="number" id="termYears" value="5" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;"></label>
+                    <button onclick="calculateInvestment()" style="background:var(--secondary); color:white; padding:12px; border:none; border-radius:30px; width:100%;">Calculate</button></div>
+                    <div><p>Total Return: <span id="totalReturn" style="font-weight:700;">$0</span></p><p>ROI: <span id="annualROI">0%</span></p><p>Payback: <span id="paybackPeriod">0</span></p></div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: ABOUT (توسعه‌یافته با اشتغال و خودکفایی) ===== -->
+    <!-- ABOUT (با اشتغال و خودکفایی) -->
     <div id="section-about" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">ℹ️ <span class="highlight">About AquaNexus</span></h2>
-                <p class="section-sub">Engineering Water · Powering Nations · Building Tomorrow</p>
+            <div class="text-center"><h2 class="section-title">ℹ️ <span class="highlight">About</span></h2><p class="section-sub">Engineering Water · Powering Nations</p></div>
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" class="concept-img">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;">
+                <div style="background:white; padding:20px; border-radius:var(--radius);"><h3>💧 Water</h3><p>50,000 m³/day, aquifer recharge.</p></div>
+                <div style="background:white; padding:20px; border-radius:var(--radius);"><h3>⚡ Energy</h3><p>100 MW baseload, 24/7.</p></div>
+                <div style="background:white; padding:20px; border-radius:var(--radius);"><h3>🌱 Agri</h3><p>100 ha greenhouses.</p></div>
+                <div style="background:white; padding:20px; border-radius:var(--radius);"><h3>💎 Metals</h3><p>Lithium, Gold, Silver.</p></div>
             </div>
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" alt="About" class="concept-img">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px;">
-                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--secondary);">
-                    <h3>💧 Water</h3>
-                    <p>50,000 m³/day fresh water via geothermal desalination. Recharge aquifers for future.</p>
+            <div style="background:white; padding:20px; border-radius:var(--radius); margin-top:20px;">
+                <h3>👷 Employment & Self-Sufficiency</h3>
+                <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-around;">
+                    <div><strong>70</strong> Pilot Jobs</div>
+                    <div><strong>7,000</strong> National Jobs</div>
+                    <div><strong>70,000+</strong> Total Jobs</div>
+                    <div><strong>100%</strong> Water/Energy Self-Sufficiency</div>
+                    <div><strong>$2.5B</strong> Annual Export Revenue</div>
                 </div>
-                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--gold);">
-                    <h3>⚡ Energy</h3>
-                    <p>100 MW baseload geothermal + 20 MW heating + 20 MW cooling — 24/7.</p>
-                </div>
-                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--accent);">
-                    <h3>🌱 Agriculture</h3>
-                    <p>100 ha 4‑season greenhouses, reducing imports and creating jobs.</p>
-                </div>
-                <div style="background:white; padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid #e9c46a;">
-                    <h3>💎 Precious Metals</h3>
-                    <p>12,000 t/y lithium + gold, silver, copper, tungsten — zero processing cost.</p>
-                </div>
-            </div>
-            <div style="margin-top:30px; background:white; padding:32px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                <h3 style="color:var(--primary);">👷 Employment & Self‑Sufficiency</h3>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-top:12px;">
-                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
-                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">70</div>
-                        <div>Direct Jobs (Pilot)</div>
-                    </div>
-                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
-                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">7,000</div>
-                        <div>Direct Jobs (National)</div>
-                    </div>
-                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
-                        <div style="font-size:2rem; font-weight:800; color:var(--secondary);">70,000+</div>
-                        <div>Total Jobs (Direct+Indirect)</div>
-                    </div>
-                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
-                        <div style="font-size:2rem; font-weight:800; color:var(--gold);">100%</div>
-                        <div>Water & Energy Self‑Sufficiency</div>
-                    </div>
-                    <div style="text-align:center; padding:16px; background:var(--light); border-radius:12px;">
-                        <div style="font-size:2rem; font-weight:800; color:var(--gold);">$2.5B</div>
-                        <div>Annual Export Revenue</div>
-                    </div>
-                </div>
-                <p style="margin-top:20px; color:#4a5a6a;">Foreign investment guaranteed by sovereign funds and multilateral agreements. Fully bankable feasibility study available.</p>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: TECHNICAL INSIGHTS (داده‌های زمین، GIS، گسل، لرزه‌نگاری، اقلیم، سیل، سونامی، جمعیت) ===== -->
+    <!-- TECHNICAL (داده‌های زمین، GIS، گسل، لرزه، اقلیم، جمعیت) -->
     <div id="section-technical" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">🔬 <span class="highlight">Technical Insights</span></h2>
-                <p class="section-sub">Geological, seismic, climatic, and demographic data — powered by leading academic institutions.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1200&q=80" alt="Geology" class="concept-img">
+            <div class="text-center"><h2 class="section-title">🔬 <span class="highlight">Technical Insights</span></h2><p class="section-sub">Geological & seismic data.</p></div>
+            <img src="https://images.unsplash.com/photo-1524668951403-0c3b9049c0b0?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>📍 GIS Coordinates</h4><p>25°N – 55°E (Arabian Plate) · 15 sites identified</p><span class="value">Precision ±5m</span></div>
-                <div class="data-card"><h4>🌋 Fault Lines</h4><p>Major faults: Najd, Zagros, Red Sea Rift</p><span class="value">Depth: 3–8 km</span></div>
-                <div class="data-card"><h4>📊 Seismology</h4><p>Low‑moderate seismic activity (M<5)</p><span class="value">Peak Ground Acc. 0.15g</span></div>
-                <div class="data-card"><h4>🗺️ Topography</h4><p>Elevation: 0–500 m, coastal plains & wadis</p><span class="value">Slope < 5%</span></div>
-                <div class="data-card"><h4>🌊 Flood & Tsunami Risk</h4><p>Flood zones: 100‑year return period · Tsunami: low (Arabian Sea)</p><span class="value">Evacuation plan ready</span></div>
-                <div class="data-card"><h4>🌤️ Climate</h4><p>Average temp: 28°C · Solar insolation: 6.5 kWh/m²/day</p><span class="value">Humidity: 60%</span></div>
-                <div class="data-card"><h4>👥 Population Density</h4><p>Urban clusters: 500–2000 /km²</p><span class="value">20 km from major cities</span></div>
-                <div class="data-card"><h4>♨️ Geothermal Gradient</h4><p>35–45 °C/km · Reservoir temp: 180–220°C</p><span class="value">Capacity: 100 MW</span></div>
+                <div class="data-card"><h4>📍 GIS</h4><p>25°N – 55°E</p><span class="value">15 sites</span></div>
+                <div class="data-card"><h4>🌋 Fault Lines</h4><p>Najd, Zagros</p><span class="value">Depth 3-8 km</span></div>
+                <div class="data-card"><h4>📊 Seismology</h4><p>M<5, PGA 0.15g</p><span class="value">Low risk</span></div>
+                <div class="data-card"><h4>🗺️ Topography</h4><p>Elevation 0-500m</p><span class="value">Slope <5%</span></div>
+                <div class="data-card"><h4>🌊 Flood/Tsunami</h4><p>100-year flood</p><span class="value">Low tsunami</span></div>
+                <div class="data-card"><h4>🌤️ Climate</h4><p>Avg 28°C, 6.5 kWh/m²</p><span class="value">Humidity 60%</span></div>
+                <div class="data-card"><h4>👥 Population</h4><p>500-2000 /km²</p><span class="value">Urban clusters</span></div>
+                <div class="data-card"><h4>♨️ Geothermal</h4><p>35-45 °C/km</p><span class="value">180-220°C</span></div>
             </div>
-            <p style="margin-top:20px; color:#4a5a6a; font-style:italic;">* Data sourced from: USGS, Saudi Geological Survey, GFZ Potsdam, and local university studies (2026).</p>
         </section>
     </div>
 
-    <!-- ===== SECTION: MINING & MINERALS (لیتیوم، طلا، نقره، تنگستن، نمک) ===== -->
+    <!-- MINING (لیتیوم، طلا، نقره، تنگستن، نمک) -->
     <div id="section-mining" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">⛏️ <span class="highlight">Mining & Minerals</span></h2>
-                <p class="section-sub">Extracting value from geothermal brine — zero processing cost.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80" alt="Mining" class="concept-img">
+            <div class="text-center"><h2 class="section-title">⛏️ <span class="highlight">Mining & Minerals</span></h2><p class="section-sub">Zero processing cost.</p></div>
+            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80" class="concept-img">
             <div class="data-grid">
-                <div class="data-card"><h4>🔋 Lithium</h4><p>Battery‑grade Li₂CO₃</p><span class="value">12,000 t/y</span></div>
-                <div class="data-card"><h4>🥇 Gold</h4><p>Recovered as by‑product</p><span class="value">0.5 t/y</span></div>
-                <div class="data-card"><h4>🥈 Silver</h4><p>Associated with copper</p><span class="value">2 t/y</span></div>
-                <div class="data-card"><h4>⚙️ Tungsten</h4><p>High‑purity WO₃</p><span class="value">100 t/y</span></div>
-                <div class="data-card"><h4>🧂 Salt (NaCl)</h4><p>Food‑grade & industrial</p><span class="value">50,000 t/y</span></div>
-                <div class="data-card"><h4>🌿 Rare Earths</h4><p>Sc, Y, La, Ce</p><span class="value">200 t/y</span></div>
+                <div class="data-card"><h4>🔋 Lithium</h4><span class="value">12,000 t/y</span></div>
+                <div class="data-card"><h4>🥇 Gold</h4><span class="value">0.5 t/y</span></div>
+                <div class="data-card"><h4>🥈 Silver</h4><span class="value">2 t/y</span></div>
+                <div class="data-card"><h4>⚙️ Tungsten</h4><span class="value">100 t/y</span></div>
+                <div class="data-card"><h4>🧂 Salt</h4><span class="value">50,000 t/y</span></div>
+                <div class="data-card"><h4>🌿 Rare Earths</h4><span class="value">200 t/y</span></div>
             </div>
-            <p style="margin-top:20px; color:#4a5a6a;">All extracted using geothermal waste heat — zero additional energy cost.</p>
         </section>
     </div>
 
-    <!-- ===== SECTION: SCALE-UP & EXPORT (فازبندی، خودکفایی، صادرات، ارزآوری) ===== -->
+    <!-- SCALE-UP (فازبندی، صادرات، ارزآوری) -->
     <div id="section-scaleup" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">📈 <span class="highlight">Scale-up & Export</span></h2>
-                <p class="section-sub">From 100 MW pilot to 10 GW national — multiplying impact by 100×.</p>
+            <div class="text-center"><h2 class="section-title">📈 <span class="highlight">Scale-up & Export</span></h2><p class="section-sub">100 MW to 10 GW.</p></div>
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" class="concept-img">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;">
+                <div style="background:white; padding:20px; border-radius:var(--radius); border-bottom:4px solid var(--secondary);"><h4>🚀 Pilot</h4><p><span class="value">100 MW</span> · 70 jobs</p><p>2026-2027</p></div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); border-bottom:4px solid var(--gold);"><h4>🏭 National</h4><p><span class="value">1 GW</span> · 7,000 jobs</p><p>2028-2030</p></div>
+                <div style="background:white; padding:20px; border-radius:var(--radius); border-bottom:4px solid var(--accent);"><h4>🌍 Export</h4><p><span class="value">10 GW</span> · 70,000+ jobs</p><p>2031-2035</p></div>
             </div>
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Scale-up" class="concept-img">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px;">
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--secondary);">
-                    <h4>🚀 Pilot (Phase 1)</h4>
-                    <p><span class="value">100 MW</span> · 50,000 m³/day · 70 jobs</p>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">2026–2027</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--gold);">
-                    <h4>🏭 National (Phase 2)</h4>
-                    <p><span class="value">1 GW</span> · 500,000 m³/day · 7,000 jobs</p>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">2028–2030</p>
-                </div>
-                <div style="background:white; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:4px solid var(--accent);">
-                    <h4>🌍 Export (Phase 3)</h4>
-                    <p><span class="value">10 GW</span> · 5M m³/day · 70,000+ jobs</p>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">2031–2035</p>
-                </div>
-            </div>
-            <div style="margin-top:30px; background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                <h4>💱 Export Revenue & Currency Preservation</h4>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-                    <div><span class="value">$2.5B/year</span> from energy, water, lithium, metals, salt</div>
-                    <div><span class="value">$1.2B/year</span> saved by replacing imports (food, energy, minerals)</div>
-                </div>
-                <p style="margin-top:10px; color:#4a5a6a;">Foreign investment guaranteed by sovereign wealth funds and bilateral agreements.</p>
+            <div style="background:white; padding:20px; border-radius:var(--radius); margin-top:20px;">
+                <h4>💱 Export Revenue: <span class="value">$2.5B/year</span></h4>
+                <p>Import Substitution: <span class="value">$1.2B/year</span> saved.</p>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: TOURISM & HEALTH (چشمه‌های آب گرم درمانی) ===== -->
+    <!-- TOURISM (چشمه‌های آب گرم) -->
     <div id="section-tourism" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">♨️ <span class="highlight">Tourism & Health</span></h2>
-                <p class="section-sub">Geothermal hot springs — healing, relaxation, and economic diversification.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80" alt="Hot Springs" class="concept-img">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;">
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>🩺 Medical Tourism</h4>
-                    <p>Mineral‑rich thermal waters (sulfur, magnesium, lithium) for rheumatism, skin diseases, and rehabilitation.</p>
-                    <span class="value">500+ beds planned</span>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>🏨 Eco‑Resorts</h4>
-                    <p>Luxury lodges and spa resorts integrated with natural landscapes.</p>
-                    <span class="value">1,000+ visitors/day</span>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>👨‍🌾 Local Employment</h4>
-                    <p>Direct jobs: 1,500+ in hospitality, wellness, and maintenance.</p>
-                    <span class="value">Indirect jobs: 5,000+</span>
-                </div>
-                <div style="background:white; padding:24px; border-radius:var(--radius); box-shadow:var(--shadow);">
-                    <h4>💰 Economic Impact</h4>
-                    <p>Annual revenue from tourism: <span class="value">$300M</span></p>
-                    <p style="font-size:0.9rem; color:#4a5a6a;">Diversifies income beyond industrial exports.</p>
-                </div>
+            <div class="text-center"><h2 class="section-title">♨️ <span class="highlight">Tourism & Health</span></h2><p class="section-sub">Hot springs for healing & economy.</p></div>
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80" class="concept-img">
+            <div class="data-grid">
+                <div class="data-card"><h4>🩺 Medical Tourism</h4><p>Mineral-rich thermal waters.</p><span class="value">500+ beds</span></div>
+                <div class="data-card"><h4>🏨 Eco-Resorts</h4><p>Luxury lodges.</p><span class="value">1,000+ visitors/day</span></div>
+                <div class="data-card"><h4>👨‍🌾 Jobs</h4><p>Direct: 1,500</p><span class="value">Indirect: 5,000</span></div>
+                <div class="data-card"><h4>💰 Revenue</h4><p>Annual tourism income.</p><span class="value">$300M</span></div>
             </div>
         </section>
     </div>
 
-    <!-- ===== SECTION: CONTACT (همان) ===== -->
+    <!-- CONTACT -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
-            <div class="text-center">
-                <h2 class="section-title">📬 <span class="highlight">Contact</span></h2>
-                <p class="section-sub">For partnerships, investments, or research collaboration — reach out.</p>
-            </div>
+            <div class="text-center"><h2 class="section-title">📬 <span class="highlight">Contact</span></h2></div>
             <div class="contact-card general">
-                <div class="card-header"><i class="fas fa-envelope" style="color:var(--secondary);"></i><h3 id="contGen">General Inquiries</h3></div>
-                <p class="card-desc" id="contGenDesc">For media, research, and non‑investment questions.</p>
-                <button class="email-reveal-btn" onclick="toggleEmail('email1')" id="contReveal1">📧 Show Email</button>
-                <div class="email-hidden" id="email1">
-                    <a href="mailto:vahid.aquanexus@protonmail.com">vahid.aquanexus@protonmail.com</a>
-                </div>
+                <div class="card-header"><i class="fas fa-envelope"></i><h3>General</h3></div>
+                <button class="email-reveal-btn" onclick="toggleEmail('email1')">📧 Show Email</button>
+                <div class="email-hidden" id="email1"><a href="mailto:vahid.aquanexus@protonmail.com">vahid.aquanexus@protonmail.com</a></div>
             </div>
             <div class="contact-card partner">
-                <div class="card-header"><i class="fas fa-handshake" style="color:var(--gold);"></i><h3 id="contPart">Strategic Partnerships & Investment</h3></div>
-                <p class="card-desc" id="contPartDesc">For sovereign funds, institutional investors, and governments.</p>
-                <button class="email-reveal-btn" onclick="toggleEmail('email2')" id="contReveal2">📧 Show Email</button>
-                <div class="email-hidden" id="email2">
-                    <a href="mailto:vahid.nezamivand.chegane@gmail.com">vahid.nezamivand.chegane@gmail.com</a>
-                </div>
+                <div class="card-header"><i class="fas fa-handshake"></i><h3>Partnerships</h3></div>
+                <button class="email-reveal-btn" onclick="toggleEmail('email2')">📧 Show Email</button>
+                <div class="email-hidden" id="email2"><a href="mailto:vahid.nezamivand.chegane@gmail.com">vahid.nezamivand.chegane@gmail.com</a></div>
             </div>
         </section>
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer-new">
     <div class="brand"><span class="aqua">Aqua</span><span class="nexus">Nexus</span></div>
-    <div class="lines">
-        <span id="ft1">Engineering Water</span> · <span id="ft2">Powering Nations</span> · <span id="ft3">Building Tomorrow</span>
-    </div>
-    <p style="margin-top:20px; opacity:0.4; font-size:0.8rem;" id="ft4">© 2026 Vahid Nezamivand Chegane · Built with ❤️</p>
+    <div class="lines"><span>Engineering Water</span> · <span>Powering Nations</span> · <span>Building Tomorrow</span></div>
+    <p style="margin-top:20px; opacity:0.4; font-size:0.8rem;">© 2026 Vahid Nezamivand Chegane</p>
 </footer>
 
-<!-- =============================================
-     JAVASCRIPT
-     ============================================= -->
 <script>
     // ===== LANGUAGE SWITCHER =====
     const translations = {
-        en: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Engineering Water · Powering Nations · Building Tomorrow',heroSub:'Integrated Infrastructure Platform',
-            btnExplore:'Explore',btnInvest:'Invest',navTitle:'Explore <span class="highlight">AquaNexus</span>',
-            wjTitle:'The',wjHighlight:'Water Journey',wjSub:'Follow the path of water — from the ocean to the future.',
-            j1:'Ocean',j2:'Desalination',j3:'Storage',j4:'Aquifer',j5:'Agriculture',j6:'Cities',j7:'Future',
-            contGen:'General Inquiries',contGenDesc:'For media, research, and non‑investment questions.',
-            contPart:'Strategic Partnerships & Investment',contPartDesc:'For sovereign funds, institutional investors, and governments.',
-            contReveal1:'📧 Show Email',contReveal2:'📧 Show Email',
-            ft1:'Engineering Water',ft2:'Powering Nations',ft3:'Building Tomorrow',ft4:'© 2026 Vahid Nezamivand Chegane · Built with ❤️'
-        },
-        fr: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Ingénierie de l\'Eau · Alimenter les Nations · Construire Demain',heroSub:'Plateforme d\'Infrastructure Intégrée',
-            btnExplore:'Explorer',btnInvest:'Investir',navTitle:'Explorer <span class="highlight">AquaNexus</span>',
-            wjTitle:'Le',wjHighlight:'Voyage de l\'Eau',wjSub:'Suivez le chemin de l\'eau — de l\'océan vers l\'avenir.',
-            j1:'Océan',j2:'Dessalement',j3:'Stockage',j4:'Aquifère',j5:'Agriculture',j6:'Villes',j7:'Avenir',
-            contGen:'Demandes Générales',contGenDesc:'Pour les médias, la recherche et les questions non liées à l\'investissement.',
-            contPart:'Partenariats Stratégiques & Investissement',contPartDesc:'Pour les fonds souverains, les investisseurs institutionnels et les gouvernements.',
-            contReveal1:'📧 Afficher l\'email',contReveal2:'📧 Afficher l\'email',
-            ft1:'Ingénierie de l\'Eau',ft2:'Alimenter les Nations',ft3:'Construire Demain',ft4:'© 2026 Vahid Nezamivand Chegane · Construit avec ❤️'
-        },
-        de: {
-            brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Wassertechnik · Nationen Versorgen · Morgen Bauen',heroSub:'Integrierte Infrastrukturplattform',
-            btnExplore:'Erkunden',btnInvest:'Investieren',navTitle:'Erkunden Sie <span class="highlight">AquaNexus</span>',
-            wjTitle:'Die',wjHighlight:'Wasserreise',wjSub:'Folgen Sie dem Weg des Wassers — vom Ozean in die Zukunft.',
-            j1:'Ozean',j2:'Entsalzung',j3:'Speicherung',j4:'Grundwasserleiter',j5:'Landwirtschaft',j6:'Städte',j7:'Zukunft',
-            contGen:'Allgemeine Anfragen',contGenDesc:'Für Medien, Forschung und nicht‑investitionsbezogene Fragen.',
-            contPart:'Strategische Partnerschaften & Investition',contPartDesc:'Für Staatsfonds, institutionelle Anleger und Regierungen.',
-            contReveal1:'📧 E‑Mail anzeigen',contReveal2:'📧 E‑Mail anzeigen',
-            ft1:'Wassertechnik',ft2:'Nationen Versorgen',ft3:'Morgen Bauen',ft4:'© 2026 Vahid Nezamivand Chegane · Mit ❤️ erstellt'
-        },
-        ar: {
-            brandAqua:'أكوا',brandNexus:'نيكسوس',heroTagline:'هندسة المياه · تمكين الأمم · بناء الغد',heroSub:'منصة بنية تحتية متكاملة',
-            btnExplore:'استكشف',btnInvest:'استثمر',navTitle:'استكشف <span class="highlight">أكوا نيكسوس</span>',
-            wjTitle:'رحلة',wjHighlight:'المياه',wjSub:'اتبع مسار الماء — من المحيط إلى المستقبل.',
-            j1:'المحيط',j2:'التحلية',j3:'التخزين',j4:'الخزان الجوفي',j5:'الزراعة',j6:'المدن',j7:'المستقبل',
-            contGen:'استفسارات عامة',contGenDesc:'للإعلام والبحوث والاستفسارات غير الاستثمارية.',
-            contPart:'الشراكات الاستراتيجية والاستثمار',contPartDesc:'للصناديق السيادية والمستثمرين المؤسسيين والحكومات.',
-            contReveal1:'📧 إظهار البريد الإلكتروني',contReveal2:'📧 إظهار البريد الإلكتروني',
-            ft1:'هندسة المياه',ft2:'تمكين الأمم',ft3:'بناء الغد',ft4:'© 2026 وحيد نظام‌وند چگنه · بناها بحب ❤️'
-        }
+        en: { brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Engineering Water · Powering Nations · Building Tomorrow',heroSub:'Integrated Platform',btnExplore:'Explore',navTitle:'Explore <span class="highlight">AquaNexus</span>',wjTitle:'The',wjHighlight:'Water Journey',wjSub:'From ocean to future.',j1:'Ocean',j2:'Desalination',j3:'Storage',j4:'Aquifer',j5:'Agriculture',j6:'Cities',j7:'Future' },
+        fr: { brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Ingénierie de l\'Eau',heroSub:'Plateforme Intégrée',btnExplore:'Explorer',navTitle:'Explorer <span class="highlight">AquaNexus</span>',wjTitle:'Le',wjHighlight:'Voyage de l\'Eau',wjSub:'De l\'océan au futur.',j1:'Océan',j2:'Dessalement',j3:'Stockage',j4:'Aquifère',j5:'Agriculture',j6:'Villes',j7:'Avenir' },
+        de: { brandAqua:'Aqua',brandNexus:'Nexus',heroTagline:'Wassertechnik',heroSub:'Integrierte Plattform',btnExplore:'Erkunden',navTitle:'Erkunden <span class="highlight">AquaNexus</span>',wjTitle:'Die',wjHighlight:'Wasserreise',wjSub:'Vom Ozean zur Zukunft.',j1:'Ozean',j2:'Entsalzung',j3:'Speicherung',j4:'Grundwasserleiter',j5:'Landwirtschaft',j6:'Städte',j7:'Zukunft' },
+        ar: { brandAqua:'أكوا',brandNexus:'نيكسوس',heroTagline:'هندسة المياه',heroSub:'منصة متكاملة',btnExplore:'استكشف',navTitle:'استكشف <span class="highlight">أكوا نيكسوس</span>',wjTitle:'رحلة',wjHighlight:'المياه',wjSub:'من المحيط إلى المستقبل.',j1:'المحيط',j2:'التحلية',j3:'التخزين',j4:'الخزان',j5:'الزراعة',j6:'المدن',j7:'المستقبل' }
     };
-
     function switchLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-        const t = translations[lang];
-        if (!t) return;
-        Object.keys(t).forEach(key => {
-            const el = document.getElementById(key);
-            if (el) {
-                if (key === 'navTitle' || key === 'heroSub') {
-                    el.innerHTML = t[key];
-                } else {
-                    el.textContent = t[key];
-                }
-            }
-        });
+        const t = translations[lang]; if(!t) return;
+        Object.keys(t).forEach(key => { const el = document.getElementById(key); if(el) { if(key === 'navTitle' || key === 'heroSub') el.innerHTML = t[key]; else el.textContent = t[key]; } });
     }
 
-    // ===== TOGGLE SECTIONS =====
     function showSection(id, btn) {
         document.querySelectorAll('.toggle-section').forEach(el => el.classList.remove('active'));
         const target = document.getElementById('section-' + id);
@@ -1126,55 +750,31 @@
         document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ===== TOGGLE DETAIL (Water Journey) =====
     function toggleDetail(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        document.querySelectorAll('.detail-section').forEach(d => {
-            if (d.id !== id) d.classList.remove('active');
-        });
+        const el = document.getElementById(id); if(!el) return;
+        document.querySelectorAll('.detail-section').forEach(d => { if(d.id !== id) d.classList.remove('active'); });
         el.classList.toggle('active');
-        if (el.classList.contains('active')) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        if(el.classList.contains('active')) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // ===== TOGGLE EMAIL =====
     function toggleEmail(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
+        const el = document.getElementById(id); if(!el) return;
         el.classList.toggle('show');
         const btn = el.previousElementSibling;
-        if (btn && btn.classList.contains('email-reveal-btn')) {
-            btn.textContent = el.classList.contains('show') ? '📧 Hide Email' : '📧 Show Email';
-        }
+        if(btn && btn.classList.contains('email-reveal-btn')) btn.textContent = el.classList.contains('show') ? '📧 Hide' : '📧 Show';
     }
 
-    // ===== INVESTMENT CALCULATOR =====
     function calculateInvestment() {
         const amount = parseFloat(document.getElementById('investmentAmount').value) || 1000000;
         const term = parseInt(document.getElementById('termYears').value) || 5;
-        const scenario = document.getElementById('scenario').value;
-        const currency = document.getElementById('currency').value;
-        let multiplier = scenario === 'low' ? 0.12 : scenario === 'medium' ? 0.30 : 0.45;
-        const annualIncome = amount * multiplier;
-        const totalReturn = amount * (1 + multiplier * term);
-        const netProfit = totalReturn - amount;
-        const paybackMonths = Math.round(term / (1 + multiplier * term) * 12);
-        const carbonOffset = Math.round(amount / 10000 * 2.8 * 1000);
-        const multiRevenue = Math.min(100, Math.round((amount / 10000000) * 100 + 15));
-        const symbols = { USD: '$', EUR: '€', GBP: '£' };
-        const sym = symbols[currency] || '$';
-        document.getElementById('totalReturn').textContent = sym + totalReturn.toLocaleString('en-US', { maximumFractionDigits: 0 });
+        const multiplier = 0.30;
+        const total = amount * (1 + multiplier * term);
+        document.getElementById('totalReturn').textContent = '$' + total.toLocaleString();
         document.getElementById('annualROI').textContent = (multiplier * 100).toFixed(0) + '%';
-        document.getElementById('paybackPeriod').textContent = paybackMonths + ' months';
-        document.getElementById('annualIncome').textContent = sym + annualIncome.toLocaleString('en-US', { maximumFractionDigits: 0 });
-        document.getElementById('netProfit').textContent = sym + netProfit.toLocaleString('en-US', { maximumFractionDigits: 0 });
-        document.getElementById('carbonOffset').textContent = carbonOffset + ' tCO₂';
-        document.getElementById('multiRevenue').textContent = multiRevenue + '%';
+        document.getElementById('paybackPeriod').textContent = Math.round(term / (1 + multiplier * term) * 12) + ' months';
     }
 
-    // ===== THREE.JS GLOBE WITH BRIGHT SPOTS =====
+    // ===== THREE.JS GLOBE WITH GOLDEN SPOTS =====
     document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('globeCanvas');
         if (!container) return;
@@ -1190,75 +790,48 @@
 
         const textureLoader = new THREE.TextureLoader();
         const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-        const earthMaterial = new THREE.MeshPhongMaterial({ map: earthTexture, specular: new THREE.Color(0x333333), shininess: 5 });
-        const earthGeometry = new THREE.SphereGeometry(1, 64, 64);
-        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        const earth = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 64), new THREE.MeshPhongMaterial({ map: earthTexture, shininess: 5 }));
         scene.add(earth);
 
         // Glow
-        const glowMaterial = new THREE.MeshBasicMaterial({ color: 0x1a6fb5, transparent: true, opacity: 0.08, side: THREE.BackSide });
-        const glowGeometry = new THREE.SphereGeometry(1.15, 32, 32);
-        const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+        const glow = new THREE.Mesh(new THREE.SphereGeometry(1.15, 32, 32), new THREE.MeshBasicMaterial({ color: 0x1a6fb5, transparent: true, opacity: 0.08, side: THREE.BackSide }));
         scene.add(glow);
 
-        // Bright spots (strategic locations)
+        // Golden Spots (Strategic Locations)
         const spotPositions = [
             [0.4, 0.6], [0.7, 0.8], [0.2, 0.3], [0.9, 0.4], [0.5, 0.2],
             [0.3, 0.7], [0.8, 0.1], [0.1, 0.5], [0.6, 0.9], [0.4, 0.1]
         ];
-        const spotMaterial = new THREE.PointsMaterial({
-            color: 0xe9c46a,
-            size: 0.04,
-            sizeAttenuation: true,
-            transparent: true,
-            opacity: 0.9
-        });
-        const spotGeometry = new THREE.BufferGeometry();
         const positions = [];
         spotPositions.forEach(([u, v]) => {
             const theta = 2 * Math.PI * u;
             const phi = Math.PI * v;
-            const x = Math.sin(phi) * Math.cos(theta);
-            const y = Math.sin(phi) * Math.sin(theta);
-            const z = Math.cos(phi);
-            positions.push(x, y, z);
+            positions.push(Math.sin(phi) * Math.cos(theta), Math.sin(phi) * Math.sin(theta), Math.cos(phi));
         });
-        spotGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-        const spots = new THREE.Points(spotGeometry, spotMaterial);
+        const spotGeom = new THREE.BufferGeometry();
+        spotGeom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        const spotMat = new THREE.PointsMaterial({ color: 0xe9c46a, size: 0.05, sizeAttenuation: true });
+        const spots = new THREE.Points(spotGeom, spotMat);
         scene.add(spots);
 
-        // Pulsing glow around spots (additional)
-        const glowSpotMaterial = new THREE.PointsMaterial({
-            color: 0xffaa00,
-            size: 0.02,
-            transparent: true,
-            opacity: 0.3,
-            blending: THREE.AdditiveBlending
-        });
-        const glowSpots = new THREE.Points(spotGeometry, glowSpotMaterial);
+        // Pulsing Glow spots
+        const glowSpotMat = new THREE.PointsMaterial({ color: 0xffaa00, size: 0.03, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
+        const glowSpots = new THREE.Points(spotGeom, glowSpotMat);
         scene.add(glowSpots);
 
         // Lights
-        const ambientLight = new THREE.AmbientLight(0x404060);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        directionalLight.position.set(2, 1, 2);
-        scene.add(directionalLight);
-        const backLight = new THREE.DirectionalLight(0x4466aa, 0.5);
-        backLight.position.set(-1, -0.5, -1);
-        scene.add(backLight);
+        scene.add(new THREE.AmbientLight(0x404060));
+        const light = new THREE.DirectionalLight(0xffffff, 1.2);
+        light.position.set(2, 1, 2);
+        scene.add(light);
+        scene.add(new THREE.DirectionalLight(0x4466aa, 0.5).position.set(-1, -0.5, -1));
 
         // Stars
-        const starsGeometry = new THREE.BufferGeometry();
-        const starsCount = 3000;
-        const starsPositions = new Float32Array(starsCount * 3);
-        for (let i = 0; i < starsCount * 3; i++) {
-            starsPositions[i] = (Math.random() - 0.5) * 200;
-        }
-        starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
-        const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15 });
-        const stars = new THREE.Points(starsGeometry, starsMaterial);
-        scene.add(stars);
+        const starsGeom = new THREE.BufferGeometry();
+        const starPos = new Float32Array(3000 * 3);
+        for (let i = 0; i < 3000 * 3; i++) starPos[i] = (Math.random() - 0.5) * 200;
+        starsGeom.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        scene.add(new THREE.Points(starsGeom, new THREE.PointsMaterial({ color: 0xffffff, size: 0.15 })));
 
         function animate() {
             requestAnimationFrame(animate);
@@ -1266,9 +839,7 @@
             glow.rotation.y += 0.0015;
             spots.rotation.y += 0.0015;
             glowSpots.rotation.y += 0.0015;
-            // Pulse opacity
-            const pulse = Math.sin(Date.now() * 0.002) * 0.2 + 0.5;
-            glowSpots.material.opacity = 0.2 + pulse * 0.3;
+            glowSpots.material.opacity = 0.2 + Math.sin(Date.now() * 0.003) * 0.3;
             renderer.render(scene, camera);
         }
         animate();
@@ -1282,18 +853,10 @@
         });
 
         // Scroll animations
-        const scrollElements = document.querySelectorAll('.scroll-animate');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        scrollElements.forEach(el => observer.observe(el));
-
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 }).observe(el);
+        });
         calculateInvestment();
-        // Set default active tab
         showSection('journey', document.querySelector('.nav-tab'));
     });
 </script>
