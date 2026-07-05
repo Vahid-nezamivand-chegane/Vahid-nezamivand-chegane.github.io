@@ -210,32 +210,6 @@
             text-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* Investment Calculator */
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        .calc-input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; background: white; }
-        .calc-results {
-            background: var(--light);
-            padding: 25px 20px;
-            border-radius: var(--radius);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            justify-content: center;
-        }
-        .calc-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .calc-row:last-child { border-bottom: none; }
-        .calc-label { font-weight: 500; }
-        .calc-value { font-weight: 700; font-size: 1.2rem; }
-
         .toggle-section {
             display: none;
             animation: fadeIn 0.6s ease-out;
@@ -316,51 +290,6 @@
         .data-card p { font-size: 0.9rem; color: #4a5a6a; }
         .data-card .value { font-weight: 700; color: var(--secondary); font-size: 1.1rem; }
 
-        .contact-card {
-            background: white;
-            padding: 32px 28px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin-bottom: 24px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .contact-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.10); }
-        .contact-card .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
-        .contact-card .card-header i { font-size: 2rem; }
-        .contact-card .card-header h3 { font-size: 1.3rem; margin: 0; }
-        .contact-card .card-desc { color: #4a5a6a; margin-top: 10px; font-size: 0.95rem; }
-        .contact-card.general { border-bottom: 4px solid var(--secondary); }
-        .contact-card.partner { border-bottom: 4px solid var(--gold); }
-
-        .email-reveal-btn {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-        .email-reveal-btn:hover { background: var(--primary); transform: scale(1.02); }
-        .email-hidden {
-            display: none;
-            margin-top: 10px;
-        }
-        .email-hidden.show { display: block; }
-        .email-hidden a {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-            word-break: break-all;
-        }
-
         .scroll-animate {
             opacity: 0;
             transform: translateY(40px);
@@ -416,6 +345,76 @@
             transition: width 0.5s ease;
         }
 
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .calc-input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; background: white; }
+        .calc-results {
+            background: var(--light);
+            padding: 25px 20px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .calc-row:last-child { border-bottom: none; }
+        .calc-label { font-weight: 500; }
+        .calc-value { font-weight: 700; font-size: 1.2rem; }
+
+        .contact-card {
+            background: white;
+            padding: 32px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.10); }
+        .contact-card .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+        .contact-card .card-header i { font-size: 2rem; }
+        .contact-card .card-header h3 { font-size: 1.3rem; margin: 0; }
+        .contact-card .card-desc { color: #4a5a6a; margin-top: 10px; font-size: 0.95rem; }
+        .contact-card.general { border-bottom: 4px solid var(--secondary); }
+        .contact-card.partner { border-bottom: 4px solid var(--gold); }
+
+        .email-reveal-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        .email-reveal-btn:hover { background: var(--primary); transform: scale(1.02); }
+        .email-hidden {
+            display: none;
+            margin-top: 10px;
+        }
+        .email-hidden.show { display: block; }
+        .email-hidden a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
         @media (max-width: 640px) {
             .hero-content .logo-text { font-size: 2.4rem; }
             .hero-content .tagline { font-size: 1rem; letter-spacing: 2px; }
@@ -466,7 +465,7 @@
 </section>
 
 <!-- ============================================================
-     INVESTMENT CALCULATOR (اینجا دقیقاً بعد از کره اضافه شده)
+     INVESTMENT CALCULATOR
      ============================================================ -->
 <section class="section scroll-animate" style="padding-top: 20px;">
     <div class="text-center">
@@ -477,7 +476,6 @@
 
     <div style="max-width: 900px; margin: 0 auto; background: white; padding: 40px 35px; border-radius: var(--radius); box-shadow: var(--shadow);">
         <div class="calc-grid">
-            <!-- ستون چپ: ورودی‌ها -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div>
                     <label for="investAmount" style="display: block; margin-bottom: 6px; font-weight: 600; color: var(--primary);" id="calcLabelAmount">💵 Investment Amount</label>
@@ -509,7 +507,6 @@
                 </button>
             </div>
 
-            <!-- ستون راست: نتایج -->
             <div class="calc-results">
                 <div class="calc-row">
                     <span class="calc-label" id="calcResTotal">📊 Total Return</span>
@@ -812,7 +809,7 @@
         </section>
     </div>
 
-    <!-- ==================== CONTACT ==================== -->
+    <!-- ==================== CONTACT (به‌روزرسانی‌شده با ایمیل مستقیم اضطراری) ==================== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
@@ -822,6 +819,23 @@
 
             <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px 35px; border-radius: var(--radius); box-shadow: var(--shadow);">
 
+                <!-- ✅ هشدار اضطراری ایمیل مستقیم -->
+                <div style="background: #e0f2fe; border: 2px solid #38bdf8; border-radius: 12px; padding: 16px 20px; margin-bottom: 25px; text-align: center;">
+                    <i class="fas fa-envelope" style="color: #0284c7; font-size: 1.5rem; display: block; margin-bottom: 6px;"></i>
+                    <span style="font-weight: 600; color: #0369a1; font-size: 1rem;">
+                        ⚡ If the form below fails to send or the server is busy, please use the direct email:
+                    </span>
+                    <br>
+                    <a href="mailto:vahid.aquanexus@protonmail.com" style="color: #0284c7; font-weight: 700; font-size: 1.2rem; text-decoration: underline; word-break: break-all;">
+                        vahid.aquanexus@protonmail.com
+                    </a>
+                    <br>
+                    <span style="font-size: 0.85rem; color: #475569; display: block; margin-top: 4px;">
+                        📌 All messages are monitored by spam filter – please use a valid email address.
+                    </span>
+                </div>
+
+                <!-- فرم -->
                 <form id="contactForm">
                     <div style="margin-bottom: 20px;">
                         <label for="department" style="display: block; margin-bottom: 6px; font-weight: 600; color: var(--primary);">📌 Department</label>
@@ -876,7 +890,24 @@
                     </div>
                 </form>
 
+                <!-- پیام وضعیت ارسال -->
                 <div id="formStatus" style="margin-top: 25px; padding: 16px 20px; border-radius: 12px; display: none; font-weight: 600; text-align: center; transition: all 0.3s ease;">
+                </div>
+
+                <!-- ⚠️ پیام اضطراری زیر فرم -->
+                <div style="background: #fef2f2; border: 1px solid #f87171; border-radius: 12px; padding: 14px 18px; margin-top: 20px; text-align: center;">
+                    <i class="fas fa-exclamation-triangle" style="color: #dc2626; font-size: 1.2rem;"></i>
+                    <span style="color: #991b1b; font-weight: 500;">
+                        ⚠️ If the form does not send or you receive an error, please use the emergency email:
+                    </span>
+                    <br>
+                    <a href="mailto:vahid.aquanexus@protonmail.com" style="color: #dc2626; font-weight: 700; font-size: 1.1rem; text-decoration: underline;">
+                        vahid.aquanexus@protonmail.com
+                    </a>
+                    <br>
+                    <span style="font-size: 0.8rem; color: #475569;">
+                        ✅ Spam filter is active – ensure your email is valid.
+                    </span>
                 </div>
 
             </div>
@@ -1318,10 +1349,9 @@
         setText('achFounder', t.achFounder); setText('achFounderTitle', t.achFounderTitle);
         setText('achPhd', t.achPhd); setText('achFocus', t.achFocus);
 
-        // Contact
-        setText('contTitle', t.contTitle); setText('contSub', t.contSub);
-
-        // Calculator
+        // Contact & Calculator
+        setText('contTitle', t.contTitle);
+        setText('contSub', t.contSub);
         setText('calcTitle', t.calcTitle);
         setText('calcSub', t.calcSub);
         setText('calcNote', t.calcNote);
@@ -1441,7 +1471,7 @@
                 statusDiv.style.background = '#fee2e2';
                 statusDiv.style.color = '#991b1b';
                 statusDiv.style.border = '2px solid #fecaca';
-                statusDiv.innerHTML = '❌ Sending failed. Please try again later or contact us directly.';
+                statusDiv.innerHTML = '❌ Sending failed. Please try again later or use the direct email: vahid.aquanexus@protonmail.com';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
@@ -1531,7 +1561,6 @@
             new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 }).observe(el);
         });
 
-        // Set default active tab
         showSection('journey', document.querySelector('.nav-tab'));
     });
 </script>
