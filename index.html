@@ -415,6 +415,48 @@
             word-break: break-all;
         }
 
+        /* Emergency Email Button (مخفی در پایین فرم) */
+        .emergency-email-btn {
+            background: transparent;
+            color: #6b7280;
+            border: 1px dashed #cbd5e1;
+            padding: 6px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            margin-top: 5px;
+        }
+        .emergency-email-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+        .emergency-email-box {
+            display: none;
+            margin-top: 8px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .emergency-email-box.show {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .emergency-email-box a {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+        .emergency-email-box .note {
+            font-size: 0.75rem;
+            color: #64748b;
+            display: block;
+            margin-top: 3px;
+        }
+
         @media (max-width: 640px) {
             .hero-content .logo-text { font-size: 2.4rem; }
             .hero-content .tagline { font-size: 1rem; letter-spacing: 2px; }
@@ -809,7 +851,7 @@
         </section>
     </div>
 
-    <!-- ==================== CONTACT (به‌روزرسانی‌شده با ایمیل مستقیم اضطراری) ==================== -->
+    <!-- ==================== CONTACT (با ایمیل مخفی در پایین) ==================== -->
     <div id="section-contact" class="toggle-section">
         <section class="section scroll-animate">
             <div class="text-center">
@@ -818,22 +860,6 @@
             </div>
 
             <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px 35px; border-radius: var(--radius); box-shadow: var(--shadow);">
-
-                <!-- ✅ هشدار اضطراری ایمیل مستقیم -->
-                <div style="background: #e0f2fe; border: 2px solid #38bdf8; border-radius: 12px; padding: 16px 20px; margin-bottom: 25px; text-align: center;">
-                    <i class="fas fa-envelope" style="color: #0284c7; font-size: 1.5rem; display: block; margin-bottom: 6px;"></i>
-                    <span style="font-weight: 600; color: #0369a1; font-size: 1rem;">
-                        ⚡ If the form below fails to send or the server is busy, please use the direct email:
-                    </span>
-                    <br>
-                    <a href="mailto:vahid.aquanexus@protonmail.com" style="color: #0284c7; font-weight: 700; font-size: 1.2rem; text-decoration: underline; word-break: break-all;">
-                        vahid.aquanexus@protonmail.com
-                    </a>
-                    <br>
-                    <span style="font-size: 0.85rem; color: #475569; display: block; margin-top: 4px;">
-                        📌 All messages are monitored by spam filter – please use a valid email address.
-                    </span>
-                </div>
 
                 <!-- فرم -->
                 <form id="contactForm">
@@ -894,20 +920,16 @@
                 <div id="formStatus" style="margin-top: 25px; padding: 16px 20px; border-radius: 12px; display: none; font-weight: 600; text-align: center; transition: all 0.3s ease;">
                 </div>
 
-                <!-- ⚠️ پیام اضطراری زیر فرم -->
-                <div style="background: #fef2f2; border: 1px solid #f87171; border-radius: 12px; padding: 14px 18px; margin-top: 20px; text-align: center;">
-                    <i class="fas fa-exclamation-triangle" style="color: #dc2626; font-size: 1.2rem;"></i>
-                    <span style="color: #991b1b; font-weight: 500;">
-                        ⚠️ If the form does not send or you receive an error, please use the emergency email:
-                    </span>
-                    <br>
-                    <a href="mailto:vahid.aquanexus@protonmail.com" style="color: #dc2626; font-weight: 700; font-size: 1.1rem; text-decoration: underline;">
-                        vahid.aquanexus@protonmail.com
-                    </a>
-                    <br>
-                    <span style="font-size: 0.8rem; color: #475569;">
-                        ✅ Spam filter is active – ensure your email is valid.
-                    </span>
+                <!-- ⚠️ دکمه مخفی ایمیل اضطراری (پایین فرم) -->
+                <div style="text-align: center; margin-top: 15px;">
+                    <button onclick="toggleEmergencyEmail()" class="emergency-email-btn" id="emergencyToggleBtn">
+                        🔒 Need help? Click for direct email
+                    </button>
+                    <div id="emergencyEmailBox" class="emergency-email-box">
+                        <i class="fas fa-envelope" style="color: var(--secondary);"></i>
+                        <a href="mailto:vahid.aquanexus@protonmail.com">vahid.aquanexus@protonmail.com</a>
+                        <span class="note">📌 Spam filter is active – please use a valid email address.</span>
+                    </div>
                 </div>
 
             </div>
@@ -1387,6 +1409,20 @@
     }
 
     // ============================================================
+    //  TOGGLE EMERGENCY EMAIL (مخفی)
+    // ============================================================
+    function toggleEmergencyEmail() {
+        const box = document.getElementById('emergencyEmailBox');
+        const btn = document.getElementById('emergencyToggleBtn');
+        box.classList.toggle('show');
+        if (box.classList.contains('show')) {
+            btn.textContent = '🔒 Hide direct email';
+        } else {
+            btn.textContent = '🔒 Need help? Click for direct email';
+        }
+    }
+
+    // ============================================================
     //  INVESTMENT CALCULATOR
     // ============================================================
     function calculateInvestmentNew() {
@@ -1471,7 +1507,7 @@
                 statusDiv.style.background = '#fee2e2';
                 statusDiv.style.color = '#991b1b';
                 statusDiv.style.border = '2px solid #fecaca';
-                statusDiv.innerHTML = '❌ Sending failed. Please try again later or use the direct email: vahid.aquanexus@protonmail.com';
+                statusDiv.innerHTML = '❌ Sending failed. Please try again later or use the direct email (click "Need help?" below).';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
