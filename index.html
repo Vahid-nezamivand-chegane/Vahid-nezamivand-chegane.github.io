@@ -1,4 +1,6 @@
+## ✅ کد نهایی کامل و یکپارچه (آخرین نسخه با تمام اصلاحات)
 
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -52,7 +54,7 @@
         .text-center { text-align: center; }
         .text-center .section-sub { margin-left: auto; margin-right: auto; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .grid-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
@@ -154,8 +156,9 @@
             display: flex;
             gap: 12px;
             margin-top: 10px;
+            flex-wrap: wrap;
         }
-        .contact-form .btn-group .btn { flex: 1; }
+        .contact-form .btn-group .btn { flex: 1; min-width: 120px; }
         .contact-form .btn-secondary-form {
             background: transparent;
             color: var(--secondary);
@@ -305,7 +308,7 @@
             z-index: 999;
             display: flex;
             gap: 4px;
-            background: rgba(10,42,68,0.75);
+            background: rgba(10,42,68,0.85);
             backdrop-filter: blur(12px);
             padding: 6px 10px;
             border-radius: 40px;
@@ -472,11 +475,13 @@
         }
         .achievement-item:hover { transform: translateX(8px); }
         .achievement-item img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
             border-radius: 12px;
             flex-shrink: 0;
+            background: white;
+            padding: 4px;
         }
         .achievement-item .ach-text { flex: 1; }
         .achievement-item .ach-text h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 2px; }
@@ -501,9 +506,11 @@
         .university-grid .uni-item img {
             width: 100%;
             height: 100px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 8px;
             margin-bottom: 8px;
+            background: white;
+            padding: 4px;
         }
         .university-grid .uni-item h5 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: var(--dark); }
         .university-grid .uni-item p { font-size: 0.75rem; color: #6a7a8a; }
@@ -591,7 +598,7 @@
             border-radius: 12px;
             margin: 16px 0;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
             border-left: 4px solid var(--secondary);
         }
@@ -603,6 +610,14 @@
             border-radius: 10px;
             margin-top: 12px;
         }
+        .img-caption {
+            font-size: 0.9rem;
+            color: #4a5a6a;
+            text-align: center;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .section .grid-2 .img-wrapper { display: flex; flex-direction: column; }
         @media (max-width: 600px) {
             .section { padding: 50px 0; }
             .grid-2 { grid-template-columns: 1fr; }
@@ -640,11 +655,35 @@
             margin-top: 12px;
         }
         .calc-trigger:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(26,111,181,0.3); }
+        .contact-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .contact-options .contact-opt {
+            background: rgba(255,255,255,0.7);
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 2px solid #dde4ec;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        .contact-options .contact-opt:hover,
+        .contact-options .contact-opt.active {
+            border-color: var(--secondary);
+            background: var(--secondary);
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-<!-- LANGUAGE SWITCHER -->
+<!-- LANGUAGE SWITCHER (4 languages with flags) -->
 <div class="lang-switcher">
     <button class="active" data-lang="en" onclick="switchLang('en')"><span class="flag-icon">🇬🇧</span> EN</button>
     <button data-lang="fr" onclick="switchLang('fr')"><span class="flag-icon">🇫🇷</span> FR</button>
@@ -653,9 +692,7 @@
 </div>
 
 <!-- MOBILE MENU -->
-<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-    <i class="fas fa-bars"></i>
-</button>
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
@@ -665,16 +702,17 @@
     <div class="menu-header" data-lang="de" style="display:none;">AQUANEXUS + AQUA GUARDIAN</div>
     <ul>
         <li><a href="#hero" data-lang="en">Introducing AquaNexus</a><a href="#hero" data-lang="fr" style="display:none;">Présentation</a><a href="#hero" data-lang="ar" style="display:none;">تقديم</a><a href="#hero" data-lang="de" style="display:none;">Einführung</a></li>
-        <li><a href="#water" data-lang="en">Water Journey</a><a href="#water" data-lang="fr" style="display:none;">Voyage de l'Eau</a><a href="#water" data-lang="ar" style="display:none;">رحلة المياه</a><a href="#water" data-lang="de" style="display:none;">Wasserreise</a></li>
-        <li><a href="#energy" data-lang="en">Water Arch</a><a href="#energy" data-lang="fr" style="display:none;">Arc de l'Eau</a><a href="#energy" data-lang="ar" style="display:none;">قوس الماء</a><a href="#energy" data-lang="de" style="display:none;">Wasserbogen</a></li>
-        <li><a href="#metals" data-lang="en">Revenue</a><a href="#metals" data-lang="fr" style="display:none;">Revenus</a><a href="#metals" data-lang="ar" style="display:none;">الإيرادات</a><a href="#metals" data-lang="de" style="display:none;">Einnahmen</a></li>
-        <li><a href="#metals" data-lang="en">Lithium</a><a href="#metals" data-lang="fr" style="display:none;">Lithium</a><a href="#metals" data-lang="ar" style="display:none;">الليثيوم</a><a href="#metals" data-lang="de" style="display:none;">Lithium</a></li>
-        <li><a href="#energy" data-lang="en">Cooling</a><a href="#energy" data-lang="fr" style="display:none;">Refroidissement</a><a href="#energy" data-lang="ar" style="display:none;">التبريد</a><a href="#energy" data-lang="de" style="display:none;">Kühlung</a></li>
-        <li><a href="#agriculture" data-lang="en">Agri</a><a href="#agriculture" data-lang="fr" style="display:none;">Agri</a><a href="#agriculture" data-lang="ar" style="display:none;">الزراعة</a><a href="#agriculture" data-lang="de" style="display:none;">Agrar</a></li>
-        <li><a href="#offices" data-lang="en">Global</a><a href="#offices" data-lang="fr" style="display:none;">Global</a><a href="#offices" data-lang="ar" style="display:none;">عالمي</a><a href="#offices" data-lang="de" style="display:none;">Global</a></li>
-        <li><a href="#bank" data-lang="en">Valuation</a><a href="#bank" data-lang="fr" style="display:none;">Évaluation</a><a href="#bank" data-lang="ar" style="display:none;">التقييم</a><a href="#bank" data-lang="de" style="display:none;">Bewertung</a></li>
-        <li><a href="#docs" data-lang="en">Technical</a><a href="#docs" data-lang="fr" style="display:none;">Technique</a><a href="#docs" data-lang="ar" style="display:none;">تقني</a><a href="#docs" data-lang="de" style="display:none;">Technisch</a></li>
-        <li><a href="#energy" data-lang="en">Why Geo</a><a href="#energy" data-lang="fr" style="display:none;">Pourquoi Géo</a><a href="#energy" data-lang="ar" style="display:none;">لماذا الحرارية</a><a href="#energy" data-lang="de" style="display:none;">Warum Geo</a></li>
+        <li><a href="#energy" data-lang="en">Geothermal Energy</a><a href="#energy" data-lang="fr" style="display:none;">Énergie Géothermique</a><a href="#energy" data-lang="ar" style="display:none;">الطاقة الحرارية</a><a href="#energy" data-lang="de" style="display:none;">Geothermie</a></li>
+        <li><a href="#water" data-lang="en">Fresh & Thermal Water</a><a href="#water" data-lang="fr" style="display:none;">Eau Douce & Thermale</a><a href="#water" data-lang="ar" style="display:none;">المياه العذبة والحرارية</a><a href="#water" data-lang="de" style="display:none;">Süß- & Thermalwasser</a></li>
+        <li><a href="#agriculture" data-lang="en">4-Season Agriculture</a><a href="#agriculture" data-lang="fr" style="display:none;">Agriculture 4 Saisons</a><a href="#agriculture" data-lang="ar" style="display:none;">الزراعة ٤ فصول</a><a href="#agriculture" data-lang="de" style="display:none;">4-Jahreszeiten-Landwirtschaft</a></li>
+        <li><a href="#metals" data-lang="en">Strategic Metals</a><a href="#metals" data-lang="fr" style="display:none;">Métaux Stratégiques</a><a href="#metals" data-lang="ar" style="display:none;">المعادن الاستراتيجية</a><a href="#metals" data-lang="de" style="display:none;">Strategische Metalle</a></li>
+        <li><a href="#salt" data-lang="en">Sea Salt</a><a href="#salt" data-lang="fr" style="display:none;">Sel Marin</a><a href="#salt" data-lang="ar" style="display:none;">ملح البحر</a><a href="#salt" data-lang="de" style="display:none;">Meersalz</a></li>
+        <li><a href="#carbon" data-lang="en">Zero Carbon</a><a href="#carbon" data-lang="fr" style="display:none;">Zéro Carbone</a><a href="#carbon" data-lang="ar" style="display:none;">صفر كربون</a><a href="#carbon" data-lang="de" style="display:none;">Null Kohlenstoff</a></li>
+        <li><a href="#employment" data-lang="en">Employment</a><a href="#employment" data-lang="fr" style="display:none;">Emploi</a><a href="#employment" data-lang="ar" style="display:none;">التوظيف</a><a href="#employment" data-lang="de" style="display:none;">Beschäftigung</a></li>
+        <li><a href="#tourism" data-lang="en">Tourism & Spas</a><a href="#tourism" data-lang="fr" style="display:none;">Tourisme & Spas</a><a href="#tourism" data-lang="ar" style="display:none;">السياحة والسبا</a><a href="#tourism" data-lang="de" style="display:none;">Tourismus & Spas</a></li>
+        <li><a href="#offices" data-lang="en">Global Offices</a><a href="#offices" data-lang="fr" style="display:none;">Bureaux Mondiaux</a><a href="#offices" data-lang="ar" style="display:none;">المكاتب العالمية</a><a href="#offices" data-lang="de" style="display:none;">Weltweite Büros</a></li>
+        <li><a href="#bank" data-lang="en">Project Bank</a><a href="#bank" data-lang="fr" style="display:none;">Banque Projet</a><a href="#bank" data-lang="ar" style="display:none;">بنك المشروع</a><a href="#bank" data-lang="de" style="display:none;">Projektbank</a></li>
+        <li><a href="#docs" data-lang="en">Technical Dossier</a><a href="#docs" data-lang="fr" style="display:none;">Dossier Technique</a><a href="#docs" data-lang="ar" style="display:none;">الملف الفني</a><a href="#docs" data-lang="de" style="display:none;">Technisches Dossier</a></li>
         <li><a href="#achievements" data-lang="en">Achievements</a><a href="#achievements" data-lang="fr" style="display:none;">Réalisations</a><a href="#achievements" data-lang="ar" style="display:none;">الإنجازات</a><a href="#achievements" data-lang="de" style="display:none;">Errungenschaften</a></li>
         <li><a href="#partners" data-lang="en">Partners</a><a href="#partners" data-lang="fr" style="display:none;">Partenaires</a><a href="#partners" data-lang="ar" style="display:none;">الشركاء</a><a href="#partners" data-lang="de" style="display:none;">Partner</a></li>
         <li><a href="#calculator" data-lang="en">Calculator</a><a href="#calculator" data-lang="fr" style="display:none;">Calculatrice</a><a href="#calculator" data-lang="ar" style="display:none;">آلة حاسبة</a><a href="#calculator" data-lang="de" style="display:none;">Rechner</a></li>
@@ -682,7 +720,7 @@
     </ul>
 </nav>
 
-<!-- HERO: full screen dossier image -->
+<!-- HERO -->
 <section class="hero" id="hero">
     <img src="image-27.webp" alt="AquaNexus + Aqua Guardian – Integrated Sovereign Infrastructure" />
 </section>
@@ -695,95 +733,14 @@
         <h2 data-lang="ar" style="display:none;">الأثر العالمي</h2>
         <h2 data-lang="de" style="display:none;">Globale Auswirkungen</h2>
         <p data-lang="en">Our footprint spans five continents with strategic offices worldwide.</p>
-        <p data-lang="fr" style="display:none;">Notre empreinte s'étend sur cinq continents avec des bureaux stratégiques dans le monde.</p>
-        <p data-lang="ar" style="display:none;">بصمتنا تمتد عبر خمس قارات مع مكاتب استراتيجية في جميع أنحاء العالم.</p>
-        <p data-lang="de" style="display:none;">Unser Fußabdruck erstreckt sich über fünf Kontinente mit strategischen Büros weltweit.</p>
+        <p data-lang="fr" style="display:none;">Notre empreinte s'étend sur cinq continents.</p>
+        <p data-lang="ar" style="display:none;">بصمتنا تمتد عبر خمس قارات.</p>
+        <p data-lang="de" style="display:none;">Unser Fußabdruck erstreckt sich über fünf Kontinente.</p>
         <div class="globe-container" id="globeContainer"></div>
     </div>
 </section>
 
-<!-- OFFICES -->
-<section class="section" id="offices" style="background: var(--light-bg);">
-    <div class="container text-center">
-        <h2 class="section-title"><span class="highlight" data-lang="en">International</span> <span data-lang="en">Offices</span></h2>
-        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Bureaux</span> Internationaux</h2>
-        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المكاتب</span> الدولية</h2>
-        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Internationale</span> Büros</h2>
-        <p class="section-sub" data-lang="en">Direct presence in five strategic hubs worldwide for mega-project execution</p>
-        <p class="section-sub" data-lang="fr" style="display:none;">Présence directe dans cinq pôles stratégiques mondiaux pour l'exécution de méga-projets</p>
-        <p class="section-sub" data-lang="ar" style="display:none;">حضور مباشر في خمسة مراكز استراتيجية عالمية لتنفيذ المشاريع الضخمة</p>
-        <p class="section-sub" data-lang="de" style="display:none;">Direkte Präsenz in fünf strategischen Zentren weltweit für die Ausführung von Mega-Projekten</p>
-        <div class="grid-5">
-            <div class="card office-card">
-                <span class="flag">🇬🇧</span>
-                <h4 data-lang="en">London, UK</h4>
-                <h4 data-lang="fr" style="display:none;">Londres, Royaume-Uni</h4>
-                <h4 data-lang="ar" style="display:none;">لندن، المملكة المتحدة</h4>
-                <h4 data-lang="de" style="display:none;">London, Großbritannien</h4>
-                <p data-lang="en">Financial & Investment Office</p>
-                <p data-lang="fr" style="display:none;">Bureau Financier et d'Investissement</p>
-                <p data-lang="ar" style="display:none;">المكتب المالي والاستثماري</p>
-                <p data-lang="de" style="display:none;">Finanz- und Investitionsbüro</p>
-                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +44 20 **** ****</a><br>
-                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****london.com</a>
-            </div>
-            <div class="card office-card">
-                <span class="flag">🇸🇦</span>
-                <h4 data-lang="en">Jeddah, Saudi Arabia</h4>
-                <h4 data-lang="fr" style="display:none;">Djeddah, Arabie Saoudite</h4>
-                <h4 data-lang="ar" style="display:none;">جدة، المملكة العربية السعودية</h4>
-                <h4 data-lang="de" style="display:none;">Dschidda, Saudi-Arabien</h4>
-                <p data-lang="en">Middle East Office</p>
-                <p data-lang="fr" style="display:none;">Bureau du Moyen-Orient</p>
-                <p data-lang="ar" style="display:none;">مكتب الشرق الأوسط</p>
-                <p data-lang="de" style="display:none;">Büro Naher Osten</p>
-                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +966 12 *** ****</a><br>
-                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****jeddah.com</a>
-            </div>
-            <div class="card office-card">
-                <span class="flag">🇦🇪</span>
-                <h4 data-lang="en">Masdar, UAE</h4>
-                <h4 data-lang="fr" style="display:none;">Masdar, Émirats Arabes Unis</h4>
-                <h4 data-lang="ar" style="display:none;">مصدر، الإمارات العربية المتحدة</h4>
-                <h4 data-lang="de" style="display:none;">Masdar, VAE</h4>
-                <p data-lang="en">Green Technology Office</p>
-                <p data-lang="fr" style="display:none;">Bureau des Technologies Vertes</p>
-                <p data-lang="ar" style="display:none;">مكتب التكنولوجيا الخضراء</p>
-                <p data-lang="de" style="display:none;">Büro für Grüne Technologie</p>
-                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +971 2 *** ****</a><br>
-                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****masdar.com</a>
-            </div>
-            <div class="card office-card">
-                <span class="flag">🇸🇪</span>
-                <h4 data-lang="en">Stockholm, Sweden</h4>
-                <h4 data-lang="fr" style="display:none;">Stockholm, Suède</h4>
-                <h4 data-lang="ar" style="display:none;">ستوكهولم، السويد</h4>
-                <h4 data-lang="de" style="display:none;">Stockholm, Schweden</h4>
-                <p data-lang="en">R&D Office</p>
-                <p data-lang="fr" style="display:none;">Bureau de R&D</p>
-                <p data-lang="ar" style="display:none;">مكتب البحث والتطوير</p>
-                <p data-lang="de" style="display:none;">F&E-Büro</p>
-                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +46 8 *** ** **</a><br>
-                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****stockholm.com</a>
-            </div>
-            <div class="card office-card">
-                <span class="flag">🇴🇲</span>
-                <h4 data-lang="en">Muscat, Oman</h4>
-                <h4 data-lang="fr" style="display:none;">Mascate, Oman</h4>
-                <h4 data-lang="ar" style="display:none;">مسقط، عُمان</h4>
-                <h4 data-lang="de" style="display:none;">Maskat, Oman</h4>
-                <p data-lang="en">Operations & Execution Office</p>
-                <p data-lang="fr" style="display:none;">Bureau des Opérations et de l'Exécution</p>
-                <p data-lang="ar" style="display:none;">مكتب العمليات والتنفيذ</p>
-                <p data-lang="de" style="display:none;">Büro für Betrieb und Ausführung</p>
-                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +968 24 *** ***</a><br>
-                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****muscat.com</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ENERGY -->
+<!-- ===== GEOTHERMAL ENERGY ===== -->
 <section class="section" style="background: white;" id="energy">
     <div class="container">
         <div class="grid-2">
@@ -797,12 +754,12 @@
                 <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الطاقة الحرارية</span> الأرضية</h2>
                 <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Geothermie</span> Energie</h2>
                 <p class="section-sub" data-lang="en">24/7 clean power generation · 4-season heating & cooling · Independent of wind or solar</p>
-                <p class="section-sub" data-lang="fr" style="display:none;">Production d'énergie propre 24/7 · Chauffage et refroidissement 4 saisons · Indépendant du vent ou du soleil</p>
-                <p class="section-sub" data-lang="ar" style="display:none;">توليد طاقة نظيفة ٢٤/٧ · تدفئة وتبريد ٤ فصول · مستقل عن الرياح أو الشمس</p>
-                <p class="section-sub" data-lang="de" style="display:none;">24/7 saubere Energieerzeugung · 4-Jahreszeiten-Heizung & -Kühlung · Unabhängig von Wind oder Sonne</p>
+                <p class="section-sub" data-lang="fr" style="display:none;">Production d'énergie propre 24/7 · Chauffage et refroidissement 4 saisons</p>
+                <p class="section-sub" data-lang="ar" style="display:none;">توليد طاقة نظيفة ٢٤/٧ · تدفئة وتبريد ٤ فصول</p>
+                <p class="section-sub" data-lang="de" style="display:none;">24/7 saubere Energieerzeugung · 4-Jahreszeiten-Heizung & -Kühlung</p>
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 8px 0;" data-lang="en">✔ 24/7 continuous power generation</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production d'énergie continue 24/7</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production continue 24/7</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ توليد طاقة مستمر ٢٤/٧</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ 24/7 kontinuierliche Stromerzeugung</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Independent of wind or solar</li>
@@ -810,36 +767,40 @@
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ مستقل عن الرياح أو الشمس</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Unabhängig von Wind oder Sonne</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ No expensive batteries required</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Pas de batteries coûteuses nécessaires</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ لا حاجة لبطاريات باهظة الثمن</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Keine teuren Batterien erforderlich</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ No environmental or vegetation damage</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Aucun dommage environnemental ou végétal</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ لا ضرر بيئي أو نباتي</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Keine Umwelt- oder Vegetationsschäden</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Pas de batteries coûteuses</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ لا حاجة لبطاريات باهظة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Keine teuren Batterien</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ 4-season heating & cooling</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Chauffage et refroidissement 4 saisons</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تدفئة وتبريد ٤ فصول</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ 4-Jahreszeiten-Heizung & -Kühlung</li>
                     <li style="padding: 8px 0; color: var(--secondary); font-weight: 500;" data-lang="en">♻️ Injection of fresh water into the earth to increase reservoir pressure</li>
-                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="fr">♻️ Injection d'eau douce dans le sol pour augmenter la pression des réservoirs</li>
-                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="ar">♻️ حقن المياه العذبة في الأرض لزيادة ضغط الخزانات</li>
-                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="de">♻️ Einspritzung von Süßwasser in den Boden zur Erhöhung des Lagerstättendrucks</li>
+                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="fr">♻️ Injection d'eau douce pour augmenter la pression</li>
+                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="ar">♻️ حقن المياه العذبة لزيادة الضغط</li>
+                    <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="de">♻️ Einspritzung von Süßwasser zur Druckerhöhung</li>
                 </ul>
             </div>
-            <div>
+            <div class="img-wrapper">
                 <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600" alt="Geothermal Energy" class="real-image">
+                <p class="img-caption" data-lang="en">Geothermal energy harnessed from the earth's core for clean power</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Énergie géothermique puisée au cœur de la terre</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">الطاقة الحرارية الأرضية من باطن الأرض</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Geothermie aus dem Erdinneren</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WATER -->
-<section class="section" id="water" style="background: var(--light-bg);">
+<!-- ===== FRESH & THERMAL WATER ===== -->
+<section class="section" style="background: var(--light-bg);" id="water">
     <div class="container">
         <div class="grid-2" style="direction: ltr;">
-            <div>
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600" alt="Fresh Water" class="real-image">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600" alt="Fresh & Thermal Water" class="real-image">
+                <p class="img-caption" data-lang="en">Natural spring water and thermal spas surrounded by nature</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Eau de source naturelle et spas thermaux en pleine nature</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">ينابيع طبيعية ومنتجعات حرارية في أحضان الطبيعة</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Natürliche Quellen und Thermalbäder in der Natur</p>
             </div>
             <div style="direction: rtl;">
                 <span class="badge" data-lang="en">Revenue Stream 2</span>
@@ -851,41 +812,29 @@
                 <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المياه العذبة</span> والحرارية</h2>
                 <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Süß- &</span> Thermalwasser</h2>
                 <p class="section-sub" data-lang="en">Massive seawater desalination · Injection into aquifers for future generations</p>
-                <p class="section-sub" data-lang="fr" style="display:none;">Dessalement d'eau de mer massif · Injection dans les aquifères pour les générations futures</p>
-                <p class="section-sub" data-lang="ar" style="display:none;">تحلية مياه البحر الضخمة · حقن في طبقات المياه الجوفية للأجيال القادمة</p>
-                <p class="section-sub" data-lang="de" style="display:none;">Massive Meerwasserentsalzung · Injektion in Grundwasserleiter für zukünftige Generationen</p>
+                <p class="section-sub" data-lang="fr" style="display:none;">Dessalement d'eau de mer massif · Injection dans les aquifères</p>
+                <p class="section-sub" data-lang="ar" style="display:none;">تحلية مياه البحر الضخمة · حقن في طبقات المياه الجوفية</p>
+                <p class="section-sub" data-lang="de" style="display:none;">Massive Meerwasserentsalzung · Injektion in Grundwasserleiter</p>
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 8px 0;" data-lang="en">✔ Massive seawater desalination (RO & thermal)</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Dessalement d'eau de mer massif (RO et thermique)</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تحلية مياه البحر الضخمة (RO وحرارية)</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Massive Meerwasserentsalzung (RO & thermisch)</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Injection of drinking water into aquifers for future generations</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Injection d'eau potable dans les aquifères pour les générations futures</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ حقن مياه الشرب في طبقات المياه الجوفية للأجيال القادمة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Injektion von Trinkwasser in Grundwasserleiter für zukünftige Generationen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Preventing saltwater intrusion into aquifers</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Prévention de l'intrusion d'eau salée dans les aquifères</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ منع تسرب المياه المالحة إلى طبقات المياه الجوفية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Verhinderung des Eindringens von Salzwasser in Grundwasserleiter</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Water storage for future generations</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Stockage d'eau pour les générations futures</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تخزين المياه للأجيال القادمة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Wasserspeicherung für zukünftige Generationen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Mineral hot water production for natural springs</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production d'eau chaude minérale pour sources naturelles</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إنتاج المياه الحارة المعدنية للينابيع الطبيعية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Mineralische Warmwasserproduktion für natürliche Quellen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Health tourism attraction (spa)</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Attraction du tourisme de santé (spa)</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ جذب السياحة الصحية (سبا)</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Gesundheitstourismus-Attraktion (Spa)</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Injection d'eau potable dans les aquifères</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ حقن مياه الشرب في طبقات المياه الجوفية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Injektion von Trinkwasser in Grundwasserleiter</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Mineral hot water for natural springs & spas</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Eau chaude minérale pour sources & spas</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ مياه حارة معدنية للينابيع والمنتجعات</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Mineralisches Warmwasser für Quellen & Spas</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- AGRICULTURE -->
+<!-- ===== 4-SEASON AGRICULTURE ===== -->
 <section class="section" style="background: white;" id="agriculture">
     <div class="container">
         <div class="grid-2">
@@ -899,45 +848,41 @@
                 <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الزراعة</span> ٤ فصول</h2>
                 <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">4-Jahreszeiten</span> Landwirtschaft</h2>
                 <p class="section-sub" data-lang="en">National self-sufficiency · Preventing currency outflow · Sustainable food security</p>
-                <p class="section-sub" data-lang="fr" style="display:none;">Autosuffisance nationale · Prévention de la sortie de devises · Sécurité alimentaire durable</p>
-                <p class="section-sub" data-lang="ar" style="display:none;">الاكتفاء الذاتي الوطني · منع تدفق العملات · الأمن الغذائي المستدام</p>
-                <p class="section-sub" data-lang="de" style="display:none;">Nationale Selbstversorgung · Verhinderung von Währungsabflüssen · Nachhaltige Ernährungssicherheit</p>
+                <p class="section-sub" data-lang="fr" style="display:none;">Autosuffisance nationale · Prévention de la sortie de devises</p>
+                <p class="section-sub" data-lang="ar" style="display:none;">الاكتفاء الذاتي الوطني · منع تدفق العملات</p>
+                <p class="section-sub" data-lang="de" style="display:none;">Nationale Selbstversorgung · Verhinderung von Währungsabflüssen</p>
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 8px 0;" data-lang="en">✔ National food self-sufficiency</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Autosuffisance alimentaire nationale</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ الاكتفاء الذاتي الوطني من الغذاء</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nationale Ernährungsselbstversorgung</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Preventing currency outflow (reducing imports)</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Prévention de la sortie de devises (réduction des importations)</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ منع تدفق العملات (تقليل الواردات)</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Verhinderung von Währungsabflüssen (Reduzierung von Importen)</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable food security</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sécurité alimentaire durable</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ الأمن الغذائي المستدام</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Ernährungssicherheit</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Year-round production</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production toute l'année</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إنتاج طوال العام</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Ganzjährige Produktion</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable job creation</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Création d'emplois durables</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ خلق فرص عمل مستدامة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Arbeitsplatzschaffung</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Year-round production in greenhouses</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production toute l'année en serres</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إنتاج طوال العام في البيوت المحمية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Ganzjährige Produktion in Gewächshäusern</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Export of surplus products</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Exportation des produits excédentaires</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تصدير المنتجات الفائضة</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Export von Überschussprodukten</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Self-sufficiency in fruits & vegetables</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Autosuffisance en fruits et légumes</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ اكتفاء ذاتي في الفواكه والخضروات</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Selbstversorgung mit Obst & Gemüse</li>
                 </ul>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600" alt="Agriculture" class="real-image">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600" alt="Greenhouse agriculture" class="real-image">
+                <p class="img-caption" data-lang="en">Modern greenhouses producing fresh food year-round with geothermal heating</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Serres modernes produisant des aliments frais toute l'année</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">بيوت محمية حديثة تنتج طعاماً طازجاً طوال العام</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Moderne Gewächshäuser mit ganzjähriger Produktion</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- METALS (4 separate images) -->
-<section class="section" id="metals" style="background: var(--light-bg);">
+<!-- ===== STRATEGIC METALS ===== -->
+<section class="section" style="background: var(--light-bg);" id="metals">
     <div class="container text-center">
         <span class="badge" data-lang="en">Revenue Stream 4</span>
         <span class="badge" data-lang="fr" style="display:none;">Source de Revenu 4</span>
@@ -948,23 +893,47 @@
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المعادن</span> الاستراتيجية</h2>
         <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Strategische</span> Metalle</h2>
         <p class="section-sub" data-lang="en">Gold · Silver · Tungsten · Lithium – Critical raw materials for future industries</p>
-        <p class="section-sub" data-lang="fr" style="display:none;">Or · Argent · Tungstène · Lithium – Matières premières critiques pour les industries futures</p>
-        <p class="section-sub" data-lang="ar" style="display:none;">الذهب · الفضة · التنجستن · الليثيوم – مواد خام حاسمة للصناعات المستقبلية</p>
-        <p class="section-sub" data-lang="de" style="display:none;">Gold · Silber · Wolfram · Lithium – Kritische Rohstoffe für zukünftige Industrien</p>
+        <p class="section-sub" data-lang="fr" style="display:none;">Or · Argent · Tungstène · Lithium</p>
+        <p class="section-sub" data-lang="ar" style="display:none;">الذهب · الفضة · التنجستن · الليثيوم</p>
+        <p class="section-sub" data-lang="de" style="display:none;">Gold · Silber · Wolfram · Lithium</p>
         <div class="grid-4">
-            <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Gold" class="real-image-sm"><h3 data-lang="en">Gold</h3><h3 data-lang="fr" style="display:none;">Or</h3><h3 data-lang="ar" style="display:none;">الذهب</h3><h3 data-lang="de" style="display:none;">Gold</h3><p data-lang="en">Value reserve, electronics & medical</p><p data-lang="fr" style="display:none;">Réserve de valeur, électronique et médecine</p><p data-lang="ar" style="display:none;">مخزن القيمة، الإلكترونيات والطب</p><p data-lang="de" style="display:none;">Wertreserve, Elektronik & Medizin</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400" alt="Silver" class="real-image-sm"><h3 data-lang="en">Silver</h3><h3 data-lang="fr" style="display:none;">Argent</h3><h3 data-lang="ar" style="display:none;">الفضة</h3><h3 data-lang="de" style="display:none;">Silber</h3><p data-lang="en">Solar, electronics & jewelry</p><p data-lang="fr" style="display:none;">Solaire, électronique et bijouterie</p><p data-lang="ar" style="display:none;">الطاقة الشمسية، الإلكترونيات والمجوهرات</p><p data-lang="de" style="display:none;">Solar, Elektronik & Schmuck</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Tungsten" class="real-image-sm"><h3 data-lang="en">Tungsten</h3><h3 data-lang="fr" style="display:none;">Tungstène</h3><h3 data-lang="ar" style="display:none;">التنجستن</h3><h3 data-lang="de" style="display:none;">Wolfram</h3><p data-lang="en">Aerospace, defense & cutting tools</p><p data-lang="fr" style="display:none;">Aérospatiale, défense et outils de coupe</p><p data-lang="ar" style="display:none;">الطيران، الدفاع وأدوات القطع</p><p data-lang="de" style="display:none;">Luft- und Raumfahrt, Verteidigung & Schneidwerkzeuge</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Lithium" class="real-image-sm"><h3 data-lang="en">Lithium</h3><h3 data-lang="fr" style="display:none;">Lithium</h3><h3 data-lang="ar" style="display:none;">الليثيوم</h3><h3 data-lang="de" style="display:none;">Lithium</h3><p data-lang="en">EV batteries & energy storage</p><p data-lang="fr" style="display:none;">Batteries de véhicules électriques et stockage d'énergie</p><p data-lang="ar" style="display:none;">بطاريات السيارات الكهربائية وتخزين الطاقة</p><p data-lang="de" style="display:none;">EV-Batterien & Energiespeicher</p></div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Gold" class="real-image-sm">
+                <h3 data-lang="en">Gold</h3><h3 data-lang="fr" style="display:none;">Or</h3><h3 data-lang="ar" style="display:none;">الذهب</h3><h3 data-lang="de" style="display:none;">Gold</h3>
+                <p data-lang="en">Value reserve, electronics & medical</p>
+                <p data-lang="fr" style="display:none;">Réserve de valeur, électronique et médecine</p>
+                <p data-lang="ar" style="display:none;">مخزن القيمة، الإلكترونيات والطب</p>
+                <p data-lang="de" style="display:none;">Wertreserve, Elektronik & Medizin</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400" alt="Silver bar" class="real-image-sm">
+                <h3 data-lang="en">Silver</h3><h3 data-lang="fr" style="display:none;">Argent</h3><h3 data-lang="ar" style="display:none;">الفضة</h3><h3 data-lang="de" style="display:none;">Silber</h3>
+                <p data-lang="en">Solar, electronics & jewelry</p>
+                <p data-lang="fr" style="display:none;">Solaire, électronique et bijouterie</p>
+                <p data-lang="ar" style="display:none;">الطاقة الشمسية، الإلكترونيات والمجوهرات</p>
+                <p data-lang="de" style="display:none;">Solar, Elektronik & Schmuck</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Tungsten ore" class="real-image-sm">
+                <h3 data-lang="en">Tungsten</h3><h3 data-lang="fr" style="display:none;">Tungstène</h3><h3 data-lang="ar" style="display:none;">التنجستن</h3><h3 data-lang="de" style="display:none;">Wolfram</h3>
+                <p data-lang="en">Aerospace, defense & cutting tools</p>
+                <p data-lang="fr" style="display:none;">Aérospatiale, défense et outils de coupe</p>
+                <p data-lang="ar" style="display:none;">الطيران، الدفاع وأدوات القطع</p>
+                <p data-lang="de" style="display:none;">Luftfahrt, Verteidigung & Werkzeuge</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Lithium mining" class="real-image-sm">
+                <h3 data-lang="en">Lithium</h3><h3 data-lang="fr" style="display:none;">Lithium</h3><h3 data-lang="ar" style="display:none;">الليثيوم</h3><h3 data-lang="de" style="display:none;">Lithium</h3>
+                <p data-lang="en">EV batteries & energy storage</p>
+                <p data-lang="fr" style="display:none;">Batteries de véhicules électriques</p>
+                <p data-lang="ar" style="display:none;">بطاريات السيارات الكهربائية</p>
+                <p data-lang="de" style="display:none;">EV-Batterien & Energiespeicher</p>
+            </div>
         </div>
-        <p style="margin-top: 20px; color: #4a5a6a;" data-lang="en">➕ Sustainable foreign currency revenue · Reduced import dependency · Mining job creation</p>
-        <p style="margin-top: 20px; color: #4a5a6a; display:none;" data-lang="fr">➕ Revenus durables en devises · Réduction de la dépendance aux importations · Création d'emplois miniers</p>
-        <p style="margin-top: 20px; color: #4a5a6a; display:none;" data-lang="ar">➕ إيرادات مستدامة بالعملات الأجنبية · تقليل الاعتماد على الواردات · خلق فرص عمل في التعدين</p>
-        <p style="margin-top: 20px; color: #4a5a6a; display:none;" data-lang="de">➕ Nachhaltige Deviseneinnahmen · Reduzierte Importabhängigkeit · Schaffung von Bergbauarbeitsplätzen</p>
     </div>
 </section>
 
-<!-- SEA SALT -->
+<!-- ===== SEA SALT ===== -->
 <section class="section" style="background: white;" id="salt">
     <div class="container">
         <div class="grid-2">
@@ -978,26 +947,22 @@
                 <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">ملح</span> البحر</h2>
                 <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Meer</span> salz</h2>
                 <p class="section-sub" data-lang="en">Premium quality food-grade & industrial salt production from saline water</p>
-                <p class="section-sub" data-lang="fr" style="display:none;">Production de sel de qualité alimentaire et industrielle à partir d'eau salée</p>
-                <p class="section-sub" data-lang="ar" style="display:none;">إنتاج ملح غذائي وصناعي عالي الجودة من المياه المالحة</p>
-                <p class="section-sub" data-lang="de" style="display:none;">Hochwertige Produktion von Speise- und Industriesalz aus Salzwasser</p>
+                <p class="section-sub" data-lang="fr" style="display:none;">Production de sel de qualité alimentaire et industrielle</p>
+                <p class="section-sub" data-lang="ar" style="display:none;">إنتاج ملح غذائي وصناعي عالي الجودة</p>
+                <p class="section-sub" data-lang="de" style="display:none;">Hochwertige Produktion von Speise- und Industriesalz</p>
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 8px 0;" data-lang="en">✔ Domestic supply & export</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Approvisionnement domestique et exportation</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ توريد محلي وتصدير</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Inländische Versorgung & Export</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Industrial salt for chemical & refining industries</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sel industriel pour les industries chimiques et de raffinage</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ ملح صناعي للصناعات الكيميائية والتكرير</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Industriesalz für die chemische und raffinierende Industrie</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sel industriel pour les industries chimiques</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ ملح صناعي للصناعات الكيميائية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Industriesalz für chemische Industrie</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Food-grade salt with global standards</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sel alimentaire aux normes mondiales</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ ملح غذائي بمعايير عالمية</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Speisesalz nach globalen Standards</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable export revenue</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Revenus d'exportation durables</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إيرادات تصدير مستدامة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Exporteinnahmen</li>
                 </ul>
             </div>
             <div>
@@ -1007,8 +972,8 @@
     </div>
 </section>
 
-<!-- ZERO CARBON -->
-<section class="section" id="carbon" style="background: var(--light-bg);">
+<!-- ===== ZERO CARBON ===== -->
+<section class="section" style="background: var(--light-bg);" id="carbon">
     <div class="container">
         <div class="grid-2" style="direction: ltr;">
             <div>
@@ -1024,341 +989,319 @@
                 <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">صفر</span> كربون</h2>
                 <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Null</span> Kohlenstoff</h2>
                 <p class="section-sub" data-lang="en">Sustainable carbon reduction · Tradeable carbon credits</p>
-                <p class="section-sub" data-lang="fr" style="display:none;">Réduction durable du carbone · Crédits carbone négociables</p>
-                <p class="section-sub" data-lang="ar" style="display:none;">خفض الكربون المستدام · أرصدة كربون قابلة للتداول</p>
-                <p class="section-sub" data-lang="de" style="display:none;">Nachhaltige Kohlenstoffreduzierung · Handelbare Kohlenstoffgutschriften</p>
+                <p class="section-sub" data-lang="fr" style="display:none;">Réduction durable du carbone · Crédits carbone</p>
+                <p class="section-sub" data-lang="ar" style="display:none;">خفض الكربون المستدام · أرصدة كربون</p>
+                <p class="section-sub" data-lang="de" style="display:none;">Nachhaltige Kohlenstoffreduzierung · Kohlenstoffgutschriften</p>
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 8px 0;" data-lang="en">✔ Zero carbon emissions</li>
                     <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Émissions de carbone nulles</li>
                     <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ انبعاثات كربونية صفرية</li>
                     <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Null Kohlenstoffemissionen</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Tradeable carbon credits in global markets</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Crédits carbone négociables sur les marchés mondiaux</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ أرصدة كربون قابلة للتداول في الأسواق العالمية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Handelbare Kohlenstoffgutschriften auf globalen Märkten</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Crédits carbone négociables</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ أرصدة كربون قابلة للتداول</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Handelbare Kohlenstoffgutschriften</li>
                     <li style="padding: 8px 0;" data-lang="en">✔ Partnership with global green funds</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Partenariat avec les fonds verts mondiaux</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ شراكة مع الصناديق الخضراء العالمية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Partnerschaft mit globalen Grünen Fonds</li>
-                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable revenue from carbon markets</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Revenus durables des marchés du carbone</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إيرادات مستدامة من أسواق الكربون</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Einnahmen aus Kohlenstoffmärkten</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Partenariat avec les fonds verts</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ شراكة مع الصناديق الخضراء</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Partnerschaft mit grünen Fonds</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PROJECT BANK (no icon, just title + images) -->
-<section class="section" style="background: white;" id="bank">
+<!-- ===== EMPLOYMENT ===== -->
+<section class="section" style="background: white;" id="employment">
     <div class="container text-center">
-        <h2 class="section-title"><span class="highlight" data-lang="en">Project</span> <span data-lang="en">Dedicated Bank</span></h2>
-        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Banque</span> Dédiée au Projet</h2>
-        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">البنك</span> المخصص للمشروع</h2>
-        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Projekt</span> eigene Bank</h2>
-        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Investment management · Sustainable financing · Full financial transparency</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Gestion des investissements · Financement durable · Transparence financière totale</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">إدارة الاستثمار · تمويل مستدام · شفافية مالية كاملة</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Investitionsmanagement · Nachhaltige Finanzierung · Volle finanzielle Transparenz</p>
-        <div class="grid-3">
-            <div class="card"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400" alt="Capital Management" class="real-image-sm"><h3 data-lang="en">Capital Management</h3><h3 data-lang="fr" style="display:none;">Gestion du Capital</h3><h3 data-lang="ar" style="display:none;">إدارة رأس المال</h3><h3 data-lang="de" style="display:none;">Kapitalverwaltung</h3><p data-lang="en">Full transparency in capital raising and allocation</p><p data-lang="fr" style="display:none;">Transparence totale dans la collecte et l'allocation des capitaux</p><p data-lang="ar" style="display:none;">شفافية كاملة في جمع وتخصيص رأس المال</p><p data-lang="de" style="display:none;">Volle Transparenz bei der Kapitalbeschaffung und -allokation</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400" alt="Sustainable Returns" class="real-image-sm"><h3 data-lang="en">Sustainable Returns</h3><h3 data-lang="fr" style="display:none;">Rendements Durables</h3><h3 data-lang="ar" style="display:none;">عوائد مستدامة</h3><h3 data-lang="de" style="display:none;">Nachhaltige Renditen</h3><p data-lang="en">35-45% annual profit with controlled risk</p><p data-lang="fr" style="display:none;">35-45% de profit annuel avec risque contrôlé</p><p data-lang="ar" style="display:none;">٣٥-٤٥٪ ربح سنوي مع مخاطر محكومة</p><p data-lang="de" style="display:none;">35-45% Jahresgewinn mit kontrolliertem Risiko</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400" alt="Financial Security" class="real-image-sm"><h3 data-lang="en">Financial Security</h3><h3 data-lang="fr" style="display:none;">Sécurité Financière</h3><h3 data-lang="ar" style="display:none;">الأمن المالي</h3><h3 data-lang="de" style="display:none;">Finanzielle Sicherheit</h3><p data-lang="en">Investor protection with strong legal structure</p><p data-lang="fr" style="display:none;">Protection des investisseurs avec une structure juridique solide</p><p data-lang="ar" style="display:none;">حماية المستثمرين بهيكل قانوني قوي</p><p data-lang="de" style="display:none;">Anlegerschutz mit starker rechtlicher Struktur</p></div>
+        <h2 class="section-title"><span class="highlight" data-lang="en">Employment & Job Creation</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Création d'Emplois</span></h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">خلق فرص العمل</span></h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Arbeitsplatzschaffung</span></h2>
+        <div class="grid-2">
+            <div>
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600" alt="Job creation" class="real-image">
+                <p class="img-caption" data-lang="en">Thousands of direct and indirect jobs created across the value chain</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Des milliers d'emplois directs et indirects créés</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">آلاف الوظائف المباشرة وغير المباشرة</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Tausende direkte und indirekte Arbeitsplätze</p>
+            </div>
+            <div style="text-align: left; padding: 20px;">
+                <h3 style="font-family: 'Poppins', sans-serif; color: var(--secondary);" data-lang="en">Direct & Indirect Employment</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; color: var(--secondary); display:none;" data-lang="fr">Emploi Direct & Indirect</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; color: var(--secondary); display:none;" data-lang="ar">العمالة المباشرة وغير المباشرة</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; color: var(--secondary); display:none;" data-lang="de">Direkte & Indirekte Beschäftigung</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ 700+ direct jobs (pilot phase)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ 700+ emplois directs (phase pilote)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ ٧٠٠+ وظيفة مباشرة (مرحلة تجريبية)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ 700+ direkte Arbeitsplätze (Pilotphase)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ 70,000+ direct & indirect jobs (national scale)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ 70,000+ emplois directs & indirects (échelle nationale)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ ٧٠,٠٠٠+ وظيفة مباشرة وغير مباشرة (على المستوى الوطني)</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ 70,000+ direkte & indirekte Arbeitsplätze (nationaler Maßstab)</li>
+                    <li style="padding: 12px 0;" data-lang="en">✔ Sustainable job creation across energy, water, agriculture, mining, and tourism</li>
+                    <li style="padding: 12px 0; display:none;" data-lang="fr">✔ Création d'emplois durables dans l'énergie, l'eau, l'agriculture, les mines et le tourisme</li>
+                    <li style="padding: 12px 0; display:none;" data-lang="ar">✔ خلق فرص عمل مستدامة في الطاقة والمياه والزراعة والتعدين والسياحة</li>
+                    <li style="padding: 12px 0; display:none;" data-lang="de">✔ Nachhaltige Arbeitsplatzschaffung in Energie, Wasser, Landwirtschaft, Bergbau und Tourismus</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- TECHNICAL DOSSIER (no icon) -->
-<section class="section" id="docs" style="background: var(--light-bg);">
+<!-- ===== TOURISM & THERMAL SPRINGS ===== -->
+<section class="section" style="background: var(--light-bg);" id="tourism">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-lang="en">Tourism & Thermal Springs</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Tourisme & Sources Thermales</span></h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">السياحة والينابيع الحرارية</span></h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Tourismus & Thermalquellen</span></h2>
+        <div class="grid-2">
+            <div>
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600" alt="Thermal spa" class="real-image">
+                <p class="img-caption" data-lang="en">Luxury thermal spas attracting international health tourism</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Spas thermaux de luxe attirant le tourisme de santé</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">منتجعات حرارية فاخرة تجذب السياحة الصحية</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Luxuriöse Thermalbäder ziehen Gesundheitstourismus an</p>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Natural hot spring" class="real-image">
+                <p class="img-caption" data-lang="en">Natural hot springs with healing mineral waters</p>
+                <p class="img-caption" data-lang="fr" style="display:none;">Sources chaudes naturelles aux eaux minérales curatives</p>
+                <p class="img-caption" data-lang="ar" style="display:none;">ينابيع حارة طبيعية بمياه معدنية علاجية</p>
+                <p class="img-caption" data-lang="de" style="display:none;">Natürliche heiße Quellen mit heilendem Mineralwasser</p>
+            </div>
+        </div>
+        <ul style="list-style: none; padding: 0; max-width: 700px; margin: 20px auto; text-align: left;">
+            <li style="padding: 8px 0;" data-lang="en">✔ Hot mineral water for therapeutic spas and wellness centers</li>
+            <li style="padding: 8px 0; display:none;" data-lang="fr">✔ Eau minérale chaude pour spas thérapeutiques</li>
+            <li style="padding: 8px 0; display:none;" data-lang="ar">✔ مياه معدنية حارة للمنتجعات العلاجية</li>
+            <li style="padding: 8px 0; display:none;" data-lang="de">✔ Heißes Mineralwasser für therapeutische Spas</li>
+            <li style="padding: 8px 0;" data-lang="en">✔ Attracting international tourists and health visitors</li>
+            <li style="padding: 8px 0; display:none;" data-lang="fr">✔ Attraction de touristes internationaux et de visiteurs de santé</li>
+            <li style="padding: 8px 0; display:none;" data-lang="ar">✔ جذب السياح الدوليين وزوار الصحة</li>
+            <li style="padding: 8px 0; display:none;" data-lang="de">✔ Anziehung internationaler Touristen und Gesundheitsbesucher</li>
+            <li style="padding: 8px 0;" data-lang="en">✔ Foreign currency revenue from tourism and spa services</li>
+            <li style="padding: 8px 0; display:none;" data-lang="fr">✔ Revenus en devises étrangères du tourisme et des spas</li>
+            <li style="padding: 8px 0; display:none;" data-lang="ar">✔ إيرادات العملات الأجنبية من السياحة والمنتجعات</li>
+            <li style="padding: 8px 0; display:none;" data-lang="de">✔ Deviseneinnahmen aus Tourismus und Spa-Dienstleistungen</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===== INTERNATIONAL OFFICES ===== -->
+<section class="section" style="background: white;" id="offices">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-lang="en">International</span> <span data-lang="en">Offices</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Bureaux</span> Internationaux</h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المكاتب</span> الدولية</h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Internationale</span> Büros</h2>
+        <p class="section-sub" data-lang="en">Direct presence in five strategic hubs worldwide</p>
+        <p class="section-sub" data-lang="fr" style="display:none;">Présence directe dans cinq hubs stratégiques</p>
+        <p class="section-sub" data-lang="ar" style="display:none;">حضور مباشر في خمسة مراكز استراتيجية</p>
+        <p class="section-sub" data-lang="de" style="display:none;">Direkte Präsenz in fünf strategischen Zentren</p>
+        <div class="grid-5">
+            <div class="card office-card">
+                <span class="flag">🇬🇧</span>
+                <h4 data-lang="en">London, UK</h4>
+                <h4 data-lang="fr" style="display:none;">Londres, Royaume-Uni</h4>
+                <h4 data-lang="ar" style="display:none;">لندن، المملكة المتحدة</h4>
+                <h4 data-lang="de" style="display:none;">London, Großbritannien</h4>
+                <p data-lang="en">Financial & Investment Office</p>
+                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +44 20 **** ****</a><br>
+                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****london.com</a>
+            </div>
+            <div class="card office-card">
+                <span class="flag">🇸🇦</span>
+                <h4 data-lang="en">Jeddah, Saudi Arabia</h4>
+                <h4 data-lang="fr" style="display:none;">Djeddah, Arabie Saoudite</h4>
+                <h4 data-lang="ar" style="display:none;">جدة، المملكة العربية السعودية</h4>
+                <h4 data-lang="de" style="display:none;">Dschidda, Saudi-Arabien</h4>
+                <p data-lang="en">Middle East Office</p>
+                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +966 12 *** ****</a><br>
+                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****jeddah.com</a>
+            </div>
+            <div class="card office-card">
+                <span class="flag">🇦🇪</span>
+                <h4 data-lang="en">Masdar, UAE</h4>
+                <h4 data-lang="fr" style="display:none;">Masdar, Émirats Arabes Unis</h4>
+                <h4 data-lang="ar" style="display:none;">مصدر، الإمارات العربية المتحدة</h4>
+                <h4 data-lang="de" style="display:none;">Masdar, VAE</h4>
+                <p data-lang="en">Green Technology Office</p>
+                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +971 2 *** ****</a><br>
+                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****masdar.com</a>
+            </div>
+            <div class="card office-card">
+                <span class="flag">🇸🇪</span>
+                <h4 data-lang="en">Stockholm, Sweden</h4>
+                <h4 data-lang="fr" style="display:none;">Stockholm, Suède</h4>
+                <h4 data-lang="ar" style="display:none;">ستوكهولم، السويد</h4>
+                <h4 data-lang="de" style="display:none;">Stockholm, Schweden</h4>
+                <p data-lang="en">R&D Office</p>
+                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +46 8 *** ** **</a><br>
+                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****stockholm.com</a>
+            </div>
+            <div class="card office-card">
+                <span class="flag">🇴🇲</span>
+                <h4 data-lang="en">Muscat, Oman</h4>
+                <h4 data-lang="fr" style="display:none;">Mascate, Oman</h4>
+                <h4 data-lang="ar" style="display:none;">مسقط، عُمان</h4>
+                <h4 data-lang="de" style="display:none;">Maskat, Oman</h4>
+                <p data-lang="en">Operations & Execution Office</p>
+                <a href="#contact" class="contact-link"><i class="fas fa-phone"></i> +968 24 *** ***</a><br>
+                <a href="#contact" class="contact-link"><i class="fas fa-envelope"></i> ****muscat.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECT BANK ===== -->
+<section class="section" style="background: var(--light-bg);" id="bank">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-lang="en">Project</span> <span class="highlight" data-lang="en">Dedicated Bank</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Banque</span> Dédiée au Projet</h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">البنك</span> المخصص للمشروع</h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Projekt</span> eigene Bank</h2>
+        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Investment management · Sustainable financing · Full financial transparency</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Gestion des investissements · Financement durable · Transparence totale</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">إدارة الاستثمار · تمويل مستدام · شفافية كاملة</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Investitionsmanagement · Nachhaltige Finanzierung · Volle Transparenz</p>
+        <div class="grid-3">
+            <div class="card"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400" alt="Capital" class="real-image-sm"><h3 data-lang="en">Capital Management</h3><h3 data-lang="fr" style="display:none;">Gestion du Capital</h3><h3 data-lang="ar" style="display:none;">إدارة رأس المال</h3><h3 data-lang="de" style="display:none;">Kapitalverwaltung</h3><p data-lang="en">Full transparency in capital raising and allocation</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400" alt="Returns" class="real-image-sm"><h3 data-lang="en">Sustainable Returns</h3><h3 data-lang="fr" style="display:none;">Rendements Durables</h3><h3 data-lang="ar" style="display:none;">عوائد مستدامة</h3><h3 data-lang="de" style="display:none;">Nachhaltige Renditen</h3><p data-lang="en">35-45% annual profit with controlled risk</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400" alt="Security" class="real-image-sm"><h3 data-lang="en">Financial Security</h3><h3 data-lang="fr" style="display:none;">Sécurité Financière</h3><h3 data-lang="ar" style="display:none;">الأمن المالي</h3><h3 data-lang="de" style="display:none;">Finanzielle Sicherheit</h3><p data-lang="en">Investor protection with strong legal structure</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TECHNICAL DOSSIER ===== -->
+<section class="section" style="background: white;" id="docs">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Complete</span> <span data-lang="en">Technical Dossier</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Dossier</span> Technique Complet</h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الملف</span> الفني الكامل</h2>
         <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Vollständiges</span> Technisches Dossier</h2>
         <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">University studies · GIS maps · 3 financial scenarios · Available for verified investors</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Études universitaires · Cartes GIS · 3 scénarios financiers · Disponible pour les investisseurs vérifiés</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">دراسات جامعية · خرائط GIS · ٣ سيناريوهات مالية · متاح للمستثمرين المعتمدين</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Universitätsstudien · GIS-Karten · 3 Finanzszenarien · Verfügbar für verifizierte Investoren</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Études universitaires · Cartes GIS · 3 scénarios</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">دراسات جامعية · خرائط GIS · ٣ سيناريوهات</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Universitätsstudien · GIS-Karten · 3 Szenarien</p>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
             <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-file-pdf" style="font-size: 2.5rem; color: #e74c3c;"></i>
                 <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">194-page Dossier</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">194 pages Dossier</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">١٩٤ صفحة ملف</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">194-seitiges Dossier</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">Complete technical report</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">Rapport technique complet</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">تقرير فني كامل</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">Vollständiger technischer Bericht</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">194 pages</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">١٩٤ صفحة</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">194 Seiten</p>
             </div>
             <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-file-excel" style="font-size: 2.5rem; color: #27ae60;"></i>
                 <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">34 Excel Sheets</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">34 Feuilles Excel</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">٣٤ ورقة إكسل</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">34 Excel-Blätter</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">3 scenarios (Low, Medium, High)</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">3 scénarios (Faible, Moyen, Élevé)</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">٣ سيناريوهات (منخفض، متوسط، مرتفع)</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">3 Szenarien (Niedrig, Mittel, Hoch)</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">34 feuilles</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">٣٤ ورقة</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">34 Blätter</p>
             </div>
             <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-map" style="font-size: 2.5rem; color: #3498db;"></i>
                 <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">5-Country Maps</p>
-                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Cartes 5 Pays</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Cartes 5 pays</p>
                 <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">خرائط ٥ دول</p>
                 <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">5-Länder-Karten</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">GIS · Topography · Faults · Seismology</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">GIS · Topographie · Failles · Sismologie</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">GIS · طبوغرافيا · صدوع · زلازل</p>
-                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">GIS · Topographie · Verwerfungen · Seismologie</p>
             </div>
         </div>
         <p style="margin-top: 30px; color: #4a5a6a; font-style: italic;" data-lang="en">🔒 Technical information only available to verified investors after NDA signature</p>
-        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="fr">🔒 Informations techniques disponibles uniquement aux investisseurs vérifiés après signature de la NDA</p>
-        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="ar">🔒 المعلومات الفنية متاحة فقط للمستثمرين المعتمدين بعد توقيع NDA</p>
-        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="de">🔒 Technische Informationen nur nach Unterzeichnung der NDA für verifizierte Investoren verfügbar</p>
+        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="fr">🔒 Informations techniques sur NDA</p>
+        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="ar">🔒 المعلومات الفنية بعد توقيع NDA</p>
+        <p style="margin-top: 30px; color: #4a5a6a; font-style: italic; display:none;" data-lang="de">🔒 Technische Informationen nur nach NDA</p>
     </div>
 </section>
 
-<!-- ACHIEVEMENTS (unique images) -->
-<section class="section" style="background: white;" id="achievements">
+<!-- ===== ACHIEVEMENTS ===== -->
+<section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Achievements</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Réalisations</span></h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الإنجازات</span></h2>
         <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Errungenschaften</span></h2>
-        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Recognized globally for excellence in sustainable energy and innovation</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Reconnu mondialement pour l'excellence dans l'énergie durable et l'innovation</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">معترف به عالمياً للتميز في الطاقة المستدامة والابتكار</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Weltweit anerkannt für Exzellenz in nachhaltiger Energie und Innovation</p>
-
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=200" alt="Award">
-                <div class="ach-text"><h4 data-lang="en">Top 8 Finalist – Low Carbon Singapore & Temasek</h4><h4 data-lang="fr" style="display:none;">Finaliste Top 8 – Bas Carbone Singapour & Temasek</h4><h4 data-lang="ar" style="display:none;">أفضل ٨ نهائي – كربون منخفض سنغافورة وتيماسيك</h4><h4 data-lang="de" style="display:none;">Top 8 Finalist – Niedrigkohlenstoff Singapur & Temasek</h4><p data-lang="en">Recognized among the top 8 global low-carbon innovators.</p><p data-lang="fr" style="display:none;">Reconnu parmi les 8 meilleurs innovateurs bas-carbone mondiaux.</p><p data-lang="ar" style="display:none;">معترف به بين أفضل ٨ مبتكرين منخفضي الكربون عالمياً.</p><p data-lang="de" style="display:none;">Anerkannt unter den Top 8 globalen Niedrigkohlenstoff-Innovatoren.</p></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Temasek_Holdings_logo.svg/1200px-Temasek_Holdings_logo.svg.png" alt="Temasek">
+                <div class="ach-text"><h4 data-lang="en">Top 8 Finalist – Low Carbon Singapore & Temasek</h4><h4 data-lang="fr" style="display:none;">Finaliste Top 8 – Temasek</h4><h4 data-lang="ar" style="display:none;">أفضل ٨ نهائي – تيماسيك</h4><h4 data-lang="de" style="display:none;">Top 8 Finalist – Temasek</h4><p data-lang="en">Recognized among the top 8 global low-carbon innovators.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200" alt="Sheikh Zayed">
-                <div class="ach-text"><h4 data-lang="en">Semi-Finalist – Sheikh Zayed Award UAE</h4><h4 data-lang="fr" style="display:none;">Demi-finaliste – Prix Sheikh Zayed EAU</h4><h4 data-lang="ar" style="display:none;">نصف نهائي – جائزة الشيخ زايد الإمارات</h4><h4 data-lang="de" style="display:none;">Halbfinalist – Sheikh Zayed Preis VAE</h4><p data-lang="en">Selected among the top sustainable energy projects in the Middle East.</p><p data-lang="fr" style="display:none;">Sélectionné parmi les meilleurs projets d'énergie durable au Moyen-Orient.</p><p data-lang="ar" style="display:none;">تم اختياره من بين أفضل مشاريع الطاقة المستدامة في الشرق الأوسط.</p><p data-lang="de" style="display:none;">Ausgewählt unter den besten nachhaltigen Energieprojekten im Nahen Osten.</p></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg/1200px-Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg" alt="Sheikh Zayed">
+                <div class="ach-text"><h4 data-lang="en">Semi-Finalist – Sheikh Zayed Award UAE</h4><h4 data-lang="fr" style="display:none;">Demi-finaliste – Prix Sheikh Zayed</h4><h4 data-lang="ar" style="display:none;">نصف نهائي – جائزة الشيخ زايد</h4><h4 data-lang="de" style="display:none;">Halbfinalist – Sheikh Zayed Preis</h4><p data-lang="en">Selected among the top sustainable energy projects in the Middle East.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=200" alt="Energy Globe">
-                <div class="ach-text"><h4 data-lang="en">Winner – Energy Globe Award Iran</h4><h4 data-lang="fr" style="display:none;">Gagnant – Energy Globe Award Iran</h4><h4 data-lang="ar" style="display:none;">الفائز – جائزة إنرجي غلوب إيران</h4><h4 data-lang="de" style="display:none;">Gewinner – Energy Globe Award Iran</h4><p data-lang="en">First place in the national sustainable energy category.</p><p data-lang="fr" style="display:none;">Première place dans la catégorie nationale de l'énergie durable.</p><p data-lang="ar" style="display:none;">المركز الأول في فئة الطاقة المستدامة الوطنية.</p><p data-lang="de" style="display:none;">Erster Platz in der nationalen Kategorie für nachhaltige Energie.</p></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Energy_Globe_Award_logo.png/1200px-Energy_Globe_Award_logo.png" alt="Energy Globe">
+                <div class="ach-text"><h4 data-lang="en">Winner – Energy Globe Award Iran</h4><h4 data-lang="fr" style="display:none;">Gagnant – Energy Globe Award</h4><h4 data-lang="ar" style="display:none;">الفائز – جائزة إنرجي غلوب</h4><h4 data-lang="de" style="display:none;">Gewinner – Energy Globe Award</h4><p data-lang="en">First place in the national sustainable energy category.</p></div>
+            </div>
+            <div class="achievement-item">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=200" alt="Team award">
+                <div class="ach-text"><h4 data-lang="en">HRB Ireland – Doctorate Equivalent Recognition</h4><h4 data-lang="fr" style="display:none;">Reconnaissance Doctorat HRB Irlande</h4><h4 data-lang="ar" style="display:none;">معادل الدكتوراه من HRB أيرلندا</h4><h4 data-lang="de" style="display:none;">HRB Irland – Doktoratsäquivalenz</h4><p data-lang="en">Official recognition of excellence in sustainable energy research and innovation.</p></div>
             </div>
             <div class="achievement-item">
                 <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=200" alt="Certificates">
-                <div class="ach-text"><h4 data-lang="en">180+ International Certifications</h4><h4 data-lang="fr" style="display:none;">180+ Certifications Internationales</h4><h4 data-lang="ar" style="display:none;">١٨٠+ شهادة دولية</h4><h4 data-lang="de" style="display:none;">180+ Internationale Zertifizierungen</h4><p data-lang="en">From the world's leading universities and research institutions.</p><p data-lang="fr" style="display:none;">Des principales universités et institutions de recherche mondiales.</p><p data-lang="ar" style="display:none;">من أفضل الجامعات والمؤسسات البحثية في العالم.</p><p data-lang="de" style="display:none;">Von den führenden Universitäten und Forschungseinrichtungen der Welt.</p></div>
+                <div class="ach-text"><h4 data-lang="en">180+ International Certifications</h4><h4 data-lang="fr" style="display:none;">180+ Certifications</h4><h4 data-lang="ar" style="display:none;">١٨٠+ شهادة دولية</h4><h4 data-lang="de" style="display:none;">180+ Zertifizierungen</h4><p data-lang="en">From the world's leading universities and research institutions.</p></div>
             </div>
         </div>
 
-        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif;" data-lang="en">Top 20 Universities Worldwide</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Top 20 Universités Mondiales</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">أفضل ٢٠ جامعة في العالم</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Top 20 Universitäten weltweit</h3>
-        <p style="margin-bottom: 20px; color: #4a5a6a;" data-lang="en">In fields of: Artificial Intelligence · Sustainable Energy · Carbon Capture · Circular Economy · Industrial Recycling · Water Conservation · Geology · Clean Energy Industry</p>
-        <p style="margin-bottom: 20px; color: #4a5a6a; display:none;" data-lang="fr">Dans les domaines : Intelligence Artificielle · Énergie Durable · Capture de Carbone · Économie Circulaire · Recyclage Industriel · Conservation de l'Eau · Géologie · Industrie de l'Énergie Propre</p>
-        <p style="margin-bottom: 20px; color: #4a5a6a; display:none;" data-lang="ar">في مجالات: الذكاء الاصطناعي · الطاقة المستدامة · احتجاز الكربون · الاقتصاد الدائري · إعادة التدوير الصناعي · حفظ المياه · الجيولوجيا · صناعة الطاقة النظيفة</p>
-        <p style="margin-bottom: 20px; color: #4a5a6a; display:none;" data-lang="de">In den Bereichen: Künstliche Intelligenz · Nachhaltige Energie · Kohlenstoffabscheidung · Kreislaufwirtschaft · Industrielles Recycling · Wasserschutz · Geologie · Clean-Energy-Industrie</p>
+        <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif;" data-lang="en">Top 20 Universities Worldwide</h3>
+        <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Top 20 Universités</h3>
+        <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">أفضل ٢٠ جامعة</h3>
+        <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Top 20 Universitäten</h3>
         <div class="university-grid">
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="ETH"><h5>ETH Zurich</h5><p>Clean Energy</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="NUS"><h5>NUS</h5><p>Water</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stanford_University_seal_2013.svg/1200px-Stanford_University_seal_2013.svg.png" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cambridge_University_Coat_of_Arms.svg/1200px-Cambridge_University_Coat_of_Arms.svg.png" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Oxford_University_Coat_Of_Arms.svg/1200px-Oxford_University_Coat_Of_Arms.svg.png" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/ETH_Z%C3%BCrich_Logo.svg/1200px-ETH_Z%C3%BCrich_Logo.svg.png" alt="ETH"><h5>ETH Zurich</h5><p>Clean Energy</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Imperial_College_London_logo.svg/1200px-Imperial_College_London_logo.svg.png" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/NUS_logo.svg/1200px-NUS_logo.svg.png" alt="NUS"><h5>NUS</h5><p>Water</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Delft_University_of_Technology_logo.svg/1200px-Delft_University_of_Technology_logo.svg.png" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/UC_Berkeley_seal.svg/1200px-UC_Berkeley_seal.svg.png" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/University_of_Tokyo_logo.svg/1200px-University_of_Tokyo_logo.svg.png" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Durham_University_shield.svg/1200px-Durham_University_shield.svg.png" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
+            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/University_of_Copenhagen_logo.svg/1200px-University_of_Copenhagen_logo.svg.png" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
         </div>
     </div>
 </section>
 
-<!-- WHY GEO -->
-<section class="section" style="background: var(--light-bg);" id="whygeo">
-    <div class="container">
-        <h2 class="section-title text-center"><span class="highlight" data-lang="en">Why Geothermal?</span></h2>
-        <h2 class="section-title text-center" data-lang="fr" style="display:none;"><span class="highlight">Pourquoi la Géothermie ?</span></h2>
-        <h2 class="section-title text-center" data-lang="ar" style="display:none;"><span class="highlight">لماذا الحرارية الأرضية؟</span></h2>
-        <h2 class="section-title text-center" data-lang="de" style="display:none;"><span class="highlight">Warum Geothermie?</span></h2>
-        <p class="section-sub text-center" style="margin: 0 auto 40px;" data-lang="en">A multi-dimensional solution that outperforms solar, wind, and conventional water management</p>
-        <p class="section-sub text-center" style="margin: 0 auto 40px; display:none;" data-lang="fr">Une solution multidimensionnelle qui surpasse le solaire, l'éolien et la gestion conventionnelle de l'eau</p>
-        <p class="section-sub text-center" style="margin: 0 auto 40px; display:none;" data-lang="ar">حل متعدد الأبعاد يتفوق على الطاقة الشمسية وطاقة الرياح وإدارة المياه التقليدية</p>
-        <p class="section-sub text-center" style="margin: 0 auto 40px; display:none;" data-lang="de">Eine mehrdimensionale Lösung, die Solar-, Wind- und konventionelle Wasserwirtschaft übertrifft</p>
-
-        <div class="grid-2">
-            <div>
-                <h3 style="font-family: 'Poppins', sans-serif;" data-lang="en">Solar & Wind Limitations</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Limites du Solaire et de l'Éolien</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">قيود الطاقة الشمسية وطاقة الرياح</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Grenzen von Solar und Wind</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Solar: No production at night, weak on cloudy days, expensive batteries</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Solaire : Pas de production la nuit, faible par temps nuageux, batteries coûteuses</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ الطاقة الشمسية: لا إنتاج في الليل، ضعيفة في الأيام الملبدة بالغيوم، بطاريات باهظة الثمن</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Solar: Keine Produktion bei Nacht, schwach bei Bewölkung, teure Batterien</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Wind: Zero generation during calm periods, bird mortality, noise pollution</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Éolien : Zéro génération pendant les périodes calmes, mortalité des oiseaux, pollution sonore</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ طاقة الرياح: توليد صفر خلال فترات الهدوء، نفوق الطيور، التلوث الضوضائي</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Wind: Keine Erzeugung bei Windstille, Vogelsterben, Lärmbelästigung</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Drought: Destroys vegetation, creates dust storms, mud deposits, ecosystem collapse</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Sécheresse : Détruit la végétation, crée des tempêtes de poussière, dépôts de boue, effondrement des écosystèmes</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ الجفاف: يدمر الغطاء النباتي، يخلق عواصف ترابية، رواسب طينية، انهيار النظام البيئي</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Dürre: Zerstört Vegetation, erzeugt Staubstürme, Schlammablagerungen, Ökosystemkollaps</li>
-                </ul>
-            </div>
-            <div>
-                <h3 style="font-family: 'Poppins', sans-serif;" data-lang="en">Geothermal Multi-Dimensional Advantage</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Avantage Multidimensionnel de la Géothermie</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">الميزة متعددة الأبعاد للحرارية الأرضية</h3>
-                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Mehrdimensionaler Vorteil der Geothermie</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ 24/7 continuous baseload power – no intermittency</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Énergie de base continue 24/7 – pas d'intermittence</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ طاقة قاعدة مستمرة ٢٤/٧ – لا انقطاع</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ 24/7 kontinuierliche Grundlaststrom – keine Unterbrechung</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Zero batteries required – massive cost savings</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Aucune batterie nécessaire – économies massives</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ لا حاجة لبطاريات – توفير هائل في التكاليف</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Keine Batterien erforderlich – massive Kosteneinsparungen</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Simultaneous production of energy, fresh water, heat, minerals, and salt</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Production simultanée d'énergie, d'eau douce, de chaleur, de minéraux et de sel</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ إنتاج متزامن للطاقة والمياه العذبة والحرارة والمعادن والملح</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Gleichzeitige Produktion von Energie, Süßwasser, Wärme, Mineralien und Salz</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Precious metal extraction – gold, silver, tungsten, lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Extraction de métaux précieux – or, argent, tungstène, lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ استخراج المعادن الثمينة – الذهب، الفضة، التنجستن، الليثيوم</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Gewinnung von Edelmetallen – Gold, Silber, Wolfram, Lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Massive job creation – 12,000+ direct, 25,000+ indirect</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Création massive d'emplois – 12,000+ directs, 25,000+ indirects</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ خلق وظائف هائل – ١٢,٠٠٠+ مباشر، ٢٥,٠٠٠+ غير مباشر</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Massive Arbeitsplatzschaffung – 12,000+ direkt, 25,000+ indirekt</li>
-                    <li style="padding: 10px 0;" data-lang="en">✔ Zero carbon footprint – tradeable carbon credits</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="fr">✔ Empreinte carbone zéro – crédits carbone négociables</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="ar">✔ بصمة كربونية صفرية – أرصدة كربون قابلة للتداول</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="de">✔ Null CO2-Fußabdruck – handelbare Kohlenstoffgutschriften</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ARTICLES -->
-<section class="section" style="background: white;" id="articles">
-    <div class="container text-center">
-        <h2 class="section-title"><span class="highlight" data-lang="en">Featured Articles</span></h2>
-        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Articles en Vedette</span></h2>
-        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المقالات المميزة</span></h2>
-        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Ausgewählte Artikel</span></h2>
-        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Insights from the world's most respected publications on geothermal energy, circular economy, and sustainable development</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Aperçus des publications les plus respectées au monde sur l'énergie géothermique, l'économie circulaire et le développement durable</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">رؤى من أكثر المنشورات احتراماً في العالم حول الطاقة الحرارية الأرضية والاقتصاد الدائري والتنمية المستدامة</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Einblicke aus den weltweit angesehensten Publikationen zu Geothermie, Kreislaufwirtschaft und nachhaltiger Entwicklung</p>
-        <div class="grid-3">
-            <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400" alt="Nature">
-                <div class="article-body">
-                    <h4 data-lang="en">Nature: The Future of Geothermal Energy</h4>
-                    <h4 data-lang="fr" style="display:none;">Nature : L'avenir de l'énergie géothermique</h4>
-                    <h4 data-lang="ar" style="display:none;">نيتشر: مستقبل الطاقة الحرارية الأرضية</h4>
-                    <h4 data-lang="de" style="display:none;">Nature: Die Zukunft der Geothermie</h4>
-                    <p data-lang="en">How enhanced geothermal systems can power the world with zero emissions.</p>
-                    <p data-lang="fr" style="display:none;">Comment les systèmes géothermiques améliorés peuvent alimenter le monde sans émissions.</p>
-                    <p data-lang="ar" style="display:none;">كيف يمكن للأنظمة الحرارية الأرضية المحسنة أن تزود العالم بالطاقة بدون انبعاثات.</p>
-                    <p data-lang="de" style="display:none;">Wie verbesserte geothermische Systeme die Welt emissionsfrei mit Strom versorgen können.</p>
-                    <a href="https://www.nature.com/" target="_blank" data-lang="en">Read more →</a>
-                    <a href="https://www.nature.com/" target="_blank" data-lang="fr" style="display:none;">Lire la suite →</a>
-                    <a href="https://www.nature.com/" target="_blank" data-lang="ar" style="display:none;">اقرأ المزيد →</a>
-                    <a href="https://www.nature.com/" target="_blank" data-lang="de" style="display:none;">Weiterlesen →</a>
-                </div>
-            </div>
-            <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400" alt="Forbes">
-                <div class="article-body">
-                    <h4 data-lang="en">Forbes: The Circular Economy & Geothermal</h4>
-                    <h4 data-lang="fr" style="display:none;">Forbes : L'économie circulaire et la géothermie</h4>
-                    <h4 data-lang="ar" style="display:none;">فوربس: الاقتصاد الدائري والطاقة الحرارية الأرضية</h4>
-                    <h4 data-lang="de" style="display:none;">Forbes: Kreislaufwirtschaft & Geothermie</h4>
-                    <p data-lang="en">Why integrating water, energy, and minerals is the next industrial revolution.</p>
-                    <p data-lang="fr" style="display:none;">Pourquoi l'intégration de l'eau, de l'énergie et des minéraux est la prochaine révolution industrielle.</p>
-                    <p data-lang="ar" style="display:none;">لماذا يعد دمج المياه والطاقة والمعادن الثورة الصناعية القادمة.</p>
-                    <p data-lang="de" style="display:none;">Warum die Integration von Wasser, Energie und Mineralien die nächste industrielle Revolution ist.</p>
-                    <a href="https://www.forbes.com/" target="_blank" data-lang="en">Read more →</a>
-                    <a href="https://www.forbes.com/" target="_blank" data-lang="fr" style="display:none;">Lire la suite →</a>
-                    <a href="https://www.forbes.com/" target="_blank" data-lang="ar" style="display:none;">اقرأ المزيد →</a>
-                    <a href="https://www.forbes.com/" target="_blank" data-lang="de" style="display:none;">Weiterlesen →</a>
-                </div>
-            </div>
-            <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400" alt="Bloomberg">
-                <div class="article-body">
-                    <h4 data-lang="en">Bloomberg: Lithium from Geothermal Brine</h4>
-                    <h4 data-lang="fr" style="display:none;">Bloomberg : Lithium des saumures géothermiques</h4>
-                    <h4 data-lang="ar" style="display:none;">بلومبرغ: الليثيوم من المحلول الملحي الحراري الأرضي</h4>
-                    <h4 data-lang="de" style="display:none;">Bloomberg: Lithium aus geothermischer Sole</h4>
-                    <p data-lang="en">The untapped potential of extracting critical minerals from geothermal fluids.</p>
-                    <p data-lang="fr" style="display:none;">Le potentiel inexploité de l'extraction de minéraux critiques à partir des fluides géothermiques.</p>
-                    <p data-lang="ar" style="display:none;">الإمكانات غير المستغلة لاستخراج المعادن الحيوية من السوائل الحرارية الأرضية.</p>
-                    <p data-lang="de" style="display:none;">Das ungenutzte Potenzial der Gewinnung kritischer Mineralien aus geothermischen Flüssigkeiten.</p>
-                    <a href="https://www.bloomberg.com/" target="_blank" data-lang="en">Read more →</a>
-                    <a href="https://www.bloomberg.com/" target="_blank" data-lang="fr" style="display:none;">Lire la suite →</a>
-                    <a href="https://www.bloomberg.com/" target="_blank" data-lang="ar" style="display:none;">اقرأ المزيد →</a>
-                    <a href="https://www.bloomberg.com/" target="_blank" data-lang="de" style="display:none;">Weiterlesen →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PARTNERS (Sovereign Funds & Giants) -->
-<section class="section" id="partners" style="background: var(--light-bg);">
+<!-- ===== PARTNERS ===== -->
+<section class="section" style="background: white;" id="partners">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Strategic Partners & Sovereign Funds</span></h2>
-        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Partenaires Stratégiques & Fonds Souverains</span></h2>
-        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الشركاء الاستراتيجيون والصناديق السيادية</span></h2>
-        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Strategische Partner & Staatsfonds</span></h2>
-        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Backed by the world's most influential sovereign funds and industrial leaders</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Soutenu par les fonds souverains et les leaders industriels les plus influents du monde</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">مدعوم من أكبر الصناديق السيادية وقادة الصناعة في العالم</p>
-        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Unterstützt von den einflussreichsten Staatsfonds und Industriepartnern der Welt</p>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Partenaires Stratégiques</span></h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الشركاء الاستراتيجيون</span></h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Strategische Partner</span></h2>
         <div class="partner-grid">
             <div class="partner-item"><span class="partner-flag">🇶🇦</span><h6>Qatar</h6><p>QIA</p></div>
             <div class="partner-item"><span class="partner-flag">🇰🇼</span><h6>Kuwait</h6><p>KIA</p></div>
             <div class="partner-item"><span class="partner-flag">🇴🇲</span><h6>Oman</h6><p>OIA</p></div>
-            <div class="partner-item"><span class="partner-flag">🇸🇦</span><h6>Saudi Arabia</h6><p>PIF</p></div>
+            <div class="partner-item"><span class="partner-flag">🇸🇦</span><h6>Saudi</h6><p>PIF</p></div>
             <div class="partner-item"><span class="partner-flag">🇧🇭</span><h6>Bahrain</h6><p>Mumtalakat</p></div>
-            <div class="partner-item"><span class="partner-flag">🇦🇪</span><h6>UAE</h6><p>ADIA · Mubadala</p></div>
+            <div class="partner-item"><span class="partner-flag">🇦🇪</span><h6>UAE</h6><p>ADIA·Mubadala</p></div>
             <div class="partner-item"><span class="partner-flag">🇳🇴</span><h6>Norway</h6><p>GPFG</p></div>
             <div class="partner-item"><span class="partner-flag">🇸🇬</span><h6>Singapore</h6><p>Temasek</p></div>
             <div class="partner-item"><span class="partner-flag">🇨🇦</span><h6>Canada</h6><p>CPPIB</p></div>
             <div class="partner-item"><span class="partner-flag">🇯🇵</span><h6>Japan</h6><p>GPIF</p></div>
             <div class="partner-item"><span class="partner-flag">🇬🇧</span><h6>UK</h6><p>Brookfield</p></div>
-            <div class="partner-item"><span class="partner-flag">🇺🇸</span><h6>USA</h6><p>BlackRock · Blackstone</p></div>
+            <div class="partner-item"><span class="partner-flag">🇺🇸</span><h6>USA</h6><p>BlackRock</p></div>
         </div>
-        <p style="margin-top: 24px; color: #4a5a6a;" data-lang="en">+ ADIA (UAE), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Saudi), Temasek (Singapore), GPFG (Norway), CPPIB (Canada), GPIF (Japan), Brookfield, BlackRock, Blackstone and more</p>
-        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="fr">+ ADIA (EAU), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Arabie Saoudite), Temasek (Singapour), GPFG (Norvège), CPPIB (Canada), GPIF (Japon), Brookfield, BlackRock, Blackstone et plus</p>
-        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="ar">+ ADIA (الإمارات)، مبادلة، جهاز قطر للاستثمار، هيئة الاستثمار الكويتية، OIA (عمان)، PIF (السعودية)، تيماسيك (سنغافورة)، GPFG (النرويج)، CPPIB (كندا)، GPIF (اليابان)، بروكفيلد، بلاك روك، بلاكستون والمزيد</p>
-        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="de">+ ADIA (VAE), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Saudi-Arabien), Temasek (Singapur), GPFG (Norwegen), CPPIB (Kanada), GPIF (Japan), Brookfield, BlackRock, Blackstone und mehr</p>
     </div>
 </section>
 
-<!-- FINANCIAL CALCULATOR (modal) -->
-<section class="section" style="background: white;" id="calculator">
+<!-- ===== CALCULATOR ===== -->
+<section class="section" style="background: var(--light-bg);" id="calculator">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Financial Calculator</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Calculatrice</span> Financière</h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">آلة</span> حاسبة مالية</h2>
         <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Finanz</span> rechner</h2>
-        <p class="section-sub" style="margin: 0 auto 20px;" data-lang="en">Estimate your potential returns with our interactive investment calculator</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="fr">Estimez vos rendements potentiels avec notre calculateur d'investissement interactif</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="ar">قدّر عوائدك المحتملة باستخدام حاسبة الاستثمار التفاعلية</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="de">Schätzen Sie Ihre potenziellen Renditen mit unserem interaktiven Anlagerechner</p>
         <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="en">Open Calculator</button>
-        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="fr" style="display:none;">Ouvrir la Calculatrice</button>
-        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="ar" style="display:none;">فتح الآلة الحاسبة</button>
-        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="de" style="display:none;">Rechner öffnen</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="fr" style="display:none;">Ouvrir</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="ar" style="display:none;">فتح</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="de" style="display:none;">Öffnen</button>
     </div>
 </section>
 
@@ -1367,82 +1310,71 @@
     <div class="modal-box">
         <button class="modal-close" onclick="document.getElementById('calcModal').classList.remove('open')">✖</button>
         <h2 data-lang="en">Investment Calculator</h2>
-        <h2 data-lang="fr" style="display:none;">Calculateur d'Investissement</h2>
+        <h2 data-lang="fr" style="display:none;">Calculateur</h2>
         <h2 data-lang="ar" style="display:none;">حاسبة الاستثمار</h2>
         <h2 data-lang="de" style="display:none;">Anlagerechner</h2>
-
-        <label data-lang="en">Investment Amount (USD)</label>
-        <label data-lang="fr" style="display:none;">Montant de l'investissement (USD)</label>
-        <label data-lang="ar" style="display:none;">مبلغ الاستثمار (دولار)</label>
-        <label data-lang="de" style="display:none;">Investitionsbetrag (USD)</label>
+        <label data-lang="en">Investment Amount</label>
+        <label data-lang="fr" style="display:none;">Montant</label>
+        <label data-lang="ar" style="display:none;">مبلغ الاستثمار</label>
+        <label data-lang="de" style="display:none;">Investitionsbetrag</label>
         <input type="number" id="investAmount" value="10000000" step="100000" min="100000" />
-
         <label data-lang="en">Currency</label>
         <label data-lang="fr" style="display:none;">Devise</label>
         <label data-lang="ar" style="display:none;">العملة</label>
         <label data-lang="de" style="display:none;">Währung</label>
-        <select id="currency">
-            <option value="USD">USD (US Dollar)</option>
-            <option value="EUR">EUR (Euro)</option>
-            <option value="GBP">GBP (British Pound)</option>
-        </select>
-
+        <select id="currency"><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select>
         <label data-lang="en">Profit Rate</label>
         <label data-lang="fr" style="display:none;">Taux de Profit</label>
         <label data-lang="ar" style="display:none;">معدل الربح</label>
         <label data-lang="de" style="display:none;">Gewinnrate</label>
-        <div class="radio-group" id="profitRateGroup">
-            <label><input type="radio" name="profitRate" value="25" checked> 25% (Low)</label>
-            <label><input type="radio" name="profitRate" value="35"> 35% (Medium)</label>
-            <label><input type="radio" name="profitRate" value="45"> 45% (High)</label>
+        <div class="radio-group">
+            <label><input type="radio" name="profitRate" value="25" checked> 25%</label>
+            <label><input type="radio" name="profitRate" value="35"> 35%</label>
+            <label><input type="radio" name="profitRate" value="45"> 45%</label>
         </div>
-
         <label data-lang="en">Investment Period</label>
-        <label data-lang="fr" style="display:none;">Période d'Investissement</label>
-        <label data-lang="ar" style="display:none;">فترة الاستثمار</label>
-        <label data-lang="de" style="display:none;">Anlagezeitraum</label>
-        <div class="radio-group" id="periodGroup">
-            <label><input type="radio" name="period" value="14" checked> 14 months (Fast)</label>
-            <label><input type="radio" name="period" value="18"> 18 months (Medium)</label>
-            <label><input type="radio" name="period" value="24"> 24 months (Standard)</label>
+        <label data-lang="fr" style="display:none;">Période</label>
+        <label data-lang="ar" style="display:none;">الفترة</label>
+        <label data-lang="de" style="display:none;">Zeitraum</label>
+        <div class="radio-group">
+            <label><input type="radio" name="period" value="14" checked> 14 mo.</label>
+            <label><input type="radio" name="period" value="18"> 18 mo.</label>
+            <label><input type="radio" name="period" value="24"> 24 mo.</label>
         </div>
-
         <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="en">Calculate</button>
         <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="fr" style="display:none;">Calculer</button>
         <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="ar" style="display:none;">احسب</button>
         <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="de" style="display:none;">Berechnen</button>
-
-        <div class="calc-result" id="calcResult">
-            <span data-lang="en">Enter values and press Calculate</span>
-            <span data-lang="fr" style="display:none;">Entrez les valeurs et appuyez sur Calculer</span>
-            <span data-lang="ar" style="display:none;">أدخل القيم واضغط على حساب</span>
-            <span data-lang="de" style="display:none;">Werte eingeben und Berechnen drücken</span>
-        </div>
-
+        <div class="calc-result" id="calcResult"><span data-lang="en">Enter values and press Calculate</span><span data-lang="fr" style="display:none;">Entrez et calculez</span><span data-lang="ar" style="display:none;">أدخل واضغط حساب</span><span data-lang="de" style="display:none;">Werte eingeben und Berechnen</span></div>
         <div class="calc-note" data-lang="en">Risk timing depends on local governments, legal permits, and review periods in each country. Prices and costs are subject to global market prices at the time of execution.</div>
-        <div class="calc-note" data-lang="fr" style="display:none;">Le calendrier des risques dépend des gouvernements locaux, des permis légaux et des délais d'examen dans chaque pays. Les prix et les coûts sont soumis aux prix du marché mondial au moment de l'exécution.</div>
-        <div class="calc-note" data-lang="ar" style="display:none;">توقيت المخاطر يعتمد على الحكومات المحلية والتصاريح القانونية وفترات المراجعة في كل دولة. الأسعار والتكاليف تخضع لأسعار السوق العالمية وقت التنفيذ.</div>
-        <div class="calc-note" data-lang="de" style="display:none;">Das Risiko-Zeitfenster hängt von den lokalen Regierungen, gesetzlichen Genehmigungen und Prüfzeiträumen in den einzelnen Ländern ab. Preise und Kosten unterliegen den globalen Marktpreisen zum Zeitpunkt der Ausführung.</div>
+        <div class="calc-note" data-lang="fr" style="display:none;">Les délais dépendent des gouvernements locaux, des permis et des périodes d'examen.</div>
+        <div class="calc-note" data-lang="ar" style="display:none;">توقيت المخاطر يعتمد على الحكومات المحلية والتصاريح القانونية.</div>
+        <div class="calc-note" data-lang="de" style="display:none;">Das Risiko hängt von lokalen Regierungen, Genehmigungen und Prüfzeiträumen ab.</div>
     </div>
 </div>
 
-<!-- CONTACT FORM -->
-<section id="contact" class="section" style="background: var(--light-bg);">
+<!-- ===== CONTACT FORM ===== -->
+<section id="contact" class="section" style="background: white;">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Contact</span> <span data-lang="en">Investment Team</span></h2>
-        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Contacter</span> l'Équipe d'Investissement</h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Contacter</span> l'Équipe</h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">اتصل</span> بفريق الاستثمار</h2>
-        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Kontaktieren</span> Sie das Investitionsteam</h2>
-        <p class="section-sub" style="margin: 0 auto 20px;" data-lang="en">Complete the form below for the technical dossier and personalized consultation</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="fr">Remplissez le formulaire ci-dessous pour le dossier technique et la consultation personnalisée</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="ar">أكمل النموذج أدناه للحصول على الملف الفني والاستشارة الشخصية</p>
-        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="de">Füllen Sie das untenstehende Formular für das technische Dossier und die persönliche Beratung aus</p>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Kontaktieren</span> Sie das Team</h2>
 
-        <div style="background: rgba(10,42,68,0.04); padding: 14px 20px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid var(--gold); text-align: left;">
-            <p style="margin: 0; font-size: 0.95rem;" data-lang="en">🔒 <strong>Mutual confidentiality guarantee</strong> from feasibility to execution · 📄 <strong>Mutual NDA</strong> before any information sharing</p>
-            <p style="margin: 0; font-size: 0.95rem; display:none;" data-lang="fr">🔒 <strong>Garantie de confidentialité mutuelle</strong> de la faisabilité à l'exécution · 📄 <strong>NDA mutuelle</strong> avant tout partage d'informations</p>
-            <p style="margin: 0; font-size: 0.95rem; display:none;" data-lang="ar">🔒 <strong>ضمان السرية المتبادلة</strong> من الجدوى إلى التنفيذ · 📄 <strong>NDA متبادلة</strong> قبل أي مشاركة معلومات</p>
-            <p style="margin: 0; font-size: 0.95rem; display:none;" data-lang="de">🔒 <strong>Vertraulichkeitsgarantie</strong> von der Machbarkeit bis zur Ausführung · 📄 <strong>Gegenseitige NDA</strong> vor jedem Informationsaustausch</p>
+        <!-- Contact options -->
+        <div class="contact-options">
+            <span class="contact-opt active" data-contact="general" onclick="setContactType('general')" data-lang="en">General Inquiry</span>
+            <span class="contact-opt" data-contact="general" onclick="setContactType('general')" data-lang="fr" style="display:none;">Demande Générale</span>
+            <span class="contact-opt" data-contact="general" onclick="setContactType('general')" data-lang="ar" style="display:none;">استعلام عام</span>
+            <span class="contact-opt" data-contact="general" onclick="setContactType('general')" data-lang="de" style="display:none;">Allgemeine Anfrage</span>
+            <span class="contact-opt" data-contact="support" onclick="setContactType('support')" data-lang="en">Support</span>
+            <span class="contact-opt" data-contact="support" onclick="setContactType('support')" data-lang="fr" style="display:none;">Assistance</span>
+            <span class="contact-opt" data-contact="support" onclick="setContactType('support')" data-lang="ar" style="display:none;">الدعم</span>
+            <span class="contact-opt" data-contact="support" onclick="setContactType('support')" data-lang="de" style="display:none;">Support</span>
+            <span class="contact-opt" data-contact="error" onclick="setContactType('error')" data-lang="en">Report Error</span>
+            <span class="contact-opt" data-contact="error" onclick="setContactType('error')" data-lang="fr" style="display:none;">Signaler une Erreur</span>
+            <span class="contact-opt" data-contact="error" onclick="setContactType('error')" data-lang="ar" style="display:none;">الإبلاغ عن خطأ</span>
+            <span class="contact-opt" data-contact="error" onclick="setContactType('error')" data-lang="de" style="display:none;">Fehler melden</span>
         </div>
 
         <div class="contact-form">
@@ -1456,33 +1388,33 @@
                         <button type="button" class="tag active" data-value="energy" onclick="selectTag(this)"><span data-lang="en">Energy</span><span data-lang="fr" style="display:none;">Énergie</span><span data-lang="ar" style="display:none;">الطاقة</span><span data-lang="de" style="display:none;">Energie</span></button>
                         <button type="button" class="tag" data-value="agriculture" onclick="selectTag(this)"><span data-lang="en">Agriculture</span><span data-lang="fr" style="display:none;">Agriculture</span><span data-lang="ar" style="display:none;">الزراعة</span><span data-lang="de" style="display:none;">Landwirtschaft</span></button>
                         <button type="button" class="tag" data-value="infrastructure" onclick="selectTag(this)"><span data-lang="en">Infrastructure</span><span data-lang="fr" style="display:none;">Infrastructure</span><span data-lang="ar" style="display:none;">البنية التحتية</span><span data-lang="de" style="display:none;">Infrastruktur</span></button>
-                        <button type="button" class="tag" data-value="industry" onclick="selectTag(this)"><span data-lang="en">Industry & Extraction</span><span data-lang="fr" style="display:none;">Industrie et Extraction</span><span data-lang="ar" style="display:none;">الصناعة والاستخراج</span><span data-lang="de" style="display:none;">Industrie & Extraktion</span></button>
-                        <button type="button" class="tag" data-value="water" onclick="selectTag(this)"><span data-lang="en">Water & Maintenance</span><span data-lang="fr" style="display:none;">Eau et Maintenance</span><span data-lang="ar" style="display:none;">المياه والصيانة</span><span data-lang="de" style="display:none;">Wasser & Wartung</span></button>
+                        <button type="button" class="tag" data-value="industry" onclick="selectTag(this)"><span data-lang="en">Industry & Extraction</span><span data-lang="fr" style="display:none;">Industrie</span><span data-lang="ar" style="display:none;">الصناعة</span><span data-lang="de" style="display:none;">Industrie</span></button>
+                        <button type="button" class="tag" data-value="water" onclick="selectTag(this)"><span data-lang="en">Water & Maintenance</span><span data-lang="fr" style="display:none;">Eau</span><span data-lang="ar" style="display:none;">المياه</span><span data-lang="de" style="display:none;">Wasser</span></button>
                     </div>
                     <input type="hidden" id="requestType" value="energy">
                 </div>
 
                 <div class="form-row"><input type="text" id="company" placeholder="Company Name" data-lang="en" /><input type="text" id="company" placeholder="Nom de l'Entreprise" data-lang="fr" style="display:none;" /><input type="text" id="company" placeholder="اسم الشركة" data-lang="ar" style="display:none;" /><input type="text" id="company" placeholder="Name des Unternehmens" data-lang="de" style="display:none;" required /></div>
-                <div class="form-row"><input type="email" id="email" placeholder="Valid Email (must use a verified domain)" data-lang="en" /><input type="email" id="email" placeholder="Email Valide (doit utiliser un domaine vérifié)" data-lang="fr" style="display:none;" /><input type="email" id="email" placeholder="بريد إلكتروني صالح (يجب استخدام نطاق موثوق)" data-lang="ar" style="display:none;" /><input type="email" id="email" placeholder="Gültige E-Mail (verifizierte Domain erforderlich)" data-lang="de" style="display:none;" required /></div>
-                <div class="form-row"><input type="tel" id="phone" placeholder="Phone Number" data-lang="en" /><input type="tel" id="phone" placeholder="Numéro de Téléphone" data-lang="fr" style="display:none;" /><input type="tel" id="phone" placeholder="رقم الهاتف" data-lang="ar" style="display:none;" /><input type="tel" id="phone" placeholder="Telefonnummer" data-lang="de" style="display:none;" /></div>
+                <div class="form-row"><input type="email" id="email" placeholder="Valid Email (must use a verified domain)" data-lang="en" /><input type="email" id="email" placeholder="Email Valide" data-lang="fr" style="display:none;" /><input type="email" id="email" placeholder="بريد إلكتروني صالح" data-lang="ar" style="display:none;" /><input type="email" id="email" placeholder="Gültige E-Mail" data-lang="de" style="display:none;" required /></div>
+                <div class="form-row"><input type="tel" id="phone" placeholder="Phone Number" data-lang="en" /><input type="tel" id="phone" placeholder="Numéro" data-lang="fr" style="display:none;" /><input type="tel" id="phone" placeholder="رقم الهاتف" data-lang="ar" style="display:none;" /><input type="tel" id="phone" placeholder="Telefonnummer" data-lang="de" style="display:none;" /></div>
                 <div class="form-row"><input type="text" id="country" placeholder="Country" data-lang="en" /><input type="text" id="country" placeholder="Pays" data-lang="fr" style="display:none;" /><input type="text" id="country" placeholder="الدولة" data-lang="ar" style="display:none;" /><input type="text" id="country" placeholder="Land" data-lang="de" style="display:none;" /></div>
-                <div class="form-row"><input type="text" id="extra" placeholder="Additional Details (optional)" data-lang="en" /><input type="text" id="extra" placeholder="Détails Supplémentaires (optionnel)" data-lang="fr" style="display:none;" /><input type="text" id="extra" placeholder="تفاصيل إضافية (اختياري)" data-lang="ar" style="display:none;" /><input type="text" id="extra" placeholder="Zusätzliche Details (optional)" data-lang="de" style="display:none;" /></div>
+                <div class="form-row"><input type="text" id="extra" placeholder="Additional Details (optional)" data-lang="en" /><input type="text" id="extra" placeholder="Détails" data-lang="fr" style="display:none;" /><input type="text" id="extra" placeholder="تفاصيل إضافية" data-lang="ar" style="display:none;" /><input type="text" id="extra" placeholder="Zusätzliche Details" data-lang="de" style="display:none;" /></div>
                 <div class="form-row"><textarea id="message" placeholder="Message" data-lang="en" required></textarea><textarea id="message" placeholder="Message" data-lang="fr" style="display:none;" required></textarea><textarea id="message" placeholder="الرسالة" data-lang="ar" style="display:none;" required></textarea><textarea id="message" placeholder="Nachricht" data-lang="de" style="display:none;" required></textarea></div>
 
                 <div class="dropdown-wrapper">
                     <select id="contactPerson">
                         <option value="" data-lang="en">Select Contact (optional)</option>
-                        <option value="" data-lang="fr" style="display:none;">Sélectionner le Contact (optionnel)</option>
-                        <option value="" data-lang="ar" style="display:none;">اختر جهة الاتصال (اختياري)</option>
-                        <option value="" data-lang="de" style="display:none;">Kontakt auswählen (optional)</option>
+                        <option value="" data-lang="fr" style="display:none;">Sélectionner</option>
+                        <option value="" data-lang="ar" style="display:none;">اختر جهة الاتصال</option>
+                        <option value="" data-lang="de" style="display:none;">Kontakt auswählen</option>
                         <option value="tech" data-lang="en">Technical Team</option>
                         <option value="tech" data-lang="fr" style="display:none;">Équipe Technique</option>
                         <option value="tech" data-lang="ar" style="display:none;">الفريق الفني</option>
                         <option value="tech" data-lang="de" style="display:none;">Technisches Team</option>
                         <option value="advisor" data-lang="en">Level 1 Advisors</option>
-                        <option value="advisor" data-lang="fr" style="display:none;">Conseillers de Niveau 1</option>
+                        <option value="advisor" data-lang="fr" style="display:none;">Conseillers</option>
                         <option value="advisor" data-lang="ar" style="display:none;">مستشارو المستوى الأول</option>
-                        <option value="advisor" data-lang="de" style="display:none;">Berater Level 1</option>
+                        <option value="advisor" data-lang="de" style="display:none;">Berater</option>
                         <option value="deputy" data-lang="en">Deputy</option>
                         <option value="deputy" data-lang="fr" style="display:none;">Adjoint</option>
                         <option value="deputy" data-lang="ar" style="display:none;">نائب</option>
@@ -1496,37 +1428,33 @@
 
                 <div class="btn-group">
                     <button type="submit" class="btn" data-lang="en">Send Message</button>
-                    <button type="submit" class="btn" data-lang="fr" style="display:none;">Envoyer le Message</button>
-                    <button type="submit" class="btn" data-lang="ar" style="display:none;">إرسال الرسالة</button>
-                    <button type="submit" class="btn" data-lang="de" style="display:none;">Nachricht senden</button>
+                    <button type="submit" class="btn" data-lang="fr" style="display:none;">Envoyer</button>
+                    <button type="submit" class="btn" data-lang="ar" style="display:none;">إرسال</button>
+                    <button type="submit" class="btn" data-lang="de" style="display:none;">Senden</button>
                     <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="en">Urgent Contact</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="fr" style="display:none;">Contact Urgent</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="fr" style="display:none;">Urgent</button>
                     <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="ar" style="display:none;">اتصال عاجل</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="de" style="display:none;">Dringender Kontakt</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="de" style="display:none;">Dringend</button>
                 </div>
 
                 <div id="statusMsg" class="status-msg"></div>
 
                 <div id="directEmailBox" class="form-footer" style="display:none;">
                     <div class="direct-email show">
-                        <p style="margin-bottom: 4px; opacity: 0.8;" data-lang="en">Direct & Urgent Contact</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="fr">Contact Direct et Urgent</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="ar">اتصال مباشر وعاجل</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="de">Direkter & dringender Kontakt</p>
+                        <p data-lang="en">Direct & Urgent Contact</p>
+                        <p data-lang="fr" style="display:none;">Contact Direct</p>
+                        <p data-lang="ar" style="display:none;">اتصال مباشر</p>
+                        <p data-lang="de" style="display:none;">Direkter Kontakt</p>
                         <div class="email-box">vahid.aquanexus@protonmail.com</div>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0;" data-lang="en">This email is only for urgent contacts and verified investors.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="fr">Cet e-mail est réservé aux contacts urgents et aux investisseurs vérifiés.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="ar">هذا البريد الإلكتروني مخصص فقط للاتصالات العاجلة والمستثمرين المعتمدين.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="de">Diese E-Mail ist nur für dringende Kontakte und verifizierte Investoren.</p>
                         <div class="email-actions">
                             <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="en">Copy Email</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="fr" style="display:none;">Copier l'E-mail</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="ar" style="display:none;">نسخ البريد الإلكتروني</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="de" style="display:none;">E-Mail kopieren</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="fr" style="display:none;">Copier</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="ar" style="display:none;">نسخ</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="de" style="display:none;">Kopieren</button>
                             <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="en">Send Email</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="fr" style="display:none;">Envoyer un E-mail</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="ar" style="display:none;">إرسال بريد إلكتروني</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="de" style="display:none;">E-Mail senden</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="fr" style="display:none;">Envoyer</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="ar" style="display:none;">إرسال</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="de" style="display:none;">Senden</button>
                             <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="en">Close</button>
                             <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="fr" style="display:none;">Fermer</button>
                             <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="ar" style="display:none;">إغلاق</button>
@@ -1537,9 +1465,12 @@
 
                 <div class="form-footer">
                     <div class="warnings">
-                        <span><i class="fas fa-exclamation-triangle" style="color: #e67e22;"></i> <span data-lang="en">Please use a verified domain email</span><span data-lang="fr" style="display:none;">Veuillez utiliser un email avec un domaine vérifié</span><span data-lang="ar" style="display:none;">يرجى استخدام بريد إلكتروني بنطاق موثوق</span><span data-lang="de" style="display:none;">Bitte verwenden Sie eine verifizierte Domain-E-Mail</span></span>
-                        <span><i class="fas fa-clock" style="color: #3498db;"></i> <span data-lang="en">High message volume, response time may be longer</span><span data-lang="fr" style="display:none;">Volume de messages élevé, le temps de réponse peut être plus long</span><span data-lang="ar" style="display:none;">حجم الرسائل مرتفع، قد يكون وقت الاستجابة أطول</span><span data-lang="de" style="display:none;">Hohes Nachrichtenaufkommen, die Antwortzeit kann länger sein</span></span>
-                        <span style="color: #6a7a8a; font-style: italic; margin-top: 4px;"><span data-lang="en">From patience and forbearance, we thank you</span><span data-lang="fr" style="display:none;">De votre patience et indulgence, nous vous remercions</span><span data-lang="ar" style="display:none;">من صبركم وحلمكم نشكركم</span><span data-lang="de" style="display:none;">Für Ihre Geduld und Nachsicht danken wir Ihnen</span></span>
+                        <span><i class="fas fa-exclamation-triangle" style="color: #e67e22;"></i> <span data-lang="en">Please use a verified domain email</span><span data-lang="fr" style="display:none;">Domaine vérifié</span><span data-lang="ar" style="display:none;">نطاق موثوق</span><span data-lang="de" style="display:none;">Verifizierte Domain</span></span>
+                        <span><i class="fas fa-clock" style="color: #3498db;"></i> <span data-lang="en">High message volume, response time may be longer</span><span data-lang="fr" style="display:none;">Volume élevé</span><span data-lang="ar" style="display:none;">حجم كبير</span><span data-lang="de" style="display:none;">Hohes Volumen</span></span>
+                        <span style="color: #6a7a8a; font-style: italic; margin-top: 4px;" data-lang="en">From patience and forbearance, we thank you</span>
+                        <span style="color: #6a7a8a; font-style: italic; margin-top: 4px; display:none;" data-lang="fr">Merci pour votre patience</span>
+                        <span style="color: #6a7a8a; font-style: italic; margin-top: 4px; display:none;" data-lang="ar">من صبركم نشكركم</span>
+                        <span style="color: #6a7a8a; font-style: italic; margin-top: 4px; display:none;" data-lang="de">Wir danken für Ihre Geduld</span>
                     </div>
                 </div>
             </form>
@@ -1555,9 +1486,9 @@
         <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="ar">أكوا نيكسوس + أكوا غارديان</p>
         <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="de">AQUANEXUS + AQUA GUARDIAN</p>
         <p style="margin-top: 8px;" data-lang="en">Industrial Revolution · 6 Revenue Streams · 5 Continents</p>
-        <p style="margin-top: 8px; display:none;" data-lang="fr">Révolution Industrielle · 6 Sources de Revenus · 5 Continents</p>
-        <p style="margin-top: 8px; display:none;" data-lang="ar">ثورة صناعية · ٦ مصادر دخل · ٥ قارات</p>
-        <p style="margin-top: 8px; display:none;" data-lang="de">Industrielle Revolution · 6 Einnahmequellen · 5 Kontinente</p>
+        <p style="margin-top: 8px; display:none;" data-lang="fr">Révolution Industrielle · 6 Sources · 5 Continents</p>
+        <p style="margin-top: 8px; display:none;" data-lang="ar">ثورة صناعية · ٦ مصادر · ٥ قارات</p>
+        <p style="margin-top: 8px; display:none;" data-lang="de">Industrielle Revolution · 6 Quellen · 5 Kontinente</p>
         <p style="margin-top: 16px; font-size: 0.85rem;" data-lang="en">© 2026 · All Rights Reserved</p>
         <p style="margin-top: 16px; font-size: 0.85rem; display:none;" data-lang="fr">© 2026 · Tous Droits Réservés</p>
         <p style="margin-top: 16px; font-size: 0.85rem; display:none;" data-lang="ar">© ٢٠٢٦ · جميع الحقوق محفوظة</p>
@@ -1565,7 +1496,6 @@
     </div>
 </footer>
 
-<!-- THREE.JS GLOBE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
     // ----- LANGUAGE SWITCHER (4 languages) -----
@@ -1617,7 +1547,6 @@
                 el.style.display = 'none';
             }
         });
-        // Modal contents
         document.querySelectorAll('.modal-box [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1625,17 +1554,16 @@
                 el.style.display = 'none';
             }
         });
-        document.querySelectorAll('.modal-box .radio-group label').forEach(el => {
-            // handled by inner spans if any, but we rely on data-lang on the label itself - we'll just show all
+        document.querySelectorAll('.contact-opt[data-lang]').forEach(el => {
+            if (el.dataset.lang === lang) {
+                el.style.display = 'inline-block';
+            } else {
+                el.style.display = 'none';
+            }
         });
-        // For calc result and note we handle via data-lang on parent divs - already covered by [data-lang] loop
         localStorage.setItem('aquanexus-lang', lang);
         document.documentElement.lang = lang;
-        if (lang === 'ar') {
-            document.documentElement.dir = 'rtl';
-        } else {
-            document.documentElement.dir = 'ltr';
-        }
+        document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1648,17 +1576,8 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const closeMenu = document.getElementById('closeMenu');
-
-    function openMenu() {
-        mobileMenu.classList.add('open');
-        menuOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeMenuFn() {
-        mobileMenu.classList.remove('open');
-        menuOverlay.classList.remove('open');
-        document.body.style.overflow = '';
-    }
+    function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenuFn() { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
     menuToggle.addEventListener('click', openMenu);
     closeMenu.addEventListener('click', closeMenuFn);
     menuOverlay.addEventListener('click', closeMenuFn);
@@ -1670,95 +1589,74 @@
     (function() {
         const container = document.getElementById('globeContainer');
         if (!container) return;
-        const width = container.clientWidth;
-        const height = container.clientHeight || 450;
-
+        const width = container.clientWidth, height = container.clientHeight || 450;
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
         camera.position.z = 3;
-
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(width, height);
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
-
         const geometry = new THREE.SphereGeometry(1.2, 64, 64);
         const textureLoader = new THREE.TextureLoader();
         const texture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-        const material = new THREE.MeshPhongMaterial({
-            map: texture,
-            specular: new THREE.Color('gold'),
-            shininess: 10,
-        });
+        const material = new THREE.MeshPhongMaterial({ map: texture, specular: new THREE.Color('gold'), shininess: 10 });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
-
         const ringGeo = new THREE.TorusGeometry(1.5, 0.015, 32, 100);
         const ringMat = new THREE.MeshBasicMaterial({ color: 0xe9c46a, transparent: true, opacity: 0.3 });
         const ring = new THREE.Mesh(ringGeo, ringMat);
         ring.rotation.x = Math.PI / 2;
         scene.add(ring);
-
-        const light1 = new THREE.PointLight(0xffffff, 1);
-        light1.position.set(5, 3, 5);
-        scene.add(light1);
-        const light2 = new THREE.PointLight(0x1a6fb5, 0.5);
-        light2.position.set(-3, -1, -4);
-        scene.add(light2);
-        const ambient = new THREE.AmbientLight(0x404060, 0.4);
-        scene.add(ambient);
-
+        const light1 = new THREE.PointLight(0xffffff, 1); light1.position.set(5,3,5); scene.add(light1);
+        const light2 = new THREE.PointLight(0x1a6fb5, 0.5); light2.position.set(-3,-1,-4); scene.add(light2);
+        const ambient = new THREE.AmbientLight(0x404060, 0.4); scene.add(ambient);
         const starsGeometry = new THREE.BufferGeometry();
         const starsCount = 3000;
-        const starPositions = new Float32Array(starsCount * 3);
-        for (let i = 0; i < starsCount * 3; i++) {
-            starPositions[i] = (Math.random() - 0.5) * 200;
-        }
+        const starPositions = new Float32Array(starsCount*3);
+        for (let i=0; i<starsCount*3; i++) starPositions[i] = (Math.random()-0.5)*200;
         starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
         const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, transparent: true });
         const stars = new THREE.Points(starsGeometry, starsMaterial);
         scene.add(stars);
-
-        let mouseX = 0, mouseY = 0;
+        let mouseX=0, mouseY=0;
         document.addEventListener('mousemove', function(e) {
             const rect = container.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            mouseX = x * 0.5;
-            mouseY = y * 0.3;
+            const x = (e.clientX - rect.left)/rect.width - 0.5;
+            const y = (e.clientY - rect.top)/rect.height - 0.5;
+            mouseX = x*0.5; mouseY = y*0.3;
         });
-
         function animate() {
             requestAnimationFrame(animate);
             globe.rotation.y += 0.003;
-            globe.rotation.x += mouseY * 0.002;
-            globe.rotation.y += mouseX * 0.002;
+            globe.rotation.x += mouseY*0.002;
+            globe.rotation.y += mouseX*0.002;
             ring.rotation.z += 0.001;
             stars.rotation.y += 0.0002;
             renderer.render(scene, camera);
         }
         animate();
-
         window.addEventListener('resize', function() {
-            const w = container.clientWidth;
-            const h = container.clientHeight || 450;
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
-            renderer.setSize(w, h);
+            const w = container.clientWidth, h = container.clientHeight || 450;
+            camera.aspect = w/h; camera.updateProjectionMatrix(); renderer.setSize(w,h);
         });
     })();
 
-    // ----- FORM FUNCTIONS -----
+    // ----- FORM & CONTACT FUNCTIONS -----
     function selectTag(el) {
         document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
         document.getElementById('requestType').value = el.dataset.value;
     }
 
+    function setContactType(type) {
+        document.querySelectorAll('.contact-opt').forEach(opt => opt.classList.remove('active'));
+        document.querySelector(`.contact-opt[data-contact="${type}"]`).classList.add('active');
+    }
+
     function showDirectEmail() {
-        const box = document.getElementById('directEmailBox');
-        box.style.display = 'block';
-        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('directEmailBox').style.display = 'block';
+        document.getElementById('directEmailBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
         document.getElementById('statusMsg').className = 'status-msg';
         document.getElementById('statusMsg').textContent = '';
     }
@@ -1799,9 +1697,9 @@
         const lang = document.documentElement.lang || 'en';
         const msgs = {
             en: { error: 'Please fill in all required fields (Company, Email, Message).', invalid: 'Please enter a valid email address.', success: 'Your message was sent successfully. Our team will contact you shortly.' },
-            fr: { error: 'Veuillez remplir tous les champs obligatoires (Nom de l\'entreprise, E-mail, Message).', invalid: 'Veuillez entrer une adresse e-mail valide.', success: 'Votre message a été envoyé avec succès. Notre équipe vous contactera sous peu.' },
-            ar: { error: 'يرجى ملء جميع الحقول المطلوبة (اسم الشركة، البريد الإلكتروني، الرسالة).', invalid: 'يرجى إدخال بريد إلكتروني صالح.', success: 'تم إرسال رسالتك بنجاح. سيتواصل معك فريقنا قريباً.' },
-            de: { error: 'Bitte füllen Sie alle erforderlichen Felder aus (Firma, E-Mail, Nachricht).', invalid: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', success: 'Ihre Nachricht wurde erfolgreich gesendet. Unser Team wird Sie in Kürze kontaktieren.' }
+            fr: { error: 'Veuillez remplir tous les champs obligatoires.', invalid: 'Adresse email invalide.', success: 'Votre message a été envoyé avec succès.' },
+            ar: { error: 'يرجى ملء جميع الحقول المطلوبة.', invalid: 'يرجى إدخال بريد إلكتروني صالح.', success: 'تم إرسال رسالتك بنجاح.' },
+            de: { error: 'Bitte alle Pflichtfelder ausfüllen.', invalid: 'Ungültige E-Mail-Adresse.', success: 'Ihre Nachricht wurde erfolgreich gesendet.' }
         };
         const t = msgs[lang] || msgs.en;
 
@@ -1840,21 +1738,19 @@
         const currency = document.getElementById('currency').value;
         const profitRate = parseFloat(document.querySelector('input[name="profitRate"]:checked').value);
         const period = parseInt(document.querySelector('input[name="period"]:checked').value);
-
         if (amount <= 0) {
             document.getElementById('calcResult').innerHTML = 'Please enter a valid amount.';
             return;
         }
-
         const profit = amount * (profitRate / 100);
         const total = amount + profit;
         const lang = document.documentElement.lang || 'en';
         const symbol = currency === 'USD' ? '$' : (currency === 'EUR' ? '€' : '£');
         const resultText = {
             en: `Investment: ${symbol}${amount.toLocaleString()} | Profit (${profitRate}%): ${symbol}${profit.toLocaleString()} | Total Return: ${symbol}${total.toLocaleString()} | Period: ${period} months`,
-            fr: `Investissement: ${symbol}${amount.toLocaleString()} | Profit (${profitRate}%): ${symbol}${profit.toLocaleString()} | Retour Total: ${symbol}${total.toLocaleString()} | Période: ${period} mois`,
-            ar: `الاستثمار: ${symbol}${amount.toLocaleString()} | الربح (${profitRate}%): ${symbol}${profit.toLocaleString()} | العائد الإجمالي: ${symbol}${total.toLocaleString()} | الفترة: ${period} شهر`,
-            de: `Investition: ${symbol}${amount.toLocaleString()} | Gewinn (${profitRate}%): ${symbol}${profit.toLocaleString()} | Gesamtrendite: ${symbol}${total.toLocaleString()} | Zeitraum: ${period} Monate`
+            fr: `Investissement: ${symbol}${amount.toLocaleString()} | Profit: ${symbol}${profit.toLocaleString()} | Total: ${symbol}${total.toLocaleString()} | ${period} mois`,
+            ar: `الاستثمار: ${symbol}${amount.toLocaleString()} | الربح: ${symbol}${profit.toLocaleString()} | العائد: ${symbol}${total.toLocaleString()} | ${period} شهر`,
+            de: `Investition: ${symbol}${amount.toLocaleString()} | Gewinn: ${symbol}${profit.toLocaleString()} | Gesamt: ${symbol}${total.toLocaleString()} | ${period} Monate`
         };
         document.getElementById('calcResult').innerHTML = resultText[lang] || resultText.en;
     }
