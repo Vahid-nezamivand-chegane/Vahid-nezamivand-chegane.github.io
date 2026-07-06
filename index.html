@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -5,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>AquaNexus + Aqua Guardian — Integrated Sovereign Infrastructure</title>
     <meta name="description" content="Geothermal+ Marine Technology Platform · Water·Energy·Food·Mineral·Precious Metals Security"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@300;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,7 +17,7 @@
             --secondary: #1a6fb5;
             --accent: #2a9d8f;
             --gold: #e9c46a;
-            --light: #f0f7ff;
+            --light-bg: #d4f1f9;
             --dark: #0b1a2a;
             --shadow: 0 20px 40px rgba(0,0,0,0.08);
             --radius: 20px;
@@ -21,8 +25,8 @@
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
-            background: var(--light);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: var(--light-bg);
             color: var(--dark);
             line-height: 1.8;
             overflow-x: hidden;
@@ -30,18 +34,20 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 80px 0; }
         .section-title {
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3rem);
             font-weight: 700;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
         .section-title .highlight { color: var(--secondary); }
         .section-sub {
-            font-size: 1.1rem;
-            color: #4a5a6a;
+            font-size: 1.15rem;
+            color: #3a4a5a;
             max-width: 680px;
             margin-bottom: 40px;
-            opacity: 0.85;
+            opacity: 0.9;
+            font-weight: 400;
         }
         .text-center { text-align: center; }
         .text-center .section-sub { margin-left: auto; margin-right: auto; }
@@ -49,8 +55,10 @@
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .grid-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
         .card {
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
             padding: 32px 26px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -58,19 +66,19 @@
             border-bottom: 4px solid var(--secondary);
         }
         .card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.10); }
-        .card i { font-size: 2.8rem; color: var(--secondary); margin-bottom: 18px; display: inline-block; }
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .card p { color: #3a4a5a; font-size: 0.98rem; }
+        .card h3 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 10px; }
+        .card p { color: #3a4a5a; font-size: 1rem; }
         .card img { width: 100%; border-radius: 12px; margin-bottom: 16px; object-fit: cover; height: 200px; }
         .badge {
             display: inline-block;
             background: var(--gold);
             color: var(--dark);
-            padding: 4px 14px;
+            padding: 4px 16px;
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
         .btn {
             display: inline-block;
@@ -84,6 +92,7 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            font-family: 'Inter', sans-serif;
         }
         .btn:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(233,196,106,0.3); }
         .btn-secondary {
@@ -94,8 +103,8 @@
         .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
         .flag { font-size: 2rem; margin-bottom: 6px; display: block; }
         .office-card { text-align: center; padding: 24px; }
-        .office-card h4 { font-size: 1.2rem; margin: 10px 0 4px; }
-        .office-card p { color: #5a6a7a; font-size: 0.9rem; }
+        .office-card h4 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; margin: 10px 0 4px; }
+        .office-card p { color: #5a6a7a; font-size: 0.95rem; }
         .office-card .contact-link {
             display: inline-block;
             margin: 4px 0;
@@ -106,15 +115,13 @@
             cursor: pointer;
             background: none;
             border: none;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
         }
-        .office-card .contact-link:hover {
-            color: var(--gold);
-            text-decoration: underline;
-        }
+        .office-card .contact-link:hover { color: var(--gold); text-decoration: underline; }
         .office-card .contact-link i { font-size: 1rem; margin-left: 6px; color: var(--secondary); }
         .contact-form {
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
             padding: 40px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -131,7 +138,7 @@
             border-radius: 12px;
             font-size: 1rem;
             transition: var(--transition);
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
             background: #fafcff;
         }
         .contact-form input:focus,
@@ -173,7 +180,7 @@
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.9rem;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
             color: #4a5a6a;
         }
         .request-tags .tag:hover,
@@ -209,6 +216,7 @@
             display: inline-block;
             margin: 10px 0;
             letter-spacing: 1px;
+            font-family: 'Inter', monospace;
         }
         .form-footer .direct-email .email-actions {
             display: flex;
@@ -226,6 +234,7 @@
             transition: var(--transition);
             background: rgba(255,255,255,0.15);
             color: white;
+            font-family: 'Inter', sans-serif;
         }
         .form-footer .direct-email .email-actions .btn-sm:hover {
             background: var(--gold);
@@ -236,7 +245,7 @@
             flex-direction: column;
             gap: 6px;
             margin-top: 12px;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: #8a9aaa;
         }
         .form-footer .warnings i { margin-left: 6px; width: 18px; }
@@ -246,6 +255,7 @@
             margin-top: 16px;
             display: none;
             font-weight: 500;
+            font-family: 'Inter', sans-serif;
         }
         .status-msg.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-msg.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
@@ -267,7 +277,7 @@
             border: 1px solid #dde4ec;
             border-radius: 12px;
             font-size: 1rem;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
             background: #fafcff;
             appearance: none;
             cursor: pointer;
@@ -294,39 +304,37 @@
             right: 20px;
             z-index: 999;
             display: flex;
-            gap: 6px;
-            background: rgba(255,255,255,0.12);
+            gap: 4px;
+            background: rgba(10,42,68,0.75);
             backdrop-filter: blur(12px);
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 40px;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
         .lang-switcher button {
             background: transparent;
             border: none;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 30px;
             transition: var(--transition);
             opacity: 0.5;
             font-weight: 600;
             color: white;
+            font-family: 'Inter', sans-serif;
         }
         .lang-switcher button:hover { opacity: 0.8; transform: scale(1.05); }
         .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.15); }
-        .lang-switcher .flag-icon { font-size: 1.3rem; margin-right: 4px; }
+        .lang-switcher .flag-icon { font-size: 1.2rem; margin-right: 4px; }
         .hero {
-            min-height: 100vh;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
         }
         .hero img {
             width: 100%;
@@ -339,7 +347,7 @@
             top: 20px;
             left: 20px;
             z-index: 1000;
-            background: rgba(255,255,255,0.12);
+            background: rgba(10,42,68,0.75);
             backdrop-filter: blur(12px);
             border: none;
             color: white;
@@ -348,9 +356,9 @@
             border-radius: 40px;
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
         }
-        .menu-toggle:hover { background: rgba(255,255,255,0.25); }
+        .menu-toggle:hover { background: rgba(10,42,68,0.9); }
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -378,6 +386,7 @@
         .mobile-menu.open { left: 0; }
         .mobile-menu .menu-header {
             color: white;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 1px;
@@ -405,9 +414,7 @@
             padding: 0;
             margin-top: 10px;
         }
-        .mobile-menu ul li {
-            margin-bottom: 4px;
-        }
+        .mobile-menu ul li { margin-bottom: 4px; }
         .mobile-menu ul li a {
             display: block;
             color: rgba(255,255,255,0.8);
@@ -419,6 +426,7 @@
             border-left: 3px solid transparent;
             font-weight: 400;
             letter-spacing: 0.3px;
+            font-family: 'Inter', sans-serif;
         }
         .mobile-menu ul li a:hover {
             background: rgba(255,255,255,0.06);
@@ -441,18 +449,21 @@
             margin: 0 auto;
         }
         .globe-section h2 {
-            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
         .globe-section p {
             opacity: 0.8;
             margin-bottom: 30px;
+            font-size: 1.1rem;
         }
         .achievement-item {
             display: flex;
             align-items: center;
             gap: 20px;
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
             padding: 16px 24px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -468,8 +479,8 @@
             flex-shrink: 0;
         }
         .achievement-item .ach-text { flex: 1; }
-        .achievement-item .ach-text h4 { font-size: 1.1rem; margin-bottom: 2px; }
-        .achievement-item .ach-text p { color: #6a7a8a; font-size: 0.9rem; margin: 0; }
+        .achievement-item .ach-text h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 2px; }
+        .achievement-item .ach-text p { color: #6a7a8a; font-size: 0.95rem; margin: 0; }
         .university-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -477,7 +488,8 @@
             margin-top: 20px;
         }
         .university-grid .uni-item {
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
             padding: 14px 12px;
             border-radius: 14px;
             box-shadow: var(--shadow);
@@ -493,22 +505,13 @@
             border-radius: 8px;
             margin-bottom: 8px;
         }
-        .university-grid .uni-item h5 { font-size: 0.85rem; color: var(--dark); }
-        .university-grid .uni-item p { font-size: 0.7rem; color: #6a7a8a; }
-        .real-image {
-            width: 100%;
-            border-radius: var(--radius);
-            object-fit: cover;
-        }
-        .real-image-sm {
-            width: 100%;
-            height: 180px;
-            border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 12px;
-        }
+        .university-grid .uni-item h5 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: var(--dark); }
+        .university-grid .uni-item p { font-size: 0.75rem; color: #6a7a8a; }
+        .real-image { width: 100%; border-radius: var(--radius); object-fit: cover; }
+        .real-image-sm { width: 100%; height: 180px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; }
         .article-card {
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -517,34 +520,131 @@
         .article-card:hover { transform: translateY(-6px); }
         .article-card img { width: 100%; height: 180px; object-fit: cover; }
         .article-card .article-body { padding: 18px 20px; }
-        .article-card .article-body h4 { font-size: 1.1rem; margin-bottom: 6px; }
-        .article-card .article-body p { font-size: 0.9rem; color: #5a6a7a; }
-        .article-card .article-body a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+        .article-card .article-body h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 6px; }
+        .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
+        .article-card .article-body a { color: var(--secondary); text-decoration: none; font-weight: 600; font-family: 'Inter', sans-serif; }
         .article-card .article-body a:hover { text-decoration: underline; }
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .partner-item {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            padding: 16px 12px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid var(--gold);
+        }
+        .partner-item:hover { transform: translateY(-4px); }
+        .partner-item .partner-flag { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .partner-item h6 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; margin-bottom: 2px; }
+        .partner-item p { font-size: 0.75rem; color: #6a7a8a; }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: white;
+            max-width: 560px;
+            width: 95%;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-box .modal-close {
+            float: right;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #6a7a8a;
+        }
+        .modal-box h2 { font-family: 'Poppins', sans-serif; margin-bottom: 16px; }
+        .modal-box label { display: block; margin: 12px 0 4px; font-weight: 600; font-family: 'Inter', sans-serif; }
+        .modal-box input, .modal-box select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #dde4ec;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-box .radio-group { display: flex; gap: 16px; margin: 8px 0; flex-wrap: wrap; }
+        .modal-box .radio-group label { display: flex; align-items: center; gap: 6px; font-weight: 400; cursor: pointer; }
+        .modal-box .calc-result {
+            background: var(--light-bg);
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 16px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            border-left: 4px solid var(--secondary);
+        }
+        .modal-box .calc-note {
+            font-size: 0.85rem;
+            color: #6a7a8a;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 12px;
+        }
         @media (max-width: 600px) {
             .section { padding: 50px 0; }
             .grid-2 { grid-template-columns: 1fr; }
             .grid-3 { grid-template-columns: 1fr; }
             .grid-4 { grid-template-columns: 1fr 1fr; }
             .grid-5 { grid-template-columns: 1fr 1fr; }
+            .grid-6 { grid-template-columns: 1fr 1fr; }
             .contact-form { padding: 24px; }
             .contact-form .btn-group { flex-direction: column; }
             .form-footer .direct-email .email-box { font-size: 1.2rem; padding: 10px 16px; }
             .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
             .mobile-menu { width: 280px; left: -300px; }
-            .lang-switcher { top: 12px; right: 12px; padding: 4px 10px; gap: 4px; }
-            .lang-switcher button { font-size: 0.85rem; padding: 2px 5px; }
+            .lang-switcher { top: 12px; right: 12px; padding: 4px 8px; gap: 2px; }
+            .lang-switcher button { font-size: 0.75rem; padding: 2px 6px; }
             .globe-section .globe-container { height: 300px; }
             .achievement-item { flex-direction: column; text-align: center; }
             .achievement-item img { width: 100%; height: 120px; }
+            .hero { height: 60vh; }
             .hero img { height: 60vh; object-fit: contain; }
+            .modal-box { padding: 24px 16px; }
         }
         [data-lang] { transition: opacity 0.2s; }
+        .calc-trigger {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            margin-top: 12px;
+        }
+        .calc-trigger:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(26,111,181,0.3); }
     </style>
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER ===== -->
+<!-- LANGUAGE SWITCHER -->
 <div class="lang-switcher">
     <button class="active" data-lang="en" onclick="switchLang('en')"><span class="flag-icon">🇬🇧</span> EN</button>
     <button data-lang="fr" onclick="switchLang('fr')"><span class="flag-icon">🇫🇷</span> FR</button>
@@ -552,7 +652,7 @@
     <button data-lang="de" onclick="switchLang('de')"><span class="flag-icon">🇩🇪</span> DE</button>
 </div>
 
-<!-- ===== MOBILE MENU ===== -->
+<!-- MOBILE MENU -->
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
     <i class="fas fa-bars"></i>
 </button>
@@ -576,18 +676,18 @@
         <li><a href="#docs" data-lang="en">Technical</a><a href="#docs" data-lang="fr" style="display:none;">Technique</a><a href="#docs" data-lang="ar" style="display:none;">تقني</a><a href="#docs" data-lang="de" style="display:none;">Technisch</a></li>
         <li><a href="#energy" data-lang="en">Why Geo</a><a href="#energy" data-lang="fr" style="display:none;">Pourquoi Géo</a><a href="#energy" data-lang="ar" style="display:none;">لماذا الحرارية</a><a href="#energy" data-lang="de" style="display:none;">Warum Geo</a></li>
         <li><a href="#achievements" data-lang="en">Achievements</a><a href="#achievements" data-lang="fr" style="display:none;">Réalisations</a><a href="#achievements" data-lang="ar" style="display:none;">الإنجازات</a><a href="#achievements" data-lang="de" style="display:none;">Errungenschaften</a></li>
+        <li><a href="#partners" data-lang="en">Partners</a><a href="#partners" data-lang="fr" style="display:none;">Partenaires</a><a href="#partners" data-lang="ar" style="display:none;">الشركاء</a><a href="#partners" data-lang="de" style="display:none;">Partner</a></li>
+        <li><a href="#calculator" data-lang="en">Calculator</a><a href="#calculator" data-lang="fr" style="display:none;">Calculatrice</a><a href="#calculator" data-lang="ar" style="display:none;">آلة حاسبة</a><a href="#calculator" data-lang="de" style="display:none;">Rechner</a></li>
         <li><a href="#contact" data-lang="en">Contact Us</a><a href="#contact" data-lang="fr" style="display:none;">Contactez-nous</a><a href="#contact" data-lang="ar" style="display:none;">اتصل بنا</a><a href="#contact" data-lang="de" style="display:none;">Kontakt</a></li>
     </ul>
 </nav>
 
-<!-- ========================================== -->
-<!-- ===== HERO: دقیقاً تصویر دوسیه شما ===== -->
-<!-- ========================================== -->
+<!-- HERO: full screen dossier image -->
 <section class="hero" id="hero">
     <img src="image-27.webp" alt="AquaNexus + Aqua Guardian – Integrated Sovereign Infrastructure" />
 </section>
 
-<!-- ===== GLOBE SECTION ===== -->
+<!-- GLOBE -->
 <section class="globe-section" id="globe">
     <div class="container">
         <h2 data-lang="en">Global Impact</h2>
@@ -602,8 +702,8 @@
     </div>
 </section>
 
-<!-- ===== OFFICES ===== -->
-<section class="section" id="offices">
+<!-- OFFICES -->
+<section class="section" id="offices" style="background: var(--light-bg);">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">International</span> <span data-lang="en">Offices</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Bureaux</span> Internationaux</h2>
@@ -683,7 +783,7 @@
     </div>
 </section>
 
-<!-- ===== ENERGY ===== -->
+<!-- ENERGY -->
 <section class="section" style="background: white;" id="energy">
     <div class="container">
         <div class="grid-2">
@@ -701,26 +801,26 @@
                 <p class="section-sub" data-lang="ar" style="display:none;">توليد طاقة نظيفة ٢٤/٧ · تدفئة وتبريد ٤ فصول · مستقل عن الرياح أو الشمس</p>
                 <p class="section-sub" data-lang="de" style="display:none;">24/7 saubere Energieerzeugung · 4-Jahreszeiten-Heizung & -Kühlung · Unabhängig von Wind oder Sonne</p>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 8px 0;" data-lang="en">✅ 24/7 continuous power generation</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Production d'énergie continue 24/7</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ توليد طاقة مستمر ٢٤/٧</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ 24/7 kontinuierliche Stromerzeugung</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Independent of wind or solar</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Indépendant du vent ou du soleil</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ مستقل عن الرياح أو الشمس</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Unabhängig von Wind oder Sonne</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ No expensive batteries required</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Pas de batteries coûteuses nécessaires</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ لا حاجة لبطاريات باهظة الثمن</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Keine teuren Batterien erforderlich</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ No environmental or vegetation damage</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Aucun dommage environnemental ou végétal</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ لا ضرر بيئي أو نباتي</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Keine Umwelt- oder Vegetationsschäden</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ 4-season heating & cooling</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Chauffage et refroidissement 4 saisons</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ تدفئة وتبريد ٤ فصول</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ 4-Jahreszeiten-Heizung & -Kühlung</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ 24/7 continuous power generation</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production d'énergie continue 24/7</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ توليد طاقة مستمر ٢٤/٧</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ 24/7 kontinuierliche Stromerzeugung</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Independent of wind or solar</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Indépendant du vent ou du soleil</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ مستقل عن الرياح أو الشمس</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Unabhängig von Wind oder Sonne</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ No expensive batteries required</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Pas de batteries coûteuses nécessaires</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ لا حاجة لبطاريات باهظة الثمن</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Keine teuren Batterien erforderlich</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ No environmental or vegetation damage</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Aucun dommage environnemental ou végétal</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ لا ضرر بيئي أو نباتي</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Keine Umwelt- oder Vegetationsschäden</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ 4-season heating & cooling</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Chauffage et refroidissement 4 saisons</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تدفئة وتبريد ٤ فصول</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ 4-Jahreszeiten-Heizung & -Kühlung</li>
                     <li style="padding: 8px 0; color: var(--secondary); font-weight: 500;" data-lang="en">♻️ Injection of fresh water into the earth to increase reservoir pressure</li>
                     <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="fr">♻️ Injection d'eau douce dans le sol pour augmenter la pression des réservoirs</li>
                     <li style="padding: 8px 0; color: var(--secondary); font-weight: 500; display:none;" data-lang="ar">♻️ حقن المياه العذبة في الأرض لزيادة ضغط الخزانات</li>
@@ -734,12 +834,12 @@
     </div>
 </section>
 
-<!-- ===== WATER ===== -->
-<section class="section" id="water">
+<!-- WATER -->
+<section class="section" id="water" style="background: var(--light-bg);">
     <div class="container">
         <div class="grid-2" style="direction: ltr;">
             <div>
-                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600" alt="Fresh Water" class="real-image">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600" alt="Fresh Water" class="real-image">
             </div>
             <div style="direction: rtl;">
                 <span class="badge" data-lang="en">Revenue Stream 2</span>
@@ -755,37 +855,37 @@
                 <p class="section-sub" data-lang="ar" style="display:none;">تحلية مياه البحر الضخمة · حقن في طبقات المياه الجوفية للأجيال القادمة</p>
                 <p class="section-sub" data-lang="de" style="display:none;">Massive Meerwasserentsalzung · Injektion in Grundwasserleiter für zukünftige Generationen</p>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 8px 0;" data-lang="en">✅ Massive seawater desalination (RO & thermal)</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Dessalement d'eau de mer massif (RO et thermique)</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ تحلية مياه البحر الضخمة (RO وحرارية)</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Massive Meerwasserentsalzung (RO & thermisch)</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Injection of drinking water into aquifers for future generations</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Injection d'eau potable dans les aquifères pour les générations futures</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ حقن مياه الشرب في طبقات المياه الجوفية للأجيال القادمة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Injektion von Trinkwasser in Grundwasserleiter für zukünftige Generationen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Preventing saltwater intrusion into aquifers</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Prévention de l'intrusion d'eau salée dans les aquifères</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ منع تسرب المياه المالحة إلى طبقات المياه الجوفية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Verhinderung des Eindringens von Salzwasser in Grundwasserleiter</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Water storage for future generations</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Stockage d'eau pour les générations futures</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ تخزين المياه للأجيال القادمة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Wasserspeicherung für zukünftige Generationen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Mineral hot water production for natural springs</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Production d'eau chaude minérale pour sources naturelles</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ إنتاج المياه الحارة المعدنية للينابيع الطبيعية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Mineralische Warmwasserproduktion für natürliche Quellen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Health tourism attraction (spa)</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Attraction du tourisme de santé (spa)</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ جذب السياحة الصحية (سبا)</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Gesundheitstourismus-Attraktion (Spa)</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Massive seawater desalination (RO & thermal)</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Dessalement d'eau de mer massif (RO et thermique)</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تحلية مياه البحر الضخمة (RO وحرارية)</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Massive Meerwasserentsalzung (RO & thermisch)</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Injection of drinking water into aquifers for future generations</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Injection d'eau potable dans les aquifères pour les générations futures</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ حقن مياه الشرب في طبقات المياه الجوفية للأجيال القادمة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Injektion von Trinkwasser in Grundwasserleiter für zukünftige Generationen</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Preventing saltwater intrusion into aquifers</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Prévention de l'intrusion d'eau salée dans les aquifères</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ منع تسرب المياه المالحة إلى طبقات المياه الجوفية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Verhinderung des Eindringens von Salzwasser in Grundwasserleiter</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Water storage for future generations</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Stockage d'eau pour les générations futures</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تخزين المياه للأجيال القادمة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Wasserspeicherung für zukünftige Generationen</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Mineral hot water production for natural springs</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production d'eau chaude minérale pour sources naturelles</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إنتاج المياه الحارة المعدنية للينابيع الطبيعية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Mineralische Warmwasserproduktion für natürliche Quellen</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Health tourism attraction (spa)</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Attraction du tourisme de santé (spa)</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ جذب السياحة الصحية (سبا)</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Gesundheitstourismus-Attraktion (Spa)</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== AGRICULTURE ===== -->
+<!-- AGRICULTURE -->
 <section class="section" style="background: white;" id="agriculture">
     <div class="container">
         <div class="grid-2">
@@ -803,30 +903,30 @@
                 <p class="section-sub" data-lang="ar" style="display:none;">الاكتفاء الذاتي الوطني · منع تدفق العملات · الأمن الغذائي المستدام</p>
                 <p class="section-sub" data-lang="de" style="display:none;">Nationale Selbstversorgung · Verhinderung von Währungsabflüssen · Nachhaltige Ernährungssicherheit</p>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 8px 0;" data-lang="en">✅ National food self-sufficiency</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Autosuffisance alimentaire nationale</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ الاكتفاء الذاتي الوطني من الغذاء</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Nationale Ernährungsselbstversorgung</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Preventing currency outflow (reducing imports)</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Prévention de la sortie de devises (réduction des importations)</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ منع تدفق العملات (تقليل الواردات)</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Verhinderung von Währungsabflüssen (Reduzierung von Importen)</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Sustainable food security</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Sécurité alimentaire durable</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ الأمن الغذائي المستدام</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Nachhaltige Ernährungssicherheit</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Year-round production</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Production toute l'année</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ إنتاج طوال العام</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Ganzjährige Produktion</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Sustainable job creation</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Création d'emplois durables</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ خلق فرص عمل مستدامة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Nachhaltige Arbeitsplatzschaffung</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Export of surplus products</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Exportation des produits excédentaires</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ تصدير المنتجات الفائضة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Export von Überschussprodukten</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ National food self-sufficiency</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Autosuffisance alimentaire nationale</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ الاكتفاء الذاتي الوطني من الغذاء</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nationale Ernährungsselbstversorgung</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Preventing currency outflow (reducing imports)</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Prévention de la sortie de devises (réduction des importations)</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ منع تدفق العملات (تقليل الواردات)</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Verhinderung von Währungsabflüssen (Reduzierung von Importen)</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable food security</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sécurité alimentaire durable</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ الأمن الغذائي المستدام</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Ernährungssicherheit</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Year-round production</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Production toute l'année</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إنتاج طوال العام</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Ganzjährige Produktion</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable job creation</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Création d'emplois durables</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ خلق فرص عمل مستدامة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Arbeitsplatzschaffung</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Export of surplus products</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Exportation des produits excédentaires</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ تصدير المنتجات الفائضة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Export von Überschussprodukten</li>
                 </ul>
             </div>
             <div>
@@ -836,8 +936,8 @@
     </div>
 </section>
 
-<!-- ===== PRECIOUS METALS ===== -->
-<section class="section" id="metals">
+<!-- METALS (4 separate images) -->
+<section class="section" id="metals" style="background: var(--light-bg);">
     <div class="container text-center">
         <span class="badge" data-lang="en">Revenue Stream 4</span>
         <span class="badge" data-lang="fr" style="display:none;">Source de Revenu 4</span>
@@ -853,9 +953,9 @@
         <p class="section-sub" data-lang="de" style="display:none;">Gold · Silber · Wolfram · Lithium – Kritische Rohstoffe für zukünftige Industrien</p>
         <div class="grid-4">
             <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Gold" class="real-image-sm"><h3 data-lang="en">Gold</h3><h3 data-lang="fr" style="display:none;">Or</h3><h3 data-lang="ar" style="display:none;">الذهب</h3><h3 data-lang="de" style="display:none;">Gold</h3><p data-lang="en">Value reserve, electronics & medical</p><p data-lang="fr" style="display:none;">Réserve de valeur, électronique et médecine</p><p data-lang="ar" style="display:none;">مخزن القيمة، الإلكترونيات والطب</p><p data-lang="de" style="display:none;">Wertreserve, Elektronik & Medizin</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Silver" class="real-image-sm"><h3 data-lang="en">Silver</h3><h3 data-lang="fr" style="display:none;">Argent</h3><h3 data-lang="ar" style="display:none;">الفضة</h3><h3 data-lang="de" style="display:none;">Silber</h3><p data-lang="en">Solar, electronics & jewelry</p><p data-lang="fr" style="display:none;">Solaire, électronique et bijouterie</p><p data-lang="ar" style="display:none;">الطاقة الشمسية، الإلكترونيات والمجوهرات</p><p data-lang="de" style="display:none;">Solar, Elektronik & Schmuck</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Tungsten" class="real-image-sm"><h3 data-lang="en">Tungsten</h3><h3 data-lang="fr" style="display:none;">Tungstène</h3><h3 data-lang="ar" style="display:none;">التنجستن</h3><h3 data-lang="de" style="display:none;">Wolfram</h3><p data-lang="en">Aerospace, defense & cutting tools</p><p data-lang="fr" style="display:none;">Aérospatiale, défense et outils de coupe</p><p data-lang="ar" style="display:none;">الطيران، الدفاع وأدوات القطع</p><p data-lang="de" style="display:none;">Luft- und Raumfahrt, Verteidigung & Schneidwerkzeuge</p></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Lithium" class="real-image-sm"><h3 data-lang="en">Lithium</h3><h3 data-lang="fr" style="display:none;">Lithium</h3><h3 data-lang="ar" style="display:none;">الليثيوم</h3><h3 data-lang="de" style="display:none;">Lithium</h3><p data-lang="en">EV batteries & energy storage</p><p data-lang="fr" style="display:none;">Batteries de véhicules électriques et stockage d'énergie</p><p data-lang="ar" style="display:none;">بطاريات السيارات الكهربائية وتخزين الطاقة</p><p data-lang="de" style="display:none;">EV-Batterien & Energiespeicher</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400" alt="Silver" class="real-image-sm"><h3 data-lang="en">Silver</h3><h3 data-lang="fr" style="display:none;">Argent</h3><h3 data-lang="ar" style="display:none;">الفضة</h3><h3 data-lang="de" style="display:none;">Silber</h3><p data-lang="en">Solar, electronics & jewelry</p><p data-lang="fr" style="display:none;">Solaire, électronique et bijouterie</p><p data-lang="ar" style="display:none;">الطاقة الشمسية، الإلكترونيات والمجوهرات</p><p data-lang="de" style="display:none;">Solar, Elektronik & Schmuck</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Tungsten" class="real-image-sm"><h3 data-lang="en">Tungsten</h3><h3 data-lang="fr" style="display:none;">Tungstène</h3><h3 data-lang="ar" style="display:none;">التنجستن</h3><h3 data-lang="de" style="display:none;">Wolfram</h3><p data-lang="en">Aerospace, defense & cutting tools</p><p data-lang="fr" style="display:none;">Aérospatiale, défense et outils de coupe</p><p data-lang="ar" style="display:none;">الطيران، الدفاع وأدوات القطع</p><p data-lang="de" style="display:none;">Luft- und Raumfahrt, Verteidigung & Schneidwerkzeuge</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1581091877017-3a6b4f2b7c8f?w=400" alt="Lithium" class="real-image-sm"><h3 data-lang="en">Lithium</h3><h3 data-lang="fr" style="display:none;">Lithium</h3><h3 data-lang="ar" style="display:none;">الليثيوم</h3><h3 data-lang="de" style="display:none;">Lithium</h3><p data-lang="en">EV batteries & energy storage</p><p data-lang="fr" style="display:none;">Batteries de véhicules électriques et stockage d'énergie</p><p data-lang="ar" style="display:none;">بطاريات السيارات الكهربائية وتخزين الطاقة</p><p data-lang="de" style="display:none;">EV-Batterien & Energiespeicher</p></div>
         </div>
         <p style="margin-top: 20px; color: #4a5a6a;" data-lang="en">➕ Sustainable foreign currency revenue · Reduced import dependency · Mining job creation</p>
         <p style="margin-top: 20px; color: #4a5a6a; display:none;" data-lang="fr">➕ Revenus durables en devises · Réduction de la dépendance aux importations · Création d'emplois miniers</p>
@@ -864,7 +964,7 @@
     </div>
 </section>
 
-<!-- ===== SEA SALT ===== -->
+<!-- SEA SALT -->
 <section class="section" style="background: white;" id="salt">
     <div class="container">
         <div class="grid-2">
@@ -882,22 +982,22 @@
                 <p class="section-sub" data-lang="ar" style="display:none;">إنتاج ملح غذائي وصناعي عالي الجودة من المياه المالحة</p>
                 <p class="section-sub" data-lang="de" style="display:none;">Hochwertige Produktion von Speise- und Industriesalz aus Salzwasser</p>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 8px 0;" data-lang="en">✅ Domestic supply & export</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Approvisionnement domestique et exportation</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ توريد محلي وتصدير</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Inländische Versorgung & Export</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Industrial salt for chemical & refining industries</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Sel industriel pour les industries chimiques et de raffinage</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ ملح صناعي للصناعات الكيميائية والتكرير</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Industriesalz für die chemische und raffinierende Industrie</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Food-grade salt with global standards</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Sel alimentaire aux normes mondiales</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ ملح غذائي بمعايير عالمية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Speisesalz nach globalen Standards</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Sustainable export revenue</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Revenus d'exportation durables</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ إيرادات تصدير مستدامة</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Nachhaltige Exporteinnahmen</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Domestic supply & export</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Approvisionnement domestique et exportation</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ توريد محلي وتصدير</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Inländische Versorgung & Export</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Industrial salt for chemical & refining industries</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sel industriel pour les industries chimiques et de raffinage</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ ملح صناعي للصناعات الكيميائية والتكرير</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Industriesalz für die chemische und raffinierende Industrie</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Food-grade salt with global standards</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Sel alimentaire aux normes mondiales</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ ملح غذائي بمعايير عالمية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Speisesalz nach globalen Standards</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable export revenue</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Revenus d'exportation durables</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إيرادات تصدير مستدامة</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Exporteinnahmen</li>
                 </ul>
             </div>
             <div>
@@ -907,8 +1007,8 @@
     </div>
 </section>
 
-<!-- ===== ZERO CARBON ===== -->
-<section class="section" id="carbon">
+<!-- ZERO CARBON -->
+<section class="section" id="carbon" style="background: var(--light-bg);">
     <div class="container">
         <div class="grid-2" style="direction: ltr;">
             <div>
@@ -928,32 +1028,31 @@
                 <p class="section-sub" data-lang="ar" style="display:none;">خفض الكربون المستدام · أرصدة كربون قابلة للتداول</p>
                 <p class="section-sub" data-lang="de" style="display:none;">Nachhaltige Kohlenstoffreduzierung · Handelbare Kohlenstoffgutschriften</p>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 8px 0;" data-lang="en">✅ Zero carbon emissions</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Émissions de carbone nulles</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ انبعاثات كربونية صفرية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Null Kohlenstoffemissionen</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Tradeable carbon credits in global markets</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Crédits carbone négociables sur les marchés mondiaux</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ أرصدة كربون قابلة للتداول في الأسواق العالمية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Handelbare Kohlenstoffgutschriften auf globalen Märkten</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Partnership with global green funds</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Partenariat avec les fonds verts mondiaux</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ شراكة مع الصناديق الخضراء العالمية</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Partnerschaft mit globalen Grünen Fonds</li>
-                    <li style="padding: 8px 0;" data-lang="en">✅ Sustainable revenue from carbon markets</li>
-                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✅ Revenus durables des marchés du carbone</li>
-                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✅ إيرادات مستدامة من أسواق الكربون</li>
-                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✅ Nachhaltige Einnahmen aus Kohlenstoffmärkten</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Zero carbon emissions</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Émissions de carbone nulles</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ انبعاثات كربونية صفرية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Null Kohlenstoffemissionen</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Tradeable carbon credits in global markets</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Crédits carbone négociables sur les marchés mondiaux</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ أرصدة كربون قابلة للتداول في الأسواق العالمية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Handelbare Kohlenstoffgutschriften auf globalen Märkten</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Partnership with global green funds</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Partenariat avec les fonds verts mondiaux</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ شراكة مع الصناديق الخضراء العالمية</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Partnerschaft mit globalen Grünen Fonds</li>
+                    <li style="padding: 8px 0;" data-lang="en">✔ Sustainable revenue from carbon markets</li>
+                    <li style="padding: 8px 0;" data-lang="fr" style="display:none;">✔ Revenus durables des marchés du carbone</li>
+                    <li style="padding: 8px 0;" data-lang="ar" style="display:none;">✔ إيرادات مستدامة من أسواق الكربون</li>
+                    <li style="padding: 8px 0;" data-lang="de" style="display:none;">✔ Nachhaltige Einnahmen aus Kohlenstoffmärkten</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== PROJECT BANK ===== -->
+<!-- PROJECT BANK (no icon, just title + images) -->
 <section class="section" style="background: white;" id="bank">
     <div class="container text-center">
-        <span class="badge">🏦</span>
         <h2 class="section-title"><span class="highlight" data-lang="en">Project</span> <span data-lang="en">Dedicated Bank</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Banque</span> Dédiée au Projet</h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">البنك</span> المخصص للمشروع</h2>
@@ -970,10 +1069,9 @@
     </div>
 </section>
 
-<!-- ===== TECHNICAL DOSSIER ===== -->
-<section class="section" id="docs">
+<!-- TECHNICAL DOSSIER (no icon) -->
+<section class="section" id="docs" style="background: var(--light-bg);">
     <div class="container text-center">
-        <span class="badge">📄</span>
         <h2 class="section-title"><span class="highlight" data-lang="en">Complete</span> <span data-lang="en">Technical Dossier</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Dossier</span> Technique Complet</h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الملف</span> الفني الكامل</h2>
@@ -983,38 +1081,38 @@
         <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">دراسات جامعية · خرائط GIS · ٣ سيناريوهات مالية · متاح للمستثمرين المعتمدين</p>
         <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Universitätsstudien · GIS-Karten · 3 Finanzszenarien · Verfügbar für verifizierte Investoren</p>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-            <div style="background: white; padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
+            <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-file-pdf" style="font-size: 2.5rem; color: #e74c3c;"></i>
-                <p style="font-weight: 600; margin-top: 8px;" data-lang="en">194-page Dossier</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="fr">194 pages Dossier</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="ar">١٩٤ صفحة ملف</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="de">194-seitiges Dossier</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a;" data-lang="en">Complete technical report</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="fr">Rapport technique complet</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="ar">تقرير فني كامل</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="de">Vollständiger technischer Bericht</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">194-page Dossier</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">194 pages Dossier</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">١٩٤ صفحة ملف</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">194-seitiges Dossier</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">Complete technical report</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">Rapport technique complet</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">تقرير فني كامل</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">Vollständiger technischer Bericht</p>
             </div>
-            <div style="background: white; padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
+            <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-file-excel" style="font-size: 2.5rem; color: #27ae60;"></i>
-                <p style="font-weight: 600; margin-top: 8px;" data-lang="en">34 Excel Sheets</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="fr">34 Feuilles Excel</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="ar">٣٤ ورقة إكسل</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="de">34 Excel-Blätter</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a;" data-lang="en">3 scenarios (Low, Medium, High)</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="fr">3 scénarios (Faible, Moyen, Élevé)</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="ar">٣ سيناريوهات (منخفض، متوسط، مرتفع)</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="de">3 Szenarien (Niedrig, Mittel, Hoch)</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">34 Excel Sheets</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">34 Feuilles Excel</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">٣٤ ورقة إكسل</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">34 Excel-Blätter</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">3 scenarios (Low, Medium, High)</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">3 scénarios (Faible, Moyen, Élevé)</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">٣ سيناريوهات (منخفض، متوسط، مرتفع)</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">3 Szenarien (Niedrig, Mittel, Hoch)</p>
             </div>
-            <div style="background: white; padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
+            <div style="background: rgba(255,255,255,0.92); padding: 24px 32px; border-radius: var(--radius); box-shadow: var(--shadow); min-width: 200px;">
                 <i class="fas fa-map" style="font-size: 2.5rem; color: #3498db;"></i>
-                <p style="font-weight: 600; margin-top: 8px;" data-lang="en">5-Country Maps</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="fr">Cartes 5 Pays</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="ar">خرائط ٥ دول</p>
-                <p style="font-weight: 600; margin-top: 8px; display:none;" data-lang="de">5-Länder-Karten</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a;" data-lang="en">GIS · Topography · Faults · Seismology</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="fr">GIS · Topographie · Failles · Sismologie</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="ar">GIS · طبوغرافيا · صدوع · زلازل</p>
-                <p style="font-size: 0.85rem; color: #6a7a8a; display:none;" data-lang="de">GIS · Topographie · Verwerfungen · Seismologie</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif;" data-lang="en">5-Country Maps</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Cartes 5 Pays</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">خرائط ٥ دول</p>
+                <p style="font-weight: 600; margin-top: 8px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">5-Länder-Karten</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a;" data-lang="en">GIS · Topography · Faults · Seismology</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="fr">GIS · Topographie · Failles · Sismologie</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="ar">GIS · طبوغرافيا · صدوع · زلازل</p>
+                <p style="font-size: 0.9rem; color: #6a7a8a; display:none;" data-lang="de">GIS · Topographie · Verwerfungen · Seismologie</p>
             </div>
         </div>
         <p style="margin-top: 30px; color: #4a5a6a; font-style: italic;" data-lang="en">🔒 Technical information only available to verified investors after NDA signature</p>
@@ -1024,10 +1122,9 @@
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS ===== -->
-<section class="section" style="background: var(--light);" id="achievements">
+<!-- ACHIEVEMENTS (unique images) -->
+<section class="section" style="background: white;" id="achievements">
     <div class="container text-center">
-        <span class="badge">🏆</span>
         <h2 class="section-title"><span class="highlight" data-lang="en">Achievements</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Réalisations</span></h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الإنجازات</span></h2>
@@ -1043,11 +1140,11 @@
                 <div class="ach-text"><h4 data-lang="en">Top 8 Finalist – Low Carbon Singapore & Temasek</h4><h4 data-lang="fr" style="display:none;">Finaliste Top 8 – Bas Carbone Singapour & Temasek</h4><h4 data-lang="ar" style="display:none;">أفضل ٨ نهائي – كربون منخفض سنغافورة وتيماسيك</h4><h4 data-lang="de" style="display:none;">Top 8 Finalist – Niedrigkohlenstoff Singapur & Temasek</h4><p data-lang="en">Recognized among the top 8 global low-carbon innovators.</p><p data-lang="fr" style="display:none;">Reconnu parmi les 8 meilleurs innovateurs bas-carbone mondiaux.</p><p data-lang="ar" style="display:none;">معترف به بين أفضل ٨ مبتكرين منخفضي الكربون عالمياً.</p><p data-lang="de" style="display:none;">Anerkannt unter den Top 8 globalen Niedrigkohlenstoff-Innovatoren.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=200" alt="Award">
+                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200" alt="Sheikh Zayed">
                 <div class="ach-text"><h4 data-lang="en">Semi-Finalist – Sheikh Zayed Award UAE</h4><h4 data-lang="fr" style="display:none;">Demi-finaliste – Prix Sheikh Zayed EAU</h4><h4 data-lang="ar" style="display:none;">نصف نهائي – جائزة الشيخ زايد الإمارات</h4><h4 data-lang="de" style="display:none;">Halbfinalist – Sheikh Zayed Preis VAE</h4><p data-lang="en">Selected among the top sustainable energy projects in the Middle East.</p><p data-lang="fr" style="display:none;">Sélectionné parmi les meilleurs projets d'énergie durable au Moyen-Orient.</p><p data-lang="ar" style="display:none;">تم اختياره من بين أفضل مشاريع الطاقة المستدامة في الشرق الأوسط.</p><p data-lang="de" style="display:none;">Ausgewählt unter den besten nachhaltigen Energieprojekten im Nahen Osten.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=200" alt="Award">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=200" alt="Energy Globe">
                 <div class="ach-text"><h4 data-lang="en">Winner – Energy Globe Award Iran</h4><h4 data-lang="fr" style="display:none;">Gagnant – Energy Globe Award Iran</h4><h4 data-lang="ar" style="display:none;">الفائز – جائزة إنرجي غلوب إيران</h4><h4 data-lang="de" style="display:none;">Gewinner – Energy Globe Award Iran</h4><p data-lang="en">First place in the national sustainable energy category.</p><p data-lang="fr" style="display:none;">Première place dans la catégorie nationale de l'énergie durable.</p><p data-lang="ar" style="display:none;">المركز الأول في فئة الطاقة المستدامة الوطنية.</p><p data-lang="de" style="display:none;">Erster Platz in der nationalen Kategorie für nachhaltige Energie.</p></div>
             </div>
             <div class="achievement-item">
@@ -1056,10 +1153,10 @@
             </div>
         </div>
 
-        <h3 style="margin-top: 40px; margin-bottom: 20px;" data-lang="en">Top 20 Universities Worldwide</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; display:none;" data-lang="fr">Top 20 Universités Mondiales</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; display:none;" data-lang="ar">أفضل ٢٠ جامعة في العالم</h3>
-        <h3 style="margin-top: 40px; margin-bottom: 20px; display:none;" data-lang="de">Top 20 Universitäten weltweit</h3>
+        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif;" data-lang="en">Top 20 Universities Worldwide</h3>
+        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Top 20 Universités Mondiales</h3>
+        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">أفضل ٢٠ جامعة في العالم</h3>
+        <h3 style="margin-top: 40px; margin-bottom: 20px; font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Top 20 Universitäten weltweit</h3>
         <p style="margin-bottom: 20px; color: #4a5a6a;" data-lang="en">In fields of: Artificial Intelligence · Sustainable Energy · Carbon Capture · Circular Economy · Industrial Recycling · Water Conservation · Geology · Clean Energy Industry</p>
         <p style="margin-bottom: 20px; color: #4a5a6a; display:none;" data-lang="fr">Dans les domaines : Intelligence Artificielle · Énergie Durable · Capture de Carbone · Économie Circulaire · Recyclage Industriel · Conservation de l'Eau · Géologie · Industrie de l'Énergie Propre</p>
         <p style="margin-bottom: 20px; color: #4a5a6a; display:none;" data-lang="ar">في مجالات: الذكاء الاصطناعي · الطاقة المستدامة · احتجاز الكربون · الاقتصاد الدائري · إعادة التدوير الصناعي · حفظ المياه · الجيولوجيا · صناعة الطاقة النظيفة</p>
@@ -1079,10 +1176,9 @@
     </div>
 </section>
 
-<!-- ===== WHY GEO ===== -->
-<section class="section" style="background: white;" id="whygeo">
+<!-- WHY GEO -->
+<section class="section" style="background: var(--light-bg);" id="whygeo">
     <div class="container">
-        <span class="badge">🔥</span>
         <h2 class="section-title text-center"><span class="highlight" data-lang="en">Why Geothermal?</span></h2>
         <h2 class="section-title text-center" data-lang="fr" style="display:none;"><span class="highlight">Pourquoi la Géothermie ?</span></h2>
         <h2 class="section-title text-center" data-lang="ar" style="display:none;"><span class="highlight">لماذا الحرارية الأرضية؟</span></h2>
@@ -1094,65 +1190,64 @@
 
         <div class="grid-2">
             <div>
-                <h3 data-lang="en">Solar & Wind Limitations</h3>
-                <h3 data-lang="fr" style="display:none;">Limites du Solaire et de l'Éolien</h3>
-                <h3 data-lang="ar" style="display:none;">قيود الطاقة الشمسية وطاقة الرياح</h3>
-                <h3 data-lang="de" style="display:none;">Grenzen von Solar und Wind</h3>
+                <h3 style="font-family: 'Poppins', sans-serif;" data-lang="en">Solar & Wind Limitations</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Limites du Solaire et de l'Éolien</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">قيود الطاقة الشمسية وطاقة الرياح</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Grenzen von Solar und Wind</h3>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">❌ Solar: No production at night, weak on cloudy days, expensive batteries</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">❌ Solaire : Pas de production la nuit, faible par temps nuageux, batteries coûteuses</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">❌ الطاقة الشمسية: لا إنتاج في الليل، ضعيفة في الأيام الملبدة بالغيوم، بطاريات باهظة الثمن</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">❌ Solar: Keine Produktion bei Nacht, schwach bei Bewölkung, teure Batterien</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">❌ Wind: Zero generation during calm periods, bird mortality, noise pollution</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">❌ Éolien : Zéro génération pendant les périodes calmes, mortalité des oiseaux, pollution sonore</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">❌ طاقة الرياح: توليد صفر خلال فترات الهدوء، نفوق الطيور، التلوث الضوضائي</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">❌ Wind: Keine Erzeugung bei Windstille, Vogelsterben, Lärmbelästigung</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">❌ Drought: Destroys vegetation, creates dust storms, mud deposits, ecosystem collapse</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">❌ Sécheresse : Détruit la végétation, crée des tempêtes de poussière, dépôts de boue, effondrement des écosystèmes</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">❌ الجفاف: يدمر الغطاء النباتي، يخلق عواصف ترابية، رواسب طينية، انهيار النظام البيئي</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">❌ Dürre: Zerstört Vegetation, erzeugt Staubstürme, Schlammablagerungen, Ökosystemkollaps</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Solar: No production at night, weak on cloudy days, expensive batteries</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Solaire : Pas de production la nuit, faible par temps nuageux, batteries coûteuses</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ الطاقة الشمسية: لا إنتاج في الليل، ضعيفة في الأيام الملبدة بالغيوم، بطاريات باهظة الثمن</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Solar: Keine Produktion bei Nacht, schwach bei Bewölkung, teure Batterien</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Wind: Zero generation during calm periods, bird mortality, noise pollution</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Éolien : Zéro génération pendant les périodes calmes, mortalité des oiseaux, pollution sonore</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ طاقة الرياح: توليد صفر خلال فترات الهدوء، نفوق الطيور، التلوث الضوضائي</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Wind: Keine Erzeugung bei Windstille, Vogelsterben, Lärmbelästigung</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✖ Drought: Destroys vegetation, creates dust storms, mud deposits, ecosystem collapse</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✖ Sécheresse : Détruit la végétation, crée des tempêtes de poussière, dépôts de boue, effondrement des écosystèmes</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✖ الجفاف: يدمر الغطاء النباتي، يخلق عواصف ترابية، رواسب طينية، انهيار النظام البيئي</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✖ Dürre: Zerstört Vegetation, erzeugt Staubstürme, Schlammablagerungen, Ökosystemkollaps</li>
                 </ul>
             </div>
             <div>
-                <h3 data-lang="en">Geothermal Multi-Dimensional Advantage</h3>
-                <h3 data-lang="fr" style="display:none;">Avantage Multidimensionnel de la Géothermie</h3>
-                <h3 data-lang="ar" style="display:none;">الميزة متعددة الأبعاد للحرارية الأرضية</h3>
-                <h3 data-lang="de" style="display:none;">Mehrdimensionaler Vorteil der Geothermie</h3>
+                <h3 style="font-family: 'Poppins', sans-serif;" data-lang="en">Geothermal Multi-Dimensional Advantage</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="fr">Avantage Multidimensionnel de la Géothermie</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="ar">الميزة متعددة الأبعاد للحرارية الأرضية</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; display:none;" data-lang="de">Mehrdimensionaler Vorteil der Geothermie</h3>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✅ 24/7 continuous baseload power – no intermittency</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✅ Énergie de base continue 24/7 – pas d'intermittence</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✅ طاقة قاعدة مستمرة ٢٤/٧ – لا انقطاع</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✅ 24/7 kontinuierliche Grundlaststrom – keine Unterbrechung</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✅ Zero batteries required – massive cost savings</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✅ Aucune batterie nécessaire – économies massives</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✅ لا حاجة لبطاريات – توفير هائل في التكاليف</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✅ Keine Batterien erforderlich – massive Kosteneinsparungen</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✅ Simultaneous production of energy, fresh water, heat, minerals, and salt</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✅ Production simultanée d'énergie, d'eau douce, de chaleur, de minéraux et de sel</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✅ إنتاج متزامن للطاقة والمياه العذبة والحرارة والمعادن والملح</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✅ Gleichzeitige Produktion von Energie, Süßwasser, Wärme, Mineralien und Salz</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✅ Precious metal extraction – gold, silver, tungsten, lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✅ Extraction de métaux précieux – or, argent, tungstène, lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✅ استخراج المعادن الثمينة – الذهب، الفضة، التنجستن، الليثيوم</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✅ Gewinnung von Edelmetallen – Gold, Silber, Wolfram, Lithium</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✅ Massive job creation – 12,000+ direct, 25,000+ indirect</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✅ Création massive d'emplois – 12,000+ directs, 25,000+ indirects</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✅ خلق وظائف هائل – ١٢,٠٠٠+ مباشر، ٢٥,٠٠٠+ غير مباشر</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✅ Massive Arbeitsplatzschaffung – 12,000+ direkt, 25,000+ indirekt</li>
-                    <li style="padding: 10px 0;" data-lang="en">✅ Zero carbon footprint – tradeable carbon credits</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="fr">✅ Empreinte carbone zéro – crédits carbone négociables</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="ar">✅ بصمة كربونية صفرية – أرصدة كربون قابلة للتداول</li>
-                    <li style="padding: 10px 0; display:none;" data-lang="de">✅ Null CO2-Fußabdruck – handelbare Kohlenstoffgutschriften</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ 24/7 continuous baseload power – no intermittency</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Énergie de base continue 24/7 – pas d'intermittence</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ طاقة قاعدة مستمرة ٢٤/٧ – لا انقطاع</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ 24/7 kontinuierliche Grundlaststrom – keine Unterbrechung</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Zero batteries required – massive cost savings</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Aucune batterie nécessaire – économies massives</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ لا حاجة لبطاريات – توفير هائل في التكاليف</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Keine Batterien erforderlich – massive Kosteneinsparungen</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Simultaneous production of energy, fresh water, heat, minerals, and salt</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Production simultanée d'énergie, d'eau douce, de chaleur, de minéraux et de sel</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ إنتاج متزامن للطاقة والمياه العذبة والحرارة والمعادن والملح</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Gleichzeitige Produktion von Energie, Süßwasser, Wärme, Mineralien und Salz</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Precious metal extraction – gold, silver, tungsten, lithium</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Extraction de métaux précieux – or, argent, tungstène, lithium</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ استخراج المعادن الثمينة – الذهب، الفضة، التنجستن، الليثيوم</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Gewinnung von Edelmetallen – Gold, Silber, Wolfram, Lithium</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7;" data-lang="en">✔ Massive job creation – 12,000+ direct, 25,000+ indirect</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="fr">✔ Création massive d'emplois – 12,000+ directs, 25,000+ indirects</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="ar">✔ خلق وظائف هائل – ١٢,٠٠٠+ مباشر، ٢٥,٠٠٠+ غير مباشر</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eef2f7; display:none;" data-lang="de">✔ Massive Arbeitsplatzschaffung – 12,000+ direkt, 25,000+ indirekt</li>
+                    <li style="padding: 10px 0;" data-lang="en">✔ Zero carbon footprint – tradeable carbon credits</li>
+                    <li style="padding: 10px 0; display:none;" data-lang="fr">✔ Empreinte carbone zéro – crédits carbone négociables</li>
+                    <li style="padding: 10px 0; display:none;" data-lang="ar">✔ بصمة كربونية صفرية – أرصدة كربون قابلة للتداول</li>
+                    <li style="padding: 10px 0; display:none;" data-lang="de">✔ Null CO2-Fußabdruck – handelbare Kohlenstoffgutschriften</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== ARTICLES ===== -->
-<section class="section" style="background: var(--light);" id="articles">
+<!-- ARTICLES -->
+<section class="section" style="background: white;" id="articles">
     <div class="container text-center">
-        <span class="badge">📰</span>
         <h2 class="section-title"><span class="highlight" data-lang="en">Featured Articles</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Articles en Vedette</span></h2>
         <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">المقالات المميزة</span></h2>
@@ -1217,8 +1312,122 @@
     </div>
 </section>
 
-<!-- ===== CONTACT FORM ===== -->
-<section id="contact" class="section" style="background: #e8f0fe;">
+<!-- PARTNERS (Sovereign Funds & Giants) -->
+<section class="section" id="partners" style="background: var(--light-bg);">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-lang="en">Strategic Partners & Sovereign Funds</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Partenaires Stratégiques & Fonds Souverains</span></h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">الشركاء الاستراتيجيون والصناديق السيادية</span></h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Strategische Partner & Staatsfonds</span></h2>
+        <p class="section-sub" style="margin: 0 auto 30px;" data-lang="en">Backed by the world's most influential sovereign funds and industrial leaders</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="fr">Soutenu par les fonds souverains et les leaders industriels les plus influents du monde</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="ar">مدعوم من أكبر الصناديق السيادية وقادة الصناعة في العالم</p>
+        <p class="section-sub" style="margin: 0 auto 30px; display:none;" data-lang="de">Unterstützt von den einflussreichsten Staatsfonds und Industriepartnern der Welt</p>
+        <div class="partner-grid">
+            <div class="partner-item"><span class="partner-flag">🇶🇦</span><h6>Qatar</h6><p>QIA</p></div>
+            <div class="partner-item"><span class="partner-flag">🇰🇼</span><h6>Kuwait</h6><p>KIA</p></div>
+            <div class="partner-item"><span class="partner-flag">🇴🇲</span><h6>Oman</h6><p>OIA</p></div>
+            <div class="partner-item"><span class="partner-flag">🇸🇦</span><h6>Saudi Arabia</h6><p>PIF</p></div>
+            <div class="partner-item"><span class="partner-flag">🇧🇭</span><h6>Bahrain</h6><p>Mumtalakat</p></div>
+            <div class="partner-item"><span class="partner-flag">🇦🇪</span><h6>UAE</h6><p>ADIA · Mubadala</p></div>
+            <div class="partner-item"><span class="partner-flag">🇳🇴</span><h6>Norway</h6><p>GPFG</p></div>
+            <div class="partner-item"><span class="partner-flag">🇸🇬</span><h6>Singapore</h6><p>Temasek</p></div>
+            <div class="partner-item"><span class="partner-flag">🇨🇦</span><h6>Canada</h6><p>CPPIB</p></div>
+            <div class="partner-item"><span class="partner-flag">🇯🇵</span><h6>Japan</h6><p>GPIF</p></div>
+            <div class="partner-item"><span class="partner-flag">🇬🇧</span><h6>UK</h6><p>Brookfield</p></div>
+            <div class="partner-item"><span class="partner-flag">🇺🇸</span><h6>USA</h6><p>BlackRock · Blackstone</p></div>
+        </div>
+        <p style="margin-top: 24px; color: #4a5a6a;" data-lang="en">+ ADIA (UAE), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Saudi), Temasek (Singapore), GPFG (Norway), CPPIB (Canada), GPIF (Japan), Brookfield, BlackRock, Blackstone and more</p>
+        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="fr">+ ADIA (EAU), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Arabie Saoudite), Temasek (Singapour), GPFG (Norvège), CPPIB (Canada), GPIF (Japon), Brookfield, BlackRock, Blackstone et plus</p>
+        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="ar">+ ADIA (الإمارات)، مبادلة، جهاز قطر للاستثمار، هيئة الاستثمار الكويتية، OIA (عمان)، PIF (السعودية)، تيماسيك (سنغافورة)، GPFG (النرويج)، CPPIB (كندا)، GPIF (اليابان)، بروكفيلد، بلاك روك، بلاكستون والمزيد</p>
+        <p style="margin-top: 24px; color: #4a5a6a; display:none;" data-lang="de">+ ADIA (VAE), Mubadala, Qatar Investment Authority, Kuwait Investment Authority, OIA (Oman), PIF (Saudi-Arabien), Temasek (Singapur), GPFG (Norwegen), CPPIB (Kanada), GPIF (Japan), Brookfield, BlackRock, Blackstone und mehr</p>
+    </div>
+</section>
+
+<!-- FINANCIAL CALCULATOR (modal) -->
+<section class="section" style="background: white;" id="calculator">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-lang="en">Financial Calculator</span></h2>
+        <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Calculatrice</span> Financière</h2>
+        <h2 class="section-title" data-lang="ar" style="display:none;"><span class="highlight">آلة</span> حاسبة مالية</h2>
+        <h2 class="section-title" data-lang="de" style="display:none;"><span class="highlight">Finanz</span> rechner</h2>
+        <p class="section-sub" style="margin: 0 auto 20px;" data-lang="en">Estimate your potential returns with our interactive investment calculator</p>
+        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="fr">Estimez vos rendements potentiels avec notre calculateur d'investissement interactif</p>
+        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="ar">قدّر عوائدك المحتملة باستخدام حاسبة الاستثمار التفاعلية</p>
+        <p class="section-sub" style="margin: 0 auto 20px; display:none;" data-lang="de">Schätzen Sie Ihre potenziellen Renditen mit unserem interaktiven Anlagerechner</p>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="en">Open Calculator</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="fr" style="display:none;">Ouvrir la Calculatrice</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="ar" style="display:none;">فتح الآلة الحاسبة</button>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-lang="de" style="display:none;">Rechner öffnen</button>
+    </div>
+</section>
+
+<!-- CALCULATOR MODAL -->
+<div class="modal-overlay" id="calcModal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="document.getElementById('calcModal').classList.remove('open')">✖</button>
+        <h2 data-lang="en">Investment Calculator</h2>
+        <h2 data-lang="fr" style="display:none;">Calculateur d'Investissement</h2>
+        <h2 data-lang="ar" style="display:none;">حاسبة الاستثمار</h2>
+        <h2 data-lang="de" style="display:none;">Anlagerechner</h2>
+
+        <label data-lang="en">Investment Amount (USD)</label>
+        <label data-lang="fr" style="display:none;">Montant de l'investissement (USD)</label>
+        <label data-lang="ar" style="display:none;">مبلغ الاستثمار (دولار)</label>
+        <label data-lang="de" style="display:none;">Investitionsbetrag (USD)</label>
+        <input type="number" id="investAmount" value="10000000" step="100000" min="100000" />
+
+        <label data-lang="en">Currency</label>
+        <label data-lang="fr" style="display:none;">Devise</label>
+        <label data-lang="ar" style="display:none;">العملة</label>
+        <label data-lang="de" style="display:none;">Währung</label>
+        <select id="currency">
+            <option value="USD">USD (US Dollar)</option>
+            <option value="EUR">EUR (Euro)</option>
+            <option value="GBP">GBP (British Pound)</option>
+        </select>
+
+        <label data-lang="en">Profit Rate</label>
+        <label data-lang="fr" style="display:none;">Taux de Profit</label>
+        <label data-lang="ar" style="display:none;">معدل الربح</label>
+        <label data-lang="de" style="display:none;">Gewinnrate</label>
+        <div class="radio-group" id="profitRateGroup">
+            <label><input type="radio" name="profitRate" value="25" checked> 25% (Low)</label>
+            <label><input type="radio" name="profitRate" value="35"> 35% (Medium)</label>
+            <label><input type="radio" name="profitRate" value="45"> 45% (High)</label>
+        </div>
+
+        <label data-lang="en">Investment Period</label>
+        <label data-lang="fr" style="display:none;">Période d'Investissement</label>
+        <label data-lang="ar" style="display:none;">فترة الاستثمار</label>
+        <label data-lang="de" style="display:none;">Anlagezeitraum</label>
+        <div class="radio-group" id="periodGroup">
+            <label><input type="radio" name="period" value="14" checked> 14 months (Fast)</label>
+            <label><input type="radio" name="period" value="18"> 18 months (Medium)</label>
+            <label><input type="radio" name="period" value="24"> 24 months (Standard)</label>
+        </div>
+
+        <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="en">Calculate</button>
+        <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="fr" style="display:none;">Calculer</button>
+        <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="ar" style="display:none;">احسب</button>
+        <button class="btn" style="width:100%; margin-top:12px;" onclick="calculateInvestment()" data-lang="de" style="display:none;">Berechnen</button>
+
+        <div class="calc-result" id="calcResult">
+            <span data-lang="en">Enter values and press Calculate</span>
+            <span data-lang="fr" style="display:none;">Entrez les valeurs et appuyez sur Calculer</span>
+            <span data-lang="ar" style="display:none;">أدخل القيم واضغط على حساب</span>
+            <span data-lang="de" style="display:none;">Werte eingeben und Berechnen drücken</span>
+        </div>
+
+        <div class="calc-note" data-lang="en">Risk timing depends on local governments, legal permits, and review periods in each country. Prices and costs are subject to global market prices at the time of execution.</div>
+        <div class="calc-note" data-lang="fr" style="display:none;">Le calendrier des risques dépend des gouvernements locaux, des permis légaux et des délais d'examen dans chaque pays. Les prix et les coûts sont soumis aux prix du marché mondial au moment de l'exécution.</div>
+        <div class="calc-note" data-lang="ar" style="display:none;">توقيت المخاطر يعتمد على الحكومات المحلية والتصاريح القانونية وفترات المراجعة في كل دولة. الأسعار والتكاليف تخضع لأسعار السوق العالمية وقت التنفيذ.</div>
+        <div class="calc-note" data-lang="de" style="display:none;">Das Risiko-Zeitfenster hängt von den lokalen Regierungen, gesetzlichen Genehmigungen und Prüfzeiträumen in den einzelnen Ländern ab. Preise und Kosten unterliegen den globalen Marktpreisen zum Zeitpunkt der Ausführung.</div>
+    </div>
+</div>
+
+<!-- CONTACT FORM -->
+<section id="contact" class="section" style="background: var(--light-bg);">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Contact</span> <span data-lang="en">Investment Team</span></h2>
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Contacter</span> l'Équipe d'Investissement</h2>
@@ -1239,16 +1448,16 @@
         <div class="contact-form">
             <form id="mainForm" onsubmit="return handleSubmit(event)">
                 <div class="form-row">
-                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px;" data-lang="en">Request Type:</label>
-                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; display:none;" data-lang="fr">Type de Demande:</label>
-                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; display:none;" data-lang="ar">نوع الطلب:</label>
-                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; display:none;" data-lang="de">Anfrageart:</label>
+                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-family: 'Inter', sans-serif;" data-lang="en">Request Type:</label>
+                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-family: 'Inter', sans-serif; display:none;" data-lang="fr">Type de Demande:</label>
+                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-family: 'Inter', sans-serif; display:none;" data-lang="ar">نوع الطلب:</label>
+                    <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-family: 'Inter', sans-serif; display:none;" data-lang="de">Anfrageart:</label>
                     <div class="request-tags">
-                        <button type="button" class="tag active" data-value="energy" onclick="selectTag(this)"><span data-lang="en">⚡ Energy</span><span data-lang="fr" style="display:none;">⚡ Énergie</span><span data-lang="ar" style="display:none;">⚡ الطاقة</span><span data-lang="de" style="display:none;">⚡ Energie</span></button>
-                        <button type="button" class="tag" data-value="agriculture" onclick="selectTag(this)"><span data-lang="en">🌱 Agriculture</span><span data-lang="fr" style="display:none;">🌱 Agriculture</span><span data-lang="ar" style="display:none;">🌱 الزراعة</span><span data-lang="de" style="display:none;">🌱 Landwirtschaft</span></button>
-                        <button type="button" class="tag" data-value="infrastructure" onclick="selectTag(this)"><span data-lang="en">🏗️ Infrastructure</span><span data-lang="fr" style="display:none;">🏗️ Infrastructure</span><span data-lang="ar" style="display:none;">🏗️ البنية التحتية</span><span data-lang="de" style="display:none;">🏗️ Infrastruktur</span></button>
-                        <button type="button" class="tag" data-value="industry" onclick="selectTag(this)"><span data-lang="en">🏭 Industry & Extraction</span><span data-lang="fr" style="display:none;">🏭 Industrie et Extraction</span><span data-lang="ar" style="display:none;">🏭 الصناعة والاستخراج</span><span data-lang="de" style="display:none;">🏭 Industrie & Extraktion</span></button>
-                        <button type="button" class="tag" data-value="water" onclick="selectTag(this)"><span data-lang="en">💧 Water & Maintenance</span><span data-lang="fr" style="display:none;">💧 Eau et Maintenance</span><span data-lang="ar" style="display:none;">💧 المياه والصيانة</span><span data-lang="de" style="display:none;">💧 Wasser & Wartung</span></button>
+                        <button type="button" class="tag active" data-value="energy" onclick="selectTag(this)"><span data-lang="en">Energy</span><span data-lang="fr" style="display:none;">Énergie</span><span data-lang="ar" style="display:none;">الطاقة</span><span data-lang="de" style="display:none;">Energie</span></button>
+                        <button type="button" class="tag" data-value="agriculture" onclick="selectTag(this)"><span data-lang="en">Agriculture</span><span data-lang="fr" style="display:none;">Agriculture</span><span data-lang="ar" style="display:none;">الزراعة</span><span data-lang="de" style="display:none;">Landwirtschaft</span></button>
+                        <button type="button" class="tag" data-value="infrastructure" onclick="selectTag(this)"><span data-lang="en">Infrastructure</span><span data-lang="fr" style="display:none;">Infrastructure</span><span data-lang="ar" style="display:none;">البنية التحتية</span><span data-lang="de" style="display:none;">Infrastruktur</span></button>
+                        <button type="button" class="tag" data-value="industry" onclick="selectTag(this)"><span data-lang="en">Industry & Extraction</span><span data-lang="fr" style="display:none;">Industrie et Extraction</span><span data-lang="ar" style="display:none;">الصناعة والاستخراج</span><span data-lang="de" style="display:none;">Industrie & Extraktion</span></button>
+                        <button type="button" class="tag" data-value="water" onclick="selectTag(this)"><span data-lang="en">Water & Maintenance</span><span data-lang="fr" style="display:none;">Eau et Maintenance</span><span data-lang="ar" style="display:none;">المياه والصيانة</span><span data-lang="de" style="display:none;">Wasser & Wartung</span></button>
                     </div>
                     <input type="hidden" id="requestType" value="energy">
                 </div>
@@ -1262,66 +1471,66 @@
 
                 <div class="dropdown-wrapper">
                     <select id="contactPerson">
-                        <option value="" data-lang="en">📞 Select Contact (optional)</option>
-                        <option value="" data-lang="fr" style="display:none;">📞 Sélectionner le Contact (optionnel)</option>
-                        <option value="" data-lang="ar" style="display:none;">📞 اختر جهة الاتصال (اختياري)</option>
-                        <option value="" data-lang="de" style="display:none;">📞 Kontakt auswählen (optional)</option>
-                        <option value="tech" data-lang="en">🔧 Technical Team</option>
-                        <option value="tech" data-lang="fr" style="display:none;">🔧 Équipe Technique</option>
-                        <option value="tech" data-lang="ar" style="display:none;">🔧 الفريق الفني</option>
-                        <option value="tech" data-lang="de" style="display:none;">🔧 Technisches Team</option>
-                        <option value="advisor" data-lang="en">🧑‍💼 Level 1 Advisors</option>
-                        <option value="advisor" data-lang="fr" style="display:none;">🧑‍💼 Conseillers de Niveau 1</option>
-                        <option value="advisor" data-lang="ar" style="display:none;">🧑‍💼 مستشارو المستوى الأول</option>
-                        <option value="advisor" data-lang="de" style="display:none;">🧑‍💼 Berater Level 1</option>
-                        <option value="deputy" data-lang="en">👔 Deputy</option>
-                        <option value="deputy" data-lang="fr" style="display:none;">👔 Adjoint</option>
-                        <option value="deputy" data-lang="ar" style="display:none;">👔 نائب</option>
-                        <option value="deputy" data-lang="de" style="display:none;">👔 Stellvertreter</option>
-                        <option value="director" data-lang="en">👨‍💼 Director</option>
-                        <option value="director" data-lang="fr" style="display:none;">👨‍💼 Directeur</option>
-                        <option value="director" data-lang="ar" style="display:none;">👨‍💼 مدير</option>
-                        <option value="director" data-lang="de" style="display:none;">👨‍💼 Direktor</option>
+                        <option value="" data-lang="en">Select Contact (optional)</option>
+                        <option value="" data-lang="fr" style="display:none;">Sélectionner le Contact (optionnel)</option>
+                        <option value="" data-lang="ar" style="display:none;">اختر جهة الاتصال (اختياري)</option>
+                        <option value="" data-lang="de" style="display:none;">Kontakt auswählen (optional)</option>
+                        <option value="tech" data-lang="en">Technical Team</option>
+                        <option value="tech" data-lang="fr" style="display:none;">Équipe Technique</option>
+                        <option value="tech" data-lang="ar" style="display:none;">الفريق الفني</option>
+                        <option value="tech" data-lang="de" style="display:none;">Technisches Team</option>
+                        <option value="advisor" data-lang="en">Level 1 Advisors</option>
+                        <option value="advisor" data-lang="fr" style="display:none;">Conseillers de Niveau 1</option>
+                        <option value="advisor" data-lang="ar" style="display:none;">مستشارو المستوى الأول</option>
+                        <option value="advisor" data-lang="de" style="display:none;">Berater Level 1</option>
+                        <option value="deputy" data-lang="en">Deputy</option>
+                        <option value="deputy" data-lang="fr" style="display:none;">Adjoint</option>
+                        <option value="deputy" data-lang="ar" style="display:none;">نائب</option>
+                        <option value="deputy" data-lang="de" style="display:none;">Stellvertreter</option>
+                        <option value="director" data-lang="en">Director</option>
+                        <option value="director" data-lang="fr" style="display:none;">Directeur</option>
+                        <option value="director" data-lang="ar" style="display:none;">مدير</option>
+                        <option value="director" data-lang="de" style="display:none;">Direktor</option>
                     </select>
                 </div>
 
                 <div class="btn-group">
-                    <button type="submit" class="btn" data-lang="en">📨 Send Message</button>
-                    <button type="submit" class="btn" data-lang="fr" style="display:none;">📨 Envoyer le Message</button>
-                    <button type="submit" class="btn" data-lang="ar" style="display:none;">📨 إرسال الرسالة</button>
-                    <button type="submit" class="btn" data-lang="de" style="display:none;">📨 Nachricht senden</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="en">📞 Urgent Contact</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="fr" style="display:none;">📞 Contact Urgent</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="ar" style="display:none;">📞 اتصال عاجل</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="de" style="display:none;">📞 Dringender Kontakt</button>
+                    <button type="submit" class="btn" data-lang="en">Send Message</button>
+                    <button type="submit" class="btn" data-lang="fr" style="display:none;">Envoyer le Message</button>
+                    <button type="submit" class="btn" data-lang="ar" style="display:none;">إرسال الرسالة</button>
+                    <button type="submit" class="btn" data-lang="de" style="display:none;">Nachricht senden</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="en">Urgent Contact</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="fr" style="display:none;">Contact Urgent</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="ar" style="display:none;">اتصال عاجل</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()" data-lang="de" style="display:none;">Dringender Kontakt</button>
                 </div>
 
                 <div id="statusMsg" class="status-msg"></div>
 
                 <div id="directEmailBox" class="form-footer" style="display:none;">
                     <div class="direct-email show">
-                        <p style="margin-bottom: 4px; opacity: 0.8;" data-lang="en">📧 Direct & Urgent Contact</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="fr">📧 Contact Direct et Urgent</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="ar">📧 اتصال مباشر وعاجل</p>
-                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="de">📧 Direkter & dringender Kontakt</p>
+                        <p style="margin-bottom: 4px; opacity: 0.8;" data-lang="en">Direct & Urgent Contact</p>
+                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="fr">Contact Direct et Urgent</p>
+                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="ar">اتصال مباشر وعاجل</p>
+                        <p style="margin-bottom: 4px; opacity: 0.8; display:none;" data-lang="de">Direkter & dringender Kontakt</p>
                         <div class="email-box">vahid.aquanexus@protonmail.com</div>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0;" data-lang="en">🔒 This email is only for urgent contacts and verified investors.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="fr">🔒 Cet e-mail est réservé aux contacts urgents et aux investisseurs vérifiés.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="ar">🔒 هذا البريد الإلكتروني مخصص فقط للاتصالات العاجلة والمستثمرين المعتمدين.</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="de">🔒 Diese E-Mail ist nur für dringende Kontakte und verifizierte Investoren.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0;" data-lang="en">This email is only for urgent contacts and verified investors.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="fr">Cet e-mail est réservé aux contacts urgents et aux investisseurs vérifiés.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="ar">هذا البريد الإلكتروني مخصص فقط للاتصالات العاجلة والمستثمرين المعتمدين.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7; margin: 6px 0; display:none;" data-lang="de">Diese E-Mail ist nur für dringende Kontakte und verifizierte Investoren.</p>
                         <div class="email-actions">
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="en">📋 Copy Email</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="fr" style="display:none;">📋 Copier l'E-mail</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="ar" style="display:none;">📋 نسخ البريد الإلكتروني</button>
-                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="de" style="display:none;">📋 E-Mail kopieren</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="en">✉️ Send Email</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="fr" style="display:none;">✉️ Envoyer un E-mail</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="ar" style="display:none;">✉️ إرسال بريد إلكتروني</button>
-                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="de" style="display:none;">✉️ E-Mail senden</button>
-                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="en">✖ Close</button>
-                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="fr" style="display:none;">✖ Fermer</button>
-                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="ar" style="display:none;">✖ إغلاق</button>
-                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="de" style="display:none;">✖ Schließen</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="en">Copy Email</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="fr" style="display:none;">Copier l'E-mail</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="ar" style="display:none;">نسخ البريد الإلكتروني</button>
+                            <button type="button" class="btn-sm" onclick="copyEmail()" data-lang="de" style="display:none;">E-Mail kopieren</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="en">Send Email</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="fr" style="display:none;">Envoyer un E-mail</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="ar" style="display:none;">إرسال بريد إلكتروني</button>
+                            <button type="button" class="btn-sm" onclick="window.location.href='mailto:vahid.aquanexus@protonmail.com'" data-lang="de" style="display:none;">E-Mail senden</button>
+                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="en">Close</button>
+                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="fr" style="display:none;">Fermer</button>
+                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="ar" style="display:none;">إغلاق</button>
+                            <button type="button" class="btn-sm" onclick="hideDirectEmail()" data-lang="de" style="display:none;">Schließen</button>
                         </div>
                     </div>
                 </div>
@@ -1338,13 +1547,13 @@
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
     <div class="container">
-        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" data-lang="en">AQUANEXUS + AQUA GUARDIAN</p>
-        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="fr">AQUANEXUS + AQUA GUARDIAN</p>
-        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="ar">أكوا نيكسوس + أكوا غارديان</p>
-        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="de">AQUANEXUS + AQUA GUARDIAN</p>
+        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" data-lang="en">AQUANEXUS + AQUA GUARDIAN</p>
+        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="fr">AQUANEXUS + AQUA GUARDIAN</p>
+        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="ar">أكوا نيكسوس + أكوا غارديان</p>
+        <p style="font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: 2px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display:none;" data-lang="de">AQUANEXUS + AQUA GUARDIAN</p>
         <p style="margin-top: 8px;" data-lang="en">Industrial Revolution · 6 Revenue Streams · 5 Continents</p>
         <p style="margin-top: 8px; display:none;" data-lang="fr">Révolution Industrielle · 6 Sources de Revenus · 5 Continents</p>
         <p style="margin-top: 8px; display:none;" data-lang="ar">ثورة صناعية · ٦ مصادر دخل · ٥ قارات</p>
@@ -1356,10 +1565,10 @@
     </div>
 </footer>
 
-<!-- ===== THREE.JS GLOBE ===== -->
+<!-- THREE.JS GLOBE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-    // ----- Language Switcher -----
+    // ----- LANGUAGE SWITCHER (4 languages) -----
     function switchLang(lang) {
         document.querySelectorAll('.lang-switcher button').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -1408,6 +1617,18 @@
                 el.style.display = 'none';
             }
         });
+        // Modal contents
+        document.querySelectorAll('.modal-box [data-lang]').forEach(el => {
+            if (el.dataset.lang === lang) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+        document.querySelectorAll('.modal-box .radio-group label').forEach(el => {
+            // handled by inner spans if any, but we rely on data-lang on the label itself - we'll just show all
+        });
+        // For calc result and note we handle via data-lang on parent divs - already covered by [data-lang] loop
         localStorage.setItem('aquanexus-lang', lang);
         document.documentElement.lang = lang;
         if (lang === 'ar') {
@@ -1422,7 +1643,7 @@
         switchLang(saved);
     });
 
-    // ----- Mobile Menu -----
+    // ----- MOBILE MENU -----
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
@@ -1527,7 +1748,7 @@
         });
     })();
 
-    // ----- Form functions -----
+    // ----- FORM FUNCTIONS -----
     function selectTag(el) {
         document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
@@ -1549,7 +1770,7 @@
     function copyEmail() {
         const email = 'vahid.aquanexus@protonmail.com';
         navigator.clipboard.writeText(email).then(() => {
-            showStatus('✅ Email copied successfully!', 'success');
+            showStatus('Email copied successfully!', 'success');
         }).catch(() => {
             const input = document.createElement('input');
             input.value = email;
@@ -1557,7 +1778,7 @@
             input.select();
             document.execCommand('copy');
             document.body.removeChild(input);
-            showStatus('✅ Email copied successfully!', 'success');
+            showStatus('Email copied successfully!', 'success');
         });
     }
 
@@ -1577,10 +1798,10 @@
 
         const lang = document.documentElement.lang || 'en';
         const msgs = {
-            en: { error: '❌ Please fill in all required fields (Company, Email, Message).', invalid: '❌ Please enter a valid email address.', success: '✅ Your message was successfully sent. Our team will contact you shortly.' },
-            fr: { error: '❌ Veuillez remplir tous les champs obligatoires (Nom de l\'entreprise, E-mail, Message).', invalid: '❌ Veuillez entrer une adresse e-mail valide.', success: '✅ Votre message a été envoyé avec succès. Notre équipe vous contactera sous peu.' },
-            ar: { error: '❌ يرجى ملء جميع الحقول المطلوبة (اسم الشركة، البريد الإلكتروني، الرسالة).', invalid: '❌ يرجى إدخال بريد إلكتروني صالح.', success: '✅ تم إرسال رسالتك بنجاح. سيتواصل معك فريقنا قريباً.' },
-            de: { error: '❌ Bitte füllen Sie alle erforderlichen Felder aus (Firma, E-Mail, Nachricht).', invalid: '❌ Bitte geben Sie eine gültige E-Mail-Adresse ein.', success: '✅ Ihre Nachricht wurde erfolgreich gesendet. Unser Team wird Sie in Kürze kontaktieren.' }
+            en: { error: 'Please fill in all required fields (Company, Email, Message).', invalid: 'Please enter a valid email address.', success: 'Your message was sent successfully. Our team will contact you shortly.' },
+            fr: { error: 'Veuillez remplir tous les champs obligatoires (Nom de l\'entreprise, E-mail, Message).', invalid: 'Veuillez entrer une adresse e-mail valide.', success: 'Votre message a été envoyé avec succès. Notre équipe vous contactera sous peu.' },
+            ar: { error: 'يرجى ملء جميع الحقول المطلوبة (اسم الشركة، البريد الإلكتروني، الرسالة).', invalid: 'يرجى إدخال بريد إلكتروني صالح.', success: 'تم إرسال رسالتك بنجاح. سيتواصل معك فريقنا قريباً.' },
+            de: { error: 'Bitte füllen Sie alle erforderlichen Felder aus (Firma, E-Mail, Nachricht).', invalid: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', success: 'Ihre Nachricht wurde erfolgreich gesendet. Unser Team wird Sie in Kürze kontaktieren.' }
         };
         const t = msgs[lang] || msgs.en;
 
@@ -1612,6 +1833,32 @@
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // ----- CALCULATOR -----
+    function calculateInvestment() {
+        const amount = parseFloat(document.getElementById('investAmount').value) || 0;
+        const currency = document.getElementById('currency').value;
+        const profitRate = parseFloat(document.querySelector('input[name="profitRate"]:checked').value);
+        const period = parseInt(document.querySelector('input[name="period"]:checked').value);
+
+        if (amount <= 0) {
+            document.getElementById('calcResult').innerHTML = 'Please enter a valid amount.';
+            return;
+        }
+
+        const profit = amount * (profitRate / 100);
+        const total = amount + profit;
+        const lang = document.documentElement.lang || 'en';
+        const symbol = currency === 'USD' ? '$' : (currency === 'EUR' ? '€' : '£');
+        const resultText = {
+            en: `Investment: ${symbol}${amount.toLocaleString()} | Profit (${profitRate}%): ${symbol}${profit.toLocaleString()} | Total Return: ${symbol}${total.toLocaleString()} | Period: ${period} months`,
+            fr: `Investissement: ${symbol}${amount.toLocaleString()} | Profit (${profitRate}%): ${symbol}${profit.toLocaleString()} | Retour Total: ${symbol}${total.toLocaleString()} | Période: ${period} mois`,
+            ar: `الاستثمار: ${symbol}${amount.toLocaleString()} | الربح (${profitRate}%): ${symbol}${profit.toLocaleString()} | العائد الإجمالي: ${symbol}${total.toLocaleString()} | الفترة: ${period} شهر`,
+            de: `Investition: ${symbol}${amount.toLocaleString()} | Gewinn (${profitRate}%): ${symbol}${profit.toLocaleString()} | Gesamtrendite: ${symbol}${total.toLocaleString()} | Zeitraum: ${period} Monate`
+        };
+        document.getElementById('calcResult').innerHTML = resultText[lang] || resultText.en;
+    }
 </script>
 </body>
 </html>
+```
