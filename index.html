@@ -695,7 +695,7 @@
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER (AR, EN, FR) – always visible ===== -->
+<!-- ===== LANGUAGE SWITCHER (AR, EN, FR) ===== -->
 <div class="lang-switcher">
     <button class="active" data-lang="ar" onclick="switchLang('ar')"><span class="flag-icon">🇸🇦</span> AR</button>
     <button data-lang="en" onclick="switchLang('en')"><span class="flag-icon">🇬🇧</span> EN</button>
@@ -730,7 +730,7 @@
     </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO (fixed desktop) ===== -->
 <section class="hero" id="hero">
     <div class="hero-bg"></div>
 </section>
@@ -893,7 +893,7 @@
                 <p data-lang="fr" style="display:none;">Solaire, électronique et joaillerie</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=400" alt="Tungsten" class="real-image-sm">
+                <img src="Tangstan.jpg" alt="Tungsten" class="real-image-sm">
                 <h3 data-lang="en">Tungsten</h3><h3 data-lang="ar" style="display:none;">التنجستن</h3><h3 data-lang="fr" style="display:none;">Tungstène</h3>
                 <p data-lang="en">Aerospace, defense & cutting tools</p>
                 <p data-lang="ar" style="display:none;">الطيران، الدفاع وأدوات القطع</p>
@@ -1154,7 +1154,7 @@
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS ===== -->
+<!-- ===== ACHIEVEMENTS (HRB Ireland removed) ===== -->
 <section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Achievements</span></h2>
@@ -1399,14 +1399,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-    // ===== LANGUAGE SWITCHER (AR, EN, FR) – always visible & fully functional =====
+    // ===== LANGUAGE SWITCHER (AR, EN, FR) =====
     function switchLang(lang) {
-        // Update button active states
         document.querySelectorAll('.lang-switcher button').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        // Update all elements with data-lang attribute (including nested ones)
+        // All elements with data-lang
         document.querySelectorAll('[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1415,7 +1414,7 @@
             }
         });
 
-        // Update inputs, textareas, selects with data-lang (for placeholders and visibility)
+        // Inputs, textareas, selects with data-lang
         document.querySelectorAll('input[data-lang], textarea[data-lang], select[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1424,7 +1423,7 @@
             }
         });
 
-        // Update select options with data-lang
+        // Contact person options
         document.querySelectorAll('#contactPerson option[data-lang]').forEach(opt => {
             if (opt.dataset.lang === lang) {
                 opt.style.display = '';
@@ -1433,7 +1432,7 @@
             }
         });
 
-        // Update request-tags buttons (nested spans)
+        // Request tags
         document.querySelectorAll('.request-tags .tag').forEach(tag => {
             tag.querySelectorAll('[data-lang]').forEach(el => {
                 if (el.dataset.lang === lang) {
@@ -1444,7 +1443,7 @@
             });
         });
 
-        // Update direct email box elements
+        // Direct email box
         document.querySelectorAll('#directEmailBox [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1453,7 +1452,7 @@
             }
         });
 
-        // Update footer elements
+        // Footer
         document.querySelectorAll('.footer [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1462,7 +1461,7 @@
             }
         });
 
-        // Update modal elements
+        // Modal
         document.querySelectorAll('.modal-box [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1471,7 +1470,7 @@
             }
         });
 
-        // Update contact options
+        // Contact options
         document.querySelectorAll('.contact-opt[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'inline-block';
@@ -1480,7 +1479,7 @@
             }
         });
 
-        // Update mobile menu headers and links
+        // Mobile menu headers and links
         document.querySelectorAll('.mobile-menu .menu-header[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'block';
@@ -1496,14 +1495,13 @@
             }
         });
 
-        // Store preference
         localStorage.setItem('aquanexus-lang', lang);
         document.documentElement.lang = lang;
         document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        const saved = localStorage.getItem('aquanexus-lang') || 'ar';
+        const saved = localStorage.getItem('aquanexus-lang') || 'en';
         switchLang(saved);
     });
 
@@ -1521,7 +1519,7 @@
         link.addEventListener('click', closeMenuFn);
     });
 
-    // ===== THREE.JS GLOBE (unchanged) =====
+    // ===== THREE.JS GLOBE =====
     (function() {
         const container = document.getElementById('globeContainer');
         if (!container) return;
@@ -1578,7 +1576,7 @@
         });
     })();
 
-    // ===== FORM FUNCTIONS (unchanged) =====
+    // ===== FORM FUNCTIONS =====
     function selectTag(el) {
         document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
@@ -1667,7 +1665,7 @@
         });
     });
 
-    // ===== CALCULATOR (unchanged) =====
+    // ===== CALCULATOR =====
     function calculateInvestment() {
         const amount = parseFloat(document.getElementById('investAmount').value) || 0;
         const currency = document.getElementById('currency').value;
