@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -292,6 +292,8 @@
             color: #8a9aaa;
             pointer-events: none;
         }
+
+        /* ===== LANGUAGE SWITCHER – GLASS EFFECT ===== */
         .lang-switcher {
             position: fixed;
             top: 20px;
@@ -299,12 +301,13 @@
             z-index: 999;
             display: flex;
             gap: 6px;
-            background: rgba(10,42,68,0.85);
+            background: rgba(255,255,255,0.12);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 8px 14px;
             border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
         .lang-switcher button {
             background: transparent;
@@ -321,12 +324,13 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .lang-switcher button:hover { opacity: 0.9; transform: scale(1.05); }
-        .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.15); }
+        .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.2); }
         .lang-switcher .flag-icon { font-size: 1.2rem; }
 
-        /* ===== HERO WITH VIDEO (NO OVERLAY) ===== */
+        /* ===== HERO WITH VIDEO – NO BACKGROUND BOX ===== */
         .hero {
             width: 100%;
             height: 100vh;
@@ -350,14 +354,11 @@
             position: relative;
             z-index: 2;
             max-width: 950px;
-            padding: 30px 40px;
+            padding: 20px 30px;
             text-align: center;
             color: white;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
-            background: rgba(0,0,0,0.25);
-            backdrop-filter: blur(3px);
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.08);
+            text-shadow: 0 4px 30px rgba(0,0,0,0.7);
+            /* NO background, NO blur, NO border */
         }
         .hero .hero-content h1 {
             font-family: 'Poppins', sans-serif;
@@ -687,7 +688,7 @@
             .achievement-item { flex-direction: column; text-align: center; }
             .achievement-item img { width: 100%; height: 120px; }
             .hero { height: 60vh; }
-            .hero .hero-content { padding: 20px; }
+            .hero .hero-content { padding: 15px; }
         }
         [data-lang] { transition: opacity 0.2s; }
         .calc-trigger {
@@ -733,7 +734,7 @@
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER (AR, EN, FR) ===== -->
+<!-- ===== LANGUAGE SWITCHER (GLASS EFFECT) ===== -->
 <div class="lang-switcher">
     <button class="active" data-lang="ar" onclick="switchLang('ar')"><span class="flag-icon">🇸🇦</span> AR</button>
     <button data-lang="en" onclick="switchLang('en')"><span class="flag-icon">🇬🇧</span> EN</button>
@@ -768,7 +769,7 @@
     </ul>
 </nav>
 
-<!-- ===== HERO WITH VIDEO (NO OVERLAY) ===== -->
+<!-- ===== HERO WITH VIDEO (NO BACKGROUND BOX) ===== -->
 <section class="hero" id="hero">
     <video autoplay muted loop playsinline>
         <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
