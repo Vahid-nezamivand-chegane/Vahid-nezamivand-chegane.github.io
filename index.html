@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,6 +194,7 @@
             position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a9aaa; pointer-events: none;
         }
 
+        /* ===== HERO – BIGGER & GOLDEN ===== */
         .hero {
             width: 100%; height: 100vh; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; background: var(--dark);
@@ -204,43 +204,70 @@
             object-fit: cover; z-index: 0;
         }
         .hero .hero-content {
-            position: relative; z-index: 2; max-width: 950px; padding: 20px 30px;
+            position: relative; z-index: 2; max-width: 1100px; padding: 20px 30px;
             text-align: center; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.7);
         }
+        /* عنوان اصلی طلایی و بسیار بزرگ */
         .hero .hero-content h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(4rem, 10vw, 7rem); /* عدد بزرگ‌تر */
-    font-weight: 900;
-    letter-spacing: 4px; /* فاصله بین حروف بیشتر */
-    background: linear-gradient(135deg, #f9d976 20%, #f39c12 50%, #f1c40f 80%); /* طلایی‌تر و درخشان‌تر */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 4px;
-    line-height: 1.1;
-    text-shadow: 0 0 30px rgba(243, 156, 18, 0.3); /* سایه طلایی نرم پشت متن */
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(4.5rem, 12vw, 8rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #f9d976 10%, #f39c12 40%, #e67e22 70%, #f1c40f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            line-height: 1.1;
+            text-shadow: 0 0 60px rgba(243, 156, 18, 0.3);
+            white-space: nowrap;
         }
+        /* نام محقق – 2x بزرگ‌تر */
         .hero .hero-content .hero-sub {
-            font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 600; color: var(--gold);
-            margin-top: 4px; letter-spacing: 1px;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: 6px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(233, 196, 106, 0.4);
         }
+        /* عنوان شغلی – 2x بزرگ‌تر */
         .hero .hero-content .hero-title {
-            font-size: clamp(0.95rem, 1.5vw, 1.3rem); font-weight: 400;
-            color: rgba(255,255,255,0.85); margin-top: 2px; letter-spacing: 0.5px;
+            font-size: clamp(1.3rem, 2vw, 2rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.9);
+            margin-top: 4px;
+            letter-spacing: 1px;
         }
+        /* خط جداکننده – 2x بزرگ‌تر */
         .hero .hero-content .hero-desc {
-            font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 300;
-            color: rgba(255,255,255,0.9); margin-top: 12px; letter-spacing: 2px;
-            border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px;
+            font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+            font-weight: 600;
+            color: #ffffff;
+            margin-top: 16px;
+            letter-spacing: 3px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+            padding-top: 16px;
+            text-shadow: 0 0 40px rgba(255,255,255,0.2);
         }
+        /* تگ‌ها – 2x بزرگ‌تر */
         .hero .hero-content .hero-tags {
-            font-size: clamp(0.8rem, 1.2vw, 1.1rem); font-weight: 300;
-            color: rgba(255,255,255,0.7); margin-top: 6px; letter-spacing: 1px;
+            font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
+        /* پلتفرم – 2x بزرگ‌تر */
         .hero .hero-content .hero-footer {
-            font-size: clamp(0.8rem, 1.1vw, 1rem); font-weight: 300;
-            color: rgba(255,255,255,0.5); margin-top: 10px; letter-spacing: 2px;
-            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px;
+            font-size: clamp(1rem, 1.4vw, 1.4rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            letter-spacing: 3px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 12px;
         }
 
         .menu-toggle {
@@ -262,11 +289,12 @@
         }
         .mobile-menu.open { left: 0; }
         .mobile-menu .menu-header {
-            color: white; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;
+            color: white; font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800;
             letter-spacing: 1px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 20px; text-align: center;
             background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            line-height: 1.3;
         }
         .mobile-menu .close-menu {
             background: transparent; border: none; color: white; font-size: 2rem; float: right; cursor: pointer; opacity: 0.7;
@@ -275,13 +303,14 @@
         .mobile-menu ul { list-style: none; padding: 0; margin-top: 10px; }
         .mobile-menu ul li { margin-bottom: 4px; }
         .mobile-menu ul li a {
-            display: block; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 1rem;
-            padding: 10px 16px; border-radius: 10px; transition: var(--transition);
-            border-left: 3px solid transparent; font-weight: 400; letter-spacing: 0.3px; font-family: 'Inter', sans-serif;
+            display: block; color: rgba(255,255,255,0.9); text-decoration: none; font-size: 1.4rem;
+            padding: 12px 16px; border-radius: 10px; transition: var(--transition);
+            border-left: 3px solid transparent; font-weight: 500; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;
         }
         .mobile-menu ul li a:hover {
             background: rgba(255,255,255,0.06); color: white; border-left-color: var(--gold);
         }
+
         .globe-section {
             background: var(--dark); color: white; padding: 60px 0; text-align: center;
             position: relative; overflow: hidden; min-height: 500px;
@@ -367,12 +396,12 @@
             overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);
         }
         .article-card:hover { transform: translateY(-6px); }
-        .article-card img { width: 100%; height: 180px; object-fit: cover; }
+        .article-card img { width: 100%; height: 200px; object-fit: cover; }
         .article-card .article-body { padding: 18px 20px; }
         .article-card .article-body h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 6px; }
+        .article-card .article-body h4 a { color: var(--secondary); text-decoration: none; }
+        .article-card .article-body h4 a:hover { text-decoration: underline; }
         .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
-        .article-card .article-body a { color: var(--secondary); text-decoration: none; font-weight: 600; font-family: 'Inter', sans-serif; }
-        .article-card .article-body a:hover { text-decoration: underline; }
 
         @media (max-width: 600px) {
             .section { padding: 50px 0; }
@@ -386,11 +415,14 @@
             .form-footer .direct-email .email-box { font-size: 1.2rem; padding: 10px 16px; }
             .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
             .mobile-menu { width: 280px; left: -300px; }
+            .mobile-menu .menu-header { font-size: 1.6rem; }
+            .mobile-menu ul li a { font-size: 1.1rem; }
             .globe-section .globe-container { height: 300px; }
             .achievement-item { flex-direction: column; text-align: center; }
             .achievement-item img { width: 100%; height: 120px; }
             .hero { height: 60vh; }
             .hero .hero-content { padding: 15px; }
+            .hero .hero-content h1 { font-size: clamp(3rem, 10vw, 4.5rem); white-space: normal; }
         }
         .calc-trigger {
             display: inline-block; background: var(--secondary); color: white;
@@ -413,12 +445,12 @@
 </head>
 <body>
 
-<!-- ===== MOBILE MENU ===== -->
+<!-- ===== MOBILE MENU (3 LINES, 2x BIGGER) ===== -->
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
-    <div class="menu-header">AQUANEXUS + AQUA GUARDIAN</div>
+    <div class="menu-header">AQUANEXUS +<br>AQUA<br>GUARDIAN</div>
     <ul>
         <li><a href="#hero">Introducing AquaNexus</a></li>
         <li><a href="#energy">Geothermal Energy</a></li>
@@ -442,7 +474,7 @@
     </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO (Golden & Very Large) ===== -->
 <section class="hero" id="hero">
     <video autoplay muted loop playsinline>
         <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
@@ -484,7 +516,7 @@
                 </ul>
             </div>
             <div class="img-wrapper">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600" alt="Geothermal Energy" class="real-image">
+                <img src="Zamin,mozab.jpeg" alt="Geothermal Energy" class="real-image">
                 <p class="img-caption">Geothermal energy harnessed from the earth's core for clean power</p>
             </div>
         </div>
@@ -496,7 +528,7 @@
     <div class="container">
         <div class="grid-2">
             <div class="img-wrapper">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Fresh & Thermal Water" class="real-image">
+                <img src="Abe,shirin.jpg" alt="Fresh & Thermal Water" class="real-image">
                 <p class="img-caption">Natural hot springs with healing mineral waters</p>
             </div>
             <div>
@@ -529,7 +561,7 @@
                 </ul>
             </div>
             <div class="img-wrapper">
-                <img src="https://images.unsplash.com/photo-1523348837708-15d4a6d4b4e3?w=600" alt="Greenhouse agriculture" class="real-image">
+                <img src="Golkhane.jpeg" alt="Greenhouse agriculture" class="real-image">
                 <p class="img-caption">Modern greenhouses producing fresh food year-round with geothermal heating</p>
             </div>
         </div>
@@ -549,17 +581,17 @@
                 <p>Value reserve, electronics & medical</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" alt="Silver" class="real-image-sm">
+                <img src="Noghere.jpg" alt="Silver" class="real-image-sm">
                 <h3>Silver</h3>
                 <p>Solar, electronics & jewelry</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=400" alt="Tungsten" class="real-image-sm">
+                <img src="Tangstan.jpg" alt="Tungsten" class="real-image-sm">
                 <h3>Tungsten</h3>
                 <p>Aerospace, defense & cutting tools</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400" alt="Lithium" class="real-image-sm">
+                <img src="Letiyom.webp" alt="Lithium" class="real-image-sm">
                 <h3>Lithium</h3>
                 <p>EV batteries & energy storage</p>
             </div>
@@ -579,18 +611,18 @@
                 <p>24/7 clean energy from geothermal steam turbines</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400" class="real-image-sm" alt="Lithium">
+                <img src="Letiyom.webp" class="real-image-sm" alt="Lithium">
                 <h3>12,000 Tons Lithium / Year</h3>
                 <p>Battery-grade lithium extracted at zero processing cost</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=400" class="real-image-sm" alt="Low Cost">
+                <img src="Bezenes.jpg" class="real-image-sm" alt="Low Cost">
                 <h3>Lowest Cost</h3>
                 <p>Zero-cost extraction – byproduct of geothermal energy</p>
             </div>
         </div>
         <div style="margin-top: 30px;">
-            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800" alt="Energy Growth Chart" style="width: 100%; max-width: 600px; border-radius: var(--radius); box-shadow: var(--shadow);">
+            <img src="Biseness2.jpeg" alt="Energy Growth Chart" style="width: 100%; max-width: 600px; border-radius: var(--radius); box-shadow: var(--shadow);">
             <p class="img-caption">From 100 MW pilot to 1,000 GW national scale – exponential growth</p>
         </div>
     </div>
@@ -633,7 +665,7 @@
                 </ul>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=600" alt="Heating & Cooling" class="real-image">
+                <img src="Sarmayesh,.jpg" alt="Heating & Cooling" class="real-image">
             </div>
         </div>
     </div>
@@ -654,7 +686,7 @@
                 </ul>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=600" alt="Sea Salt" class="real-image">
+                <img src="Namak.jpg" alt="Sea Salt" class="real-image">
             </div>
         </div>
     </div>
@@ -665,7 +697,7 @@
     <div class="container">
         <div class="grid-2">
             <div>
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600" alt="Zero Carbon" class="real-image">
+                <img src="iziro(6).jpg" alt="Zero Carbon" class="real-image">
             </div>
             <div>
                 <span class="badge">Revenue Stream 7</span>
@@ -686,12 +718,12 @@
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Tourism</span> & Thermal Springs</h2>
         <div class="grid-2">
-            <div>
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Thermal spa" class="real-image">
+            <div class="img-wrapper">
+                <img src="Cheshme.webp" alt="Thermal spa" class="real-image">
                 <p class="img-caption">Luxury thermal spas attracting international health tourism</p>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Natural hot spring" class="real-image">
+            <div class="img-wrapper">
+                <img src="Cheshme2.jpg" alt="Natural hot spring" class="real-image">
                 <p class="img-caption">Natural hot springs with healing mineral waters</p>
             </div>
         </div>
@@ -768,7 +800,7 @@
                 <div class="ach-text"><h4>Top 8 Finalist – Low Carbon Singapore & Temasek</h4><p>Recognized among the top 8 global low-carbon innovators.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Energy_Globe_Award_logo.png/1200px-Energy_Globe_Award_logo.png" alt="Energy Globe">
+                <img src="Enrgeglob.jpg" alt="Energy Globe">
                 <div class="ach-text"><h4>Winner – Energy Globe Award Iran</h4><p>First place in the national sustainable energy category.</p></div>
             </div>
             <div class="achievement-item">
@@ -780,25 +812,25 @@
                 <div class="ach-text"><h4>180+ International Certifications</h4><p>From the world's leading universities and research institutions.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=200" alt="Gold & Lithium">
+                <img src="Letiyom.webp" alt="Lithium">
                 <div class="ach-text"><h4>World's Lowest Cost Lithium</h4><p>Zero processing cost – extracted as a byproduct of geothermal energy.</p></div>
             </div>
         </div>
 
         <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif;">Top 20 Universities Worldwide</h3>
         <div class="university-grid">
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stanford_University_seal_2013.svg/1200px-Stanford_University_seal_2013.svg.png" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cambridge_University_Coat_of_Arms.svg/1200px-Cambridge_University_Coat_of_Arms.svg.png" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Oxford_University_Coat_Of_Arms.svg/1200px-Oxford_University_Coat_Of_Arms.svg.png" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/ETH_Z%C3%BCrich_Logo.svg/1200px-ETH_Z%C3%BCrich_Logo.svg.png" alt="ETH"><h5>ETH Zurich</h5><p>Clean Energy</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Imperial_College_London_logo.svg/1200px-Imperial_College_London_logo.svg.png" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/NUS_logo.svg/1200px-NUS_logo.svg.png" alt="NUS"><h5>NUS</h5><p>Water</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Delft_University_of_Technology_logo.svg/1200px-Delft_University_of_Technology_logo.svg.png" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/UC_Berkeley_seal.svg/1200px-UC_Berkeley_seal.svg.png" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/University_of_Tokyo_logo.svg/1200px-University_of_Tokyo_logo.svg.png" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Durham_University_shield.svg/1200px-Durham_University_shield.svg.png" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
-            <div class="uni-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/University_of_Copenhagen_logo.svg/1200px-University_of_Copenhagen_logo.svg.png" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
+            <div class="uni-item"><img src="MIT,danshgah.jpg" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="Estanfor,daneshgah.jpg" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
+            <div class="uni-item"><img src="Aksford.jpeg" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
+            <div class="uni-item"><img src="Danshgah1.jpg" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="eth-university.jpg" alt="ETH"><h5>ETH Zurich</h5><p>Clean Energy</p></div>
+            <div class="uni-item"><img src="Danshgah2.jpg" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
+            <div class="uni-item"><img src="Sangapor.jpg" alt="NUS"><h5>NUS</h5><p>Water</p></div>
+            <div class="uni-item"><img src="Dofolt.yonevrsety (1).jpg" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
+            <div class="uni-item"><img src="Danshgah5.jpg" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="Danshgah3.jpg" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="Danshgah6.jpeg" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
+            <div class="uni-item"><img src="Danshgah8.jpeg" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
         </div>
     </div>
 </section>
@@ -897,7 +929,7 @@
     </div>
 </section>
 
-<!-- CALCULATOR MODAL -->
+<!-- ===== CALCULATOR MODAL ===== -->
 <div class="modal-overlay" id="calcModal">
     <div class="modal-box">
         <button class="modal-close" onclick="document.getElementById('calcModal').classList.remove('open')">✖</button>
@@ -1174,4 +1206,3 @@
 </script>
 </body>
 </html>
-```
