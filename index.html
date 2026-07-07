@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -8,7 +7,7 @@
     <meta name="description" content="Geothermal+ Marine Technology Platform · Water·Energy·Food·Mineral·Precious Metals Security"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@300;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@300;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -333,31 +332,100 @@
         .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.15); }
         .lang-switcher .flag-icon { font-size: 1.2rem; }
 
-        /* --- HERO: fixed desktop image (background) --- */
+        /* ===== HERO WITH VIDEO ===== */
         .hero {
             width: 100%;
             height: 100vh;
             overflow: hidden;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--dark);
         }
-        .hero .hero-bg {
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100vh;
-            background: url('image-27.webp') center center / contain no-repeat;
-            background-color: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
-        @media (max-width: 768px) {
-            .hero .hero-bg {
-                background: url('image-27.webp') center center / contain no-repeat;
-                background-color: var(--dark);
-            }
+        .hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            z-index: 1;
         }
+        .hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+            padding: 30px 40px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(3px);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .hero .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+            line-height: 1.1;
+        }
+        .hero .hero-content .hero-sub {
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--gold);
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+        .hero .hero-content .hero-title {
+            font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        .hero .hero-content .hero-desc {
+            font-size: clamp(1rem, 1.6vw, 1.4rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            margin-top: 12px;
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 12px;
+        }
+        .hero .hero-content .hero-tags {
+            font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+        .hero .hero-content .hero-footer {
+            font-size: clamp(0.8rem, 1.1vw, 1rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.5);
+            margin-top: 10px;
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 10px;
+        }
+
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -649,7 +717,7 @@
             .achievement-item { flex-direction: column; text-align: center; }
             .achievement-item img { width: 100%; height: 120px; }
             .hero { height: 60vh; }
-            .hero .hero-bg { height: 60vh; }
+            .hero .hero-content { padding: 20px; }
         }
         [data-lang] { transition: opacity 0.2s; }
         .calc-trigger {
@@ -730,9 +798,38 @@
     </ul>
 </nav>
 
-<!-- ===== HERO (fixed desktop) ===== -->
+<!-- ===== HERO WITH VIDEO ===== -->
 <section class="hero" id="hero">
-    <div class="hero-bg"></div>
+    <video autoplay muted loop playsinline>
+        <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 data-lang="en">AQUANEXUS + AQUA GUARDIAN ⚡</h1>
+        <h1 data-lang="ar" style="display:none;">أكوا نيكسوس + أكوا غارديان ⚡</h1>
+        <h1 data-lang="fr" style="display:none;">AQUANEXUS + AQUA GUARDIAN ⚡</h1>
+
+        <p class="hero-sub" data-lang="en">Vahid Nezamivand Chegane</p>
+        <p class="hero-sub" data-lang="ar" style="display:none;">وحيد نظام‌وند چگنه</p>
+        <p class="hero-sub" data-lang="fr" style="display:none;">Vahid Nezamivand Chegane</p>
+
+        <p class="hero-title" data-lang="en">Lead Designer &amp; Systems Architect</p>
+        <p class="hero-title" data-lang="ar" style="display:none;">المصمم الرئيسي و مهندس الأنظمة</p>
+        <p class="hero-title" data-lang="fr" style="display:none;">Lead Designer &amp; Architecte Système</p>
+
+        <p class="hero-desc" data-lang="en">Integrated Sovereign Infrastructure</p>
+        <p class="hero-desc" data-lang="ar" style="display:none;">البنية التحتية السيادية المتكاملة</p>
+        <p class="hero-desc" data-lang="fr" style="display:none;">Infrastructure Souveraine Intégrée</p>
+
+        <p class="hero-tags" data-lang="en">Water • Energy • Food • Mineral • Precious Metals Security</p>
+        <p class="hero-tags" data-lang="ar" style="display:none;">المياه • الطاقة • الغذاء • المعادن • أمن المعادن الثمينة</p>
+        <p class="hero-tags" data-lang="fr" style="display:none;">Eau • Énergie • Alimentation • Minéraux • Sécurité des Métaux Précieux</p>
+
+        <p class="hero-footer" data-lang="en">Geothermal + Marine Technology Platform</p>
+        <p class="hero-footer" data-lang="ar" style="display:none;">منصة الطاقة الحرارية الأرضية + التكنولوجيا البحرية</p>
+        <p class="hero-footer" data-lang="fr" style="display:none;">Plateforme Géothermique + Technologie Marine</p>
+    </div>
 </section>
 
 <!-- ===== GLOBE ===== -->
@@ -795,7 +892,7 @@
     <div class="container">
         <div class="grid-2" style="direction: ltr;">
             <div class="img-wrapper">
-                <img src="Cheshme.webp" alt="Fresh & Thermal Water" class="real-image">
+                <img src="1763ab8d-2ca0-4ffa-9da5-e5f5c8bdb3f3.jpg" alt="Fresh & Thermal Water" class="real-image">
                 <p class="img-caption" data-lang="en">Natural hot springs with healing mineral waters</p>
                 <p class="img-caption" data-lang="ar" style="display:none;">ينابيع حارة طبيعية بمياه معدنية علاجية</p>
                 <p class="img-caption" data-lang="fr" style="display:none;">Sources chaudes naturelles aux eaux minérales curatives</p>
@@ -1017,7 +1114,7 @@
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Tourisme et sources thermales</span></h2>
         <div class="grid-2">
             <div>
-                <img src="Cheshme.webp" alt="Thermal spa" class="real-image">
+                <img src="1763ab8d-2ca0-4ffa-9da5-e5f5c8bdb3f3.jpg" alt="Thermal spa" class="real-image">
                 <p class="img-caption" data-lang="en">Luxury thermal spas attracting international health tourism</p>
                 <p class="img-caption" data-lang="ar" style="display:none;">منتجعات حرارية فاخرة تجذب السياحة الصحية الدولية</p>
                 <p class="img-caption" data-lang="fr" style="display:none;">Spas thermaux de luxe attirant le tourisme de santé international</p>
@@ -1154,7 +1251,7 @@
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS (HRB Ireland removed) ===== -->
+<!-- ===== ACHIEVEMENTS ===== -->
 <section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Achievements</span></h2>
@@ -1166,12 +1263,12 @@
                 <div class="ach-text"><h4 data-lang="en">Top 8 Finalist – Low Carbon Singapore & Temasek</h4><h4 data-lang="ar" style="display:none;">أفضل ٨ نهائي – كربون منخفض سنغافورة وتيماسيك</h4><h4 data-lang="fr" style="display:none;">Top 8 Finaliste – Bas Carbone Singapour & Temasek</h4><p data-lang="en">Recognized among the top 8 global low-carbon innovators.</p><p data-lang="ar" style="display:none;">معترف به بين أفضل ٨ مبتكرين منخفضي الكربون عالمياً.</p><p data-lang="fr" style="display:none;">Reconnu parmi les 8 meilleurs innovateurs mondiaux à faible émission de carbone.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg/1200px-Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg" alt="Sheikh Zayed">
-                <div class="ach-text"><h4 data-lang="en">Semi-Finalist – Sheikh Zayed Award UAE</h4><h4 data-lang="ar" style="display:none;">نصف نهائي – جائزة الشيخ زايد الإمارات</h4><h4 data-lang="fr" style="display:none;">Demi-finaliste – Prix Sheikh Zayed EAU</h4><p data-lang="en">Selected among the top sustainable energy projects in the Middle East.</p><p data-lang="ar" style="display:none;">تم اختياره من بين أفضل مشاريع الطاقة المستدامة في الشرق الأوسط.</p><p data-lang="fr" style="display:none;">Sélectionné parmi les meilleurs projets d'énergie durable au Moyen-Orient.</p></div>
+                <img src="18-1-22-183522010.jpg" alt="Energy Globe">
+                <div class="ach-text"><h4 data-lang="en">Winner – Energy Globe Award Iran</h4><h4 data-lang="ar" style="display:none;">الفائز – جائزة إنرجي غلوب إيران</h4><h4 data-lang="fr" style="display:none;">Gagnant – Energy Globe Award Iran</h4><p data-lang="en">First place in the national sustainable energy category.</p><p data-lang="ar" style="display:none;">المركز الأول في فئة الطاقة المستدامة الوطنية.</p><p data-lang="fr" style="display:none;">Première place dans la catégorie nationale de l'énergie durable.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Energy_Globe_Award_logo.png/1200px-Energy_Globe_Award_logo.png" alt="Energy Globe">
-                <div class="ach-text"><h4 data-lang="en">Winner – Energy Globe Award Iran</h4><h4 data-lang="ar" style="display:none;">الفائز – جائزة إنرجي غلوب إيران</h4><h4 data-lang="fr" style="display:none;">Gagnant – Energy Globe Award Iran</h4><p data-lang="en">First place in the national sustainable energy category.</p><p data-lang="ar" style="display:none;">المركز الأول في فئة الطاقة المستدامة الوطنية.</p><p data-lang="fr" style="display:none;">Première place dans la catégorie nationale de l'énergie durable.</p></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg/1200px-Sheikh_Zayed_bin_Sultan_Al_Nahyan.jpg" alt="Sheikh Zayed">
+                <div class="ach-text"><h4 data-lang="en">Semi-Finalist – Sheikh Zayed Award UAE</h4><h4 data-lang="ar" style="display:none;">نصف نهائي – جائزة الشيخ زايد الإمارات</h4><h4 data-lang="fr" style="display:none;">Demi-finaliste – Prix Sheikh Zayed EAU</h4><p data-lang="en">Selected among the top sustainable energy projects in the Middle East.</p><p data-lang="ar" style="display:none;">تم اختياره من بين أفضل مشاريع الطاقة المستدامة في الشرق الأوسط.</p><p data-lang="fr" style="display:none;">Sélectionné parmi les meilleurs projets d'énergie durable au Moyen-Orient.</p></div>
             </div>
             <div class="achievement-item">
                 <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=200" alt="Certificates">
@@ -1405,7 +1502,6 @@
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        // All elements with data-lang
         document.querySelectorAll('[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1414,7 +1510,6 @@
             }
         });
 
-        // Inputs, textareas, selects with data-lang
         document.querySelectorAll('input[data-lang], textarea[data-lang], select[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1423,7 +1518,6 @@
             }
         });
 
-        // Contact person options
         document.querySelectorAll('#contactPerson option[data-lang]').forEach(opt => {
             if (opt.dataset.lang === lang) {
                 opt.style.display = '';
@@ -1432,7 +1526,6 @@
             }
         });
 
-        // Request tags
         document.querySelectorAll('.request-tags .tag').forEach(tag => {
             tag.querySelectorAll('[data-lang]').forEach(el => {
                 if (el.dataset.lang === lang) {
@@ -1443,7 +1536,6 @@
             });
         });
 
-        // Direct email box
         document.querySelectorAll('#directEmailBox [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1452,7 +1544,6 @@
             }
         });
 
-        // Footer
         document.querySelectorAll('.footer [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1461,7 +1552,6 @@
             }
         });
 
-        // Modal
         document.querySelectorAll('.modal-box [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1470,7 +1560,6 @@
             }
         });
 
-        // Contact options
         document.querySelectorAll('.contact-opt[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'inline-block';
@@ -1479,7 +1568,6 @@
             }
         });
 
-        // Mobile menu headers and links
         document.querySelectorAll('.mobile-menu .menu-header[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'block';
@@ -1689,4 +1777,3 @@
 </script>
 </body>
 </html>
-```
