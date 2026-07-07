@@ -305,11 +305,11 @@
             right: 20px;
             z-index: 999;
             display: flex;
-            gap: 4px;
+            gap: 6px;
             background: rgba(10,42,68,0.85);
             backdrop-filter: blur(12px);
-            padding: 6px 10px;
-            border-radius: 40px;
+            padding: 8px 14px;
+            border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.15);
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
@@ -321,14 +321,17 @@
             padding: 4px 10px;
             border-radius: 30px;
             transition: var(--transition);
-            opacity: 0.5;
+            opacity: 0.6;
             font-weight: 600;
             color: white;
             font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
-        .lang-switcher button:hover { opacity: 0.8; transform: scale(1.05); }
+        .lang-switcher button:hover { opacity: 0.9; transform: scale(1.05); }
         .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.15); }
-        .lang-switcher .flag-icon { font-size: 1.2rem; margin-right: 4px; }
+        .lang-switcher .flag-icon { font-size: 1.2rem; }
 
         /* --- HERO: fixed desktop image (background) --- */
         .hero {
@@ -640,7 +643,7 @@
             .form-footer .direct-email .email-box { font-size: 1.2rem; padding: 10px 16px; }
             .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
             .mobile-menu { width: 280px; left: -300px; }
-            .lang-switcher { top: 12px; right: 12px; padding: 4px 8px; gap: 2px; }
+            .lang-switcher { top: 12px; right: 12px; padding: 6px 10px; gap: 4px; }
             .lang-switcher button { font-size: 0.75rem; padding: 2px 6px; }
             .globe-section .globe-container { height: 300px; }
             .achievement-item { flex-direction: column; text-align: center; }
@@ -692,7 +695,7 @@
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER (AR, EN, FR) ===== -->
+<!-- ===== LANGUAGE SWITCHER (AR, EN, FR) – always visible ===== -->
 <div class="lang-switcher">
     <button class="active" data-lang="ar" onclick="switchLang('ar')"><span class="flag-icon">🇸🇦</span> AR</button>
     <button data-lang="en" onclick="switchLang('en')"><span class="flag-icon">🇬🇧</span> EN</button>
@@ -727,7 +730,7 @@
     </ul>
 </nav>
 
-<!-- ===== HERO (fixed desktop) ===== -->
+<!-- ===== HERO ===== -->
 <section class="hero" id="hero">
     <div class="hero-bg"></div>
 </section>
@@ -1151,7 +1154,7 @@
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS (HRB Ireland removed) ===== -->
+<!-- ===== ACHIEVEMENTS ===== -->
 <section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-lang="en">Achievements</span></h2>
@@ -1396,11 +1399,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-    // ===== LANGUAGE SWITCHER (AR, EN, FR) =====
+    // ===== LANGUAGE SWITCHER (AR, EN, FR) – always visible & fully functional =====
     function switchLang(lang) {
+        // Update button active states
         document.querySelectorAll('.lang-switcher button').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
+
+        // Update all elements with data-lang attribute (including nested ones)
         document.querySelectorAll('[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1408,6 +1414,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update inputs, textareas, selects with data-lang (for placeholders and visibility)
         document.querySelectorAll('input[data-lang], textarea[data-lang], select[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1415,6 +1423,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update select options with data-lang
         document.querySelectorAll('#contactPerson option[data-lang]').forEach(opt => {
             if (opt.dataset.lang === lang) {
                 opt.style.display = '';
@@ -1422,6 +1432,8 @@
                 opt.style.display = 'none';
             }
         });
+
+        // Update request-tags buttons (nested spans)
         document.querySelectorAll('.request-tags .tag').forEach(tag => {
             tag.querySelectorAll('[data-lang]').forEach(el => {
                 if (el.dataset.lang === lang) {
@@ -1431,6 +1443,8 @@
                 }
             });
         });
+
+        // Update direct email box elements
         document.querySelectorAll('#directEmailBox [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1438,6 +1452,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update footer elements
         document.querySelectorAll('.footer [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1445,6 +1461,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update modal elements
         document.querySelectorAll('.modal-box [data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
@@ -1452,6 +1470,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update contact options
         document.querySelectorAll('.contact-opt[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'inline-block';
@@ -1459,6 +1479,8 @@
                 el.style.display = 'none';
             }
         });
+
+        // Update mobile menu headers and links
         document.querySelectorAll('.mobile-menu .menu-header[data-lang]').forEach(el => {
             if (el.dataset.lang === lang) {
                 el.style.display = 'block';
@@ -1473,13 +1495,15 @@
                 el.style.display = 'none';
             }
         });
+
+        // Store preference
         localStorage.setItem('aquanexus-lang', lang);
         document.documentElement.lang = lang;
         document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        const saved = localStorage.getItem('aquanexus-lang') || 'en';
+        const saved = localStorage.getItem('aquanexus-lang') || 'ar';
         switchLang(saved);
     });
 
@@ -1497,7 +1521,7 @@
         link.addEventListener('click', closeMenuFn);
     });
 
-    // ===== THREE.JS GLOBE =====
+    // ===== THREE.JS GLOBE (unchanged) =====
     (function() {
         const container = document.getElementById('globeContainer');
         if (!container) return;
@@ -1554,7 +1578,7 @@
         });
     })();
 
-    // ===== FORM FUNCTIONS =====
+    // ===== FORM FUNCTIONS (unchanged) =====
     function selectTag(el) {
         document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
@@ -1643,7 +1667,7 @@
         });
     });
 
-    // ===== CALCULATOR =====
+    // ===== CALCULATOR (unchanged) =====
     function calculateInvestment() {
         const amount = parseFloat(document.getElementById('investAmount').value) || 0;
         const currency = document.getElementById('currency').value;
