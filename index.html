@@ -194,7 +194,7 @@
             position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a9aaa; pointer-events: none;
         }
 
-        /* ===== HERO – BIGGER & GOLDEN ===== */
+        /* ===== HERO – GOLDEN & BIG, CENTERED ===== */
         .hero {
             width: 100%; height: 100vh; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; background: var(--dark);
@@ -204,13 +204,14 @@
             object-fit: cover; z-index: 0;
         }
         .hero .hero-content {
-            position: relative; z-index: 2; max-width: 1100px; padding: 20px 30px;
+            position: relative; z-index: 2; max-width: 1100px; width: 90%; padding: 20px 30px;
             text-align: center; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.7);
+            margin: 0 auto;
         }
         /* عنوان اصلی طلایی و بسیار بزرگ */
         .hero .hero-content h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(4rem, 10vw, 7rem);
+            font-size: clamp(3.5rem, 10vw, 8rem);
             font-weight: 900;
             letter-spacing: 2px;
             background: linear-gradient(135deg, #f9d976 10%, #f39c12 40%, #e67e22 70%, #f1c40f 100%);
@@ -220,11 +221,12 @@
             margin-bottom: 8px;
             line-height: 1.1;
             text-shadow: 0 0 60px rgba(243, 156, 18, 0.3);
-            white-space: nowrap;
+            white-space: normal;
+            word-break: break-word;
         }
         /* نام محقق – 2x بزرگ‌تر */
         .hero .hero-content .hero-sub {
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-size: clamp(1.6rem, 3vw, 2.8rem);
             font-weight: 700;
             color: var(--gold);
             margin-top: 6px;
@@ -233,7 +235,7 @@
         }
         /* عنوان شغلی – 2x بزرگ‌تر */
         .hero .hero-content .hero-title {
-            font-size: clamp(1.3rem, 2vw, 2rem);
+            font-size: clamp(1.2rem, 2vw, 2rem);
             font-weight: 400;
             color: rgba(255,255,255,0.9);
             margin-top: 4px;
@@ -241,7 +243,7 @@
         }
         /* خط جداکننده – 2x بزرگ‌تر */
         .hero .hero-content .hero-desc {
-            font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+            font-size: clamp(1.4rem, 2.5vw, 2.4rem);
             font-weight: 600;
             color: #ffffff;
             margin-top: 16px;
@@ -252,16 +254,17 @@
         }
         /* تگ‌ها – 2x بزرگ‌تر */
         .hero .hero-content .hero-tags {
-            font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+            font-size: clamp(1rem, 1.6vw, 1.6rem);
             font-weight: 400;
             color: rgba(255,255,255,0.8);
             margin-top: 10px;
             letter-spacing: 2px;
             text-shadow: 0 0 20px rgba(255,255,255,0.1);
+            flex-wrap: wrap;
         }
         /* پلتفرم – 2x بزرگ‌تر */
         .hero .hero-content .hero-footer {
-            font-size: clamp(1rem, 1.4vw, 1.4rem);
+            font-size: clamp(0.95rem, 1.4vw, 1.4rem);
             font-weight: 300;
             color: rgba(255,255,255,0.5);
             margin-top: 12px;
@@ -421,8 +424,13 @@
             .achievement-item { flex-direction: column; text-align: center; }
             .achievement-item img { width: 100%; height: 120px; }
             .hero { height: 60vh; }
-            .hero .hero-content { padding: 15px; }
-            .hero .hero-content h1 { font-size: clamp(3rem, 10vw, 4.5rem); white-space: normal; }
+            .hero .hero-content { padding: 15px; width: 95%; }
+            .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); white-space: normal; }
+            .hero .hero-content .hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+            .hero .hero-content .hero-title { font-size: clamp(1rem, 2vw, 1.4rem); }
+            .hero .hero-content .hero-desc { font-size: clamp(1.1rem, 2.5vw, 1.6rem); }
+            .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.6vw, 1.2rem); }
+            .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.4vw, 1rem); }
         }
         .calc-trigger {
             display: inline-block; background: var(--secondary); color: white;
@@ -474,7 +482,7 @@
     </ul>
 </nav>
 
-<!-- ===== HERO (Golden & Very Large) ===== -->
+<!-- ===== HERO (Golden & Very Large, Centered) ===== -->
 <section class="hero" id="hero">
     <video autoplay muted loop playsinline>
         <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
@@ -828,7 +836,7 @@
             <div class="uni-item"><img src="Sangapor.jpg" alt="NUS"><h5>NUS</h5><p>Water</p></div>
             <div class="uni-item"><img src="Dofolt.yonevrsety (1).jpg" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
             <div class="uni-item"><img src="Danshgah5.jpg" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="Danshgah3.jpg" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=200" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
             <div class="uni-item"><img src="Danshgah6.jpeg" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
             <div class="uni-item"><img src="Danshgah8.jpeg" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
         </div>
