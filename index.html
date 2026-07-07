@@ -94,12 +94,6 @@
             font-family: 'Inter', sans-serif;
         }
         .btn:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(233,196,106,0.3); }
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
         .flag { font-size: 2rem; margin-bottom: 6px; display: block; }
         .office-card { text-align: center; padding: 24px; }
         .office-card h4 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; margin: 10px 0 4px; }
@@ -332,7 +326,7 @@
         .lang-switcher button.active { opacity: 1; background: rgba(255,255,255,0.15); }
         .lang-switcher .flag-icon { font-size: 1.2rem; }
 
-        /* ===== HERO WITH VIDEO ===== */
+        /* ===== HERO WITH VIDEO (NO OVERLAY) ===== */
         .hero {
             width: 100%;
             height: 100vh;
@@ -351,15 +345,6 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-        }
-        .hero .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            z-index: 1;
         }
         .hero .hero-content {
             position: relative;
@@ -597,21 +582,6 @@
         .university-grid .uni-item p { font-size: 0.75rem; color: #6a7a8a; }
         .real-image { width: 100%; border-radius: var(--radius); object-fit: cover; }
         .real-image-sm { width: 100%; height: 180px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; }
-        .article-card {
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(4px);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .article-card:hover { transform: translateY(-6px); }
-        .article-card img { width: 100%; height: 180px; object-fit: cover; }
-        .article-card .article-body { padding: 18px 20px; }
-        .article-card .article-body h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 6px; }
-        .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
-        .article-card .article-body a { color: var(--secondary); text-decoration: none; font-weight: 600; font-family: 'Inter', sans-serif; }
-        .article-card .article-body a:hover { text-decoration: underline; }
         .partner-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -798,13 +768,12 @@
     </ul>
 </nav>
 
-<!-- ===== HERO WITH VIDEO ===== -->
+<!-- ===== HERO WITH VIDEO (NO OVERLAY) ===== -->
 <section class="hero" id="hero">
     <video autoplay muted loop playsinline>
         <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1 data-lang="en">AQUANEXUS + AQUA GUARDIAN ⚡</h1>
         <h1 data-lang="ar" style="display:none;">أكوا نيكسوس + أكوا غارديان ⚡</h1>
@@ -1114,7 +1083,7 @@
         <h2 class="section-title" data-lang="fr" style="display:none;"><span class="highlight">Tourisme et sources thermales</span></h2>
         <div class="grid-2">
             <div>
-                <img src="1763ab8d-2ca0-4ffa-9da5-e5f5c8bdb3f3.jpg" alt="Thermal spa" class="real-image">
+                <img src="Cheshme.webp" alt="Thermal spa" class="real-image">
                 <p class="img-caption" data-lang="en">Luxury thermal spas attracting international health tourism</p>
                 <p class="img-caption" data-lang="ar" style="display:none;">منتجعات حرارية فاخرة تجذب السياحة الصحية الدولية</p>
                 <p class="img-caption" data-lang="fr" style="display:none;">Spas thermaux de luxe attirant le tourisme de santé international</p>
@@ -1331,7 +1300,7 @@
     </div>
 </section>
 
-<!-- CALCULATOR MODAL -->
+<!-- ===== CALCULATOR MODAL ===== -->
 <div class="modal-overlay" id="calcModal">
     <div class="modal-box">
         <button class="modal-close" onclick="document.getElementById('calcModal').classList.remove('open')">✖</button>
@@ -1589,7 +1558,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        const saved = localStorage.getItem('aquanexus-lang') || 'en';
+        const saved = localStorage.getItem('aquanexus-lang') || 'ar';
         switchLang(saved);
     });
 
@@ -1727,21 +1696,25 @@
         if (!company || !email || !message) {
             msgBox.className = 'status-msg error';
             msgBox.textContent = t.error;
+            msgBox.style.display = 'block';
             return false;
         }
         if (!email.includes('@') || !email.includes('.')) {
             msgBox.className = 'status-msg error';
             msgBox.textContent = t.invalid;
+            msgBox.style.display = 'block';
             return false;
         }
 
         msgBox.className = 'status-msg success';
         msgBox.textContent = t.success;
+        msgBox.style.display = 'block';
         hideDirectEmail();
 
         setTimeout(() => {
             msgBox.className = 'status-msg';
             msgBox.textContent = '';
+            msgBox.style.display = 'none';
         }, 6000);
         return false;
     }
