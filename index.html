@@ -131,70 +131,156 @@
         }
         .contact-form textarea { min-height: 120px; resize: vertical; }
         .contact-form .btn { width: 100%; }
-        .contact-form .btn-group { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+        .contact-form .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
         .contact-form .btn-group .btn { flex: 1; min-width: 120px; }
         .contact-form .btn-secondary-form {
-            background: transparent; color: var(--secondary); border: 2px solid var(--secondary);
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
         }
-        .contact-form .btn-secondary-form:hover { background: var(--secondary); color: white; }
+        .contact-form .btn-secondary-form:hover {
+            background: var(--secondary);
+            color: white;
+        }
         .request-tags {
-            display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
         }
         .request-tags .tag {
-            padding: 8px 18px; border-radius: 30px; border: 2px solid #dde4ec; background: transparent;
-            cursor: pointer; transition: var(--transition); font-size: 0.9rem; font-family: 'Inter', sans-serif; color: #4a5a6a;
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 2px solid #dde4ec;
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: #4a5a6a;
         }
-        .request-tags .tag:hover, .request-tags .tag.active {
-            border-color: var(--secondary); background: var(--secondary); color: white;
+        .request-tags .tag:hover,
+        .request-tags .tag.active {
+            border-color: var(--secondary);
+            background: var(--secondary);
+            color: white;
         }
         .form-footer {
-            margin-top: 20px; padding-top: 20px; border-top: 1px solid #eef2f7; font-size: 0.9rem; color: #6a7a8a;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f7;
+            font-size: 0.9rem;
+            color: #6a7a8a;
         }
         .form-footer .direct-email {
-            display: none; background: linear-gradient(135deg, #0a2a44, #1a6fb5); color: white;
-            padding: 24px 30px; border-radius: var(--radius); margin-top: 16px; text-align: center;
+            display: none;
+            background: linear-gradient(135deg, #0a2a44, #1a6fb5);
+            color: white;
+            padding: 24px 30px;
+            border-radius: var(--radius);
+            margin-top: 16px;
+            text-align: center;
         }
         .form-footer .direct-email.show { display: block; }
         .form-footer .direct-email .email-box {
-            font-size: 1.8rem; font-weight: 700; color: var(--gold);
-            background: rgba(255,255,255,0.08); padding: 12px 24px; border-radius: 12px;
-            display: inline-block; margin: 10px 0; letter-spacing: 1px; font-family: 'Inter', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            background: rgba(255,255,255,0.08);
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            font-family: 'Inter', monospace;
         }
         .form-footer .direct-email .email-actions {
-            display: flex; gap: 12px; justify-content: center; margin-top: 12px; flex-wrap: wrap;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
         }
         .form-footer .direct-email .email-actions .btn-sm {
-            padding: 8px 20px; border-radius: 30px; border: none; font-size: 0.9rem;
-            cursor: pointer; transition: var(--transition); background: rgba(255,255,255,0.15);
-            color: white; font-family: 'Inter', sans-serif;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-family: 'Inter', sans-serif;
         }
-        .form-footer .direct-email .email-actions .btn-sm:hover { background: var(--gold); color: var(--dark); }
+        .form-footer .direct-email .email-actions .btn-sm:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
         .form-footer .warnings {
-            display: flex; flex-direction: column; gap: 6px; margin-top: 12px; font-size: 0.9rem; color: #8a9aaa;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #8a9aaa;
         }
         .form-footer .warnings i { margin-left: 6px; width: 18px; }
         .status-msg {
-            padding: 14px 20px; border-radius: 12px; margin-top: 16px; display: none;
-            font-weight: 500; font-family: 'Inter', sans-serif;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-top: 16px;
+            display: none;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
         }
         .status-msg.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-msg.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .footer {
-            background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 20px; text-align: center; margin-top: 40px;
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
         }
         .footer a { color: var(--gold); text-decoration: none; }
-        .dropdown-wrapper { position: relative; margin-top: 10px; }
-        .dropdown-wrapper select {
-            width: 100%; padding: 14px 18px; border: 1px solid #dde4ec; border-radius: 12px;
-            font-size: 1rem; font-family: 'Inter', sans-serif; background: #fafcff; appearance: none; cursor: pointer;
+        .dropdown-wrapper {
+            position: relative;
+            margin-top: 10px;
         }
-        .dropdown-wrapper select:focus { outline: none; border-color: var(--secondary); box-shadow: 0 0 0 4px rgba(26,111,181,0.1); }
+        .dropdown-wrapper select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #dde4ec;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: #fafcff;
+            appearance: none;
+            cursor: pointer;
+        }
+        .dropdown-wrapper select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(26,111,181,0.1);
+        }
         .dropdown-wrapper::after {
-            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a9aaa; pointer-events: none;
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8a9aaa;
+            pointer-events: none;
         }
 
-        /* ===== HERO – BIGGER & READABLE ===== */
         .hero {
             width: 100%; height: 100vh; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; background: var(--dark);
@@ -672,7 +758,7 @@
     </div>
 </section>
 
-<!-- ===== EXTRACTION TECHNOLOGY (WITH CORRECT LITHIUM IMAGE) ===== -->
+<!-- ===== EXTRACTION TECHNOLOGY ===== -->
 <section class="section" style="background: white;" id="extraction">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Extraction</span> Technology</h2>
@@ -994,7 +1080,7 @@
     </div>
 </section>
 
-<!-- ===== FUTURE VISION OF COUNTRIES (ENGLISH TITLE, 3X BIGGER IMAGES) ===== -->
+<!-- ===== FUTURE VISION OF COUNTRIES (ONLY ONE LINE) ===== -->
 <section class="section" style="background: white;" id="future-vision">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Future Vision</span> of Countries</h2>
@@ -1139,7 +1225,7 @@
     </div>
 </div>
 
-<!-- ===== CONTACT FORM ===== -->
+<!-- ===== CONTACT FORM (SHOWS ERROR ON SEND) ===== -->
 <section id="contact" class="section" style="background: var(--light-bg);">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Contact</span> Investment Team</h2>
@@ -1178,7 +1264,7 @@
                 </div>
                 <div class="btn-group">
                     <button type="submit" class="btn">Send Message</button>
-                    <button type="button" class="btn btn-secondary-form" onclick="showDirectEmail()">Urgent Contact</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="openDirectEmail()">Urgent Contact</button>
                 </div>
                 <div id="statusMsg" class="status-msg"></div>
                 <div id="directEmailBox" class="form-footer" style="display:none;">
@@ -1298,11 +1384,34 @@
         document.querySelector(`.contact-opt[data-contact="${type}"]`).classList.add('active');
     }
 
+    function openDirectEmail() {
+        // Get form data
+        const company = document.getElementById('company').value.trim() || 'Not provided';
+        const email = document.getElementById('email').value.trim() || 'Not provided';
+        const phone = document.getElementById('phone').value.trim() || 'Not provided';
+        const country = document.getElementById('country').value.trim() || 'Not provided';
+        const message = document.getElementById('message').value.trim() || 'No message';
+        const requestType = document.getElementById('requestType').value || 'Not specified';
+
+        // Build mailto link
+        const subject = encodeURIComponent('AquaNexus Inquiry from ' + company);
+        const body = encodeURIComponent(
+            'Company: ' + company + '\n' +
+            'Email: ' + email + '\n' +
+            'Phone: ' + phone + '\n' +
+            'Country: ' + country + '\n' +
+            'Request Type: ' + requestType + '\n\n' +
+            'Message:\n' + message
+        );
+        window.location.href = 'mailto:vahid.aquanexus@protonmail.com?subject=' + subject + '&body=' + body;
+    }
+
     function showDirectEmail() {
         document.getElementById('directEmailBox').style.display = 'block';
         document.getElementById('directEmailBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
         document.getElementById('statusMsg').className = 'status-msg';
         document.getElementById('statusMsg').textContent = '';
+        document.getElementById('statusMsg').style.display = 'none';
     }
 
     function hideDirectEmail() {
@@ -1328,70 +1437,29 @@
         const el = document.getElementById('statusMsg');
         el.className = 'status-msg ' + type;
         el.textContent = msg;
-        setTimeout(() => { el.className = 'status-msg'; el.textContent = ''; }, 4000);
+        el.style.display = 'block';
+        setTimeout(() => { el.className = 'status-msg'; el.textContent = ''; el.style.display = 'none'; }, 6000);
     }
 
     function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const msgBox = document.getElementById('statusMsg');
+        e.preventDefault();
+        const msgBox = document.getElementById('statusMsg');
 
-    // بررسی پر بودن فیلدها
-    if (!company || !email || !message) {
+        // Always show error message
         msgBox.className = 'status-msg error';
-        msgBox.textContent = '❌ Please fill in all required fields (Company, Email, Message).';
+        msgBox.textContent = '❌ Message could not be sent. Please try again later or use the "Urgent Contact" button to send a direct email.';
         msgBox.style.display = 'block';
-        return false;
-    }
-    if (!email.includes('@') || !email.includes('.')) {
-        msgBox.className = 'status-msg error';
-        msgBox.textContent = '❌ Please enter a valid email address.';
-        msgBox.style.display = 'block';
-        return false;
-    }
 
-    // ساخت لینک mailto
-    const subject = encodeURIComponent('AquaNexus Inquiry from ' + company);
-    const body = encodeURIComponent(
-        'Company: ' + company + '\n' +
-        'Email: ' + email + '\n' +
-        'Phone: ' + (document.getElementById('phone').value || 'Not provided') + '\n' +
-        'Country: ' + (document.getElementById('country').value || 'Not provided') + '\n' +
-        'Request Type: ' + document.getElementById('requestType').value + '\n\n' +
-        'Message:\n' + message
-    );
-    const mailtoLink = 'mailto:vahid.aquanexus@protonmail.com?subject=' + subject + '&body=' + body;
+        // Re-enable submit button after a delay if needed
+        const submitBtn = document.querySelector('#mainForm button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
 
-    // باز کردن کلاینت ایمیل
-    window.location.href = mailtoLink;
+        // Scroll to message
+        msgBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    // نمایش پیام راهنما
-    msgBox.className = 'status-msg success';
-    msgBox.textContent = '📧 Your email client has been opened. Please send the message to complete your inquiry.';
-    msgBox.style.display = 'block';
-
-    // غیرفعال کردن دکمه ارسال
-    const submitBtn = document.querySelector('#mainForm button[type="submit"]');
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Email Opened...';
-    }
-
-    return false;
-}
-
-        msgBox.className = 'status-msg success';
-        msgBox.textContent = 'Your message was sent successfully. Our team will contact you shortly.';
-        msgBox.style.display = 'block';
-        hideDirectEmail();
-
-        setTimeout(() => {
-            msgBox.className = 'status-msg';
-            msgBox.textContent = '';
-            msgBox.style.display = 'none';
-        }, 6000);
         return false;
     }
 
