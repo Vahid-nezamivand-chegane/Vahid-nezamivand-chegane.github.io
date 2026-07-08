@@ -194,6 +194,7 @@
             position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a9aaa; pointer-events: none;
         }
 
+        /* ===== HERO – BIGGER & READABLE ===== */
         .hero {
             width: 100%; height: 100vh; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; background: var(--dark);
@@ -223,47 +224,58 @@
             word-break: break-word;
         }
         .hero .hero-content .hero-sub {
-            font-size: clamp(1.6rem, 3vw, 2.8rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
             color: #f1c40f;
             margin-top: 6px;
             letter-spacing: 2px;
             text-shadow: 0 0 30px rgba(241, 196, 15, 0.4);
         }
+        .hero .hero-content .hero-sub .phd-badge {
+            font-size: clamp(1rem, 1.5vw, 1.8rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.08);
+            padding: 2px 16px;
+            border-radius: 30px;
+            margin-left: 10px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
         .hero .hero-content .hero-title {
-            font-size: clamp(1.2rem, 2vw, 2rem);
+            font-size: clamp(1.4rem, 2.2vw, 2.4rem);
             font-weight: 400;
             color: rgba(255,255,255,0.92);
-            margin-top: 4px;
+            margin-top: 6px;
             letter-spacing: 1px;
         }
         .hero .hero-content .hero-desc {
-            font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
             font-weight: 600;
             color: #ffffff;
-            margin-top: 16px;
+            margin-top: 18px;
             letter-spacing: 3px;
             border-top: 2px solid rgba(255,255,255,0.15);
-            padding-top: 16px;
+            padding-top: 18px;
             text-shadow: 0 0 40px rgba(255,255,255,0.2);
         }
         .hero .hero-content .hero-tags {
-            font-size: clamp(1rem, 1.6vw, 1.6rem);
+            font-size: clamp(1.2rem, 1.8vw, 1.9rem);
             font-weight: 400;
             color: rgba(255,255,255,0.75);
-            margin-top: 10px;
+            margin-top: 12px;
             letter-spacing: 2px;
             text-shadow: 0 0 20px rgba(255,255,255,0.1);
             flex-wrap: wrap;
         }
         .hero .hero-content .hero-footer {
-            font-size: clamp(0.95rem, 1.4vw, 1.4rem);
+            font-size: clamp(1rem, 1.6vw, 1.6rem);
             font-weight: 300;
             color: rgba(255,255,255,0.45);
-            margin-top: 12px;
+            margin-top: 14px;
             letter-spacing: 3px;
             border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 12px;
+            padding-top: 14px;
         }
 
         @media (max-width: 600px) {
@@ -286,11 +298,12 @@
             .hero { height: 60vh; }
             .hero .hero-content { padding: 30px 15px 15px 15px; width: 95%; margin-top: 30px; }
             .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); white-space: normal; }
-            .hero .hero-content .hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); }
-            .hero .hero-content .hero-title { font-size: clamp(1rem, 2vw, 1.4rem); }
-            .hero .hero-content .hero-desc { font-size: clamp(1.1rem, 2.5vw, 1.6rem); }
-            .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.6vw, 1.2rem); }
-            .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.4vw, 1rem); }
+            .hero .hero-content .hero-sub { font-size: clamp(1.4rem, 4vw, 2rem); }
+            .hero .hero-content .hero-sub .phd-badge { font-size: clamp(0.7rem, 1.5vw, 1rem); padding: 2px 10px; margin-left: 5px; }
+            .hero .hero-content .hero-title { font-size: clamp(1rem, 2.2vw, 1.4rem); }
+            .hero .hero-content .hero-desc { font-size: clamp(1.2rem, 2.8vw, 1.6rem); }
+            .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.8vw, 1.2rem); }
+            .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.6vw, 1rem); }
         }
         .calc-trigger {
             display: inline-block; background: var(--secondary); color: white;
@@ -441,50 +454,51 @@
         .article-card .article-body h4 a:hover { text-decoration: underline; }
         .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
 
-        /* Future Vision Gallery */
+        /* Future Vision Gallery – 3x bigger images */
         .country-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
         .country-gallery .country-item {
             text-align: center;
-            padding: 10px 5px;
+            padding: 15px 10px;
             transition: var(--transition);
         }
         .country-gallery .country-item h4 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--dark);
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
         .country-gallery .country-item .img-row {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
         .country-gallery .country-item .img-row img {
-            width: 150px;
-            height: 150px;
+            width: 450px;
+            height: 450px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 16px;
             transition: var(--transition);
             border: none;
-            box-shadow: none;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             background: transparent;
         }
         .country-gallery .country-item .img-row img:hover {
             transform: scale(1.02);
-            opacity: 0.9;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
 
         @media (max-width: 600px) {
-            .country-gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-            .country-gallery .country-item .img-row img { width: 120px; height: 120px; }
+            .country-gallery { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+            .country-gallery .country-item .img-row img { width: 160px; height: 160px; }
+            .country-gallery .country-item h4 { font-size: 1rem; }
         }
     </style>
 </head>
@@ -528,7 +542,10 @@
     </video>
     <div class="hero-content">
         <h1>AQUANEXUS + AQUA GUARDIAN ⚡</h1>
-        <p class="hero-sub">Vahid Nezamivand Chegane</p>
+        <p class="hero-sub">
+            Vahid Nezamivand Chegane
+            <span class="phd-badge">اوب</span>
+        </p>
         <p class="hero-title">Lead Designer &amp; Systems Architect</p>
         <p class="hero-desc">Integrated Sovereign Infrastructure</p>
         <p class="hero-tags">Water • Energy • Food • Mineral • Precious Metals Security</p>
@@ -977,7 +994,7 @@
     </div>
 </section>
 
-<!-- ===== FUTURE VISION OF COUNTRIES (ENGLISH TITLE, BIGGER IMAGES, NO FRAME) ===== -->
+<!-- ===== FUTURE VISION OF COUNTRIES (ENGLISH TITLE, 3X BIGGER IMAGES) ===== -->
 <section class="section" style="background: white;" id="future-vision">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Future Vision</span> of Countries</h2>
@@ -985,9 +1002,6 @@
             with AquaNexus + Aqua Guardian
         </h2>
         <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--gold); font-weight: 600; margin-bottom: 10px;">
-            Build the future of nations, bring the past to the future, live the future in the present, and rebuild the world anew.
-        </p>
-        <p style="font-size: 1rem; color: #4a5a6a; max-width: 700px; margin: 0 auto 30px; font-style: italic;">
             Build the future, bring the past into the future, live the future in the present, and rebuild the world.
         </p>
 
