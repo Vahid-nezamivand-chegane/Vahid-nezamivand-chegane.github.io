@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +195,6 @@
             position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a9aaa; pointer-events: none;
         }
 
-        /* ===== HERO – GOLDEN & BIG, PROFESSIONAL ===== */
         .hero {
             width: 100%; height: 100vh; overflow: hidden; position: relative;
             display: flex; align-items: center; justify-content: center; background: var(--dark);
@@ -441,6 +441,56 @@
         .article-card .article-body h4 a { color: var(--secondary); text-decoration: none; }
         .article-card .article-body h4 a:hover { text-decoration: underline; }
         .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
+
+        /* future vision gallery */
+        .country-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .country-gallery .country-item {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            padding: 20px 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid var(--gold);
+        }
+        .country-gallery .country-item:hover { transform: translateY(-6px); }
+        .country-gallery .country-item h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+        }
+        .country-gallery .country-item .img-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .country-gallery .country-item .img-row img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #eef2f7;
+            transition: var(--transition);
+        }
+        .country-gallery .country-item .img-row img:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+        }
+
+        @media (max-width: 600px) {
+            .country-gallery { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+            .country-gallery .country-item .img-row img { width: 70px; height: 70px; }
+        }
     </style>
 </head>
 <body>
@@ -469,7 +519,7 @@
         <li><a href="#achievements">Achievements</a></li>
         <li><a href="#partners">Partners & Funds</a></li>
         <li><a href="#articles">Read More</a></li>
-        <li><a href="#future-images">Future Country Images</a></li>
+        <li><a href="#future-vision">چشم‌انداز آینده کشورها</a></li>
         <li><a href="#calculator">Calculator</a></li>
         <li><a href="#contact">Contact Us</a></li>
     </ul>
@@ -579,7 +629,7 @@
     </div>
 </section>
 
-<!-- ===== STRATEGIC METALS ===== -->
+<!-- ===== STRATEGIC METALS (SWAPPED TUNGSTEN & LITHIUM) ===== -->
 <section class="section" style="background: var(--light-bg);" id="metals">
     <div class="container text-center">
         <span class="badge">Revenue Stream 4</span>
@@ -597,12 +647,12 @@
                 <p>Solar, electronics & jewelry</p>
             </div>
             <div class="card">
-                <img src="Tangstan.jpg" alt="Tungsten" class="real-image-sm">
+                <img src="Letiyom.webp" alt="Tungsten" class="real-image-sm">
                 <h3>Tungsten</h3>
                 <p>Aerospace, defense & cutting tools</p>
             </div>
             <div class="card">
-                <img src="Letiyom.webp" alt="Lithium" class="real-image-sm">
+                <img src="Tangstan.jpg" alt="Lithium" class="real-image-sm">
                 <h3>Lithium</h3>
                 <p>EV batteries & energy storage</p>
             </div>
@@ -932,27 +982,116 @@
     </div>
 </section>
 
-<!-- ===== FUTURE COUNTRY IMAGES ===== -->
-<section class="section" style="background: white;" id="future-images">
+<!-- ===== FUTURE VISION OF COUNTRIES (WITH IMAGES) ===== -->
+<section class="section" style="background: white;" id="future-vision">
     <div class="container text-center">
-        <h2 class="section-title"><span class="highlight">Future</span> Country Images</h2>
-        <p class="section-sub" style="margin: 0 auto;">Image files prepared for future country uploads (PNG format)</p>
-        <div class="grid-5" style="direction: ltr; text-align: left;">
-            <div class="card"><strong>🇧🇭 Bahrain:</strong> Vbahrin1.png, Vbahrin2.png</div>
-            <div class="card"><strong>🇨🇦 Canada:</strong> Vcanada1.png, Vcanada2.png</div>
-            <div class="card"><strong>🇦🇪 UAE:</strong> Vemarate1.png, Vemarate2.png</div>
-            <div class="card"><strong>🇬🇧 England:</strong> Vengland1.png, Vengland2.png</div>
-            <div class="card"><strong>🇮🇳 India:</strong> Vindia1.jpg, Vindia2.jpg</div>
-            <div class="card"><strong>🇰🇷 South Korea:</strong> Vkore1.png, Vkore2.png</div>
-            <div class="card"><strong>🇰🇼 Kuwait:</strong> Vkowith1.png, Vkowith2.png</div>
-            <div class="card"><strong>🇴🇲 Oman:</strong> Voman1.png, Voman2.png</div>
-            <div class="card"><strong>🇶🇦 Qatar:</strong> Vqatare1.png, Vqatare2.png</div>
-            <div class="card"><strong>🇸🇬 Singapore:</strong> Vsangapor1.jpg, Vsangapor2.jpg</div>
-            <div class="card"><strong>🇸🇦 Saudi Arabia:</strong> Vsaude1.png, Vsaude2.png</div>
-            <div class="card"><strong>🇸🇪 Sweden:</strong> Vsoeed1.png, Vsoeed2.png</div>
-            <div class="card"><strong>🇻🇳 Vietnam:</strong> Vvitnam1.png, Vvitnam2.png</div>
+        <h2 class="section-title"><span class="highlight">چشم‌انداز آینده</span> کشورها</h2>
+        <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--secondary); margin-bottom: 20px;">
+            با AquaNexus + Aqua Guardian
+        </h2>
+        <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--gold); font-weight: 600; margin-bottom: 10px;">
+            آینده کشورها را بسازید، گذشته را به آینده ببرید، آینده را در حال زندگی کنید و دنیا را از نو بسازیم
+        </p>
+        <p style="font-size: 1rem; color: #4a5a6a; max-width: 700px; margin: 0 auto 30px; font-style: italic;">
+            Build the future of nations, bring the past to the future, live the future in the present, and rebuild the world anew.
+        </p>
+
+        <div class="country-gallery">
+            <div class="country-item">
+                <h4>🇧🇭 Bahrain</h4>
+                <div class="img-row">
+                    <img src="Vbahrin1.png" alt="Bahrain 1" onerror="this.style.display='none'">
+                    <img src="Vbahrin2.png" alt="Bahrain 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇨🇦 Canada</h4>
+                <div class="img-row">
+                    <img src="Vcanada1.png" alt="Canada 1" onerror="this.style.display='none'">
+                    <img src="Vcanada2.png" alt="Canada 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇦🇪 UAE</h4>
+                <div class="img-row">
+                    <img src="Vemarate1.png" alt="UAE 1" onerror="this.style.display='none'">
+                    <img src="Vemarate2.png" alt="UAE 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇬🇧 England</h4>
+                <div class="img-row">
+                    <img src="Vengland1.png" alt="England 1" onerror="this.style.display='none'">
+                    <img src="Vengland2.png" alt="England 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇮🇳 India</h4>
+                <div class="img-row">
+                    <img src="Vindia1.jpg" alt="India 1" onerror="this.style.display='none'">
+                    <img src="Vindia2.jpg" alt="India 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇰🇷 South Korea</h4>
+                <div class="img-row">
+                    <img src="Vkore1.png" alt="Korea 1" onerror="this.style.display='none'">
+                    <img src="Vkore2.png" alt="Korea 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇰🇼 Kuwait</h4>
+                <div class="img-row">
+                    <img src="Vkowith1.png" alt="Kuwait 1" onerror="this.style.display='none'">
+                    <img src="Vkowith2.png" alt="Kuwait 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇴🇲 Oman</h4>
+                <div class="img-row">
+                    <img src="Voman1.png" alt="Oman 1" onerror="this.style.display='none'">
+                    <img src="Voman2.png" alt="Oman 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇶🇦 Qatar</h4>
+                <div class="img-row">
+                    <img src="Vqatare1.png" alt="Qatar 1" onerror="this.style.display='none'">
+                    <img src="Vqatare2.png" alt="Qatar 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇸🇬 Singapore</h4>
+                <div class="img-row">
+                    <img src="Vsangapor1.jpg" alt="Singapore 1" onerror="this.style.display='none'">
+                    <img src="Vsangapor2.jpg" alt="Singapore 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇸🇦 Saudi Arabia</h4>
+                <div class="img-row">
+                    <img src="Vsaude1.png" alt="Saudi 1" onerror="this.style.display='none'">
+                    <img src="Vsaude2.png" alt="Saudi 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇸🇪 Sweden</h4>
+                <div class="img-row">
+                    <img src="Vsoeed1.png" alt="Sweden 1" onerror="this.style.display='none'">
+                    <img src="Vsoeed2.png" alt="Sweden 2" onerror="this.style.display='none'">
+                </div>
+            </div>
+            <div class="country-item">
+                <h4>🇻🇳 Vietnam</h4>
+                <div class="img-row">
+                    <img src="Vvitnam1.png" alt="Vietnam 1" onerror="this.style.display='none'">
+                    <img src="Vvitnam2.png" alt="Vietnam 2" onerror="this.style.display='none'">
+                </div>
+            </div>
         </div>
-        <p style="margin-top: 20px; color: #6a7a8a; font-style: italic;">📌 Upload these images to the main website folder when ready.</p>
+        <p style="margin-top: 30px; color: #6a7a8a; font-size: 0.9rem; font-style: italic;">
+            📌 Images will appear here once uploaded to the main folder.
+        </p>
     </div>
 </section>
 
@@ -1241,3 +1380,4 @@
 </script>
 </body>
 </html>
+```
