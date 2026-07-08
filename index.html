@@ -267,6 +267,49 @@
             padding-top: 12px;
         }
 
+        @media (max-width: 600px) {
+            .section { padding: 50px 0; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .grid-5 { grid-template-columns: 1fr 1fr; }
+            .grid-6 { grid-template-columns: 1fr 1fr; }
+            .contact-form { padding: 24px; }
+            .contact-form .btn-group { flex-direction: column; }
+            .form-footer .direct-email .email-box { font-size: 1.2rem; padding: 10px 16px; }
+            .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
+            .mobile-menu { width: 280px; left: -300px; }
+            .mobile-menu .menu-header { font-size: 1.6rem; }
+            .mobile-menu ul li a { font-size: 1.1rem; }
+            .globe-section .globe-container { height: 300px; }
+            .achievement-item { flex-direction: column; text-align: center; }
+            .achievement-item img { width: 100%; height: 120px; }
+            .hero { height: 60vh; }
+            .hero .hero-content { padding: 30px 15px 15px 15px; width: 95%; margin-top: 30px; }
+            .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); white-space: normal; }
+            .hero .hero-content .hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+            .hero .hero-content .hero-title { font-size: clamp(1rem, 2vw, 1.4rem); }
+            .hero .hero-content .hero-desc { font-size: clamp(1.1rem, 2.5vw, 1.6rem); }
+            .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.6vw, 1.2rem); }
+            .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.4vw, 1rem); }
+        }
+        .calc-trigger {
+            display: inline-block; background: var(--secondary); color: white;
+            padding: 12px 32px; border-radius: 40px; font-weight: 700; font-size: 1.05rem;
+            border: none; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; margin-top: 12px;
+        }
+        .calc-trigger:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(26,111,181,0.3); }
+        .contact-options {
+            display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;
+        }
+        .contact-options .contact-opt {
+            background: rgba(255,255,255,0.7); padding: 10px 20px; border-radius: 40px;
+            border: 2px solid #dde4ec; cursor: pointer; transition: var(--transition);
+            font-weight: 600; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+        }
+        .contact-options .contact-opt:hover, .contact-options .contact-opt.active {
+            border-color: var(--secondary); background: var(--secondary); color: white;
+        }
         .menu-toggle {
             position: fixed; top: 20px; left: 20px; z-index: 1000;
             background: rgba(10,42,68,0.75); backdrop-filter: blur(12px); border: none;
@@ -307,7 +350,6 @@
         .mobile-menu ul li a:hover {
             background: rgba(255,255,255,0.06); color: white; border-left-color: var(--gold);
         }
-
         .globe-section {
             background: var(--dark); color: white; padding: 60px 0; text-align: center;
             position: relative; overflow: hidden; min-height: 500px;
@@ -399,89 +441,11 @@
         .article-card .article-body h4 a { color: var(--secondary); text-decoration: none; }
         .article-card .article-body h4 a:hover { text-decoration: underline; }
         .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
-
-        @media (max-width: 600px) {
-            .section { padding: 50px 0; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .grid-4 { grid-template-columns: 1fr 1fr; }
-            .grid-5 { grid-template-columns: 1fr 1fr; }
-            .grid-6 { grid-template-columns: 1fr 1fr; }
-            .contact-form { padding: 24px; }
-            .contact-form .btn-group { flex-direction: column; }
-            .form-footer .direct-email .email-box { font-size: 1.2rem; padding: 10px 16px; }
-            .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
-            .mobile-menu { width: 280px; left: -300px; }
-            .mobile-menu .menu-header { font-size: 1.6rem; }
-            .mobile-menu ul li a { font-size: 1.1rem; }
-            .globe-section .globe-container { height: 300px; }
-            .achievement-item { flex-direction: column; text-align: center; }
-            .achievement-item img { width: 100%; height: 120px; }
-            .hero { height: 60vh; }
-            .hero .hero-content {
-                padding: 30px 15px 15px 15px;
-                width: 95%;
-                margin-top: 30px;
-            }
-            .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); white-space: normal; }
-            .hero .hero-content .hero-sub { font-size: clamp(1.2rem, 3vw, 1.8rem); }
-            .hero .hero-content .hero-title { font-size: clamp(1rem, 2vw, 1.4rem); }
-            .hero .hero-content .hero-desc { font-size: clamp(1.1rem, 2.5vw, 1.6rem); }
-            .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.6vw, 1.2rem); }
-            .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.4vw, 1rem); }
-        }
-        .calc-trigger {
-            display: inline-block; background: var(--secondary); color: white;
-            padding: 12px 32px; border-radius: 40px; font-weight: 700; font-size: 1.05rem;
-            border: none; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; margin-top: 12px;
-        }
-        .calc-trigger:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(26,111,181,0.3); }
-        .contact-options {
-            display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;
-        }
-        .contact-options .contact-opt {
-            background: rgba(255,255,255,0.7); padding: 10px 20px; border-radius: 40px;
-            border: 2px solid #dde4ec; cursor: pointer; transition: var(--transition);
-            font-weight: 600; font-family: 'Inter', sans-serif; font-size: 0.95rem;
-        }
-        .contact-options .contact-opt:hover, .contact-options .contact-opt.active {
-            border-color: var(--secondary); background: var(--secondary); color: white;
-        }
-
-        .country-list-note {
-            background: rgba(255,255,255,0.9);
-            padding: 20px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin: 30px auto;
-            max-width: 800px;
-            text-align: left;
-            border-left: 5px solid var(--gold);
-        }
-        .country-list-note h4 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-        .country-list-note .country-item {
-            display: inline-block;
-            background: #f0f4f8;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin: 4px 6px 4px 0;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        .country-list-note .country-item span {
-            color: var(--secondary);
-            font-weight: 700;
-        }
     </style>
 </head>
 <body>
 
-<!-- ===== MOBILE MENU ===== -->
+<!-- ===== MOBILE MENU (3 LINES) ===== -->
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu">
@@ -504,10 +468,10 @@
         <li><a href="#docs">Technical Dossier</a></li>
         <li><a href="#achievements">Achievements</a></li>
         <li><a href="#partners">Partners & Funds</a></li>
-        <li><a href="#country-files">Future Country Images</a></li>
         <li><a href="#articles">Read More</a></li>
         <li><a href="#calculator">Calculator</a></li>
         <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#future-images">Future Country Images</a></li>
     </ul>
 </nav>
 
@@ -906,35 +870,8 @@
     </div>
 </section>
 
-<!-- ===== FUTURE COUNTRY IMAGES – LIST OF FILE NAMES ===== -->
-<section class="section" style="background: var(--light-bg);" id="country-files">
-    <div class="container text-center">
-        <h2 class="section-title"><span class="highlight">Future</span> Country Images</h2>
-        <p class="section-sub" style="margin: 0 auto;">Upload these images later with the exact filenames below</p>
-        <div class="country-list-note">
-            <h4><i class="fas fa-folder-open"></i> Image Filenames for Future Upload</h4>
-            <div>
-                <span class="country-item">🇸🇦 Saudi Arabia: <span>Saudi1.jpg</span>, <span>Saudi2.jpg</span></span>
-                <span class="country-item">🇶🇦 Qatar: <span>Qatar1.jpg</span>, <span>Qatar2.jpg</span></span>
-                <span class="country-item">🇰🇼 Kuwait: <span>Kuwait1.jpg</span>, <span>Kuwait2.jpg</span></span>
-                <span class="country-item">🇦🇪 UAE: <span>UAE1.jpg</span>, <span>UAE2.jpg</span></span>
-                <span class="country-item">🇧🇭 Bahrain: <span>Bahrain1.jpg</span>, <span>Bahrain2.jpg</span></span>
-                <span class="country-item">🇸🇪 Sweden: <span>Sweden1.jpg</span>, <span>Sweden2.jpg</span></span>
-                <span class="country-item">🇬🇧 UK: <span>UK1.jpg</span>, <span>UK2.jpg</span></span>
-                <span class="country-item">🇻🇳 Vietnam: <span>Vietnam1.jpg</span>, <span>Vietnam2.jpg</span></span>
-                <span class="country-item">🇰🇷 South Korea: <span>Korea1.jpg</span>, <span>Korea2.jpg</span></span>
-                <span class="country-item">🇨🇦 Canada: <span>Canada1.jpg</span>, <span>Canada2.jpg</span></span>
-                <span class="country-item">🇮🇳 India: <span>India1.jpg</span>, <span>India2.jpg</span></span>
-                <span class="country-item">🇸🇬 Singapore: <span>Singapore1.jpg</span>, <span>Singapore2.jpg</span></span>
-                <span class="country-item">🇴🇲 Oman: <span>Oman1.jpg</span>, <span>Oman2.jpg</span></span>
-            </div>
-            <p style="margin-top: 12px; font-style: italic; color: #6a7a8a;"><i class="fas fa-info-circle"></i> After uploading, the images will appear in the Partners & Funds section.</p>
-        </div>
-    </div>
-</section>
-
 <!-- ===== READ MORE (ARTICLES) ===== -->
-<section class="section" style="background: white;" id="articles">
+<section class="section" style="background: var(--light-bg);" id="articles">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Read</span> More</h2>
         <p class="section-sub" style="margin: 0 auto;">Scientific articles and publications on geothermal energy, water‑energy‑food nexus, circular economy, and sustainable extraction</p>
@@ -985,6 +922,30 @@
     </div>
 </section>
 
+<!-- ===== FUTURE COUNTRY IMAGES ===== -->
+<section class="section" style="background: white;" id="future-images">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight">Future</span> Country Images</h2>
+        <p class="section-sub" style="margin: 0 auto;">Image files prepared for future country uploads (PNG format)</p>
+        <div class="grid-5" style="direction: ltr; text-align: left;">
+            <div class="card"><strong>Saudi Arabia:</strong> Saudi1.png, Saudi2.png</div>
+            <div class="card"><strong>Qatar:</strong> Qatar1.png, Qatar2.png</div>
+            <div class="card"><strong>Kuwait:</strong> Kuwait1.png, Kuwait2.png</div>
+            <div class="card"><strong>UAE:</strong> UAE1.png, UAE2.png</div>
+            <div class="card"><strong>Bahrain:</strong> Bahrain1.png, Bahrain2.png</div>
+            <div class="card"><strong>Sweden:</strong> Sweden1.png, Sweden2.png</div>
+            <div class="card"><strong>United Kingdom:</strong> UK1.png, UK2.png</div>
+            <div class="card"><strong>Vietnam:</strong> Vietnam1.png, Vietnam2.png</div>
+            <div class="card"><strong>South Korea:</strong> Korea1.png, Korea2.png</div>
+            <div class="card"><strong>Canada:</strong> Canada1.png, Canada2.png</div>
+            <div class="card"><strong>India:</strong> India1.png, India2.png</div>
+            <div class="card"><strong>Singapore:</strong> Singapore1.png, Singapore2.png</div>
+            <div class="card"><strong>Oman:</strong> Oman1.png, Oman2.png</div>
+        </div>
+        <p style="margin-top: 20px; color: #6a7a8a; font-style: italic;">📌 Upload these images to the main website folder when ready.</p>
+    </div>
+</section>
+
 <!-- ===== CALCULATOR ===== -->
 <section class="section" style="background: var(--light-bg);" id="calculator">
     <div class="container text-center">
@@ -1021,7 +982,7 @@
 </div>
 
 <!-- ===== CONTACT FORM ===== -->
-<section id="contact" class="section" style="background: white;">
+<section id="contact" class="section" style="background: var(--light-bg);">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Contact</span> Investment Team</h2>
         <div class="contact-options">
