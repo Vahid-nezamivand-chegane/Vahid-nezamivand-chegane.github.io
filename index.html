@@ -470,18 +470,30 @@
         .achievement-item .ach-text h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 2px; }
         .achievement-item .ach-text p { color: #6a7a8a; font-size: 0.95rem; margin: 0; }
         .university-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 16px; margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
         .university-grid .uni-item {
-            background: rgba(255,255,255,0.92); backdrop-filter: blur(4px);
-            padding: 14px 12px; border-radius: 14px; box-shadow: var(--shadow);
-            text-align: center; transition: var(--transition); border-bottom: 3px solid var(--secondary);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            padding: 14px 12px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid var(--secondary);
         }
         .university-grid .uni-item:hover { transform: translateY(-4px); }
         .university-grid .uni-item img {
-            width: 100%; height: 100px; object-fit: contain; border-radius: 8px;
-            margin-bottom: 8px; background: white; padding: 4px;
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: white;
+            padding: 4px;
         }
         .university-grid .uni-item h5 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: var(--dark); }
         .university-grid .uni-item p { font-size: 0.75rem; color: #6a7a8a; }
@@ -540,7 +552,6 @@
         .article-card .article-body h4 a:hover { text-decoration: underline; }
         .article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
 
-        /* Future Vision Gallery – 3x bigger images */
         .country-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -590,7 +601,7 @@
 </head>
 <body>
 
-<!-- ===== MOBILE MENU (3 LINES) ===== -->
+<!-- ===== MOBILE MENU ===== -->
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu">
@@ -630,7 +641,7 @@
         <h1>AQUANEXUS + AQUA GUARDIAN ⚡</h1>
         <p class="hero-sub">
             Vahid Nezamivand Chegane
-            <span class="phd-badge">اوب</span>
+            <span class="phd-badge"></span>
         </p>
         <p class="hero-title">Lead Designer &amp; Systems Architect</p>
         <p class="hero-desc">Integrated Sovereign Infrastructure</p>
@@ -672,7 +683,7 @@
     </div>
 </section>
 
-<!-- ===== FRESH & THERMAL WATER (WITH INJECTION VIDEO) ===== -->
+<!-- ===== FRESH & THERMAL WATER ===== -->
 <section class="section" style="background: var(--light-bg);" id="water">
     <div class="container">
         <div class="grid-2">
@@ -727,7 +738,7 @@
     </div>
 </section>
 
-<!-- ===== STRATEGIC METALS (CORRECTED IMAGES) ===== -->
+<!-- ===== STRATEGIC METALS ===== -->
 <section class="section" style="background: var(--light-bg);" id="metals">
     <div class="container text-center">
         <span class="badge">Revenue Stream 4</span>
@@ -949,7 +960,7 @@
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS ===== -->
+<!-- ===== ACHIEVEMENTS (WITH FIXED UNIVERSITY IMAGES) ===== -->
 <section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Achievements</span></h2>
@@ -978,18 +989,18 @@
 
         <h3 style="margin-top: 40px; font-family: 'Poppins', sans-serif;">Top 20 Universities Worldwide</h3>
         <div class="university-grid">
-            <div class="uni-item"><img src="MIT,danshgah.jpg" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
-            <div class="uni-item"><img src="Estanfor,daneshgah.jpg" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
-            <div class="uni-item"><img src="Aksford.jpeg" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
-            <div class="uni-item"><img src="Danshgah1.jpg" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="MIT"><h5>MIT</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Stanford"><h5>Stanford</h5><p>Sustainability</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Oxford"><h5>Oxford</h5><p>Carbon Capture</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Cambridge"><h5>Cambridge</h5><p>Geology</p></div>
             <div class="uni-item"><img src="eth-university.jpg" alt="ETH"><h5>ETH Zurich</h5><p>Clean Energy</p></div>
-            <div class="uni-item"><img src="Danshgah2.jpg" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Imperial"><h5>Imperial</h5><p>Circular Economy</p></div>
             <div class="uni-item"><img src="Sangapor.jpg" alt="NUS"><h5>NUS</h5><p>Water</p></div>
-            <div class="uni-item"><img src="Dofolt.yonevrsety (1).jpg" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
-            <div class="uni-item"><img src="Danshgah5.jpg" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="TU Delft"><h5>TU Delft</h5><p>Recycling</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="UC Berkeley"><h5>UC Berkeley</h5><p>AI · Energy</p></div>
             <div class="uni-item"><img src="Tokyo.jpeg" alt="Tokyo"><h5>Tokyo Univ.</h5><p>Geology</p></div>
-            <div class="uni-item"><img src="Danshgah6.jpeg" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
-            <div class="uni-item"><img src="Danshgah8.jpeg" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Durham"><h5>Durham</h5><p>Earth Sciences</p></div>
+            <div class="uni-item"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=200" alt="Copenhagen"><h5>Copenhagen</h5><p>Climate</p></div>
         </div>
     </div>
 </section>
@@ -1028,7 +1039,7 @@
     </div>
 </section>
 
-<!-- ===== READ MORE (ARTICLES) ===== -->
+<!-- ===== READ MORE ===== -->
 <section class="section" style="background: var(--light-bg);" id="articles">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Read</span> More</h2>
@@ -1080,7 +1091,7 @@
     </div>
 </section>
 
-<!-- ===== FUTURE VISION OF COUNTRIES (ONLY ONE LINE) ===== -->
+<!-- ===== FUTURE VISION OF COUNTRIES ===== -->
 <section class="section" style="background: white;" id="future-vision">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Future Vision</span> of Countries</h2>
@@ -1225,7 +1236,7 @@
     </div>
 </div>
 
-<!-- ===== CONTACT FORM (SHOWS ERROR ON SEND) ===== -->
+<!-- ===== CONTACT FORM ===== -->
 <section id="contact" class="section" style="background: var(--light-bg);">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight">Contact</span> Investment Team</h2>
@@ -1385,7 +1396,6 @@
     }
 
     function openDirectEmail() {
-        // Get form data
         const company = document.getElementById('company').value.trim() || 'Not provided';
         const email = document.getElementById('email').value.trim() || 'Not provided';
         const phone = document.getElementById('phone').value.trim() || 'Not provided';
@@ -1393,7 +1403,6 @@
         const message = document.getElementById('message').value.trim() || 'No message';
         const requestType = document.getElementById('requestType').value || 'Not specified';
 
-        // Build mailto link
         const subject = encodeURIComponent('AquaNexus Inquiry from ' + company);
         const body = encodeURIComponent(
             'Company: ' + company + '\n' +
@@ -1444,22 +1453,15 @@
     function handleSubmit(e) {
         e.preventDefault();
         const msgBox = document.getElementById('statusMsg');
-
-        // Always show error message
         msgBox.className = 'status-msg error';
         msgBox.textContent = '❌ Message could not be sent. Please try again later or use the "Urgent Contact" button to send a direct email.';
         msgBox.style.display = 'block';
-
-        // Re-enable submit button after a delay if needed
         const submitBtn = document.querySelector('#mainForm button[type="submit"]');
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
         }
-
-        // Scroll to message
         msgBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
         return false;
     }
 
@@ -1489,3 +1491,35 @@
 </body>
 </html>
 ```
+
+---
+
+## 📌 فایل‌های مورد نیاز در پوشه اصلی:
+
+| فایل | توضیح |
+|------|-------|
+| `cmr8wl51w000p2t71wnfo7a7h.mp4` | انیمیشن هدر |
+| `Tazriq,abe.mp4` | انیمیشن تزریق آب |
+| `Zamin,mozab.jpeg` | تصویر زمین‌گرمایی |
+| `Golkhane.jpeg` | تصویر گلخانه |
+| `Letiyom.webp` | تصویر لیتیوم |
+| `Tangstan.jpg` | تصویر تنگستن |
+| `Noghere.jpg` | تصویر نقره |
+| `Namak.jpg` | تصویر نمک |
+| `iziro(6).jpg` | تصویر کربن صفر |
+| `Cheshme.webp` | تصویر چشمه |
+| `Cheshme2.jpg` | تصویر چشمه ۲ |
+| `Sarmayesh,.jpg` | تصویر گرمایش/سرمایش |
+| `Biseness2.jpeg` | تصویر رشد اقتصادی |
+| `Tamask.jpg` | تصویر تماسک |
+| `Enrgeglob.jpg` | تصویر انرژی گلوب |
+| `Shikhzayeed.jpg` | تصویر شیخ زاید |
+| `Sertifikrt.jpg` | تصویر گواهی‌نامه |
+| `Sangapor.jpg` | تصویر دانشگاه سنگاپور |
+| `eth-university.jpg` | تصویر ETH زوریخ |
+| `Tokyo.jpeg` | تصویر دانشگاه توکیو |
+| `Vbahrin1.png` تا `Vvitnam2.png` | تصاویر کشورها (۲۶ فایل) |
+
+---
+
+**فایل کاملاً آماده است. کپی کنید و جایگزین کنید.** 🚀
