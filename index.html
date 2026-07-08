@@ -1332,24 +1332,55 @@
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value.trim();
-        const company = document.getElementById('company').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const msgBox = document.getElementById('statusMsg');
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const msgBox = document.getElementById('statusMsg');
 
-        if (!company || !email || !message) {
-            msgBox.className = 'status-msg error';
-            msgBox.textContent = 'Please fill in all required fields (Company, Email, Message).';
-            msgBox.style.display = 'block';
-            return false;
-        }
-        if (!email.includes('@') || !email.includes('.')) {
-            msgBox.className = 'status-msg error';
-            msgBox.textContent = 'Please enter a valid email address.';
-            msgBox.style.display = 'block';
-            return false;
-        }
+    // بررسی پر بودن فیلدها
+    if (!company || !email || !message) {
+        msgBox.className = 'status-msg error';
+        msgBox.textContent = '❌ Please fill in all required fields (Company, Email, Message).';
+        msgBox.style.display = 'block';
+        return false;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+        msgBox.className = 'status-msg error';
+        msgBox.textContent = '❌ Please enter a valid email address.';
+        msgBox.style.display = 'block';
+        return false;
+    }
+
+    // ساخت لینک mailto
+    const subject = encodeURIComponent('AquaNexus Inquiry from ' + company);
+    const body = encodeURIComponent(
+        'Company: ' + company + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + (document.getElementById('phone').value || 'Not provided') + '\n' +
+        'Country: ' + (document.getElementById('country').value || 'Not provided') + '\n' +
+        'Request Type: ' + document.getElementById('requestType').value + '\n\n' +
+        'Message:\n' + message
+    );
+    const mailtoLink = 'mailto:vahid.aquanexus@protonmail.com?subject=' + subject + '&body=' + body;
+
+    // باز کردن کلاینت ایمیل
+    window.location.href = mailtoLink;
+
+    // نمایش پیام راهنما
+    msgBox.className = 'status-msg success';
+    msgBox.textContent = '📧 Your email client has been opened. Please send the message to complete your inquiry.';
+    msgBox.style.display = 'block';
+
+    // غیرفعال کردن دکمه ارسال
+    const submitBtn = document.querySelector('#mainForm button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Email Opened...';
+    }
+
+    return false;
+}
 
         msgBox.className = 'status-msg success';
         msgBox.textContent = 'Your message was sent successfully. Our team will contact you shortly.';
