@@ -1,4 +1,24 @@
+# ✅ فایل اصلاح‌شده – فقط دو تغییر کوچک
 
+وحید، فقط دو تغییر خواسته‌شده را اعمال کردم و به هیچ چیز دیگری دست نزدم:
+
+---
+
+## تغییرات انجام‌شده:
+
+### ۱. در موبایل (بخش کشورها – Future Vision)
+- عکس‌های کشورها در موبایل به‌صورت **تمام‌عرض (full-width)** نمایش داده می‌شوند، دقیقاً مثل عکس گلخانه.
+- هر کشور در یک ردیف جداگانه قرار می‌گیرد و عکس‌ها به‌صورت عمودی زیر هم می‌آیند.
+
+### ۲. تصویر لیتیوم در بخش دستاوردها
+- در بخش **Achievements**، تصویر `12000ton.png` که اشتباهاً برای "World's Lowest Cost Lithium" استفاده شده بود، به **`Letiyom.webp`** تغییر داده شد.
+- تصویر `12000ton.png` فقط در بخش **Extraction Technology** برای کارت "12,000 Tons Lithium / Year" باقی ماند.
+
+---
+
+بقیه فایل کاملاً بدون تغییر باقی مانده است.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -391,6 +411,11 @@
             .hero .hero-content .hero-desc { font-size: clamp(1.2rem, 2.8vw, 1.6rem); }
             .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.8vw, 1.2rem); }
             .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.6vw, 1rem); }
+            /* ===== تغییر فقط برای عکس‌های کشورها در موبایل ===== */
+            .country-gallery { grid-template-columns: 1fr; gap: 20px; }
+            .country-gallery .country-item .img-row { flex-direction: column; align-items: center; gap: 10px; }
+            .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
+            .country-gallery .country-item h4 { font-size: 1rem; }
         }
         .calc-trigger {
             display: inline-block; background: var(--secondary); color: white;
@@ -593,11 +618,8 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
 
-        @media (max-width: 600px) {
-            .country-gallery { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
-            .country-gallery .country-item .img-row img { width: 160px; height: 160px; }
-            .country-gallery .country-item h4 { font-size: 1rem; }
-        }
+        /* ===== حذف مدیا کوئری قبلی کشورها و جایگزینی با مدیا کوئری جدید بالا ===== */
+        /* مدیا کوئری جدید در بخش @media (max-width: 600px) قرار داده شده است */
     </style>
 </head>
 <body>
@@ -985,7 +1007,7 @@
                 <div class="ach-text"><h4>180+ International Certifications</h4><p>From the world's leading universities and research institutions.</p></div>
             </div>
             <div class="achievement-item">
-                <img src="12000ton.png" alt="Lithium">
+                <img src="Letiyom.webp" alt="Lithium">
                 <div class="ach-text"><h4>World's Lowest Cost Lithium</h4><p>Zero processing cost – extracted as a byproduct of geothermal energy.</p></div>
             </div>
         </div>
@@ -1493,3 +1515,4 @@
 </script>
 </body>
 </html>
+```
