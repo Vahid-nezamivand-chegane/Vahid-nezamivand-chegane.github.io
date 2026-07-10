@@ -345,19 +345,34 @@
     .mobile-menu .menu-header { font-size: 1.6rem; }
     .mobile-menu ul li a { font-size: 1.1rem; }
     
-    /* ===== حذف پرده سیاه ===== */
+    /* ===== حذف کامل پرده سیاه ===== */
     .menu-overlay {
         display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
     
-    /* ===== دکمه منو ۲ خط پایین‌تر ===== */
+    /* ===== دکمه منو (چسبیده به چپ، بدون کادر تیره، ۱px پایین‌تر) ===== */
     .menu-toggle {
         z-index: 10001 !important;
-        top: 60px !important;
-        left: 10px;
-        padding: 6px 14px;
+        top: 61px !important;
+        left: 2px !important;
+        padding: 6px 12px;
         font-size: 1.4rem;
-        background: rgba(10,42,68,0.8);
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: white;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .menu-toggle:hover {
+        background: transparent !important;
+        box-shadow: none !important;
     }
     
     /* ===== غیرفعال کردن پرچم‌ها وقتی منو بازه ===== */
@@ -408,7 +423,7 @@
         border-color: var(--gold);
     }
     
-    /* ===== هیرو (صفحه اول) یک خط پایین‌تر ===== */
+    /* ===== هیرو ===== */
     .hero { height: 70vh; }
     .hero .hero-content {
         padding: 40px 15px 15px 15px;
@@ -432,7 +447,7 @@
     .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
     .country-gallery .country-item h4 { font-size: 1rem; }
     
-    /* ===== داشبورد در موبایل ===== */
+    /* ===== داشبورد ===== */
     .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 20px;
