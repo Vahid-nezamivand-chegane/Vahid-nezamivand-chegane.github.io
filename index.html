@@ -355,7 +355,7 @@
         pointer-events: none !important;
     }
     
-    /* ===== دکمه منو (چسبیده به چپ، بدون کادر تیره، ۱px پایین‌تر) ===== */
+    /* ===== دکمه منو (چسبیده به چپ، بدون کادر تیره) ===== */
     .menu-toggle {
         z-index: 10001 !important;
         top: 61px !important;
@@ -376,13 +376,12 @@
     }
     
     /* ===== غیرفعال کردن پرچم‌ها وقتی منو بازه ===== */
-    .mobile-menu.open ~ .lang-switcher .flag-item,
-    .menu-overlay.open ~ .lang-switcher .flag-item {
+    .mobile-menu.open ~ .lang-switcher .flag-item {
         pointer-events: none !important;
-        opacity: 0.5;
+        opacity: 0.4 !important;
     }
     
-    /* ===== پرچم‌ها در موبایل (همه در یک خط) ===== */
+    /* ===== پرچم‌ها در موبایل (بدون کادر شیشه‌ای) ===== */
     .lang-switcher {
         position: fixed;
         top: 10px;
@@ -390,7 +389,7 @@
         z-index: 999;
         display: flex !important;
         flex-wrap: nowrap !important;
-        gap: 3px !important;
+        gap: 4px !important;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
@@ -403,24 +402,30 @@
     .lang-switcher .flag-item {
         padding: 2px 5px;
         font-size: 0.55rem;
-        border-radius: 10px;
+        border-radius: 0;
         gap: 2px;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        color: rgba(255,255,255,0.95);
-        text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: rgba(255,255,255,0.8);
+        text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         display: flex;
         align-items: center;
         justify-content: center;
         white-space: nowrap;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
     }
     .lang-switcher .flag-item .flag-emoji { font-size: 0.75rem; }
     .lang-switcher .flag-item.active {
-        background: rgba(255, 215, 0, 0.25);
-        border-color: var(--gold);
+        opacity: 1 !important;
+        color: white;
+        text-shadow: 0 0 12px rgba(255,215,0,0.4);
+    }
+    .lang-switcher .flag-item:hover {
+        opacity: 1;
     }
     
     /* ===== هیرو ===== */
