@@ -367,28 +367,29 @@
         opacity: 0.5;
     }
     
-    /* ===== پرچم‌ها در موبایل (۲×۲ سمت راست) ===== */
+    /* ===== پرچم‌ها در موبایل (همه در یک خط) ===== */
     .lang-switcher {
         position: fixed;
         top: 10px;
         right: 10px;
         z-index: 999;
-        display: grid !important;
-        grid-template-columns: auto auto !important;
-        gap: 4px !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 3px !important;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
-        max-width: 100px;
+        max-width: 95% !important;
+        justify-content: flex-end;
     }
     .lang-switcher .flag-item {
-        padding: 3px 8px;
-        font-size: 0.65rem;
-        border-radius: 12px;
-        gap: 3px;
+        padding: 2px 5px;
+        font-size: 0.55rem;
+        border-radius: 10px;
+        gap: 2px;
         background: rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
@@ -399,10 +400,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 40px;
-        text-align: center;
+        white-space: nowrap;
     }
-    .lang-switcher .flag-item .flag-emoji { font-size: 0.85rem; }
+    .lang-switcher .flag-item .flag-emoji { font-size: 0.75rem; }
     .lang-switcher .flag-item.active {
         background: rgba(255, 215, 0, 0.25);
         border-color: var(--gold);
