@@ -330,30 +330,44 @@
     .contact-form { padding: 24px; }
     .contact-form .btn-group { flex-direction: column; }
     .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
-    .mobile-menu { width: 280px; left: -300px; z-index: 10000; }
+    
+    /* ===== منوی موبایل ===== */
+    .mobile-menu {
+        width: 280px;
+        left: -300px;
+        top: 70px !important;
+        height: calc(100% - 70px);
+        z-index: 10002;
+        border-radius: 0 20px 20px 0;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .mobile-menu.open { left: 0; }
     .mobile-menu .menu-header { font-size: 1.6rem; }
     .mobile-menu ul li a { font-size: 1.1rem; }
-    .globe-section .globe-container { height: 300px; }
-    .achievement-item { flex-direction: column; text-align: center; }
-    .achievement-item img { width: 100%; height: 120px; }
-
-    /* ===== هیرو در موبایل (یک خط پایین‌تر) ===== */
-    .hero { height: 70vh; }
-    .hero .hero-content { padding: 80px 15px 15px 15px; width: 95%; margin-top: 40px; }
-    .hero .hero-content h1 { font-size: clamp(2.4rem, 10vw, 3.4rem); white-space: normal; }
-    .hero .hero-content .hero-sub { font-size: clamp(1.2rem, 4vw, 1.8rem); }
-    .hero .hero-content .hero-sub .phd-badge { font-size: clamp(0.6rem, 1.5vw, 0.9rem); padding: 2px 8px; margin-left: 5px; }
-    .hero .hero-content .hero-title { font-size: clamp(0.9rem, 2.2vw, 1.2rem); }
-    .hero .hero-content .hero-desc { font-size: clamp(1rem, 2.8vw, 1.4rem); }
-    .hero .hero-content .hero-tags { font-size: clamp(0.7rem, 1.8vw, 1rem); }
-    .hero .hero-content .hero-footer { font-size: clamp(0.6rem, 1.6vw, 0.9rem); }
-
-    .country-gallery { grid-template-columns: 1fr; gap: 20px; }
-    .country-gallery .country-item .img-row { flex-direction: column; align-items: center; gap: 10px; }
-    .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
-    .country-gallery .country-item h4 { font-size: 1rem; }
-
-    /* ===== پرچم‌ها (بدون کادر شیشه‌ای، کوچک و در سمت راست) ===== */
+    
+    /* ===== حذف پرده سیاه (menu-overlay) ===== */
+    .menu-overlay {
+        display: none !important;
+    }
+    
+    /* ===== دکمه منو ۲ خط پایین‌تر ===== */
+    .menu-toggle {
+        z-index: 10001 !important;
+        top: 60px !important;
+        left: 10px;
+        padding: 6px 14px;
+        font-size: 1.4rem;
+        background: rgba(10,42,68,0.8);
+    }
+    
+    /* ===== غیرفعال کردن کلیک روی پرچم‌ها وقتی منو بازه ===== */
+    .mobile-menu.open ~ .lang-switcher .flag-item,
+    .menu-overlay.open ~ .lang-switcher .flag-item {
+        pointer-events: none !important;
+        opacity: 0.5;
+    }
+    
+    /* ===== پرچم‌ها در موبایل (بدون کادر شیشه‌ای) ===== */
     .lang-switcher {
         position: fixed;
         top: 10px;
@@ -369,56 +383,68 @@
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
-        max-width: 70%;
+        max-width: 75%;
     }
     .lang-switcher .flag-item {
-        padding: 2px 6px;
-        font-size: 0.6rem;
+        padding: 3px 8px;
+        font-size: 0.65rem;
         border-radius: 12px;
-        gap: 2px;
+        gap: 3px;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        border: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
         box-shadow: none !important;
-        color: #fff;
+        color: rgba(255,255,255,0.9);
         text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        font-weight: 600;
     }
-    .lang-switcher .flag-item .flag-emoji { font-size: 0.8rem; }
+    .lang-switcher .flag-item .flag-emoji { font-size: 0.85rem; }
     .lang-switcher .flag-item.active {
         background: rgba(255, 215, 0, 0.15) !important;
-        border-radius: 12px;
-        padding: 2px 8px;
+        border-color: var(--gold) !important;
     }
-
-    /* ===== منو همبرگری ===== */
-    .menu-toggle {
-        z-index: 10001 !important;
-        top: 10px;
-        left: 10px;
-        padding: 6px 14px;
-        font-size: 1.4rem;
+    
+    /* ===== هیرو (صفحه اول) یک خط پایین‌تر ===== */
+    .hero { height: 70vh; }
+    .hero .hero-content {
+        padding: 40px 15px 15px 15px;
+        width: 95%;
+        margin-top: 70px !important;
     }
-    .menu-overlay { z-index: 10000; }
-    .mobile-menu { z-index: 10002; }
-
-    /* ===== داشبورد در موبایل ===== */
+    .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); white-space: normal; }
+    .hero .hero-content .hero-sub { font-size: clamp(1.4rem, 4vw, 2rem); }
+    .hero .hero-content .hero-sub .phd-badge { font-size: clamp(0.7rem, 1.5vw, 1rem); padding: 2px 10px; margin-left: 5px; }
+    .hero .hero-content .hero-title { font-size: clamp(1rem, 2.2vw, 1.4rem); }
+    .hero .hero-content .hero-desc { font-size: clamp(1.2rem, 2.8vw, 1.6rem); }
+    .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.8vw, 1.2rem); }
+    .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.6vw, 1rem); }
+    
+    /* ===== سایر بخش‌ها ===== */
+    .globe-section .globe-container { height: 300px; }
+    .achievement-item { flex-direction: column; text-align: center; }
+    .achievement-item img { width: 100%; height: 120px; }
+    .country-gallery { grid-template-columns: 1fr; gap: 20px; }
+    .country-gallery .country-item .img-row { flex-direction: column; align-items: center; gap: 10px; }
+    .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
+    .country-gallery .country-item h4 { font-size: 1rem; }
+    
+    /* ===== داشبورد در موبایل (نمایش کامل) ===== */
     .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     .dashboard-card {
         padding: 16px;
+        min-height: 250px;
     }
     .chart-container {
-        height: 200px !important;
+        height: 220px !important;
         width: 100% !important;
     }
     .dashboard-card h3 {
         font-size: 1rem;
     }
-
+    
     /* ===== نقشه‌راه ===== */
     .roadmap {
         flex-direction: column;
@@ -426,13 +452,13 @@
     }
     .roadmap::before { display: none; }
     .roadmap-item { margin-bottom: 30px; }
-
+    
     /* ===== دیتاروم ===== */
     .data-room-tabs .tab-btn {
         padding: 8px 16px;
         font-size: 0.85rem;
     }
-
+    
     /* ===== رفع فضای خالی سمت راست ===== */
     html, body {
         overflow-x: hidden;
