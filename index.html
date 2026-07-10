@@ -320,8 +320,7 @@
             border-top: 1px solid rgba(255,255,255,0.06);
             padding-top: 14px;
         }
-
-        @media (max-width: 600px) {
+@media (max-width: 600px) {
     .section { padding: 50px 0; }
     .grid-2 { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: 1fr; }
@@ -331,7 +330,7 @@
     .contact-form { padding: 24px; }
     .contact-form .btn-group { flex-direction: column; }
     .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
-    .mobile-menu { width: 280px; left: -300px; }
+    .mobile-menu { width: 280px; left: -300px; z-index: 10000; }
     .mobile-menu .menu-header { font-size: 1.6rem; }
     .mobile-menu ul li a { font-size: 1.1rem; }
     .globe-section .globe-container { height: 300px; }
@@ -350,15 +349,83 @@
     .country-gallery .country-item .img-row { flex-direction: column; align-items: center; gap: 10px; }
     .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
     .country-gallery .country-item h4 { font-size: 1rem; }
-    .lang-switcher { flex-wrap: wrap; gap: 8px; padding: 8px 10px; top: 10px; right: 10px; max-width: 90%; }
-    .lang-switcher .flag-item { padding: 4px 10px; font-size: 0.75rem; }
-    .lang-switcher .flag-item .flag-emoji { font-size: 1rem; }
-    .dashboard-grid { grid-template-columns: 1fr; }
-    .roadmap { flex-direction: column; align-items: center; }
+
+    /* ===== اصلاح نوار پرچم در موبایل (بدون کادر بزرگ) ===== */
+    .lang-switcher {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 80%;
+    }
+    .lang-switcher .flag-item {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+        border-radius: 20px;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .lang-switcher .flag-item .flag-emoji { font-size: 0.9rem; }
+    .lang-switcher .flag-item.active {
+        background: rgba(255, 215, 0, 0.25);
+        border-color: var(--gold);
+    }
+
+    /* ===== منو همبرگری بالاتر از همه ===== */
+    .menu-toggle {
+        z-index: 10001 !important;
+        top: 10px;
+        left: 10px;
+        padding: 6px 14px;
+        font-size: 1.4rem;
+    }
+    .menu-overlay { z-index: 10000; }
+    .mobile-menu { z-index: 10002; }
+
+    /* ===== داشبورد در موبایل ===== */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .dashboard-card {
+        padding: 16px;
+    }
+    .chart-container {
+        height: 200px !important;
+    }
+    .dashboard-card h3 {
+        font-size: 1rem;
+    }
+
+    /* ===== نقشه‌راه ===== */
+    .roadmap {
+        flex-direction: column;
+        align-items: center;
+    }
     .roadmap::before { display: none; }
     .roadmap-item { margin-bottom: 30px; }
-    .data-room-tabs .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
-    /* رفع فضای خالی سمت راست در موبایل */
+
+    /* ===== دیتاروم ===== */
+    .data-room-tabs .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    /* ===== رفع فضای خالی سمت راست ===== */
     html, body {
         overflow-x: hidden;
         width: 100%;
