@@ -355,7 +355,7 @@
         pointer-events: none !important;
     }
     
-    /* ===== دکمه منو (چسبیده به چپ، بدون کادر تیره) ===== */
+    /* ===== دکمه منو ===== */
     .menu-toggle {
         z-index: 10001 !important;
         top: 61px !important;
@@ -381,7 +381,7 @@
         opacity: 0.4 !important;
     }
     
-    /* ===== پرچم‌ها در موبایل (بدون کادر شیشه‌ای) ===== */
+    /* ===== پرچم‌ها در موبایل ===== */
     .lang-switcher {
         position: fixed;
         top: 10px;
@@ -452,21 +452,42 @@
     .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
     .country-gallery .country-item h4 { font-size: 1rem; }
     
-    /* ===== داشبورد ===== */
+    /* ===== داشبورد در موبایل (تمام صفحه) ===== */
     .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: 0 5px !important;
     }
     .dashboard-card {
-        padding: 16px;
-        min-height: 250px;
-    }
-    .chart-container {
-        height: 220px !important;
+        padding: 12px !important;
+        min-height: auto !important;
         width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
     }
     .dashboard-card h3 {
-        font-size: 1rem;
+        font-size: 0.95rem !important;
+        margin-bottom: 8px !important;
+        text-align: center !important;
+    }
+    .chart-container {
+        position: relative !important;
+        height: 260px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+    }
+    .chart-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+    }
+    .dashboard-card:first-child .chart-container {
+        height: 280px !important;
+    }
+    .dashboard-card:last-child .chart-container {
+        height: 240px !important;
     }
     
     /* ===== نقشه‌راه ===== */
