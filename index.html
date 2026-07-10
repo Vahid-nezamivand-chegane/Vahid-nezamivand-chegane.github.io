@@ -345,7 +345,7 @@
     .mobile-menu .menu-header { font-size: 1.6rem; }
     .mobile-menu ul li a { font-size: 1.1rem; }
     
-    /* ===== حذف پرده سیاه (menu-overlay) ===== */
+    /* ===== حذف پرده سیاه ===== */
     .menu-overlay {
         display: none !important;
     }
@@ -360,48 +360,52 @@
         background: rgba(10,42,68,0.8);
     }
     
-    /* ===== غیرفعال کردن کلیک روی پرچم‌ها وقتی منو بازه ===== */
+    /* ===== غیرفعال کردن پرچم‌ها وقتی منو بازه ===== */
     .mobile-menu.open ~ .lang-switcher .flag-item,
     .menu-overlay.open ~ .lang-switcher .flag-item {
         pointer-events: none !important;
         opacity: 0.5;
     }
     
-    /* ===== پرچم‌ها در موبایل (بدون کادر شیشه‌ای) ===== */
+    /* ===== پرچم‌ها در موبایل (۲×۲ سمت راست) ===== */
     .lang-switcher {
         position: fixed;
         top: 10px;
         right: 10px;
         z-index: 999;
-        display: flex;
-        gap: 4px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        display: grid !important;
+        grid-template-columns: auto auto !important;
+        gap: 4px !important;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
-        max-width: 75%;
+        max-width: 100px;
     }
     .lang-switcher .flag-item {
         padding: 3px 8px;
         font-size: 0.65rem;
         border-radius: 12px;
         gap: 3px;
-        background: transparent !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        box-shadow: none !important;
-        color: rgba(255,255,255,0.9);
-        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        color: rgba(255,255,255,0.95);
+        text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        text-align: center;
     }
     .lang-switcher .flag-item .flag-emoji { font-size: 0.85rem; }
     .lang-switcher .flag-item.active {
-        background: rgba(255, 215, 0, 0.15) !important;
-        border-color: var(--gold) !important;
+        background: rgba(255, 215, 0, 0.25);
+        border-color: var(--gold);
     }
     
     /* ===== هیرو (صفحه اول) یک خط پایین‌تر ===== */
@@ -428,7 +432,7 @@
     .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
     .country-gallery .country-item h4 { font-size: 1rem; }
     
-    /* ===== داشبورد در موبایل (نمایش کامل) ===== */
+    /* ===== داشبورد در موبایل ===== */
     .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 20px;
