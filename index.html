@@ -331,15 +331,17 @@
     .contact-form .btn-group { flex-direction: column; }
     .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
     
-    /* ===== منوی موبایل ===== */
+    /* ===== منوی موبایل (بلند و با اسکرول) ===== */
     .mobile-menu {
         width: 280px;
         left: -300px;
-        top: 70px !important;
-        height: calc(100% - 70px);
+        top: 60px !important;
+        height: calc(100vh - 60px) !important;
         z-index: 10002;
         border-radius: 0 20px 20px 0;
         box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        overflow-y: auto !important;
+        padding-bottom: 40px !important;
     }
     .mobile-menu.open { left: 0; }
     .mobile-menu .menu-header { font-size: 1.6rem; }
@@ -355,11 +357,11 @@
         pointer-events: none !important;
     }
     
-    /* ===== دکمه منو (چسبیده به چپ، بدون کادر تیره) ===== */
+    /* ===== دکمه منو (بالا و بدون تداخل) ===== */
     .menu-toggle {
         z-index: 10001 !important;
-        top: 61px !important;
-        left: 2px !important;
+        top: 12px !important;
+        left: 10px !important;
         padding: 6px 12px;
         font-size: 1.4rem;
         background: transparent !important;
@@ -452,7 +454,7 @@
     .country-gallery .country-item .img-row img { width: 100%; height: auto; max-width: 100%; }
     .country-gallery .country-item h4 { font-size: 1rem; }
     
-    /* ===== داشبورد در موبایل (بزرگ و کامل) ===== */
+    /* ===== داشبورد ===== */
     .dashboard-grid {
         grid-template-columns: 1fr !important;
         gap: 25px !important;
@@ -497,7 +499,6 @@
         width: 100%;
     }
 }
-        
         }
         .calc-trigger {
             display: inline-block; background: var(--secondary); color: white;
