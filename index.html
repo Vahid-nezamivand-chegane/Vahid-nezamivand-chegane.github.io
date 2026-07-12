@@ -1813,16 +1813,44 @@
     });
 
     function submitNDARequest(e) {
-        e.preventDefault();
-        const status = document.getElementById('ndaStatus');
-        status.className = 'status-msg success';
-        status.textContent = '✅ Your request has been submitted! Our legal team will send the Mutual NDA draft to your email within 12 hours. Upon signing, the "Download Center" will be unlocked.';
-        status.style.display = 'block';
-        setTimeout(() => { status.style.display = 'none'; }, 10000);
-        document.getElementById('downloadLockStatus').style.display = 'none';
-        document.getElementById('downloadUnlockContent').style.display = 'block';
-        return false;
-    }
+    e.preventDefault();
+
+    // گرفتن مقادیر فرم
+    const name = document.querySelector('#tab-request input[placeholder="Full Name"]').value || 'Not provided';
+    const company = document.querySelector('#tab-request input[placeholder="Company / Fund Name"]').value || 'Not provided';
+    const email = document.querySelector('#tab-request input[placeholder="Official Email (verified domain)"]').value || 'Not provided';
+    const capacity = document.querySelector('#tab-request input[placeholder="Investment Capacity (USD)"]').value || 'Not provided';
+    const message = document.querySelector('#tab-request textarea').value || 'Not provided';
+
+    // ساخت موضوع و بدنه ایمیل
+    const subject = encodeURIComponent('New NDA Request from ' + company);
+    const body = encodeURIComponent(
+        'Full Name: ' + name + '\n' +
+        'Company: ' + company + '\n' +
+        'Email: ' + email + '\n' +
+        'Investment Capacity: ' + capacity + '\n\n' +
+        'Message:\n' + message
+    );
+
+    // آدرس ایمیل مقصد (ایمیل شما)
+    const recipient = 'vahid.aquanexus@protonmail.com';
+    
+    // باز کردن ایمیل با اطلاعات فرم
+    window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+
+    // نمایش پیام موفقیت
+    const status = document.getElementById('ndaStatus');
+    status.className = 'status-msg success';
+    status.textContent = '✅ Your request has been sent to our team. You will receive a response within 24 hours.';
+    status.style.display = 'block';
+    setTimeout(() => { status.style.display = 'none'; }, 10000);
+
+    // شبیه‌سازی باز شدن دانلود (اختیاری)
+    document.getElementById('downloadLockStatus').style.display = 'none';
+    document.getElementById('downloadUnlockContent').style.display = 'block';
+
+    return false;
+}
 
     // ===== لایت‌باکس =====
     const lightbox = document.createElement('div');
