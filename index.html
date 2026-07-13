@@ -2127,7 +2127,7 @@
 <!-- ================================================== -->
 <script>
 // ===== تنظیمات اولیه =====
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHvlyfHexR9Fq2H49Hdv36AMkF4bgxvwGYucagf7hVZDJJL67qiA6HnIzbBdev1ZQX/exec';
+const SCRIPT_URL = 'const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';';
 let currentUser = null;
 
 // ===== نمایش/عدم نمایش فرم‌ها =====
@@ -2282,164 +2282,113 @@ async function submitInvestment(e) {
     const project_scale = document.getElementById('invProjectScale').value;
     const expected_return = document.getElementById('invExpectedReturn').value;
     const competitors = document.getElementById('invCompetitors').value;
-    const target_market = document.getElementById('invTargetMarket').value;
-    const message = document.getElementById('invMessage').value;
+// ===== کدهای جدید برای سیستم ثبت‌نام و ورود =====
+const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // ⚠️ آدرس Web App خود را اینجا جایگذاری کنید
 
-    if (!request_type || !investment_type || !amount || !currency || !project_status) {
-        alert('لطفاً تمام فیلدهای اجباری را پر کنید.');
+let currentUser = null;
+
+function showRegister() {
+    document.getElementById('registerForm').style.display = 'block';
+    document.getElementById('loginForm').style.display = 'none';
+}
+function showLogin() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('registerForm').style.display = 'none';
+}
+
+async function registerUser(e) {
+    e.preventDefault();
+    const fullName = document.getElementById('regFullName').value.trim();
+    const lastName = document.getElementById('regLastName').value.trim();
+    const company = document.getElementById('regCompany').value.trim();
+    const regNumber = document.getElementById('regRegNumber').value.trim();
+    const country = document.getElementById('regCountry').value;
+    const role = document.getElementById('regRole').value;
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value;
+
+    if (!fullName || !lastName || !company || !email || !password || !country || !role) {
+        alert('Please fill in all required fields.');
         return;
     }
 
-    const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({
-            action: 'investment',
-            user_id: currentUser.id,
-            request_type,
-            investment_type,
-            amount,
-            currency,
-            share_percent,
-            duration,
-            history,
-            goal,
-            preferred_country,
-            project_status,
-            project_scale,
-            expected_return,
-            competitors,
-            target_market,
-            message
-        })
-    });
-    const result = await response.json();
-    
-    const status = document.getElementById('investmentStatus');
-    if (result.success) {
-        status.className = 'status-msg success';
-        status.textContent = '✅ درخواست سرمایه‌گذاری با موفقیت ثبت شد. تیم ما ظرف ۲۴ ساعت با شما تماس می‌گیرد.';
-        status.style.display = 'block';
-        document.getElementById('investmentForm').reset();
-        setTimeout(() => { status.style.display = 'none'; }, 10000);
-    } else {
-        status.className = 'status-msg error';
-        status.textContent = '❌ خطا: ' + result.message;
-        status.style.display = 'block';
-    }
-}
-
-// ===== پنل مدیریت =====
-function adminLogin() {
-    const password = prompt('🔑 لطفاً رمز مدیریت را وارد کنید:');
-    if (password === 'AquaNexus2026') {
-        document.getElementById('adminPanel').style.display = 'block';
-        loadRequests();
-        document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
-    } else if (password !== null) {
-        alert('❌ رمز اشتباه است!');
-    }
-}
-
-function logoutAdmin() {
-    document.getElementById('adminPanel').style.display = 'none';
-}
-
-async function loadRequests() {
-    const container = document.getElementById('requestsList');
-    container.innerHTML = '<p style="color:#6a7a8a;">⏳ در حال بارگذاری...</p>';
-    
-    try {
-        const response = await fetch(SCRIPT_URL + '?password=AquaNexus2026');
-        const result = await response.json();
-        
-        if (!result.success) {
-            container.innerHTML = '<p style="color:#e74c3c;">❌ خطا: ' + result.message + '</p>';
-            return;
-        }
-        
-        if (result.data.length === 0) {
-            container.innerHTML = `
-                <div style="text-align:center; padding:60px 20px; color:#6a7a8a;">
-                    <i class="fas fa-inbox" style="font-size:4rem; display:block; margin-bottom:16px; color:var(--secondary);"></i>
-                    <p style="font-size:1.3rem; font-weight:600;">صندوق دریافت خالی است</p>
-                    <p style="font-size:1rem;">هنوز درخواستی ثبت نشده است.</p>
-                </div>
-            `;
-            return;
-        }
-        
-        container.innerHTML = '';
-        result.data.forEach(req => {
-            const statusColor = req.status === 'pending' ? '#f39c12' : (req.status === 'approved' ? '#27ae60' : '#e74c3c');
-            const statusText = req.status === 'pending' ? '⏳ در انتظار بررسی' : (req.status === 'approved' ? '✅ تأیید شده' : '❌ رد شده');
-            const date = new Date(req.created_at).toLocaleDateString('fa-IR') + ' - ' + new Date(req.created_at).toLocaleTimeString('fa-IR');
-            
-            const div = document.createElement('div');
-            div.style.cssText = `
-                background: white;
-                padding: 20px 24px;
-                border-radius: 16px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-                margin-bottom: 16px;
-                border-right: 6px solid ${statusColor};
-            `;
-            div.innerHTML = `
-                <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:15px;">
-                    <div style="flex:1; min-width:200px;">
-                        <h4 style="font-family:'Poppins',sans-serif; font-size:1.1rem; margin-bottom:4px;">درخواست #${req.id}</h4>
-                        <p style="color:#4a5a6a; font-weight:600; margin:0;">نوع درخواست: ${req.request_type}</p>
-                        <p style="color:#4a5a6a; font-weight:600; margin:0;">نوع سرمایه‌گذاری: ${req.investment_type}</p>
-                        <p style="color:#6a7a8a; font-size:0.9rem;"><i class="fas fa-money-bill-wave"></i> ${req.amount} ${req.currency}</p>
-                        ${req.share_percent ? `<p style="color:#6a7a8a; font-size:0.9rem;">سهم: ${req.share_percent}%</p>` : ''}
-                        ${req.preferred_country ? `<p style="color:#6a7a8a; font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> ${req.preferred_country}</p>` : ''}
-                        ${req.project_status ? `<p style="color:#6a7a8a; font-size:0.9rem;">وضعیت پروژه: ${req.project_status}</p>` : ''}
-                        ${req.message ? `<p style="margin-top:8px; background:#f4f6f9; padding:8px 14px; border-radius:10px; font-size:0.9rem;">${req.message}</p>` : ''}
-                        <p style="color:#6a7a8a; font-size:0.8rem; margin-top:4px;"><i class="fas fa-calendar-alt"></i> ${date}</p>
-                    </div>
-                    <div style="text-align:left; min-width:140px;">
-                        <span style="display:inline-block; padding:4px 14px; border-radius:30px; background:${statusColor}22; color:${statusColor}; font-weight:600; font-size:0.8rem;">${statusText}</span>
-                        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                            ${req.status !== 'approved' ? `<button onclick="updateRequest('${req.id}', 'approved')" class="btn" style="padding:6px 14px; font-size:0.75rem; background:#27ae60; color:white; width:auto;">✅ تأیید</button>` : ''}
-                            ${req.status !== 'rejected' ? `<button onclick="updateRequest('${req.id}', 'rejected')" class="btn" style="padding:6px 14px; font-size:0.75rem; background:#e74c3c; color:white; width:auto;">❌ رد</button>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(div);
-        });
-        
-    } catch (err) {
-        container.innerHTML = '<p style="color:#e74c3c;">❌ خطا در بارگذاری: ' + err.message + '</p>';
-    }
-}
-
-async function updateRequest(id, newStatus) {
-    if (!confirm(`وضعیت این درخواست به "${newStatus === 'approved' ? 'تأیید شده' : 'رد شده'}" تغییر کند؟`)) return;
-    
     try {
         const response = await fetch(SCRIPT_URL, {
             method: 'POST',
             body: JSON.stringify({
-                action: 'updateStatus',
-                id: id,
-                status: newStatus,
-                password: 'AquaNexus2026'
+                action: 'register',
+                full_name: fullName,
+                last_name: lastName,
+                company: company,
+                reg_number: regNumber,
+                country: country,
+                email: email,
+                password: password,
+                role: role
             })
         });
         const result = await response.json();
         if (result.success) {
-            loadRequests();
+            alert('✅ Registration successful! You can now login.');
+            showLogin();
+            document.getElementById('registerForm').reset();
         } else {
-            alert('❌ خطا: ' + result.message);
+            alert('❌ Error: ' + result.message);
         }
     } catch (err) {
-        alert('❌ خطا: ' + err.message);
+        alert('❌ Connection error: ' + err.message);
     }
 }
 
-// ===== بررسی وضعیت کاربر هنگام بارگذاری صفحه =====
-// (در صورت نیاز، می‌توانید این بخش را فعال کنید)
-console.log('✅ سیستم کاربری و مدیریت با گوگل شیت آماده است.');
-</script>
+async function loginUser(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    if (!email || !password) {
+        alert('Please enter your email and password.');
+        return;
+    }
+
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'login',
+                email: email,
+                password: password
+            })
+        });
+        const result = await response.json();
+        if (result.success) {
+            currentUser = result.user;
+            alert('✅ Login successful!');
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('registerBtn').style.display = 'none';
+            document.getElementById('loginBtn').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'inline-block';
+            document.getElementById('userName').textContent = currentUser.full_name + ' ' + currentUser.last_name;
+            if (currentUser.role === 'admin') {
+                document.getElementById('adminBtn').style.display = 'inline-block';
+            }
+        } else {
+            alert('❌ Error: ' + result.message);
+        }
+    } catch (err) {
+        alert('❌ Connection error: ' + err.message);
+    }
+}
+
+function logoutUser() {
+    currentUser = null;
+    document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('adminBtn').style.display = 'none';
+    document.getElementById('registerBtn').style.display = 'inline-block';
+    document.getElementById('loginBtn').style.display = 'inline-block';
+    document.getElementById('userName').textContent = '';
+    document.getElementById('adminPanel').style.display = 'none';
+    alert('✅ Logged out successfully.');
+}
 </body>
 </html>
