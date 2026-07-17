@@ -2127,166 +2127,18 @@
 <!-- ================================================== -->
 <script>
 // ===== تنظیمات اولیه =====
-const SCRIPT_URL = 'const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';';
-let currentUser = null;
+// =====================================================
+// ===== سیستم ثبت‌نام، ورود و مدیریت =====
+// =====================================================
 
-// ===== نمایش/عدم نمایش فرم‌ها =====
-function showRegisterForm() {
-    document.getElementById('registerFormContainer').style.display = 'block';
-    document.getElementById('loginFormContainer').style.display = 'none';
-    document.getElementById('userPanel').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'none';
-}
-function showLoginForm() {
-    document.getElementById('loginFormContainer').style.display = 'block';
-    document.getElementById('registerFormContainer').style.display = 'none';
-    document.getElementById('userPanel').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'none';
-}
-function showUserPanel() {
-    document.getElementById('userPanel').style.display = 'block';
-    document.getElementById('registerFormContainer').style.display = 'none';
-    document.getElementById('loginFormContainer').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'none';
-}
-
-// ===== ثبت‌نام کاربر =====
-async function registerUser(e) {
-    e.preventDefault();
-    const role = document.getElementById('regRole').value;
-    const full_name = document.getElementById('regFullName').value;
-    const last_name = document.getElementById('regLastName').value;
-    const company = document.getElementById('regCompany').value;
-    const reg_number = document.getElementById('regRegNumber').value;
-    const country = document.getElementById('regCountry').value;
-    const email = document.getElementById('regEmail').value;
-    const password = document.getElementById('regPassword').value;
-
-    if (!role) {
-        alert('لطفاً نوع هویت خود را انتخاب کنید.');
-        return;
-    }
-
-    const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({
-            action: 'register',
-            full_name, last_name, company, reg_number, country, email, password, role
-        })
-    });
-    const result = await response.json();
-    
-    const status = document.getElementById('registerStatus');
-    if (result.success) {
-        status.className = 'status-msg success';
-        status.textContent = '✅ ثبت‌نام با موفقیت انجام شد. حالا می‌توانید وارد شوید.';
-        status.style.display = 'block';
-        document.getElementById('regFullName').value = '';
-        document.getElementById('regLastName').value = '';
-        document.getElementById('regCompany').value = '';
-        document.getElementById('regRegNumber').value = '';
-        document.getElementById('regCountry').value = '';
-        document.getElementById('regEmail').value = '';
-        document.getElementById('regPassword').value = '';
-        document.getElementById('regRole').value = '';
-        setTimeout(() => { status.style.display = 'none'; }, 8000);
-        showLoginForm();
-    } else {
-        status.className = 'status-msg error';
-        status.textContent = '❌ خطا: ' + result.message;
-        status.style.display = 'block';
-    }
-}
-
-// ===== ورود کاربر =====
-async function loginUser(e) {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'login', email, password })
-    });
-    const result = await response.json();
-    
-    const status = document.getElementById('loginStatus');
-    if (result.success) {
-        currentUser = result.user;
-        status.className = 'status-msg success';
-        status.textContent = '✅ ورود موفقیت‌آمیز بود!';
-        status.style.display = 'block';
-        setTimeout(() => { status.style.display = 'none'; }, 3000);
-        
-        // به‌روزرسانی دکمه‌ها
-        document.getElementById('loginBtn').style.display = 'none';
-        document.getElementById('registerBtn').style.display = 'none';
-        document.getElementById('logoutBtn').style.display = 'inline-block';
-        document.getElementById('userNameDisplay').style.display = 'inline-block';
-        document.getElementById('userNameDisplay').textContent = '👤 ' + currentUser.full_name + ' ' + currentUser.last_name;
-        
-        if (currentUser.role === 'admin') {
-            document.getElementById('adminBtn').style.display = 'inline-block';
-        }
-        
-        // نمایش پنل کاربری
-        document.getElementById('userInfo').innerHTML = `
-            <p><strong>نام:</strong> ${currentUser.full_name} ${currentUser.last_name}</p>
-            <p><strong>شرکت:</strong> ${currentUser.company || '—'}</p>
-            <p><strong>شماره ثبت:</strong> ${currentUser.reg_number || '—'}</p>
-            <p><strong>کشور:</strong> ${currentUser.country}</p>
-            <p><strong>ایمیل:</strong> ${currentUser.email}</p>
-            <p><strong>نوع هویت:</strong> ${currentUser.role === 'personal' ? 'شخصی' : (currentUser.role === 'corporate' ? 'شرکتی' : 'دولتی')}</p>
-        `;
-        showUserPanel();
-        document.getElementById('loginEmail').value = '';
-        document.getElementById('loginPassword').value = '';
-    } else {
-        status.className = 'status-msg error';
-        status.textContent = '❌ خطا: ' + result.message;
-        status.style.display = 'block';
-    }
-}
-
-// ===== خروج کاربر =====
-function logoutUser() {
-    currentUser = null;
-    document.getElementById('logoutBtn').style.display = 'none';
-    document.getElementById('adminBtn').style.display = 'none';
-    document.getElementById('userNameDisplay').style.display = 'none';
-    document.getElementById('loginBtn').style.display = 'inline-block';
-    document.getElementById('registerBtn').style.display = 'inline-block';
-    document.getElementById('userPanel').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'none';
-    alert('✅ با موفقیت خارج شدید.');
-}
-
-// ===== ثبت درخواست سرمایه‌گذاری =====
-async function submitInvestment(e) {
-    e.preventDefault();
-    if (!currentUser) {
-        alert('لطفاً ابتدا وارد شوید.');
-        return;
-    }
-
-    const request_type = document.getElementById('invRequestType').value;
-    const investment_type = document.getElementById('invInvestmentType').value;
-    const amount = document.getElementById('invAmount').value;
-    const currency = document.getElementById('invCurrency').value;
-    const share_percent = document.getElementById('invSharePercent').value;
-    const duration = document.getElementById('invDuration').value;
-    const history = document.getElementById('invHistory').value;
-    const goal = document.getElementById('invGoal').value;
-    const preferred_country = document.getElementById('invPreferredCountry').value;
-    const project_status = document.getElementById('invProjectStatus').value;
-    const project_scale = document.getElementById('invProjectScale').value;
-    const expected_return = document.getElementById('invExpectedReturn').value;
-    const competitors = document.getElementById('invCompetitors').value;
-// ===== کدهای جدید برای سیستم ثبت‌نام و ورود =====
-const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // ⚠️ آدرس Web App خود را اینجا جایگذاری کنید
+// ⚠️ آدرس Web App خود را اینجا جایگذاری کنید
+const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
 let currentUser = null;
 
+// ============================
+// ۱. نمایش فرم‌ها
+// ============================
 function showRegister() {
     document.getElementById('registerForm').style.display = 'block';
     document.getElementById('loginForm').style.display = 'none';
@@ -2296,8 +2148,12 @@ function showLogin() {
     document.getElementById('registerForm').style.display = 'none';
 }
 
+// ============================
+// ۲. ثبت‌نام کاربر
+// ============================
 async function registerUser(e) {
     e.preventDefault();
+    
     const fullName = document.getElementById('regFullName').value.trim();
     const lastName = document.getElementById('regLastName').value.trim();
     const company = document.getElementById('regCompany').value.trim();
@@ -2308,13 +2164,14 @@ async function registerUser(e) {
     const password = document.getElementById('regPassword').value;
 
     if (!fullName || !lastName || !company || !email || !password || !country || !role) {
-        alert('Please fill in all required fields.');
+        alert('⚠️ Please fill in all required fields.');
         return;
     }
 
     try {
         const response = await fetch(SCRIPT_URL, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 action: 'register',
                 full_name: fullName,
@@ -2328,10 +2185,11 @@ async function registerUser(e) {
             })
         });
         const result = await response.json();
+        
         if (result.success) {
             alert('✅ Registration successful! You can now login.');
             showLogin();
-            document.getElementById('registerForm').reset();
+            document.getElementById('registerFormElement').reset();
         } else {
             alert('❌ Error: ' + result.message);
         }
@@ -2340,19 +2198,24 @@ async function registerUser(e) {
     }
 }
 
+// ============================
+// ۳. ورود کاربر
+// ============================
 async function loginUser(e) {
     e.preventDefault();
+    
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value;
 
     if (!email || !password) {
-        alert('Please enter your email and password.');
+        alert('⚠️ Please enter your email and password.');
         return;
     }
 
     try {
         const response = await fetch(SCRIPT_URL, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 action: 'login',
                 email: email,
@@ -2360,6 +2223,7 @@ async function loginUser(e) {
             })
         });
         const result = await response.json();
+        
         if (result.success) {
             currentUser = result.user;
             alert('✅ Login successful!');
@@ -2380,6 +2244,9 @@ async function loginUser(e) {
     }
 }
 
+// ============================
+// ۴. خروج کاربر
+// ============================
 function logoutUser() {
     currentUser = null;
     document.getElementById('logoutBtn').style.display = 'none';
@@ -2389,6 +2256,134 @@ function logoutUser() {
     document.getElementById('userName').textContent = '';
     document.getElementById('adminPanel').style.display = 'none';
     alert('✅ Logged out successfully.');
+}
+
+// ============================
+// ۵. پنل مدیریت (فقط با رمز)
+// ============================
+function adminLogin() {
+    if (!currentUser) {
+        alert('⚠️ Please login first.');
+        return;
+    }
+    if (currentUser.role !== 'admin') {
+        alert('❌ You do not have admin access.');
+        return;
+    }
+    const password = prompt('🔑 Enter admin password:');
+    if (password === 'AquaNexus2026') {
+        document.getElementById('adminPanel').style.display = 'block';
+        loadRequests();
+        document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+    } else if (password !== null) {
+        alert('❌ Wrong password!');
+    }
+}
+
+function logoutAdmin() {
+    document.getElementById('adminPanel').style.display = 'none';
+}
+
+// ============================
+// ۶. بارگذاری درخواست‌ها (برای ادمین)
+// ============================
+async function loadRequests() {
+    const container = document.getElementById('requestsList');
+    if (!container) {
+        // اگر المان وجود نداشت، آن را بساز
+        const panel = document.getElementById('adminPanel');
+        if (panel) {
+            const list = document.createElement('div');
+            list.id = 'requestsList';
+            list.innerHTML = '<p style="color:#6a7a8a;">Loading...</p>';
+            panel.querySelector('.container').appendChild(list);
+        }
+        return;
+    }
+    container.innerHTML = '<p style="color:#6a7a8a;">⏳ Loading...</p>';
+    
+    try {
+        const response = await fetch(SCRIPT_URL + '?action=getRequests&password=AquaNexus2026');
+        const result = await response.json();
+        
+        if (!result.success) {
+            container.innerHTML = '<p style="color:#e74c3c;">❌ Error: ' + result.message + '</p>';
+            return;
+        }
+        
+        if (result.data.length === 0) {
+            container.innerHTML = `
+                <div style="text-align:center; padding:60px 20px; color:#6a7a8a;">
+                    <i class="fas fa-inbox" style="font-size:4rem; display:block; margin-bottom:16px; color:var(--secondary);"></i>
+                    <p style="font-size:1.3rem; font-weight:600;">Inbox is empty</p>
+                    <p style="font-size:1rem;">No investment requests yet.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = '';
+        result.data.forEach(req => {
+            const statusColor = req.status === 'pending' ? '#f39c12' : (req.status === 'approved' ? '#27ae60' : '#e74c3c');
+            const statusText = req.status === 'pending' ? '⏳ Pending' : (req.status === 'approved' ? '✅ Approved' : '❌ Rejected');
+            const date = new Date(req.created_at).toLocaleDateString('en-US');
+            
+            const div = document.createElement('div');
+            div.className = 'request-item';
+            div.innerHTML = `
+                <div class="req-flex">
+                    <div class="req-info">
+                        <h4>${req.full_name || 'N/A'}</h4>
+                        <p><strong>${req.company || 'N/A'}</strong></p>
+                        <p><i class="fas fa-envelope"></i> ${req.email || 'N/A'}</p>
+                        <p><i class="fas fa-money-bill-wave"></i> ${req.amount || 'N/A'} ${req.currency || 'USD'}</p>
+                        <p><i class="fas fa-calendar-alt"></i> ${date}</p>
+                        ${req.message ? `<div class="msg-box">${req.message}</div>` : ''}
+                        ${req.file_url ? `<a href="${req.file_url}" target="_blank" style="color:var(--secondary);"><i class="fas fa-paperclip"></i> View File</a>` : ''}
+                    </div>
+                    <div class="req-status">
+                        <span class="status-badge ${req.status}">${statusText}</span>
+                        <div class="action-btns">
+                            <button class="approve-btn" onclick="updateRequest('${req.id}', 'approved')">✅ Approve</button>
+                            <button class="reject-btn" onclick="updateRequest('${req.id}', 'rejected')">❌ Reject</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+        
+    } catch (err) {
+        container.innerHTML = '<p style="color:#e74c3c;">❌ Error loading: ' + err.message + '</p>';
+    }
+}
+
+// ============================
+// ۷. به‌روزرسانی وضعیت درخواست
+// ============================
+async function updateRequest(id, newStatus) {
+    if (!confirm(`Change status to "${newStatus === 'approved' ? 'Approved' : 'Rejected'}"?`)) return;
+    
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'updateStatus',
+                id: id,
+                status: newStatus,
+                password: 'AquaNexus2026'
+            })
+        });
+        const result = await response.json();
+        if (result.success) {
+            loadRequests();
+        } else {
+            alert('❌ Error: ' + result.message);
+        }
+    } catch (err) {
+        alert('❌ Error: ' + err.message);
+    }
 }
 </body>
 </html>
