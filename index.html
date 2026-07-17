@@ -2021,15 +2021,15 @@
 <!-- ===== دکمه‌های بالای صفحه (ورود/ثبت‌نام/خروج/مدیریت) ===== -->
 <div class="auth-buttons" id="authButtons">
     <span class="user-name" id="userNameDisplay" style="display:none;"></span>
-    <button class="btn-login" id="loginBtn" onclick="showLoginForm()">🔑 ورود</button>
-    <button class="btn-register" id="registerBtn" onclick="showRegisterForm()">📝 ثبت‌نام</button>
+    <button class="btn-login" id="loginBtn" onclick="showLoginForm()">🔑 login</button>
+    <button class="btn-register" id="registerBtn" onclick="showRegisterForm()">📝 registerUser</button>
     <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 خروج</button>
     <button class="btn-admin" id="adminBtn" style="display:none;" onclick="adminLogin()">🔐 مدیریت</button>
 </div>
 
 <!-- ===== registerUser ===== -->
 <div id="registerFormContainer" class="auth-form hidden-form">
-    <h3>📝 ثبت‌نام</h3>
+    <h3>📝 registerUser</h3>
     <form onsubmit="registerUser(event)">
         <select id="regRole" required>
             <option value="">نوع هویت خود را انتخاب کنید</option>
@@ -2052,7 +2052,7 @@
 
 <!-- ===== login ===== -->
 <div id="loginFormContainer" class="auth-form hidden-form">
-    <h3>🔑 ورود</h3>
+    <h3>🔑 login</h3>
     <form onsubmit="loginUser(event)">
         <input type="email" id="loginEmail" placeholder="ایمیل" required>
         <input type="password" id="loginPassword" placeholder="رمز عبور" required>
