@@ -1006,12 +1006,13 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9991;ba
 .nx-action:hover{transform:translateY(-3px);border-color:rgba(88,224,232,.65);box-shadow:0 18px 50px rgba(0,0,0,.28)}
 .nx-hero-meta{position:absolute;left:34px;bottom:34px;z-index:6;color:rgba(255,255,255,.4);font-size:.55rem;letter-spacing:2px;text-transform:uppercase}
 .nx-hero-meta span{margin-right:18px}.nx-hero-meta b{color:#63e6be}
-.nx-command{max-width:1180px;margin:55px auto 10px;padding:0 20px}
+.nx-command{max-width:1180px;margin:55px auto 10px;padding:0 20px;background: transparent !important;}
 .nx-command-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:22px}.nx-command-head h2{font:800 clamp(1.8rem,4vw,3rem) Poppins,sans-serif;color:#061522;letter-spacing:-.04em}.nx-command-head p{max-width:520px;color:#5f7180;line-height:1.7;font-size:.92rem}
 .nx-command-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.nx-command-card{position:relative;min-height:175px;padding:25px;border-radius:22px;background:linear-gradient(145deg,#fff,#eef9fc);border:1px solid rgba(6,42,68,.09);box-shadow:0 18px 55px rgba(5,29,48,.08);overflow:hidden;transition:.45s var(--nx-ease)}
 .nx-command-card:before{content:"";position:absolute;inset:auto -20% -65% -20%;height:130px;background:radial-gradient(circle,rgba(57,169,255,.13),transparent 65%);transition:.45s}.nx-command-card:hover{transform:translateY(-7px);box-shadow:0 28px 70px rgba(5,29,48,.14);border-color:rgba(26,111,181,.18)}.nx-command-card:hover:before{transform:translateY(-15px)}
 .nx-command-no{font:800 .62rem Poppins,sans-serif;color:#1a6fb5;letter-spacing:2px}.nx-command-card h3{margin:13px 0 8px;font:800 1.15rem Poppins,sans-serif;color:#09243a}.nx-command-card p{font-size:.82rem;line-height:1.7;color:#627381;max-width:330px}
-.nx-trust{margin:70px auto 0;max-width:1120px;padding:0 20px}.nx-trust-inner{border-radius:24px;padding:24px 28px;background:#061522;color:white;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(255,255,255,.08);box-shadow:0 25px 80px rgba(0,0,0,.18)}.nx-trust-inner strong{font:800 .78rem Poppins,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#f4cf6b}.nx-trust-inner p{font-size:.78rem;color:rgba(255,255,255,.58);line-height:1.6;margin-top:4px}.nx-trust-badge{white-space:nowrap;padding:10px 15px;border:1px solid rgba(99,230,190,.3);border-radius:999px;color:#63e6be;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase}
+.nx-trust{margin:70px auto 0;max-width:1120px;padding:0 20px;background: transparent !important;}
+.nx-trust-inner{border-radius:24px;padding:24px 28px;background:#061522;color:white;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(255,255,255,.08);box-shadow:0 25px 80px rgba(0,0,0,.18)}.nx-trust-inner strong{font:800 .78rem Poppins,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#f4cf6b}.nx-trust-inner p{font-size:.78rem;color:rgba(255,255,255,.58);line-height:1.6;margin-top:4px}.nx-trust-badge{white-space:nowrap;padding:10px 15px;border:1px solid rgba(99,230,190,.3);border-radius:999px;color:#63e6be;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase}
 .section:not(.globe-section){border-top:1px solid rgba(6,42,68,.045)}
 .section .container{position:relative;z-index:2}.section-title{font-weight:800}.real-image,.real-image-sm{transition:transform .8s var(--nx-ease),filter .8s var(--nx-ease)}.grid-2>div:hover .real-image,.card:hover .real-image-sm{transform:scale(1.025);filter:saturate(1.06) contrast(1.03)}
 .nx-side-index{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:9995;display:flex;flex-direction:column;gap:7px}.nx-side-index a{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);display:block;box-shadow:0 0 0 1px rgba(6,21,34,.18);transition:.25s}.nx-side-index a:hover{transform:scale(1.8);background:#f4cf6b}.nx-side-index a span{display:none}
@@ -1324,7 +1325,9 @@ footer:before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;b
   </div>
 </div>
 <div class="nx-status-strip"><span><b>●</b> Platform presentation</span><span><i>◆</i> Investor-focused architecture</span><span><i>↗</i> Global deployment vision</span></div>
-<section class="nx-command" aria-label="AquaNexus platform overview">
+
+<!-- ===== بخش nx-command با پس‌زمینه شفاف ===== -->
+<section class="nx-command" aria-label="AquaNexus platform overview" style="background: transparent !important;">
   <div class="nx-command-head">
     <div><div class="nx-section-kicker">The architecture</div><h2>One platform. Multiple sovereign outcomes.</h2></div>
     <p>AquaNexus is presented as an integrated infrastructure architecture connecting geothermal energy, water security, food production, strategic materials and climate resilience in one system.</p>
@@ -1338,7 +1341,9 @@ footer:before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;b
     <a class="nx-command-card" href="#bank" style="text-decoration:none"><span class="nx-command-no">06 / CAPITAL</span><h3>Project Bank</h3><p>A structured pathway from technology and evidence toward projects, partnerships and investment review.</p></a>
   </div>
 </section>
-<section class="nx-trust">
+
+<!-- ===== بخش nx-trust با پس‌زمینه شفاف ===== -->
+<section class="nx-trust" style="background: transparent !important;">
   <div class="nx-trust-inner"><div><strong>Evidence-first architecture</strong><p>Claims, technical assumptions and financial scenarios should be reviewed against the underlying dossier, engineering studies and independent verification before investment decisions.</p></div><span class="nx-trust-badge">Due diligence ready</span></div>
 </section>
 
