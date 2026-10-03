@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AquaNexus — Integrated Infrastructure Platform</title>
+<meta name="description" content="Integrated Infrastructure Platform · Water · Energy · Food · Critical Materials"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@300;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --primary: #0a2a44; --secondary: #1a6fb5; --accent: #2a9d8f; --gold: #e9c46a; --light-bg: #d4f1f9; --dark: #0b1a2a; --shadow: 0 20px 40px rgba(0,0,0,0.08); --radius: 20px; --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(--light-bg); color: var(--dark); line-height: 1.8; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
+.section-title .highlight { color: var(--secondary); }
+.section-sub { font-size: 1.15rem; color: #3a4a5a; max-width: 680px; margin-bottom: 40px; opacity: 0.9; font-weight: 400; }
+.text-center { text-align: center; }
+.text-center .section-sub { margin-left: auto; margin-right: auto; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.card { background: rgba(255,255,255,0.92); backdrop-filter: blur(4px); padding: 32px 26px; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); border-bottom: 4px solid var(--secondary); }
+.card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.10); }
+.card h3 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 10px; }
+.card p { color: #3a4a5a; font-size: 1rem; }
+.card img { width: 100%; border-radius: 12px; margin-bottom: 16px; object-fit: cover; height: 200px; }
+.badge { display: inline-block; background: var(--gold); color: var(--dark); padding: 4px 16px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.5px; }
+.btn { display: inline-block; background: var(--gold); color: var(--dark); padding: 14px 40px; border-radius: 40px; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: var(--transition); border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+.btn:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(233,196,106,0.3); }
+.flag { font-size: 2rem; margin-bottom: 6px; display: block; }
+.office-card { text-align: center; padding: 24px; }
+.office-card h4 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; margin: 10px 0 4px; }
+.office-card p { color: #5a6a7a; font-size: 0.95rem; }
+.contact-form { background: rgba(255,255,255,0.92); backdrop-filter: blur(4px); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); max-width: 750px; margin: 0 auto; }
+.contact-form .form-row { margin-bottom: 18px; }
+.contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 14px 18px; border: 1px solid #dde4ec; border-radius: 12px; font-size: 1rem; transition: var(--transition); font-family: 'Inter', sans-serif; background: #fafcff; }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: var(--secondary); box-shadow: 0 0 0 4px rgba(26,111,181,0.1); }
+.contact-form textarea { min-height: 120px; resize: vertical; }
+.contact-form .btn { width: 100%; }
+.contact-form .btn-group { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.contact-form .btn-group .btn { flex: 1; min-width: 120px; }
+.contact-form .btn-secondary-form { background: transparent; color: var(--secondary); border: 2px solid var(--secondary); }
+.contact-form .btn-secondary-form:hover { background: var(--secondary); color: white; }
+.request-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+.request-tags .tag { padding: 8px 18px; border-radius: 30px; border: 2px solid #dde4ec; background: transparent; cursor: pointer; transition: var(--transition); font-size: 0.9rem; font-family: 'Inter', sans-serif; color: #4a5a6a; }
+.request-tags .tag:hover, .request-tags .tag.active { border-color: var(--secondary); background: var(--secondary); color: white; }
+.form-footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eef2f7; font-size: 0.9rem; color: #6a7a8a; }
+.form-footer .warnings { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; font-size: 0.9rem; color: #8a9aaa; }
+.status-msg { padding: 14px 20px; border-radius: 12px; margin-top: 16px; display: none; font-weight: 500; font-family: 'Inter', sans-serif; }
+.status-msg.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.status-msg.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 20px; text-align: center; margin-top: 40px; }
+.footer a { color: var(--gold); text-decoration: none; }
+.hero { width: 100%; height: 100vh; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; background: var(--dark); }
+.hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); z-index: 1; pointer-events: none; }
+.hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero .hero-content { position: relative; z-index: 2; max-width: 1100px; width: 90%; padding: 20px 30px; text-align: center; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.9); margin: 0 auto; }
+.hero .hero-content h1 { font-family: 'Poppins', sans-serif; font-size: clamp(3.5rem, 10vw, 8rem); font-weight: 900; letter-spacing: 2px; background: linear-gradient(135deg, #f9d976 10%, #f39c12 40%, #e67e22 70%, #f1c40f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; line-height: 1.1; }
+.hero .hero-content .hero-sub { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; color: #f1c40f; margin-top: 6px; letter-spacing: 2px; }
+.hero .hero-content .hero-title { font-size: clamp(1.4rem, 2.2vw, 2.4rem); font-weight: 400; color: #ffffff; margin-top: 6px; letter-spacing: 1px; }
+.hero .hero-content .hero-desc { font-size: clamp(1.6rem, 2.8vw, 2.8rem); font-weight: 600; color: #ffffff; margin-top: 18px; letter-spacing: 3px; border-top: 2px solid rgba(255,255,255,0.15); padding-top: 18px; }
+.hero .hero-content .hero-tags { font-size: clamp(1.2rem, 1.8vw, 1.9rem); font-weight: 400; color: rgba(255,255,255,0.85); margin-top: 12px; letter-spacing: 2px; }
+.hero .hero-content .hero-footer { font-size: clamp(1rem, 1.6vw, 1.6rem); font-weight: 300; color: rgba(255,255,255,0.6); margin-top: 14px; letter-spacing: 3px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px; }
+@media (max-width: 600px) {
+    .section { padding: 50px 0; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .contact-form { padding: 24px; }
+    .contact-form .btn-group { flex-direction: column; }
+    .request-tags .tag { font-size: 0.8rem; padding: 6px 14px; }
+    .mobile-menu { width: 280px; left: -300px; top: 60px !important; height: calc(100vh - 60px) !important; z-index: 10002; overflow-y: auto !important; padding-bottom: 40px !important; }
+    .mobile-menu.open { left: 0; }
+    .menu-toggle { z-index: 10001 !important; top: 12px !important; left: 10px !important; padding: 6px 12px; font-size: 1.4rem; background: transparent !important; border: none !important; color: white; }
+    .hero { height: 70vh; }
+    .hero .hero-content { padding: 40px 15px 15px 15px; width: 95%; margin-top: 70px !important; }
+    .hero .hero-content h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
+    .hero .hero-content .hero-sub { font-size: clamp(1.4rem, 4vw, 2rem); }
+    .hero .hero-content .hero-title { font-size: clamp(1rem, 2.2vw, 1.4rem); }
+    .hero .hero-content .hero-desc { font-size: clamp(1.2rem, 2.8vw, 1.6rem); }
+    .hero .hero-content .hero-tags { font-size: clamp(0.8rem, 1.8vw, 1.2rem); }
+    .hero .hero-content .hero-footer { font-size: clamp(0.7rem, 1.6vw, 1rem); }
+    .globe-section .globe-container { height: 300px; }
+    .achievement-item { flex-direction: column; text-align: center; }
+    .dashboard-grid { grid-template-columns: 1fr !important; }
+    html, body { overflow-x: hidden; width: 100%; }
+}
+.calc-trigger { display: inline-block; background: var(--secondary); color: white; padding: 12px 32px; border-radius: 40px; font-weight: 700; font-size: 1.05rem; border: none; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; margin-top: 12px; }
+.contact-options { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+.contact-options .contact-opt { background: rgba(255,255,255,0.7); padding: 10px 20px; border-radius: 40px; border: 2px solid #dde4ec; cursor: pointer; transition: var(--transition); font-weight: 600; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+.contact-options .contact-opt:hover, .contact-options .contact-opt.active { border-color: var(--secondary); background: var(--secondary); color: white; }
+.menu-toggle { position: fixed; top: 20px; left: 20px; z-index: 1000; background: rgba(10,42,68,0.75); backdrop-filter: blur(12px); border: none; color: white; font-size: 1.8rem; padding: 8px 16px; border-radius: 40px; cursor: pointer; transition: var(--transition); border: 1px solid rgba(255,255,255,0.15); }
+.menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
+.menu-overlay.open { display: block; }
+.mobile-menu { position: fixed; top: 0; left: -340px; width: 320px; height: 100%; background: var(--dark); z-index: 1001; padding: 30px 20px; overflow-y: auto; transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 4px 0 30px rgba(0,0,0,0.4); }
+.mobile-menu.open { left: 0; }
+.mobile-menu .menu-header { color: white; font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: 1px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; text-align: center; background: linear-gradient(135deg, #fff 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.3; }
+.mobile-menu .close-menu { background: transparent; border: none; color: white; font-size: 2rem; float: right; cursor: pointer; opacity: 0.7; }
+.mobile-menu ul { list-style: none; padding: 0; margin-top: 10px; }
+.mobile-menu ul li a { display: block; color: rgba(255,255,255,0.9); text-decoration: none; font-size: 1.2rem; padding: 12px 16px; border-radius: 10px; transition: var(--transition); border-left: 3px solid transparent; font-weight: 500; font-family: 'Inter', sans-serif; }
+.mobile-menu ul li a:hover { background: rgba(255,255,255,0.06); color: white; border-left-color: var(--gold); }
+.globe-section { background: var(--dark); color: white; padding: 60px 0; text-align: center; position: relative; overflow: hidden; min-height: 500px; }
+.globe-section .globe-container { width: 100%; height: 450px; max-width: 600px; margin: 0 auto; }
+.globe-section h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; margin-bottom: 10px; }
+.globe-section p { opacity: 0.8; margin-bottom: 30px; font-size: 1.1rem; }
+.achievement-item { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.92); padding: 16px 24px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px; }
+.achievement-item img { width: 80px; height: 80px; object-fit: contain; border-radius: 12px; flex-shrink: 0; background: white; padding: 4px; }
+.achievement-item .ach-text { flex: 1; }
+.achievement-item .ach-text h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 2px; }
+.achievement-item .ach-text p { color: #6a7a8a; font-size: 0.95rem; margin: 0; }
+.real-image { width: 100%; border-radius: var(--radius); object-fit: cover; }
+.real-image-sm { width: 100%; height: 180px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(6px); }
+.modal-overlay.open { display: flex; }
+.modal-box { background: white; max-width: 560px; width: 95%; border-radius: var(--radius); padding: 40px 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
+.modal-box .modal-close { float: right; background: transparent; border: none; font-size: 2rem; cursor: pointer; color: #6a7a8a; }
+.modal-box h2 { font-family: 'Poppins', sans-serif; margin-bottom: 16px; }
+.modal-box label { display: block; margin: 12px 0 4px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.modal-box input, .modal-box select { width: 100%; padding: 12px 16px; border: 1px solid #dde4ec; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; }
+.modal-box .radio-group { display: flex; gap: 16px; margin: 8px 0; flex-wrap: wrap; }
+.modal-box .radio-group label { display: flex; align-items: center; gap: 6px; font-weight: 400; cursor: pointer; }
+.modal-box .calc-result { background: var(--light-bg); padding: 16px 20px; border-radius: 12px; margin: 16px 0; font-family: 'Poppins', sans-serif; font-size: 1.1rem; text-align: center; border-left: 4px solid var(--secondary); }
+.modal-box .calc-note { font-size: 0.85rem; color: #6a7a8a; padding: 12px; background: #f8f9fa; border-radius: 10px; margin-top: 12px; }
+.img-caption { font-size: 0.9rem; color: #4a5a6a; text-align: center; margin-top: 6px; font-style: italic; }
+.section .grid-2 .img-wrapper { display: flex; flex-direction: column; }
+.article-card { background: rgba(255,255,255,0.92); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.article-card img { width: 100%; height: 200px; object-fit: cover; }
+.article-card .article-body { padding: 18px 20px; }
+.article-card .article-body h4 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 6px; }
+.article-card .article-body p { font-size: 0.95rem; color: #5a6a7a; }
+.country-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+.country-gallery .country-item { text-align: center; padding: 15px 10px; }
+.country-gallery .country-item h4 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); font-weight: 700; }
+.country-gallery .country-item .img-row { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+.country-gallery .country-item .img-row img { width: 100%; max-width: 550px; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; cursor: zoom-in; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+
+/* ===== LANGUAGE SWITCHER — right side dropdown ===== */
+.lang-switcher { position: fixed; top: 24px; right: 24px; z-index: 9999; }
+.lang-switcher .lang-current { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(10,42,68,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; color: white; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.lang-switcher .lang-current:hover { background: rgba(10,42,68,1); }
+.lang-switcher .lang-current .flag-emoji { font-size: 1.3rem; line-height: 1; }
+.lang-switcher .lang-current .lang-code { letter-spacing: 1px; }
+.lang-switcher .lang-current .fa-chevron-down { font-size: 0.7rem; transition: transform 0.3s; opacity: 0.8; }
+.lang-switcher.open .lang-current .fa-chevron-down { transform: rotate(180deg); }
+.lang-switcher .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; min-width: 180px; background: white; border-radius: 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; border: 1px solid #e5ecf2; }
+.lang-switcher.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-switcher .lang-dropdown .flag-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0b1a2a; border-bottom: 1px solid #f0f4f8; }
+.lang-switcher .lang-dropdown .flag-item:last-child { border-bottom: none; }
+.lang-switcher .lang-dropdown .flag-item:hover { background: #f0f7ff; }
+.lang-switcher .lang-dropdown .flag-item.active { background: linear-gradient(135deg, #e9c46a, #f0d38a); font-weight: 700; }
+.lang-switcher .lang-dropdown .flag-item .flag-emoji { font-size: 1.4rem; line-height: 1; }
+@media (max-width: 600px) {
+    .lang-switcher { top: 14px; right: 14px; }
+    .lang-switcher .lang-current { padding: 8px 12px; font-size: 0.8rem; }
+    .lang-switcher .lang-dropdown { min-width: 160px; }
+    .lang-switcher .lang-dropdown .flag-item { padding: 12px 14px; font-size: 0.9rem; }
+}
+
+.auth-buttons { position: fixed; top: 70px; right: 20px; z-index: 999; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.auth-buttons button { padding: 6px 16px; border-radius: 30px; border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; }
+.auth-buttons .btn-login { background: var(--secondary); color: white; }
+.auth-buttons .btn-register { background: var(--gold); color: var(--dark); }
+.auth-buttons .btn-logout { background: #e74c3c; color: white; }
+.auth-buttons .user-name { color: white; background: rgba(0,0,0,0.4); padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; }
+.auth-form { max-width: 500px; margin: 20px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+.auth-form h3 { font-family: 'Poppins', sans-serif; margin-bottom: 20px; text-align: center; }
+.auth-form input, .auth-form select { width: 100%; padding: 12px 16px; margin-bottom: 12px; border: 1px solid #dde4ec; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; background: #fafcff; }
+.auth-form .btn { width: 100%; padding: 14px; font-size: 1.05rem; }
+.auth-form .switch-link { display: block; text-align: center; margin-top: 12px; color: var(--secondary); cursor: pointer; font-weight: 500; }
+.hidden-form { display: none; }
+.auth-close { position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; border: 1px solid rgba(7,24,38,.10); border-radius: 50%; background: rgba(255,255,255,.78); color: #142b3d; font: 700 29px/1 Inter, sans-serif; cursor: pointer; display: grid; place-items: center; z-index: 20; }
+.auth-backdrop { position: fixed; inset: 0; z-index: 10009; background: rgba(1,9,17,.64); backdrop-filter: blur(5px); opacity: 0; pointer-events: none; transition: opacity .22s ease; }
+.auth-backdrop.open { opacity: 1; pointer-events: auto; }
+#registerFormContainer.auth-open, #loginFormContainer.auth-open { display: block !important; position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: min(680px, calc(100% - 28px)) !important; max-height: calc(100svh - 120px) !important; margin: 0 !important; overflow: auto !important; z-index: 10030 !important; }
+@media (max-width: 600px) {
+    .auth-buttons { top: 60px; right: 10px; gap: 4px; }
+    .auth-buttons button { padding: 4px 10px; font-size: 0.7rem; }
+    .auth-form { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LANGUAGE SWITCHER ===== -->
+<div class="lang-switcher" id="langSwitcher">
+    <button class="lang-current" id="langCurrent" type="button">
+        <span class="flag-emoji">🇬🇧</span>
+        <span class="lang-code">EN</span>
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+        <div class="flag-item active" data-lang="en"><span class="flag-emoji">🇬🇧</span><span>English</span></div>
+        <div class="flag-item" data-lang="ar"><span class="flag-emoji">🇸🇦</span><span>العربية</span></div>
+        <div class="flag-item" data-lang="de"><span class="flag-emoji">🇩🇪</span><span>Deutsch</span></div>
+        <div class="flag-item" data-lang="fr"><span class="flag-emoji">🇫🇷</span><span>Français</span></div>
+    </div>
+</div>
+
+<!-- ===== MOBILE MENU ===== -->
+<button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+    <div class="menu-header">AQUANEXUS</div>
+    <ul>
+        <li><a href="#hero" data-key="menu_home">Home</a></li>
+        <li><a href="#energy" data-key="menu_energy">Energy</a></li>
+        <li><a href="#water" data-key="menu_water">Water</a></li>
+        <li><a href="#agriculture" data-key="menu_agri">Agriculture</a></li>
+        <li><a href="#metals" data-key="menu_metals">Metals</a></li>
+        <li><a href="#employment" data-key="menu_employment">Employment</a></li>
+        <li><a href="#hvac" data-key="menu_hvac">Heating &amp; Cooling</a></li>
+        <li><a href="#salt" data-key="menu_salt">Salt</a></li>
+        <li><a href="#carbon" data-key="menu_carbon">Zero Carbon</a></li>
+        <li><a href="#tourism" data-key="menu_tourism">Tourism</a></li>
+        <li><a href="#offices" data-key="menu_offices">Global Offices</a></li>
+        <li><a href="#bank" data-key="menu_bank">Project Bank</a></li>
+        <li><a href="#docs" data-key="menu_docs">Technical Dossier</a></li>
+        <li><a href="#achievements" data-key="menu_achievements">Achievements</a></li>
+        <li><a href="#articles" data-key="menu_articles">Read More</a></li>
+        <li><a href="#future-vision" data-key="menu_future">Future Vision</a></li>
+        <li><a href="#roadmap" data-key="menu_roadmap">Roadmap</a></li>
+        <li><a href="#dashboard" data-key="menu_dashboard">Dashboard</a></li>
+        <li><a href="#dataroom" data-key="menu_dataroom">Investor Data Room</a></li>
+        <li><a href="#calculator" data-key="menu_calculator">Calculator</a></li>
+        <li><a href="#contact" data-key="menu_contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <video autoplay muted loop playsinline>
+        <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+        <h1 data-key="hero_title">AQUANEXUS</h1>
+        <p class="hero-sub" data-key="hero_sub">Vahid Nezamivand Chegane</p>
+        <p class="hero-title" data-key="hero_title2">Founder &amp; Systems Architect</p>
+        <p class="hero-desc" data-key="hero_desc">Integrated Infrastructure Platform</p>
+        <p class="hero-tags" data-key="hero_tags">Water • Energy • Food • Critical Materials</p>
+        <p class="hero-footer" data-key="hero_footer">Designed for Water-Stressed Regions</p>
+        <div style="margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <a class="btn" href="#dataroom" data-key="hero_btn1" style="background:linear-gradient(135deg,#f4cf6b,#d9a93f);color:#061522;font-size:0.85rem;padding:12px 24px;">Investor Gateway</a>
+            <a class="btn" href="#bank" data-key="hero_btn2" style="background:transparent;color:white;border:1px solid rgba(255,255,255,0.3);font-size:0.85rem;padding:12px 24px;">Explore Platform</a>
+            <a class="btn" href="#docs" data-key="hero_btn3" style="background:transparent;color:white;border:1px solid rgba(255,255,255,0.3);font-size:0.85rem;padding:12px 24px;">Technical Evidence</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<div style="position:relative;z-index:5;margin-top:-65px;padding:0 20px;">
+    <div style="max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(5,21,34,0.82);border:1px solid rgba(255,255,255,0.12);border-radius:24px;overflow:hidden;backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,0.25);">
+        <div style="padding:25px 18px;text-align:center;color:white;border-right:1px solid rgba(255,255,255,0.08);"><strong style="display:block;font:800 clamp(1.45rem,3vw,2.5rem) Poppins,sans-serif;color:#f4cf6b;">24/7</strong><span data-key="metric_1" style="display:block;color:rgba(255,255,255,0.58);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;">Baseload Energy</span></div>
+        <div style="padding:25px 18px;text-align:center;color:white;border-right:1px solid rgba(255,255,255,0.08);"><strong style="display:block;font:800 clamp(1.45rem,3vw,2.5rem) Poppins,sans-serif;color:#f4cf6b;">7</strong><span data-key="metric_2" style="display:block;color:rgba(255,255,255,0.58);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;">Revenue Streams</span></div>
+        <div style="padding:25px 18px;text-align:center;color:white;border-right:1px solid rgba(255,255,255,0.08);"><strong style="display:block;font:800 clamp(1.45rem,3vw,2.5rem) Poppins,sans-serif;color:#f4cf6b;">5</strong><span data-key="metric_3" style="display:block;color:rgba(255,255,255,0.58);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;">Continents</span></div>
+        <div style="padding:25px 18px;text-align:center;color:white;"><strong style="display:block;font:800 clamp(1.45rem,3vw,2.5rem) Poppins,sans-serif;color:#f4cf6b;">Multi-GW</strong><span data-key="metric_4" style="display:block;color:rgba(255,255,255,0.58);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;">Long-Term Scale</span></div>
+    </div>
+</div>
+
+<!-- ===== COMMAND ===== -->
+<section class="section" style="background:white;">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:40px;">
+            <h2 class="section-title"><span class="highlight" data-key="cmd_hl">One Platform.</span> <span data-key="cmd_title">Multiple Outcomes.</span></h2>
+            <p class="section-sub" style="margin:0 auto;" data-key="cmd_sub">AquaNexus integrates geothermal energy, water security, food production, strategic materials and climate resilience in one system.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card"><span class="badge" data-key="cmd_1_b">01 / Energy</span><h3 data-key="cmd_1_t">Baseload Power</h3><p data-key="cmd_1_d">Geothermal infrastructure designed around continuous generation.</p></div>
+            <div class="card"><span class="badge" data-key="cmd_2_b">02 / Water</span><h3 data-key="cmd_2_t">Water Security</h3><p data-key="cmd_2_d">Desalination, thermal water and aquifer recharge.</p></div>
+            <div class="card"><span class="badge" data-key="cmd_3_b">03 / Food</span><h3 data-key="cmd_3_t">Controlled Agriculture</h3><p data-key="cmd_3_d">Greenhouse production using thermal resources.</p></div>
+            <div class="card"><span class="badge" data-key="cmd_4_b">04 / Materials</span><h3 data-key="cmd_4_t">Strategic Minerals</h3><p data-key="cmd_4_d">Lithium and other strategic materials.</p></div>
+            <div class="card"><span class="badge" data-key="cmd_5_b">05 / Climate</span><h3 data-key="cmd_5_t">Resource Efficiency</h3><p data-key="cmd_5_d">Closed-loop concepts and cascading resource use.</p></div>
+            <div class="card"><span class="badge" data-key="cmd_6_b">06 / Capital</span><h3 data-key="cmd_6_t">Project Bank</h3><p data-key="cmd_6_d">Pathway from technology to investment review.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GLOBE ===== -->
+<section class="globe-section" id="globe">
+    <div class="container">
+        <h2 data-key="globe_title">Global Vision</h2>
+        <p data-key="globe_sub">Strategic offices worldwide.</p>
+        <div class="globe-container" id="globeContainer"></div>
+    </div>
+</section>
+
+<!-- ===== ENERGY ===== -->
+<section class="section" style="background: white;" id="energy">
+    <div class="container"><div class="grid-2"><div>
+        <span class="badge" data-key="energy_badge">Revenue Stream 1</span>
+        <h2 class="section-title"><span class="highlight" data-key="energy_hl">Geothermal</span> <span data-key="energy_title">Energy</span></h2>
+        <p class="section-sub" data-key="energy_sub">24/7 clean power generation · 4-season heating &amp; cooling · Independent of wind or solar</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="energy_li1">✔ 24/7 continuous power generation</li>
+            <li style="padding:8px 0;" data-key="energy_li2">✔ Independent of wind or solar</li>
+            <li style="padding:8px 0;" data-key="energy_li3">✔ No expensive batteries required</li>
+            <li style="padding:8px 0;" data-key="energy_li4">✔ 4-season heating &amp; cooling</li>
+            <li style="padding:8px 0;color:var(--secondary);font-weight:500;" data-key="energy_li5">♻️ Injection of fresh water to increase reservoir pressure</li>
+        </ul>
+    </div><div class="img-wrapper">
+        <img src="Zamin,mozab.jpeg" alt="Geothermal Energy" class="real-image">
+        <p class="img-caption" data-key="energy_cap">Geothermal energy harnessed from the earth's core</p>
+    </div></div></div>
+</section>
+
+<!-- ===== WATER ===== -->
+<section class="section" style="background: var(--light-bg);" id="water">
+    <div class="container"><div class="grid-2"><div class="img-wrapper">
+        <video autoplay muted loop playsinline style="width:100%; border-radius: var(--radius);"><source src="Tazriq,abe.mp4" type="video/mp4"></video>
+        <p class="img-caption" style="font-weight:600;color:var(--secondary);" data-key="water_cap1">💧 Injection of drinking water into aquifers</p>
+    </div><div>
+        <span class="badge" data-key="water_badge">Revenue Stream 2</span>
+        <h2 class="section-title"><span class="highlight" data-key="water_hl">Fresh &amp;</span> <span data-key="water_title">Thermal Water</span></h2>
+        <p class="section-sub" data-key="water_sub">Massive seawater desalination · Injection into aquifers for future generations</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="water_li1">✔ Massive seawater desalination</li>
+            <li style="padding:8px 0;" data-key="water_li2">✔ Injection of drinking water into aquifers</li>
+            <li style="padding:8px 0;" data-key="water_li3">✔ Mineral hot water for natural springs &amp; spas</li>
+            <li style="padding:8px 0;color:var(--secondary);font-weight:500;" data-key="water_li4">🌍 Building a water bank for future generations</li>
+        </ul>
+    </div></div></div>
+</section>
+
+<!-- ===== AGRICULTURE ===== -->
+<section class="section" style="background: white;" id="agriculture">
+    <div class="container"><div class="grid-2"><div>
+        <span class="badge" data-key="agri_badge">Revenue Stream 3</span>
+        <h2 class="section-title"><span class="highlight" data-key="agri_hl">Sustainable</span> <span data-key="agri_title">Agriculture</span></h2>
+        <p class="section-sub" data-key="agri_sub">National self-sufficiency · Sustainable food security</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="agri_li1">✔ Year-round production in greenhouses</li>
+            <li style="padding:8px 0;" data-key="agri_li2">✔ Self-sufficiency in fruits &amp; vegetables</li>
+            <li style="padding:8px 0;" data-key="agri_li3">✔ Export of surplus products</li>
+        </ul>
+    </div><div class="img-wrapper">
+        <img src="Golkhane.jpeg" alt="Greenhouse agriculture" class="real-image">
+        <p class="img-caption" data-key="agri_cap">Modern greenhouses producing fresh food year-round</p>
+    </div></div></div>
+</section>
+
+<!-- ===== METALS ===== -->
+<section class="section" style="background: var(--light-bg);" id="metals">
+    <div class="container text-center">
+        <span class="badge" data-key="metals_badge">Revenue Stream 4</span>
+        <h2 class="section-title"><span class="highlight" data-key="metals_hl">Strategic</span> <span data-key="metals_title">Metals</span></h2>
+        <p class="section-sub" data-key="metals_sub">Gold · Silver · Tungsten · Lithium – Critical raw materials</p>
+        <div class="grid-4">
+            <div class="card"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400" class="real-image-sm"><h3 data-key="metals_g">Gold</h3><p data-key="metals_gd">Value reserve, electronics &amp; medical</p></div>
+            <div class="card"><img src="Noghere.jpg" class="real-image-sm"><h3 data-key="metals_s">Silver</h3><p data-key="metals_sd">Solar, electronics &amp; jewelry</p></div>
+            <div class="card"><img src="Tangstan.jpg" class="real-image-sm"><h3 data-key="metals_t">Tungsten</h3><p data-key="metals_td">Aerospace &amp; defense</p></div>
+            <div class="card"><img src="Letiyom1.webp" class="real-image-sm"><h3 data-key="metals_l">Lithium</h3><p data-key="metals_ld">EV batteries &amp; energy storage</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXTRACTION ===== -->
+<section class="section" style="background: white;" id="extraction">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="ext_hl">Resource</span> <span data-key="ext_title">Recovery</span></h2>
+        <p class="section-sub" style="margin:0 auto;" data-key="ext_sub">Extraction of lithium, gold, silver, tungsten and rare earth elements from geothermal brine</p>
+        <div class="grid-3">
+            <div class="card"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400" class="real-image-sm"><h3 data-key="ext_1_t">100 MW Baseload Power</h3><p data-key="ext_1_d">24/7 clean energy from geothermal steam turbines</p></div>
+            <div class="card"><img src="Letiyom1.webp" class="real-image-sm"><h3 data-key="ext_2_t">12,000 Tons Lithium / Year</h3><p data-key="ext_2_d">Battery-grade lithium from geothermal brine</p></div>
+            <div class="card"><img src="0.qimat.png" class="real-image-sm"><h3 data-key="ext_3_t">Integrated Cost Structure</h3><p data-key="ext_3_d">Multi-revenue platform designed for competitive economics</p></div>
+        </div>
+        <div style="margin-top:30px;">
+            <img src="ChatGPT Image Jul 11, 2026, 01_18_50 PM.png" style="width:100%;max-width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block;">
+        </div>
+    </div>
+</section>
+
+<!-- ===== EMPLOYMENT ===== -->
+<section class="section" style="background: var(--light-bg);" id="employment">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="emp_hl">Employment</span> <span data-key="emp_title">&amp; Job Creation</span></h2>
+        <div class="grid-2" style="margin-top:30px;">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800" class="real-image">
+                <p class="img-caption" data-key="emp_cap">Thousands of direct and indirect jobs across the value chain</p>
+            </div>
+            <div style="text-align:left;">
+                <h3 style="font-family:'Poppins',sans-serif;margin-bottom:16px;color:var(--secondary);" data-key="emp_sub">Direct &amp; Indirect Employment</h3>
+                <ul style="list-style:none;padding:0;">
+                    <li style="padding:8px 0;" data-key="emp_li1">✔ 700+ direct jobs (pilot phase)</li>
+                    <li style="padding:8px 0;" data-key="emp_li2">✔ 70,000+ direct &amp; indirect jobs (full scale)</li>
+                    <li style="padding:8px 0;" data-key="emp_li3">✔ Sustainable job creation across multiple sectors</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HVAC ===== -->
+<section class="section" style="background: white;" id="hvac">
+    <div class="container"><div class="grid-2"><div>
+        <span class="badge" data-key="hvac_badge">Revenue Stream 5</span>
+        <h2 class="section-title"><span class="highlight" data-key="hvac_hl">Heating &amp;</span> <span data-key="hvac_title">Cooling</span></h2>
+        <p class="section-sub" data-key="hvac_sub">20 MW of heating &amp; cooling capacity for industrial, residential, and agricultural use</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="hvac_li1">✔ District heating &amp; cooling networks</li>
+            <li style="padding:8px 0;" data-key="hvac_li2">✔ 20 MW thermal energy capacity</li>
+            <li style="padding:8px 0;" data-key="hvac_li3">✔ Perfect for data centers and greenhouses</li>
+        </ul>
+    </div><div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800" class="real-image">
+        <p class="img-caption" data-key="hvac_cap">District heating &amp; cooling</p>
+    </div></div></div>
+</section>
+
+<!-- ===== SALT ===== -->
+<section class="section" style="background: var(--light-bg);" id="salt">
+    <div class="container"><div class="grid-2"><div>
+        <span class="badge" data-key="salt_badge">Revenue Stream 6</span>
+        <h2 class="section-title"><span class="highlight" data-key="salt_hl">Sea</span> <span data-key="salt_title">Salt</span></h2>
+        <p class="section-sub" data-key="salt_sub">Food-grade &amp; industrial salt production from saline water</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="salt_li1">✔ Domestic supply &amp; export</li>
+            <li style="padding:8px 0;" data-key="salt_li2">✔ Industrial salt for chemical industries</li>
+            <li style="padding:8px 0;" data-key="salt_li3">✔ Food-grade salt with global standards</li>
+        </ul>
+    </div><div><img src="Namak.jpg" class="real-image"></div></div></div>
+</section>
+
+<!-- ===== CARBON ===== -->
+<section class="section" style="background: white;" id="carbon">
+    <div class="container"><div class="grid-2"><div><img src="iziro(6).jpg" class="real-image"></div><div>
+        <span class="badge" data-key="carbon_badge">Revenue Stream 7</span>
+        <h2 class="section-title"><span class="highlight" data-key="carbon_hl">Zero</span> <span data-key="carbon_title">Carbon</span></h2>
+        <p class="section-sub" data-key="carbon_sub">Sustainable carbon reduction · Tradeable carbon credits</p>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:8px 0;" data-key="carbon_li1">✔ Zero carbon emissions</li>
+            <li style="padding:8px 0;" data-key="carbon_li2">✔ Tradeable carbon credits</li>
+            <li style="padding:8px 0;" data-key="carbon_li3">✔ Partnership with global green funds</li>
+        </ul>
+    </div></div></div>
+</section>
+
+<!-- ===== TOURISM ===== -->
+<section class="section" style="background: var(--light-bg);" id="tourism">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="tour_hl">Tourism</span> <span data-key="tour_title">&amp; Thermal Springs</span></h2>
+        <div class="grid-2">
+            <div class="img-wrapper">
+                <video autoplay muted loop playsinline style="width:100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    <source src="Cheme,abegarm.mp4" type="video/mp4">
+                </video>
+                <p class="img-caption" data-key="tour_cap1">Luxury thermal spas</p>
+            </div>
+            <div class="img-wrapper">
+                <img src="Cheshme2.jpg" alt="Natural hot spring" class="real-image">
+                <p class="img-caption" data-key="tour_cap2">Natural hot springs</p>
+            </div>
+        </div>
+        <ul style="list-style: none; padding: 0; max-width: 700px; margin: 20px auto; text-align: left;">
+            <li style="padding: 8px 0;" data-key="tour_li1">✔ Hot mineral water for therapeutic spas</li>
+            <li style="padding: 8px 0;" data-key="tour_li2">✔ Attracting international health tourism</li>
+            <li style="padding: 8px 0;" data-key="tour_li3">✔ Foreign currency revenue from tourism</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===== OFFICES ===== -->
+<section class="section" style="background: white;" id="offices">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="off_hl">International</span> <span data-key="off_title">Offices</span></h2>
+        <p class="section-sub" style="margin:0 auto;" data-key="off_sub">Strategic hubs worldwide</p>
+        <div class="grid-3" style="margin-top:30px;">
+            <div class="card office-card"><span class="flag">🇬🇧</span><h4 data-key="off_1_t">London, UK</h4><p data-key="off_1_d">Financial &amp; Investment Office</p></div>
+            <div class="card office-card"><span class="flag">🇸🇦</span><h4 data-key="off_2_t">Jeddah, Saudi Arabia</h4><p data-key="off_2_d">Middle East Office</p></div>
+            <div class="card office-card"><span class="flag">🇦🇪</span><h4 data-key="off_3_t">Masdar, UAE</h4><p data-key="off_3_d">Green Technology Office</p></div>
+            <div class="card office-card"><span class="flag">🇸🇪</span><h4 data-key="off_4_t">Stockholm, Sweden</h4><p data-key="off_4_d">R&amp;D Office</p></div>
+            <div class="card office-card"><span class="flag">🇴🇲</span><h4 data-key="off_5_t">Muscat, Oman</h4><p data-key="off_5_d">Operations Office</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BANK ===== -->
+<section class="section" style="background: var(--light-bg);" id="bank">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="bank_hl">Project</span> <span data-key="bank_title">Dedicated Bank</span></h2>
+        <p class="section-sub" style="margin:0 auto 30px;" data-key="bank_sub">Investment management · Full financial transparency</p>
+        <div class="grid-3">
+            <div class="card"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400" class="real-image-sm"><h3 data-key="bank_1_t">Capital Management</h3><p data-key="bank_1_d">Full transparency in capital raising and allocation</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400" class="real-image-sm"><h3 data-key="bank_2_t">Sustainable Returns</h3><p data-key="bank_2_d">Infrastructure-grade returns with controlled risk</p></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400" class="real-image-sm"><h3 data-key="bank_3_t">Financial Security</h3><p data-key="bank_3_d">Investor protection with strong legal structure</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DOCS ===== -->
+<section class="section" style="background: white;" id="docs">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="docs_hl">Complete</span> <span data-key="docs_title">Technical Dossier</span></h2>
+        <p class="section-sub" style="margin:0 auto 30px;" data-key="docs_sub">University studies · GIS maps · Financial scenarios · Available for verified investors</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;">
+            <div style="background:rgba(255,255,255,0.92);padding:24px 32px;border-radius:var(--radius);box-shadow:var(--shadow);min-width:200px;"><i class="fas fa-file-pdf" style="font-size:2.5rem;color:#e74c3c;"></i><p style="font-weight:600;margin-top:8px;font-family:'Poppins',sans-serif;" data-key="docs_1">194-page Dossier</p></div>
+            <div style="background:rgba(255,255,255,0.92);padding:24px 32px;border-radius:var(--radius);box-shadow:var(--shadow);min-width:200px;"><i class="fas fa-file-excel" style="font-size:2.5rem;color:#27ae60;"></i><p style="font-weight:600;margin-top:8px;font-family:'Poppins',sans-serif;" data-key="docs_2">34 Excel Sheets</p></div>
+            <div style="background:rgba(255,255,255,0.92);padding:24px 32px;border-radius:var(--radius);box-shadow:var(--shadow);min-width:200px;"><i class="fas fa-map" style="font-size:2.5rem;color:#3498db;"></i><p style="font-weight:600;margin-top:8px;font-family:'Poppins',sans-serif;" data-key="docs_3">Multi-Country Maps</p></div>
+        </div>
+        <p style="margin-top:30px;color:#4a5a6a;font-style:italic;" data-key="docs_note">🔒 Technical information only available to verified investors after NDA signature</p>
+    </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section class="section" style="background: var(--light-bg);" id="achievements">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="ach_hl">Achievements</span></h2>
+        <div style="max-width:100%; margin:0 auto; display:flex; flex-direction:column; gap:20px;">
+            <div class="achievement-item"><img src="Tamask.jpg" alt="Award"><div class="ach-text"><h4 data-key="ach_1_t">Top 8 Finalist – Low Carbon Challenge</h4><p data-key="ach_1_d">Recognized among the top 8 global low-carbon innovators.</p></div></div>
+            <div class="achievement-item"><img src="Enrgeglob.jpg" alt="Energy Globe"><div class="ach-text"><h4 data-key="ach_2_t">Winner – Energy Globe Award</h4><p data-key="ach_2_d">First place in the national sustainable energy category.</p></div></div>
+            <div class="achievement-item"><img src="Shikhzayeed.jpg" alt="Zayed"><div class="ach-text"><h4 data-key="ach_3_t">Semi-Finalist – Sustainability Prize</h4><p data-key="ach_3_d">Selected among the top sustainable energy projects.</p></div></div>
+            <div class="achievement-item"><img src="Sertifikrt.jpg" alt="Certifications"><div class="ach-text"><h4 data-key="ach_4_t">180+ International Certifications</h4><p data-key="ach_4_d">From leading universities and research institutions.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ARTICLES ===== -->
+<section class="section" style="background: white;" id="articles">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="art_hl">Read</span> <span data-key="art_title">More</span></h2>
+        <p class="section-sub" style="margin: 0 auto;" data-key="art_sub">Scientific articles on geothermal energy, water-energy-food nexus, circular economy, and sustainable extraction</p>
+        <div class="grid-3">
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Geothermal"><div class="article-body"><h4 data-key="art_1_t">Geothermal Energy for Desalination</h4><p data-key="art_1_d">How low-enthalpy geothermal can power large-scale desalination with zero emissions.</p></div></div>
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Circular"><div class="article-body"><h4 data-key="art_2_t">Circular Economy in Water-Energy Nexus</h4><p data-key="art_2_d">Integrated approaches for sustainable resource recovery from geothermal brines.</p></div></div>
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Agriculture"><div class="article-body"><h4 data-key="art_3_t">Geothermal-Powered Greenhouses</h4><p data-key="art_3_d">Four-season agriculture using geothermal heating and cooling for food security.</p></div></div>
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Extraction"><div class="article-body"><h4 data-key="art_4_t">Lithium Extraction from Brines</h4><p data-key="art_4_d">Novel extraction methods for battery-grade lithium from geothermal fluids.</p></div></div>
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Employment"><div class="article-body"><h4 data-key="art_5_t">Employment &amp; Energy Transition</h4><p data-key="art_5_d">Job creation and social impact of large-scale geothermal projects.</p></div></div>
+            <div class="article-card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="HVAC"><div class="article-body"><h4 data-key="art_6_t">Geothermal District Heating &amp; Cooling</h4><p data-key="art_6_d">Large-scale district heating and cooling networks for data centers and semiconductor fabs.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FUTURE VISION ===== -->
+<section class="section" style="background: var(--light-bg);" id="future-vision">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="fv_hl">Future Vision</span> <span data-key="fv_title">of Countries</span></h2>
+        <p style="font-size:clamp(1.2rem,2vw,1.8rem);color:var(--gold);font-weight:600;margin-bottom:20px;" data-key="fv_quote">Build the future, live the future in the present.</p>
+        <div class="country-gallery">
+            <div class="country-item"><h4>🇧🇭 Bahrain</h4><div class="img-row"><img src="Vbahrin1.png" onerror="this.style.display='none'"><img src="Vbahrin2.png" onerror="this.style.display='none'"></div></div>
+            <div class="country-item"><h4>🇨🇦 Canada</h4><div class="img-row"><img src="Vcanada1.png" onerror="this.style.display='none'"><img src="Vcanada2.png" onerror="this.style.display='none'"></div></div>
+            <div class="country-item"><h4>🇦🇪 UAE</h4><div class="img-row"><img src="Vemarate1.png" onerror="this.style.display='none'"><img src="Vemarate2.png" onerror="this.style.display='none'"></div></div>
+            <div class="country-item"><h4>🇴🇲 Oman</h4><div class="img-row"><img src="Voman1.png" onerror="this.style.display='none'"><img src="Voman2.png" onerror="this.style.display='none'"></div></div>
+            <div class="country-item"><h4>🇸🇦 Saudi Arabia</h4><div class="img-row"><img src="Vsaude1.png" onerror="this.style.display='none'"><img src="Vsaude2.png" onerror="this.style.display='none'"></div></div>
+            <div class="country-item"><h4>🇸🇪 Sweden</h4><div class="img-row"><img src="Vsoeed1.png" onerror="this.style.display='none'"><img src="Vsoeed2.png" onerror="this.style.display='none'"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section" style="background: white;" id="roadmap">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="road_hl">Roadmap</span> <span data-key="road_title">to Global Scale</span></h2>
+        <p class="section-sub" style="margin:0 auto;" data-key="road_sub">Strategic timeline from feasibility to deployment</p>
+        <div class="roadmap">
+            <div class="roadmap-item"><div class="step-icon">1</div><h4 data-key="road_1_t">Feasibility &amp; Studies</h4><p data-key="road_1_d">2026 – Geological surveys, GIS mapping</p></div>
+            <div class="roadmap-item"><div class="step-icon">2</div><h4 data-key="road_2_t">Permits &amp; Financing</h4><p data-key="road_2_d">2027 – Government approvals</p></div>
+            <div class="roadmap-item"><div class="step-icon">3</div><h4 data-key="road_3_t">100 MW Pilot</h4><p data-key="road_3_d">2028 – First geothermal plant</p></div>
+            <div class="roadmap-item"><div class="step-icon">4</div><h4 data-key="road_4_t">National Scale</h4><p data-key="road_4_d">2029 – Rolling out across regions</p></div>
+            <div class="roadmap-item"><div class="step-icon">5</div><h4 data-key="road_5_t">Global Deployment</h4><p data-key="road_5_d">2030+ – Full global deployment</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DASHBOARD ===== -->
+<section class="section" style="background: var(--light-bg);" id="dashboard">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="dash_hl">Financial</span> <span data-key="dash_title">Dashboard</span></h2>
+        <p class="section-sub" style="margin:0 auto;" data-key="dash_sub">Visualization of revenue streams and projected growth</p>
+        <div class="dashboard-grid">
+            <div class="dashboard-card"><h3 data-key="dash_1_t">Revenue Streams Breakdown</h3><div class="chart-container"><canvas id="revenueChart"></canvas></div></div>
+            <div class="dashboard-card"><h3 data-key="dash_2_t">5-Year Growth Projection</h3><div class="chart-container"><canvas id="growthChart"></canvas></div></div>
+        </div>
+        <p style="margin-top:20px;color:#6a7a8a;font-size:0.9rem;" data-key="dash_note">* Based on conservative estimates validated by university studies</p>
+    </div>
+</section>
+
+<!-- ===== DATA ROOM ===== -->
+<section class="section" style="background: white;" id="dataroom">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="dr_hl">Investor</span> <span data-key="dr_title">Data Room</span></h2>
+        <p class="section-sub" style="margin:0 auto;" data-key="dr_sub">Secure, transparent, and mutually protected access to technical dossiers</p>
+        <div class="data-room-tabs">
+            <button class="tab-btn active" data-tab="request" data-key="dr_tab1">📝 Request Access &amp; NDA</button>
+            <button class="tab-btn" data-tab="download" data-key="dr_tab2">📥 Download Center</button>
+        </div>
+        <div class="data-room-content active" id="tab-request">
+            <div style="max-width:700px;margin:0 auto;text-align:left;">
+                <p style="margin-bottom:20px;color:#4a5a6a;font-weight:500;" data-key="dr_desc">🔐 All technical documents are shared under a strict Mutual Non-Disclosure Agreement (NDA).</p>
+                <form class="request-form" id="ndaForm" onsubmit="return submitNDARequest(event)">
+                    <input type="text" placeholder="Full Name" required data-key="dr_ph1" />
+                    <input type="text" placeholder="Company / Fund Name" required data-key="dr_ph2" />
+                    <input type="email" placeholder="Official Email" required data-key="dr_ph3" />
+                    <input type="text" placeholder="Investment Capacity (USD)" required data-key="dr_ph4" />
+                    <textarea placeholder="Brief introduction" rows="3" data-key="dr_ph5"></textarea>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-upload"></i> <span data-key="dr_upload">Upload Introduction Letter / Proof of Funds (PDF)</span>
+                        <input type="file" id="fileInput" accept=".pdf" style="display:none;" />
+                    </div>
+                    <div class="nda-check">
+                        <input type="checkbox" id="ndaAccept" required />
+                        <label for="ndaAccept" data-key="dr_nda">I agree to the terms of the Mutual NDA.</label>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%;" data-key="dr_submit">Submit Request</button>
+                </form>
+                <div id="ndaStatus" class="status-msg"></div>
+            </div>
+        </div>
+        <div class="data-room-content" id="tab-download">
+            <div class="download-section">
+                <span class="locked"><i class="fas fa-lock"></i> <span data-key="dr_lock">🔒 Download &amp; Edit Locked</span></span>
+                <p style="margin-top:10px;color:#6a7a8a;" data-key="dr_lock_d">This section requires verified NDA signature.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CALCULATOR ===== -->
+<section class="section" style="background: var(--light-bg);" id="calculator">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="calc_hl">Financial</span> <span data-key="calc_title">Calculator</span></h2>
+        <button class="calc-trigger" onclick="document.getElementById('calcModal').classList.add('open')" data-key="calc_btn">Open Calculator</button>
+    </div>
+</section>
+
+<div class="modal-overlay" id="calcModal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="document.getElementById('calcModal').classList.remove('open')">✖</button>
+        <h2 data-key="calc_modal_t">Investment Calculator</h2>
+        <label data-key="calc_l1">Investment Amount</label>
+        <input type="number" id="investAmount" value="10000000" step="100000" min="100000" />
+        <label data-key="calc_l2">Currency</label>
+        <select id="currency"><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select>
+        <label data-key="calc_l3">Profit Rate</label>
+        <div class="radio-group"><label><input type="radio" name="profitRate" value="25" checked> 25%</label><label><input type="radio" name="profitRate" value="35"> 35%</label><label><input type="radio" name="profitRate" value="45"> 45%</label></div>
+        <label data-key="calc_l4">Investment Period</label>
+        <div class="radio-group"><label><input type="radio" name="period" value="24" checked> 24 mo.</label><label><input type="radio" name="period" value="36"> 36 mo.</label><label><input type="radio" name="period" value="48"> 48 mo.</label></div>
+        <button class="btn" style="width:100%;margin-top:12px;" onclick="calculateInvestment()" data-key="calc_calc">Calculate</button>
+        <div class="calc-result" id="calcResult" data-key="calc_result">Enter values and press Calculate</div>
+        <div class="calc-note" data-key="calc_note">Risk timing depends on local governments, legal permits, and review periods.</div>
+    </div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section" style="background: white;">
+    <div class="container text-center">
+        <h2 class="section-title"><span class="highlight" data-key="contact_hl">Contact</span> <span data-key="contact_title">Investment Team</span></h2>
+        <div class="contact-options">
+            <span class="contact-opt active" data-contact="general" onclick="setContactType('general')" data-key="contact_opt1">General Inquiry</span>
+            <span class="contact-opt" data-contact="support" onclick="setContactType('support')" data-key="contact_opt2">Support</span>
+            <span class="contact-opt" data-contact="error" onclick="setContactType('error')" data-key="contact_opt3">Report Error</span>
+        </div>
+        <div class="contact-form">
+            <form id="mainForm" onsubmit="return handleSubmit(event)">
+                <div class="form-row">
+                    <label style="display:block;text-align:left;font-weight:600;margin-bottom:8px;font-family:'Inter',sans-serif;" data-key="contact_label">Request Type:</label>
+                    <div class="request-tags">
+                        <button type="button" class="tag active" data-value="energy" onclick="selectTag(this)" data-key="contact_tag1">Energy</button>
+                        <button type="button" class="tag" data-value="agriculture" onclick="selectTag(this)" data-key="contact_tag2">Agriculture</button>
+                        <button type="button" class="tag" data-value="infrastructure" onclick="selectTag(this)" data-key="contact_tag3">Infrastructure</button>
+                        <button type="button" class="tag" data-value="industry" onclick="selectTag(this)" data-key="contact_tag4">Industry</button>
+                        <button type="button" class="tag" data-value="water" onclick="selectTag(this)" data-key="contact_tag5">Water</button>
+                    </div>
+                    <input type="hidden" id="requestType" value="energy">
+                </div>
+                <div class="form-row"><input type="text" id="company" placeholder="Company Name" required data-key="contact_ph1" /></div>
+                <div class="form-row"><input type="email" id="email" placeholder="Valid Email" required data-key="contact_ph2" /></div>
+                <div class="form-row"><input type="tel" id="phone" placeholder="Phone Number" data-key="contact_ph3" /></div>
+                <div class="form-row"><input type="text" id="country" placeholder="Country" data-key="contact_ph4" /></div>
+                <div class="form-row"><input type="text" id="extra" placeholder="Additional Details (optional)" data-key="contact_ph5" /></div>
+                <div class="form-row"><textarea id="message" placeholder="Message" required data-key="contact_ph6"></textarea></div>
+                <div class="btn-group">
+                    <button type="submit" class="btn" data-key="contact_send">Send Message</button>
+                    <button type="button" class="btn btn-secondary-form" onclick="openDirectEmail()" data-key="contact_urgent">Urgent Contact</button>
+                </div>
+                <div id="statusMsg" class="status-msg"></div>
+                <div class="form-footer">
+                    <div class="warnings">
+                        <span data-key="contact_warn1">⚠️ Please use a verified domain email</span>
+                        <span data-key="contact_warn2">⏱️ High message volume, response time may be longer</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <p style="font-size:1.8rem;font-weight:700;color:white;letter-spacing:2px;font-family:'Poppins',sans-serif;">AQUANEXUS</p>
+        <p style="margin-top:8px;" data-key="footer_sub">Integrated Infrastructure Platform · 7 Revenue Streams</p>
+        <p style="margin-top:16px;font-size:0.85rem;" data-key="footer_copy">© 2026 · All Rights Reserved</p>
+    </div>
+</footer>
+
+<!-- ===== AUTH ===== -->
+<div class="auth-buttons" id="authButtons">
+    <span class="user-name" id="userNameDisplay" style="display:none;"></span>
+    <button class="btn-login" id="loginBtn" onclick="showLoginForm()" data-key="auth_login">Login</button>
+    <button class="btn-register" id="registerBtn" onclick="showRegisterForm()" data-key="auth_register">Register</button>
+    <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()" data-key="auth_logout">Sign Out</button>
+</div>
+
+<div id="registerFormContainer" class="auth-form hidden-form" style="display:none;">
+    <button type="button" class="auth-close" onclick="closeAuthForms()">×</button>
+    <h3 data-key="reg_title">Register</h3>
+    <form onsubmit="registerUser(event)">
+        <select id="regRole" required>
+            <option value="" data-key="reg_role_default">Select account type</option>
+            <option value="personal" data-key="reg_role_personal">Personal</option>
+            <option value="corporate" data-key="reg_role_corporate">Corporate</option>
+            <option value="government" data-key="reg_role_gov">Government</option>
+        </select>
+        <input type="text" id="regFullName" placeholder="First Name" required data-key="reg_first">
+        <input type="text" id="regLastName" placeholder="Last Name" required data-key="reg_last">
+        <input type="text" id="regCompany" placeholder="Company (optional)" data-key="reg_company">
+        <input type="text" id="regCountry" placeholder="Country" required data-key="reg_country">
+        <input type="email" id="regEmail" placeholder="Official Email" required data-key="reg_email">
+        <input type="password" id="regPassword" placeholder="Password" required minlength="6" data-key="reg_password">
+        <button type="submit" class="btn" data-key="reg_btn">Create Account</button>
+        <span class="switch-link" onclick="showLoginForm()" data-key="reg_switch">Already registered? Sign in</span>
+    </form>
+    <div id="registerStatus" class="status-msg"></div>
+</div>
+
+<div id="loginFormContainer" class="auth-form hidden-form" style="display:none;">
+    <button type="button" class="auth-close" onclick="closeAuthForms()">×</button>
+    <h3 data-key="login_title">Login</h3>
+    <form onsubmit="loginUser(event)">
+        <input type="email" id="loginEmail" placeholder="Email" required data-key="login_email">
+        <input type="password" id="loginPassword" placeholder="Password" required data-key="login_password">
+        <button type="submit" class="btn" data-key="login_btn">Sign In</button>
+        <span class="switch-link" onclick="showRegisterForm()" data-key="login_switch">New here? Create an account</span>
+    </form>
+    <div id="loginStatus" class="status-msg"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ============================================================
+// ===== COMPLETE TRANSLATIONS =====
+// ============================================================
+const translations = {
+    en: {
+        hero_title: "AQUANEXUS", hero_sub: "Vahid Nezamivand Chegane", hero_title2: "Founder & Systems Architect",
+        hero_desc: "Integrated Infrastructure Platform", hero_tags: "Water • Energy • Food • Critical Materials",
+        hero_footer: "Designed for Water-Stressed Regions", hero_btn1: "Investor Gateway", hero_btn2: "Explore Platform", hero_btn3: "Technical Evidence",
+        metric_1: "Baseload Energy", metric_2: "Revenue Streams", metric_3: "Continents", metric_4: "Long-Term Scale",
+        cmd_hl: "One Platform.", cmd_title: "Multiple Outcomes.",
+        cmd_sub: "AquaNexus integrates geothermal energy, water security, food production, strategic materials and climate resilience in one system.",
+        cmd_1_b: "01 / Energy", cmd_1_t: "Baseload Power", cmd_1_d: "Geothermal infrastructure designed around continuous generation.",
+        cmd_2_b: "02 / Water", cmd_2_t: "Water Security", cmd_2_d: "Desalination, thermal water and aquifer recharge.",
+        cmd_3_b: "03 / Food", cmd_3_t: "Controlled Agriculture", cmd_3_d: "Greenhouse production using thermal resources.",
+        cmd_4_b: "04 / Materials", cmd_4_t: "Strategic Minerals", cmd_4_d: "Lithium and other strategic materials.",
+        cmd_5_b: "05 / Climate", cmd_5_t: "Resource Efficiency", cmd_5_d: "Closed-loop concepts and cascading resource use.",
+        cmd_6_b: "06 / Capital", cmd_6_t: "Project Bank", cmd_6_d: "Pathway from technology to investment review.",
+        globe_title: "Global Vision", globe_sub: "Strategic offices worldwide.",
+        energy_badge: "Revenue Stream 1", energy_hl: "Geothermal", energy_title: "Energy",
+        energy_sub: "24/7 clean power generation · 4-season heating & cooling · Independent of wind or solar",
+        energy_li1: "✔ 24/7 continuous power generation", energy_li2: "✔ Independent of wind or solar",
+        energy_li3: "✔ No expensive batteries required", energy_li4: "✔ 4-season heating & cooling",
+        energy_li5: "♻️ Injection of fresh water to increase reservoir pressure", energy_cap: "Geothermal energy harnessed from the earth's core",
+        water_badge: "Revenue Stream 2", water_hl: "Fresh &", water_title: "Thermal Water",
+        water_sub: "Massive seawater desalination · Injection into aquifers for future generations",
+        water_li1: "✔ Massive seawater desalination", water_li2: "✔ Injection of drinking water into aquifers",
+        water_li3: "✔ Mineral hot water for natural springs & spas", water_li4: "🌍 Building a water bank for future generations",
+        water_cap1: "💧 Injection of drinking water into aquifers",
+        agri_badge: "Revenue Stream 3", agri_hl: "Sustainable", agri_title: "Agriculture",
+        agri_sub: "National self-sufficiency · Sustainable food security",
+        agri_li1: "✔ Year-round production in greenhouses", agri_li2: "✔ Self-sufficiency in fruits & vegetables",
+        agri_li3: "✔ Export of surplus products", agri_cap: "Modern greenhouses producing fresh food year-round",
+        metals_badge: "Revenue Stream 4", metals_hl: "Strategic", metals_title: "Metals",
+        metals_sub: "Gold · Silver · Tungsten · Lithium – Critical raw materials",
+        metals_g: "Gold", metals_gd: "Value reserve, electronics & medical", metals_s: "Silver", metals_sd: "Solar, electronics & jewelry",
+        metals_t: "Tungsten", metals_td: "Aerospace & defense", metals_l: "Lithium", metals_ld: "EV batteries & energy storage",
+        ext_hl: "Resource", ext_title: "Recovery", ext_sub: "Extraction of lithium, gold, silver, tungsten and rare earth elements from geothermal brine",
+        ext_1_t: "100 MW Baseload Power", ext_1_d: "24/7 clean energy from geothermal steam turbines",
+        ext_2_t: "12,000 Tons Lithium / Year", ext_2_d: "Battery-grade lithium from geothermal brine",
+        ext_3_t: "Integrated Cost Structure", ext_3_d: "Multi-revenue platform designed for competitive economics",
+        emp_hl: "Employment", emp_title: "& Job Creation", emp_sub: "Direct & Indirect Employment",
+        emp_li1: "✔ 700+ direct jobs (pilot phase)", emp_li2: "✔ 70,000+ direct & indirect jobs (full scale)",
+        emp_li3: "✔ Sustainable job creation across multiple sectors", emp_cap: "Thousands of direct and indirect jobs across the value chain",
+        hvac_badge: "Revenue Stream 5", hvac_hl: "Heating &", hvac_title: "Cooling",
+        hvac_sub: "20 MW of heating & cooling capacity for industrial, residential, and agricultural use",
+        hvac_li1: "✔ District heating & cooling networks", hvac_li2: "✔ 20 MW thermal energy capacity",
+        hvac_li3: "✔ Perfect for data centers and greenhouses", hvac_cap: "District heating & cooling",
+        salt_badge: "Revenue Stream 6", salt_hl: "Sea", salt_title: "Salt",
+        salt_sub: "Food-grade & industrial salt production from saline water",
+        salt_li1: "✔ Domestic supply & export", salt_li2: "✔ Industrial salt for chemical industries",
+        salt_li3: "✔ Food-grade salt with global standards",
+        carbon_badge: "Revenue Stream 7", carbon_hl: "Zero", carbon_title: "Carbon",
+        carbon_sub: "Sustainable carbon reduction · Tradeable carbon credits",
+        carbon_li1: "✔ Zero carbon emissions", carbon_li2: "✔ Tradeable carbon credits",
+        carbon_li3: "✔ Partnership with global green funds",
+        tour_hl: "Tourism", tour_title: "& Thermal Springs", tour_cap1: "Luxury thermal spas", tour_cap2: "Natural hot springs",
+        tour_li1: "✔ Hot mineral water for therapeutic spas", tour_li2: "✔ Attracting international health tourism",
+        tour_li3: "✔ Foreign currency revenue from tourism",
+        off_hl: "International", off_title: "Offices", off_sub: "Strategic hubs worldwide",
+        off_1_t: "London, UK", off_1_d: "Financial & Investment Office",
+        off_2_t: "Jeddah, Saudi Arabia", off_2_d: "Middle East Office",
+        off_3_t: "Masdar, UAE", off_3_d: "Green Technology Office",
+        off_4_t: "Stockholm, Sweden", off_4_d: "R&D Office",
+        off_5_t: "Muscat, Oman", off_5_d: "Operations Office",
+        bank_hl: "Project", bank_title: "Dedicated Bank", bank_sub: "Investment management · Full financial transparency",
+        bank_1_t: "Capital Management", bank_1_d: "Full transparency in capital raising and allocation",
+        bank_2_t: "Sustainable Returns", bank_2_d: "Infrastructure-grade returns with controlled risk",
+        bank_3_t: "Financial Security", bank_3_d: "Investor protection with strong legal structure",
+        docs_hl: "Complete", docs_title: "Technical Dossier", docs_sub: "University studies · GIS maps · Financial scenarios · Available for verified investors",
+        docs_1: "194-page Dossier", docs_2: "34 Excel Sheets", docs_3: "Multi-Country Maps",
+        docs_note: "🔒 Technical information only available to verified investors after NDA signature",
+        ach_hl: "Achievements", ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Recognized among the top 8 global low-carbon innovators.",
+        ach_2_t: "Winner – Energy Globe Award", ach_2_d: "First place in the national sustainable energy category.",
+        ach_3_t: "Semi-Finalist – Sustainability Prize", ach_3_d: "Selected among the top sustainable energy projects.",
+        ach_4_t: "180+ International Certifications", ach_4_d: "From leading universities and research institutions.",
+        art_hl: "Read", art_title: "More", art_sub: "Scientific articles on geothermal energy, water-energy-food nexus, circular economy, and sustainable extraction",
+        art_1_t: "Geothermal Energy for Desalination", art_1_d: "How low-enthalpy geothermal can power large-scale desalination with zero emissions.",
+        art_2_t: "Circular Economy in Water-Energy Nexus", art_2_d: "Integrated approaches for sustainable resource recovery from geothermal brines.",
+        art_3_t: "Geothermal-Powered Greenhouses", art_3_d: "Four-season agriculture using geothermal heating and cooling for food security.",
+        art_4_t: "Lithium Extraction from Brines", art_4_d: "Novel extraction methods for battery-grade lithium from geothermal fluids.",
+        art_5_t: "Employment & Energy Transition", art_5_d: "Job creation and social impact of large-scale geothermal projects.",
+        art_6_t: "Geothermal District Heating & Cooling", art_6_d: "Large-scale district heating and cooling networks for data centers and semiconductor fabs.",
+        fv_hl: "Future Vision", fv_title: "of Countries", fv_quote: "Build the future, live the future in the present.",
+        road_hl: "Roadmap", road_title: "to Global Scale", road_sub: "Strategic timeline from feasibility to deployment",
+        road_1_t: "Feasibility & Studies", road_1_d: "2026 – Geological surveys, GIS mapping",
+        road_2_t: "Permits & Financing", road_2_d: "2027 – Government approvals",
+        road_3_t: "100 MW Pilot", road_3_d: "2028 – First geothermal plant",
+        road_4_t: "National Scale", road_4_d: "2029 – Rolling out across regions",
+        road_5_t: "Global Deployment", road_5_d: "2030+ – Full global deployment",
+        dash_hl: "Financial", dash_title: "Dashboard", dash_sub: "Visualization of revenue streams and projected growth",
+        dash_1_t: "Revenue Streams Breakdown", dash_2_t: "5-Year Growth Projection",
+        dash_note: "* Based on conservative estimates validated by university studies",
+        dr_hl: "Investor", dr_title: "Data Room", dr_sub: "Secure, transparent, and mutually protected access to technical dossiers",
+        dr_tab1: "📝 Request Access & NDA", dr_tab2: "📥 Download Center",
+        dr_desc: "🔐 All technical documents are shared under a strict Mutual Non-Disclosure Agreement (NDA).",
+        dr_ph1: "Full Name", dr_ph2: "Company / Fund Name", dr_ph3: "Official Email", dr_ph4: "Investment Capacity (USD)", dr_ph5: "Brief introduction",
+        dr_upload: "Upload Introduction Letter / Proof of Funds (PDF)", dr_nda: "I agree to the terms of the Mutual NDA.",
+        dr_submit: "Submit Request", dr_lock: "🔒 Download & Edit Locked", dr_lock_d: "This section requires verified NDA signature.",
+        calc_hl: "Financial", calc_title: "Calculator", calc_btn: "Open Calculator", calc_modal_t: "Investment Calculator",
+        calc_l1: "Investment Amount", calc_l2: "Currency", calc_l3: "Profit Rate", calc_l4: "Investment Period",
+        calc_calc: "Calculate", calc_result: "Enter values and press Calculate",
+        calc_note: "Risk timing depends on local governments, legal permits, and review periods.",
+        contact_hl: "Contact", contact_title: "Investment Team", contact_opt1: "General Inquiry", contact_opt2: "Support", contact_opt3: "Report Error",
+        contact_label: "Request Type:", contact_tag1: "Energy", contact_tag2: "Agriculture", contact_tag3: "Infrastructure", contact_tag4: "Industry", contact_tag5: "Water",
+        contact_ph1: "Company Name", contact_ph2: "Valid Email", contact_ph3: "Phone Number", contact_ph4: "Country", contact_ph5: "Additional Details (optional)", contact_ph6: "Message",
+        contact_send: "Send Message", contact_urgent: "Urgent Contact",
+        contact_warn1: "⚠️ Please use a verified domain email", contact_warn2: "⏱️ High message volume, response time may be longer",
+        footer_sub: "Integrated Infrastructure Platform · 7 Revenue Streams", footer_copy: "© 2026 · All Rights Reserved",
+        auth_login: "Login", auth_register: "Register", auth_logout: "Sign Out",
+        reg_title: "Register", reg_role_default: "Select account type", reg_role_personal: "Personal", reg_role_corporate: "Corporate", reg_role_gov: "Government",
+        reg_first: "First Name", reg_last: "Last Name", reg_company: "Company (optional)", reg_country: "Country", reg_email: "Official Email", reg_password: "Password",
+        reg_btn: "Create Account", reg_switch: "Already registered? Sign in",
+        login_title: "Login", login_email: "Email", login_password: "Password", login_btn: "Sign In", login_switch: "New here? Create an account",
+        menu_home: "Home", menu_energy: "Energy", menu_water: "Water", menu_agri: "Agriculture", menu_metals: "Metals",
+        menu_employment: "Employment", menu_hvac: "Heating & Cooling", menu_salt: "Salt", menu_carbon: "Zero Carbon", menu_tourism: "Tourism",
+        menu_offices: "Global Offices", menu_bank: "Project Bank", menu_docs: "Technical Dossier", menu_achievements: "Achievements",
+        menu_articles: "Read More", menu_future: "Future Vision", menu_roadmap: "Roadmap", menu_dashboard: "Dashboard",
+        menu_dataroom: "Investor Data Room", menu_calculator: "Calculator", menu_contact: "Contact"
+    },
+    ar: {
+        hero_title: "أكوانيكس", hero_sub: "وحيد نظامي‌وند چگانه", hero_title2: "المؤسس ومهندس الأنظمة",
+        hero_desc: "منصة البنية التحتية المتكاملة", hero_tags: "المياه • الطاقة • الغذاء • المواد الحيوية",
+        hero_footer: "مصممة للمناطق التي تعاني من ندرة المياه", hero_btn1: "بوابة المستثمر", hero_btn2: "استكشف المنصة", hero_btn3: "الأدلة التقنية",
+        metric_1: "طاقة أساسية", metric_2: "مصادر الإيرادات", metric_3: "القارات", metric_4: "نطاق طويل الأجل",
+        cmd_hl: "منصة واحدة.", cmd_title: "نتائج متعددة.",
+        cmd_sub: "تدمج أكوانيكس الطاقة الحرارية الأرضية وأمن المياه وإنتاج الغذاء والمواد الاستراتيجية ومرونة المناخ في نظام واحد.",
+        cmd_1_b: "01 / الطاقة", cmd_1_t: "طاقة أساسية", cmd_1_d: "بنية تحتية حرارية أرضية مصممة للتوليد المستمر.",
+        cmd_2_b: "02 / المياه", cmd_2_t: "أمن المياه", cmd_2_d: "تحلية المياه والحرارة وإعادة تغذية طبقات المياه الجوفية.",
+        cmd_3_b: "03 / الغذاء", cmd_3_t: "زراعة محكومة", cmd_3_d: "إنتاج البيوت المحمية باستخدام الموارد الحرارية.",
+        cmd_4_b: "04 / المواد", cmd_4_t: "المعادن الاستراتيجية", cmd_4_d: "الليثيوم والمواد الاستراتيجية الأخرى.",
+        cmd_5_b: "05 / المناخ", cmd_5_t: "كفاءة الموارد", cmd_5_d: "مفاهيم الحلقة المغلقة والاستخدام المتتالي للموارد.",
+        cmd_6_b: "06 / رأس المال", cmd_6_t: "بنك المشروع", cmd_6_d: "مسار من التكنولوجيا إلى مراجعة الاستثمار.",
+        globe_title: "الرؤية العالمية", globe_sub: "مكاتب استراتيجية في جميع أنحاء العالم.",
+        energy_badge: "مصدر الإيرادات 1", energy_hl: "الحرارة الأرضية", energy_title: "الطاقة",
+        energy_sub: "توليد طاقة نظيفة على مدار الساعة · تدفئة وتبريد طوال الفصول الأربعة · مستقل عن الرياح أو الشمس",
+        energy_li1: "✔ توليد طاقة مستمر على مدار الساعة", energy_li2: "✔ مستقل عن الرياح أو الشمس",
+        energy_li3: "✔ لا حاجة لبطاريات باهظة الثمن", energy_li4: "✔ تدفئة وتبريد طوال الفصول الأربعة",
+        energy_li5: "♻️ حقن المياه العذبة لزيادة ضغط الخزان", energy_cap: "الطاقة الحرارية الأرضية من قلب الأرض",
+        water_badge: "مصدر الإيرادات 2", water_hl: "المياه العذبة", water_title: "والمياه الحرارية",
+        water_sub: "تحلية مياه البحر بكميات ضخمة · حقن المياه في طبقات المياه الجوفية للأجيال القادمة",
+        water_li1: "✔ تحلية مياه البحر بكميات ضخمة", water_li2: "✔ حقن مياه الشرب في طبقات المياه الجوفية",
+        water_li3: "✔ مياه حرارية معدنية للينابيع والمنتجعات", water_li4: "🌍 بناء بنك مياه للأجيال القادمة",
+        water_cap1: "💧 حقن مياه الشرب في طبقات المياه الجوفية",
+        agri_badge: "مصدر الإيرادات 3", agri_hl: "الزراعة", agri_title: "المستدامة",
+        agri_sub: "الاكتفاء الذاتي الوطني · الأمن الغذائي المستدام",
+        agri_li1: "✔ الإنتاج على مدار العام في البيوت المحمية", agri_li2: "✔ الاكتفاء الذاتي من الفواكه والخضروات",
+        agri_li3: "✔ تصدير المنتجات الفائضة", agri_cap: "بيوت محمية حديثة تنتج غذاءً طازجاً على مدار العام",
+        metals_badge: "مصدر الإيرادات 4", metals_hl: "المعادن", metals_title: "الاستراتيجية",
+        metals_sub: "الذهب · الفضة · التنجستن · الليثيوم – مواد خام حرجة",
+        metals_g: "الذهب", metals_gd: "احتياطي قيمة، الإلكترونيات والطب", metals_s: "الفضة", metals_sd: "الطاقة الشمسية والإلكترونيات",
+        metals_t: "التنجستن", metals_td: "الطيران والدفاع", metals_l: "الليثيوم", metals_ld: "بطاريات السيارات الكهربائية",
+        ext_hl: "استرداد", ext_title: "الموارد", ext_sub: "استخراج الليثيوم والذهب والفضة والتنجستن والعناصر الأرضية النادرة من المحلول الملحي",
+        ext_1_t: "100 ميجاوات طاقة أساسية", ext_1_d: "طاقة نظيفة على مدار الساعة",
+        ext_2_t: "12,000 طن ليثيوم / سنة", ext_2_d: "ليثيوم بدرجة البطاريات من المحلول الملحي",
+        ext_3_t: "هيكل تكلفة متكامل", ext_3_d: "منصة متعددة الإيرادات",
+        emp_hl: "التوظيف", emp_title: "وخلق فرص العمل", emp_sub: "التوظيف المباشر وغير المباشر",
+        emp_li1: "✔ 700+ وظيفة مباشرة", emp_li2: "✔ 70,000+ وظيفة مباشرة وغير مباشرة",
+        emp_li3: "✔ خلق وظائف مستدامة", emp_cap: "آلاف الوظائف عبر سلسلة القيمة",
+        hvac_badge: "مصدر الإيرادات 5", hvac_hl: "التدفئة", hvac_title: "والتبريد",
+        hvac_sub: "20 ميجاوات من قدرة التدفئة والتبريد للاستخدام الصناعي والسكني والزراعي",
+        hvac_li1: "✔ شبكات التدفئة والتبريد المركزية", hvac_li2: "✔ 20 ميجاوات قدرة حرارية",
+        hvac_li3: "✔ مثالية لمراكز البيانات", hvac_cap: "التدفئة والتبريد المركزي",
+        salt_badge: "مصدر الإيرادات 6", salt_hl: "ملح", salt_title: "البحر",
+        salt_sub: "إنتاج ملح عالي الجودة من المياه المالحة",
+        salt_li1: "✔ التوريد المحلي والتصدير", salt_li2: "✔ الملح الصناعي",
+        salt_li3: "✔ ملح غذائي بمعايير عالمية",
+        carbon_badge: "مصدر الإيرادات 7", carbon_hl: "صفر", carbon_title: "كربون",
+        carbon_sub: "خفض الكربون المستدام · أرصدة كربونية قابلة للتداول",
+        carbon_li1: "✔ انبعاثات كربونية صفرية", carbon_li2: "✔ أرصدة كربونية قابلة للتداول",
+        carbon_li3: "✔ شراكة مع الصناديق الخضراء",
+        tour_hl: "السياحة", tour_title: "والينابيع الحرارية", tour_cap1: "منتجعات حرارية فاخرة", tour_cap2: "ينابيع حارة طبيعية",
+        tour_li1: "✔ مياه حرارية معدنية للمنتجعات", tour_li2: "✔ جذب السياحة الصحية الدولية",
+        tour_li3: "✔ إيرادات العملات الأجنبية",
+        off_hl: "المكاتب", off_title: "الدولية", off_sub: "مراكز استراتيجية حول العالم",
+        off_1_t: "لندن، المملكة المتحدة", off_1_d: "مكتب مالي واستثماري",
+        off_2_t: "جدة، السعودية", off_2_d: "مكتب الشرق الأوسط",
+        off_3_t: "مصدر، الإمارات", off_3_d: "مكتب التكنولوجيا الخضراء",
+        off_4_t: "ستوكهولم، السويد", off_4_d: "مكتب البحث والتطوير",
+        off_5_t: "مسقط، عُمان", off_5_d: "مكتب العمليات",
+        bank_hl: "بنك", bank_title: "المشروع المخصص", bank_sub: "إدارة الاستثمار · الشفافية المالية",
+        bank_1_t: "إدارة رأس المال", bank_1_d: "الشفافية الكاملة",
+        bank_2_t: "عوائد مستدامة", bank_2_d: "عوائد بمعايير البنية التحتية",
+        bank_3_t: "الأمان المالي", bank_3_d: "حماية المستثمرين",
+        docs_hl: "الملف", docs_title: "التقني الكامل", docs_sub: "دراسات جامعية · خرائط GIS · سيناريوهات مالية · متاح للمستثمرين المعتمدين",
+        docs_1: "ملف 194 صفحة", docs_2: "34 ورقة إكسل", docs_3: "خرائط متعددة الدول",
+        docs_note: "🔒 المعلومات التقنية متاحة فقط للمستثمرين المعتمدين بعد توقيع NDA",
+        ach_hl: "الإنجازات", ach_1_t: "أفضل 8 نهائي – تحدي الكربون المنخفض", ach_1_d: "تم الاعتراف به بين أفضل 8 مبتكرين عالميين.",
+        ach_2_t: "الفائز – جائزة الطاقة", ach_2_d: "المركز الأول في فئة الطاقة المستدامة.",
+        ach_3_t: "نصف النهائي – جائزة الاستدامة", ach_3_d: "تم اختياره من بين أفضل مشاريع الطاقة.",
+        ach_4_t: "180+ شهادة دولية", ach_4_d: "من أفضل الجامعات ومؤسسات البحث.",
+        art_hl: "اقرأ", art_title: "المزيد", art_sub: "مقالات علمية حول الطاقة الحرارية الأرضية والاقتصاد الدائري",
+        art_1_t: "الطاقة الحرارية الأرضية لتحلية المياه", art_1_d: "كيف يمكن للطاقة الحرارية الأرضية تشغيل تحلية المياه على نطاق واسع.",
+        art_2_t: "الاقتصاد الدائري", art_2_d: "نهج متكامل لاستعادة الموارد المستدامة.",
+        art_3_t: "البيوت المحمية الحرارية", art_3_d: "زراعة الفصول الأربعة للأمن الغذائي.",
+        art_4_t: "استخراج الليثيوم من المحاليل", art_4_d: "طرق استخراج جديدة لليثيوم.",
+        art_5_t: "التوظيف وتحول الطاقة", art_5_d: "خلق فرص العمل والأثر الاجتماعي.",
+        art_6_t: "التدفئة والتبريد المركزي", art_6_d: "شبكات تدفئة وتبريد واسعة النطاق.",
+        fv_hl: "الرؤية المستقبلية", fv_title: "للدول", fv_quote: "ابنِ المستقبل، وعش المستقبل في الحاضر.",
+        road_hl: "خريطة الطريق", road_title: "إلى النطاق العالمي", road_sub: "الجدول الزمني الاستراتيجي",
+        road_1_t: "دراسات الجدوى", road_1_d: "2026 – المسوحات الجيولوجية",
+        road_2_t: "التصاريح والتمويل", road_2_d: "2027 – موافقات الحكومة",
+        road_3_t: "100 ميجاوات تجريبية", road_3_d: "2028 – أول محطة للطاقة الحرارية",
+        road_4_t: "النطاق الوطني", road_4_d: "2029 – التوسع في المناطق",
+        road_5_t: "النشر العالمي", road_5_d: "2030+ – النشر العالمي الكامل",
+        dash_hl: "المالية", dash_title: "لوحة المعلومات", dash_sub: "تصور تدفقات الإيرادات والنمو",
+        dash_1_t: "توزيع مصادر الإيرادات", dash_2_t: "توقعات النمو 5 سنوات",
+        dash_note: "* استنادًا إلى تقديرات متحفظة",
+        dr_hl: "المستثمر", dr_title: "غرفة البيانات", dr_sub: "وصول آمن وشفاف",
+        dr_tab1: "📝 طلب الوصول و NDA", dr_tab2: "📥 مركز التحميل",
+        dr_desc: "🔐 جميع المستندات التقنية مشتركة بموجب اتفاقية عدم إفصاح متبادلة.",
+        dr_ph1: "الاسم الكامل", dr_ph2: "اسم الشركة / الصندوق", dr_ph3: "البريد الرسمي", dr_ph4: "قدرة الاستثمار (USD)", dr_ph5: "مقدمة مختصرة",
+        dr_upload: "تحميل خطاب تقديمي / إثبات الأموال (PDF)", dr_nda: "أوافق على شروط NDA المتبادلة.",
+        dr_submit: "تقديم الطلب", dr_lock: "🔒 التحميل والتحرير مقفلان", dr_lock_d: "يتطلب هذا القسم توقيع NDA موثق.",
+        calc_hl: "المالية", calc_title: "الآلة الحاسبة", calc_btn: "افتح الآلة الحاسبة", calc_modal_t: "حاسبة الاستثمار",
+        calc_l1: "مبلغ الاستثمار", calc_l2: "العملة", calc_l3: "معدل الربح", calc_l4: "فترة الاستثمار",
+        calc_calc: "احسب", calc_result: "أدخل القيم واضغط على حساب",
+        calc_note: "يعتمد توقيت المخاطر على الحكومات المحلية والتصاريح القانونية.",
+        contact_hl: "اتصل", contact_title: "بفريق الاستثمار", contact_opt1: "استفسار عام", contact_opt2: "الدعم", contact_opt3: "الإبلاغ عن خطأ",
+        contact_label: "نوع الطلب:", contact_tag1: "الطاقة", contact_tag2: "الزراعة", contact_tag3: "البنية التحتية", contact_tag4: "الصناعة", contact_tag5: "المياه",
+        contact_ph1: "اسم الشركة", contact_ph2: "بريد إلكتروني صالح", contact_ph3: "رقم الهاتف", contact_ph4: "الدولة", contact_ph5: "تفاصيل إضافية (اختياري)", contact_ph6: "الرسالة",
+        contact_send: "إرسال الرسالة", contact_urgent: "اتصال عاجل",
+        contact_warn1: "⚠️ يرجى استخدام بريد بنطاق موثوق", contact_warn2: "⏱️ حجم الرسائل مرتفع، قد يكون الرد أطول",
+        footer_sub: "منصة البنية التحتية المتكاملة · 7 مصادر للإيرادات", footer_copy: "© 2026 · جميع الحقوق محفوظة",
+        auth_login: "تسجيل الدخول", auth_register: "تسجيل", auth_logout: "خروج",
+        reg_title: "تسجيل", reg_role_default: "اختر نوع الحساب", reg_role_personal: "شخصي", reg_role_corporate: "شركة", reg_role_gov: "حكومي",
+        reg_first: "الاسم الأول", reg_last: "اسم العائلة", reg_company: "الشركة (اختياري)", reg_country: "الدولة", reg_email: "البريد الرسمي", reg_password: "كلمة المرور",
+        reg_btn: "إنشاء حساب", reg_switch: "مسجل بالفعل؟ سجل الدخول",
+        login_title: "تسجيل الدخول", login_email: "البريد الإلكتروني", login_password: "كلمة المرور", login_btn: "دخول", login_switch: "جديد؟ أنشئ حساباً",
+        menu_home: "الرئيسية", menu_energy: "الطاقة", menu_water: "المياه", menu_agri: "الزراعة", menu_metals: "المعادن",
+        menu_employment: "التوظيف", menu_hvac: "التدفئة والتبريد", menu_salt: "ملح البحر", menu_carbon: "صفر كربون", menu_tourism: "السياحة",
+        menu_offices: "المكاتب العالمية", menu_bank: "بنك المشروع", menu_docs: "الملف التقني", menu_achievements: "الإنجازات",
+        menu_articles: "اقرأ المزيد", menu_future: "الرؤية المستقبلية", menu_roadmap: "خريطة الطريق", menu_dashboard: "لوحة المعلومات",
+        menu_dataroom: "غرفة البيانات", menu_calculator: "الآلة الحاسبة", menu_contact: "اتصل بنا"
+    },
+    de: {
+        hero_title: "AQUANEXUS", hero_sub: "Vahid Nezamivand Chegane", hero_title2: "Gründer & Systemarchitekt",
+        hero_desc: "Integrierte Infrastrukturplattform", hero_tags: "Wasser • Energie • Nahrung • Kritische Materialien",
+        hero_footer: "Für wasserarme Regionen konzipiert", hero_btn1: "Investor-Portal", hero_btn2: "Plattform erkunden", hero_btn3: "Technische Nachweise",
+        metric_1: "Grundlastenergie", metric_2: "Einnahmequellen", metric_3: "Kontinente", metric_4: "Langfristiger Maßstab",
+        cmd_hl: "Eine Plattform.", cmd_title: "Mehrere Ergebnisse.",
+        cmd_sub: "AquaNexus integriert Geothermie, Wassersicherheit, Nahrungsmittelproduktion, strategische Materialien und Klimaresilienz in einem System.",
+        cmd_1_b: "01 / Energie", cmd_1_t: "Grundlaststrom", cmd_1_d: "Geothermische Infrastruktur für kontinuierliche Erzeugung.",
+        cmd_2_b: "02 / Wasser", cmd_2_t: "Wassersicherheit", cmd_2_d: "Entsalzung, Thermalwasser und Grundwasseranreicherung.",
+        cmd_3_b: "03 / Nahrung", cmd_3_t: "Kontrollierte Landwirtschaft", cmd_3_d: "Gewächshausproduktion mit thermischen Ressourcen.",
+        cmd_4_b: "04 / Materialien", cmd_4_t: "Strategische Mineralien", cmd_4_d: "Lithium und andere strategische Materialien.",
+        cmd_5_b: "05 / Klima", cmd_5_t: "Ressourceneffizienz", cmd_5_d: "Kreislaufkonzepte und kaskadierende Ressourcennutzung.",
+        cmd_6_b: "06 / Kapital", cmd_6_t: "Projektbank", cmd_6_d: "Weg von Technologie zur Investitionsprüfung.",
+        globe_title: "Globale Vision", globe_sub: "Strategische Büros weltweit.",
+        energy_badge: "Einnahmequelle 1", energy_hl: "Geothermie", energy_title: "Energie",
+        energy_sub: "24/7 saubere Stromerzeugung · Heizung & Kühlung für 4 Jahreszeiten · Unabhängig von Wind oder Sonne",
+        energy_li1: "✔ 24/7 kontinuierliche Stromerzeugung", energy_li2: "✔ Unabhängig von Wind oder Sonne",
+        energy_li3: "✔ Keine teuren Batterien erforderlich", energy_li4: "✔ Heizung & Kühlung für 4 Jahreszeiten",
+        energy_li5: "♻️ Injektion von Süßwasser zur Erhöhung des Lagerstättendrucks", energy_cap: "Geothermie aus dem Erdinneren",
+        water_badge: "Einnahmequelle 2", water_hl: "Süß-", water_title: "und Thermalwasser",
+        water_sub: "Massive Meerwasserentsalzung · Injektion in Grundwasserleiter für zukünftige Generationen",
+        water_li1: "✔ Massive Meerwasserentsalzung", water_li2: "✔ Injektion von Trinkwasser in Grundwasserleiter",
+        water_li3: "✔ Mineralisches Thermalwasser für Quellen und Spas", water_li4: "🌍 Aufbau einer Wasserreserve für zukünftige Generationen",
+        water_cap1: "💧 Injektion von Trinkwasser in Grundwasserleiter",
+        agri_badge: "Einnahmequelle 3", agri_hl: "Nachhaltige", agri_title: "Landwirtschaft",
+        agri_sub: "Nationale Selbstversorgung · Nachhaltige Ernährungssicherheit",
+        agri_li1: "✔ Ganzjährige Produktion in Gewächshäusern", agri_li2: "✔ Selbstversorgung mit Obst und Gemüse",
+        agri_li3: "✔ Export von Überschussprodukten", agri_cap: "Moderne Gewächshäuser mit ganzjähriger Frischproduktion",
+        metals_badge: "Einnahmequelle 4", metals_hl: "Strategische", metals_title: "Metalle",
+        metals_sub: "Gold · Silber · Wolfram · Lithium – Kritische Rohstoffe",
+        metals_g: "Gold", metals_gd: "Wertreserve, Elektronik & Medizin", metals_s: "Silber", metals_sd: "Solarenergie & Elektronik",
+        metals_t: "Wolfram", metals_td: "Luft- und Raumfahrt", metals_l: "Lithium", metals_ld: "EV-Batterien & Energiespeicher",
+        ext_hl: "Ressourcen-", ext_title: "rückgewinnung", ext_sub: "Gewinnung von Lithium, Gold, Silber, Wolfram und Seltenen Erden aus geothermischer Sole",
+        ext_1_t: "100 MW Grundlaststrom", ext_1_d: "24/7 saubere Energie aus geothermischen Dampfturbinen",
+        ext_2_t: "12.000 Tonnen Lithium / Jahr", ext_2_d: "Batteriequalität aus geothermischer Sole",
+        ext_3_t: "Integrierte Kostenstruktur", ext_3_d: "Multi-Einnahmen-Plattform",
+        emp_hl: "Beschäftigung", emp_title: "& Arbeitsplätze", emp_sub: "Direkte & indirekte Beschäftigung",
+        emp_li1: "✔ 700+ direkte Arbeitsplätze", emp_li2: "✔ 70.000+ direkte & indirekte Arbeitsplätze",
+        emp_li3: "✔ Nachhaltige Arbeitsplatzschaffung", emp_cap: "Tausende Arbeitsplätze entlang der Wertschöpfungskette",
+        hvac_badge: "Einnahmequelle 5", hvac_hl: "Heizung &", hvac_title: "Kühlung",
+        hvac_sub: "20 MW Heiz- und Kühlkapazität für industrielle, gewerbliche und landwirtschaftliche Nutzung",
+        hvac_li1: "✔ Fernwärme- und Kühlnetze", hvac_li2: "✔ 20 MW thermische Energie",
+        hvac_li3: "✔ Ideal für Rechenzentren", hvac_cap: "Fernwärme und -kühlung",
+        salt_badge: "Einnahmequelle 6", salt_hl: "Meer-", salt_title: "Salz",
+        salt_sub: "Lebensmittel- und Industriesalzproduktion aus Salzwasser",
+        salt_li1: "✔ Inländische Versorgung & Export", salt_li2: "✔ Industriesalz",
+        salt_li3: "✔ Lebensmittelqualität nach weltweiten Standards",
+        carbon_badge: "Einnahmequelle 7", carbon_hl: "Null", carbon_title: "Kohlenstoff",
+        carbon_sub: "Nachhaltige Kohlenstoffreduktion · Handelbare Kohlenstoffgutschriften",
+        carbon_li1: "✔ Null Kohlenstoffemissionen", carbon_li2: "✔ Handelbare Kohlenstoffgutschriften",
+        carbon_li3: "✔ Partnerschaft mit globalen grünen Fonds",
+        tour_hl: "Tourismus", tour_title: "& Thermalquellen", tour_cap1: "Luxuriöse Thermalbäder", tour_cap2: "Natürliche heiße Quellen",
+        tour_li1: "✔ Heißes Mineralwasser für therapeutische Spas", tour_li2: "✔ Anziehung internationaler Gesundheitstouristen",
+        tour_li3: "✔ Deviseneinnahmen aus Tourismus",
+        off_hl: "Internationale", off_title: "Büros", off_sub: "Strategische Zentren weltweit",
+        off_1_t: "London, UK", off_1_d: "Finanz- und Investitionsbüro",
+        off_2_t: "Jeddah, Saudi-Arabien", off_2_d: "Büro Naher Osten",
+        off_3_t: "Masdar, VAE", off_3_d: "Büro für grüne Technologie",
+        off_4_t: "Stockholm, Schweden", off_4_d: "F&E-Büro",
+        off_5_t: "Muscat, Oman", off_5_d: "Betriebsbüro",
+        bank_hl: "Projekt-", bank_title: "Bank", bank_sub: "Investmentmanagement · Finanzielle Transparenz",
+        bank_1_t: "Kapitalverwaltung", bank_1_d: "Volle Transparenz",
+        bank_2_t: "Nachhaltige Renditen", bank_2_d: "Infrastruktur-Renditen",
+        bank_3_t: "Finanzielle Sicherheit", bank_3_d: "Anlegerschutz",
+        docs_hl: "Vollständiges", docs_title: "Technisches Dossier", docs_sub: "Universitätsstudien · GIS-Karten · Finanzszenarien · Verfügbar für verifizierte Investoren",
+        docs_1: "194-seitiges Dossier", docs_2: "34 Excel-Tabellen", docs_3: "Multi-Länder-Karten",
+        docs_note: "🔒 Technische Informationen nur für verifizierte Investoren nach NDA-Unterzeichnung",
+        ach_hl: "Errungenschaften", ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Anerkennung unter den Top-8-Innovatoren.",
+        ach_2_t: "Gewinner – Energy Globe Award", ach_2_d: "Erster Platz in der Kategorie nachhaltige Energie.",
+        ach_3_t: "Halbfinalist – Nachhaltigkeitspreis", ach_3_d: "Auswahl unter den besten nachhaltigen Energieprojekten.",
+        ach_4_t: "180+ internationale Zertifizierungen", ach_4_d: "Von führenden Universitäten und Forschungseinrichtungen.",
+        art_hl: "Mehr", art_title: "lesen", art_sub: "Wissenschaftliche Artikel zu Geothermie, Wasser-Energie-Nahrungsmittel-Nexus, Kreislaufwirtschaft",
+        art_1_t: "Geothermie für die Entsalzung", art_1_d: "Wie Geothermie großflächige Entsalzung antreiben kann.",
+        art_2_t: "Kreislaufwirtschaft", art_2_d: "Integrierte Ansätze zur nachhaltigen Ressourcenrückgewinnung.",
+        art_3_t: "Geothermie-Gewächshäuser", art_3_d: "Ganzjährige Landwirtschaft für Ernährungssicherheit.",
+        art_4_t: "Lithiumextraktion aus Solen", art_4_d: "Neuartige Extraktionsmethoden.",
+        art_5_t: "Beschäftigung und Energiewende", art_5_d: "Arbeitsplatzschaffung und soziale Auswirkungen.",
+        art_6_t: "Geothermische Fernwärme", art_6_d: "Großflächige Fernwärme- und Kühlnetze.",
+        fv_hl: "Zukunftsvision", fv_title: "der Länder", fv_quote: "Baue die Zukunft, lebe die Zukunft in der Gegenwart.",
+        road_hl: "Fahrplan", road_title: "zum globalen Maßstab", road_sub: "Strategische Zeitleiste",
+        road_1_t: "Machbarkeit & Studien", road_1_d: "2026 – Geologische Untersuchungen",
+        road_2_t: "Genehmigungen & Finanzierung", road_2_d: "2027 – Regierungsgenehmigungen",
+        road_3_t: "100-MW-Pilot", road_3_d: "2028 – Erste Geothermieanlage",
+        road_4_t: "Nationale Skala", road_4_d: "2029 – Ausrollen in Regionen",
+        road_5_t: "Globale Bereitstellung", road_5_d: "2030+ – Vollständige globale Bereitstellung",
+        dash_hl: "Finanz-", dash_title: "Dashboard", dash_sub: "Visualisierung von Einnahmequellen und Wachstum",
+        dash_1_t: "Aufschlüsselung der Einnahmequellen", dash_2_t: "5-Jahres-Wachstumsprognose",
+        dash_note: "* Basierend auf konservativen Schätzungen",
+        dr_hl: "Investor", dr_title: "Data Room", dr_sub: "Sicherer Zugang zu technischen Dokumentationen",
+        dr_tab1: "📝 Zugang & NDA beantragen", dr_tab2: "📥 Download-Center",
+        dr_desc: "🔐 Alle technischen Dokumente werden unter einer strengen gegenseitigen NDA geteilt.",
+        dr_ph1: "Vollständiger Name", dr_ph2: "Unternehmen / Fondsname", dr_ph3: "Offizielle E-Mail", dr_ph4: "Investitionskapazität (USD)", dr_ph5: "Kurze Vorstellung",
+        dr_upload: "Begleitschreiben / Finanzierungsnachweis (PDF) hochladen", dr_nda: "Ich stimme den Bedingungen der NDA zu.",
+        dr_submit: "Antrag stellen", dr_lock: "🔒 Download & Bearbeitung gesperrt", dr_lock_d: "Dieser Bereich erfordert eine verifizierte NDA-Unterschrift.",
+        calc_hl: "Finanz-", calc_title: "Rechner", calc_btn: "Rechner öffnen", calc_modal_t: "Investitionsrechner",
+        calc_l1: "Investitionsbetrag", calc_l2: "Währung", calc_l3: "Gewinnrate", calc_l4: "Anlagezeitraum",
+        calc_calc: "Berechnen", calc_result: "Werte eingeben und auf Berechnen klicken",
+        calc_note: "Das Risikotiming hängt von lokalen Regierungen und Genehmigungen ab.",
+        contact_hl: "Kontakt", contact_title: "Investmentteam", contact_opt1: "Allgemeine Anfrage", contact_opt2: "Support", contact_opt3: "Fehler melden",
+        contact_label: "Anfrageart:", contact_tag1: "Energie", contact_tag2: "Landwirtschaft", contact_tag3: "Infrastruktur", contact_tag4: "Industrie", contact_tag5: "Wasser",
+        contact_ph1: "Unternehmensname", contact_ph2: "Gültige E-Mail", contact_ph3: "Telefonnummer", contact_ph4: "Land", contact_ph5: "Zusätzliche Details (optional)", contact_ph6: "Nachricht",
+        contact_send: "Nachricht senden", contact_urgent: "Dringender Kontakt",
+        contact_warn1: "⚠️ Bitte verwenden Sie eine verifizierte Domain-E-Mail", contact_warn2: "⏱️ Hohes Nachrichtenaufkommen, Antwortzeit kann länger sein",
+        footer_sub: "Integrierte Infrastrukturplattform · 7 Einnahmequellen", footer_copy: "© 2026 · Alle Rechte vorbehalten",
+        auth_login: "Anmelden", auth_register: "Registrieren", auth_logout: "Abmelden",
+        reg_title: "Registrieren", reg_role_default: "Kontotyp auswählen", reg_role_personal: "Persönlich", reg_role_corporate: "Unternehmen", reg_role_gov: "Regierung",
+        reg_first: "Vorname", reg_last: "Nachname", reg_company: "Unternehmen (optional)", reg_country: "Land", reg_email: "Offizielle E-Mail", reg_password: "Passwort",
+        reg_btn: "Konto erstellen", reg_switch: "Bereits registriert? Anmelden",
+        login_title: "Anmelden", login_email: "E-Mail", login_password: "Passwort", login_btn: "Anmelden", login_switch: "Neu hier? Konto erstellen",
+        menu_home: "Startseite", menu_energy: "Energie", menu_water: "Wasser", menu_agri: "Landwirtschaft", menu_metals: "Metalle",
+        menu_employment: "Beschäftigung", menu_hvac: "Heizung & Kühlung", menu_salt: "Meersalz", menu_carbon: "Null Kohlenstoff", menu_tourism: "Tourismus",
+        menu_offices: "Weltweite Büros", menu_bank: "Projektbank", menu_docs: "Technisches Dossier", menu_achievements: "Errungenschaften",
+        menu_articles: "Mehr lesen", menu_future: "Zukunftsvision", menu_roadmap: "Fahrplan", menu_dashboard: "Dashboard",
+        menu_dataroom: "Investor Data Room", menu_calculator: "Rechner", menu_contact: "Kontakt"
+    },
+    fr: {
+        hero_title: "AQUANEXUS", hero_sub: "Vahid Nezamivand Chegane", hero_title2: "Fondateur & Architecte Systèmes",
+        hero_desc: "Plateforme d'Infrastructure Intégrée", hero_tags: "Eau • Énergie • Alimentation • Matériaux Critiques",
+        hero_footer: "Conçue pour les régions en stress hydrique", hero_btn1: "Portail Investisseur", hero_btn2: "Explorer la Plateforme", hero_btn3: "Preuves Techniques",
+        metric_1: "Énergie de Base", metric_2: "Flux de Revenus", metric_3: "Continents", metric_4: "Échelle à Long Terme",
+        cmd_hl: "Une Plateforme.", cmd_title: "Multiples Résultats.",
+        cmd_sub: "AquaNexus intègre l'énergie géothermique, la sécurité de l'eau, la production alimentaire, les matériaux stratégiques et la résilience climatique dans un seul système.",
+        cmd_1_b: "01 / Énergie", cmd_1_t: "Énergie de Base", cmd_1_d: "Infrastructure géothermique conçue pour la production continue.",
+        cmd_2_b: "02 / Eau", cmd_2_t: "Sécurité de l'Eau", cmd_2_d: "Dessalement, eau thermale et recharge des aquifères.",
+        cmd_3_b: "03 / Alimentation", cmd_3_t: "Agriculture Contrôlée", cmd_3_d: "Production en serre utilisant les ressources thermiques.",
+        cmd_4_b: "04 / Matériaux", cmd_4_t: "Minéraux Stratégiques", cmd_4_d: "Lithium et autres matériaux stratégiques.",
+        cmd_5_b: "05 / Climat", cmd_5_t: "Efficacité des Ressources", cmd_5_d: "Concepts en boucle fermée et utilisation en cascade.",
+        cmd_6_b: "06 / Capital", cmd_6_t: "Banque de Projet", cmd_6_d: "Chemin de la technologie à l'examen des investissements.",
+        globe_title: "Vision Globale", globe_sub: "Bureaux stratégiques dans le monde entier.",
+        energy_badge: "Flux de Revenus 1", energy_hl: "Géothermique", energy_title: "Énergie",
+        energy_sub: "Production d'électricité propre 24/7 · Chauffage et refroidissement 4 saisons · Indépendant du vent ou du solaire",
+        energy_li1: "✔ Production d'électricité continue 24/7", energy_li2: "✔ Indépendant du vent ou du solaire",
+        energy_li3: "✔ Pas de batteries coûteuses nécessaires", energy_li4: "✔ Chauffage et refroidissement 4 saisons",
+        energy_li5: "♻️ Injection d'eau douce pour augmenter la pression du réservoir", energy_cap: "Énergie géothermique du noyau terrestre",
+        water_badge: "Flux de Revenus 2", water_hl: "Eau douce", water_title: "et thermale",
+        water_sub: "Dessalement massif d'eau de mer · Injection dans les aquifères pour les générations futures",
+        water_li1: "✔ Dessalement massif d'eau de mer", water_li2: "✔ Injection d'eau potable dans les aquifères",
+        water_li3: "✔ Eau chaude minérale pour sources et spas", water_li4: "🌍 Construction d'une banque d'eau pour les générations futures",
+        water_cap1: "💧 Injection d'eau potable dans les aquifères",
+        agri_badge: "Flux de Revenus 3", agri_hl: "Agriculture", agri_title: "Durable",
+        agri_sub: "Autosuffisance nationale · Sécurité alimentaire durable",
+        agri_li1: "✔ Production toute l'année en serres", agri_li2: "✔ Autosuffisance en fruits et légumes",
+        agri_li3: "✔ Exportation des produits excédentaires", agri_cap: "Serres modernes produisant des aliments frais toute l'année",
+        metals_badge: "Flux de Revenus 4", metals_hl: "Métaux", metals_title: "Stratégiques",
+        metals_sub: "Or · Argent · Tungstène · Lithium – Matières premières critiques",
+        metals_g: "Or", metals_gd: "Réserve de valeur, électronique et médical", metals_s: "Argent", metals_sd: "Solaire et électronique",
+        metals_t: "Tungstène", metals_td: "Aérospatiale et défense", metals_l: "Lithium", metals_ld: "Batteries VE et stockage d'énergie",
+        ext_hl: "Récupération", ext_title: "des Ressources", ext_sub: "Extraction de lithium, or, argent, tungstène et terres rares à partir de saumure géothermique",
+        ext_1_t: "100 MW de Puissance de Base", ext_1_d: "Énergie propre 24/7 à partir de turbines à vapeur géothermiques",
+        ext_2_t: "12 000 Tonnes de Lithium / An", ext_2_d: "Lithium de qualité batterie à partir de saumure géothermique",
+        ext_3_t: "Structure de Coût Intégrée", ext_3_d: "Plateforme multi-revenus",
+        emp_hl: "Emploi", emp_title: "& Création d'Emplois", emp_sub: "Emploi Direct et Indirect",
+        emp_li1: "✔ 700+ emplois directs", emp_li2: "✔ 70 000+ emplois directs et indirects",
+        emp_li3: "✔ Création d'emplois durables", emp_cap: "Des milliers d'emplois à travers la chaîne de valeur",
+        hvac_badge: "Flux de Revenus 5", hvac_hl: "Chauffage &", hvac_title: "Refroidissement",
+        hvac_sub: "20 MW de capacité de chauffage et refroidissement pour usage industriel, résidentiel et agricole",
+        hvac_li1: "✔ Réseaux de chauffage et refroidissement urbains", hvac_li2: "✔ 20 MW de capacité thermique",
+        hvac_li3: "✔ Idéal pour les centres de données", hvac_cap: "Chauffage et refroidissement urbains",
+        salt_badge: "Flux de Revenus 6", salt_hl: "Sel", salt_title: "Marin",
+        salt_sub: "Production de sel alimentaire et industriel à partir d'eau salée",
+        salt_li1: "✔ Approvisionnement national et exportation", salt_li2: "✔ Sel industriel",
+        salt_li3: "✔ Sel de qualité alimentaire selon les normes mondiales",
+        carbon_badge: "Flux de Revenus 7", carbon_hl: "Zéro", carbon_title: "Carbone",
+        carbon_sub: "Réduction durable du carbone · Crédits carbone échangeables",
+        carbon_li1: "✔ Émissions de carbone nulles", carbon_li2: "✔ Crédits carbone échangeables",
+        carbon_li3: "✔ Partenariat avec les fonds verts mondiaux",
+        tour_hl: "Tourisme", tour_title: "& Sources Thermales", tour_cap1: "Spas thermaux de luxe", tour_cap2: "Sources chaudes naturelles",
+        tour_li1: "✔ Eau chaude minérale pour spas thérapeutiques", tour_li2: "✔ Attraction du tourisme de santé international",
+        tour_li3: "✔ Revenus en devises du tourisme",
+        off_hl: "Bureaux", off_title: "Internationaux", off_sub: "Pôles stratégiques mondiaux",
+        off_1_t: "Londres, Royaume-Uni", off_1_d: "Bureau financier et d'investissement",
+        off_2_t: "Djeddah, Arabie Saoudite", off_2_d: "Bureau Moyen-Orient",
+        off_3_t: "Masdar, EAU", off_3_d: "Bureau des technologies vertes",
+        off_4_t: "Stockholm, Suède", off_4_d: "Bureau R&D",
+        off_5_t: "Mascate, Oman", off_5_d: "Bureau des opérations",
+        bank_hl: "Banque", bank_title: "Dédiée au Projet", bank_sub: "Gestion d'investissements · Transparence financière",
+        bank_1_t: "Gestion du Capital", bank_1_d: "Transparence totale",
+        bank_2_t: "Rendements Durables", bank_2_d: "Rendements d'infrastructure",
+        bank_3_t: "Sécurité Financière", bank_3_d: "Protection des investisseurs",
+        docs_hl: "Dossier", docs_title: "Technique Complet", docs_sub: "Études universitaires · Cartes SIG · Scénarios financiers · Disponible pour les investisseurs vérifiés",
+        docs_1: "Dossier de 194 pages", docs_2: "34 Feuilles Excel", docs_3: "Cartes Multi-Pays",
+        docs_note: "🔒 Informations techniques disponibles uniquement pour les investisseurs vérifiés après signature de la NDA",
+        ach_hl: "Réalisations", ach_1_t: "Top 8 Finaliste – Défi Bas Carbone", ach_1_d: "Reconnu parmi les 8 meilleurs innovateurs mondiaux.",
+        ach_2_t: "Lauréat – Energy Globe Award", ach_2_d: "Première place dans la catégorie énergie durable.",
+        ach_3_t: "Demi-finaliste – Prix de Durabilité", ach_3_d: "Sélectionné parmi les meilleurs projets d'énergie durable.",
+        ach_4_t: "180+ Certifications Internationales", ach_4_d: "Des meilleures universités et instituts de recherche.",
+        art_hl: "Lire", art_title: "Plus", art_sub: "Articles scientifiques sur l'énergie géothermique, le nexus eau-énergie-alimentation, l'économie circulaire",
+        art_1_t: "Énergie Géothermique pour le Dessalement", art_1_d: "Comment la géothermie peut alimenter le dessalement à grande échelle.",
+        art_2_t: "Économie Circulaire", art_2_d: "Approches intégrées pour la récupération durable des ressources.",
+        art_3_t: "Serres Géothermiques", art_3_d: "Agriculture quatre saisons pour la sécurité alimentaire.",
+        art_4_t: "Extraction du Lithium", art_4_d: "Nouvelles méthodes d'extraction pour le lithium.",
+        art_5_t: "Emploi et Transition Énergétique", art_5_d: "Création d'emplois et impact social.",
+        art_6_t: "Chauffage et Refroidissement Urbains", art_6_d: "Réseaux de chauffage et refroidissement à grande échelle.",
+        fv_hl: "Vision Future", fv_title: "des Pays", fv_quote: "Construisez l'avenir, vivez l'avenir dans le présent.",
+        road_hl: "Feuille de Route", road_title: "vers l'Échelle Mondiale", road_sub: "Calendrier stratégique de la faisabilité au déploiement",
+        road_1_t: "Faisabilité & Études", road_1_d: "2026 – Levés géologiques",
+        road_2_t: "Permis & Financement", road_2_d: "2027 – Approbations gouvernementales",
+        road_3_t: "Pilote 100 MW", road_3_d: "2028 – Première centrale géothermique",
+        road_4_t: "Échelle Nationale", road_4_d: "2029 – Déploiement régional",
+        road_5_t: "Déploiement Mondial", road_5_d: "2030+ – Déploiement mondial complet",
+        dash_hl: "Financier", dash_title: "Tableau de Bord", dash_sub: "Visualisation des flux de revenus et de la croissance",
+        dash_1_t: "Répartition des Flux de Revenus", dash_2_t: "Projection de Croissance sur 5 Ans",
+        dash_note: "* Basé sur des estimations conservatrices",
+        dr_hl: "Investisseur", dr_title: "Data Room", dr_sub: "Accès sécurisé aux dossiers techniques",
+        dr_tab1: "📝 Demande d'Accès & NDA", dr_tab2: "📥 Centre de Téléchargement",
+        dr_desc: "🔐 Tous les documents techniques sont partagés sous un strict Accord de Confidentialité Mutuel (NDA).",
+        dr_ph1: "Nom Complet", dr_ph2: "Nom de l'Entreprise / du Fonds", dr_ph3: "E-mail Officiel", dr_ph4: "Capacité d'Investissement (USD)", dr_ph5: "Brève introduction",
+        dr_upload: "Télécharger la Lettre de Présentation / Preuve de Fonds (PDF)", dr_nda: "J'accepte les termes de la NDA Mutuelle.",
+        dr_submit: "Soumettre la Demande", dr_lock: "🔒 Téléchargement et Édition Verrouillés", dr_lock_d: "Cette section nécessite une signature NDA vérifiée.",
+        calc_hl: "Calculateur", calc_title: "Financier", calc_btn: "Ouvrir le Calculateur", calc_modal_t: "Calculateur d'Investissement",
+        calc_l1: "Montant de l'Investissement", calc_l2: "Devise", calc_l3: "Taux de Profit", calc_l4: "Période d'Investissement",
+        calc_calc: "Calculer", calc_result: "Entrez les valeurs et appuyez sur Calculer",
+        calc_note: "Le calendrier des risques dépend des gouvernements locaux et des permis.",
+        contact_hl: "Contacter", contact_title: "l'Équipe d'Investissement", contact_opt1: "Demande Générale", contact_opt2: "Assistance", contact_opt3: "Signaler une Erreur",
+        contact_label: "Type de Demande :", contact_tag1: "Énergie", contact_tag2: "Agriculture", contact_tag3: "Infrastructure", contact_tag4: "Industrie", contact_tag5: "Eau",
+        contact_ph1: "Nom de l'Entreprise", contact_ph2: "E-mail Valide", contact_ph3: "Numéro de Téléphone", contact_ph4: "Pays", contact_ph5: "Détails Supplémentaires (facultatif)", contact_ph6: "Message",
+        contact_send: "Envoyer le Message", contact_urgent: "Contact Urgent",
+        contact_warn1: "⚠️ Veuillez utiliser un e-mail avec un domaine vérifié", contact_warn2: "⏱️ Volume élevé de messages, le temps de réponse peut être plus long",
+        footer_sub: "Plateforme d'Infrastructure Intégrée · 7 Flux de Revenus", footer_copy: "© 2026 · Tous Droits Réservés",
+        auth_login: "Connexion", auth_register: "S'inscrire", auth_logout: "Déconnexion",
+        reg_title: "S'inscrire", reg_role_default: "Sélectionner le type de compte", reg_role_personal: "Personnel", reg_role_corporate: "Entreprise", reg_role_gov: "Gouvernement",
+        reg_first: "Prénom", reg_last: "Nom", reg_company: "Entreprise (facultatif)", reg_country: "Pays", reg_email: "E-mail Officiel", reg_password: "Mot de passe",
+        reg_btn: "Créer un Compte", reg_switch: "Déjà inscrit ? Se connecter",
+        login_title: "Connexion", login_email: "E-mail", login_password: "Mot de passe", login_btn: "Se Connecter", login_switch: "Nouveau ? Créer un compte",
+        menu_home: "Accueil", menu_energy: "Énergie", menu_water: "Eau", menu_agri: "Agriculture", menu_metals: "Métaux",
+        menu_employment: "Emploi", menu_hvac: "Chauffage & Refroidissement", menu_salt: "Sel Marin", menu_carbon: "Zéro Carbone", menu_tourism: "Tourisme",
+        menu_offices: "Bureaux Mondiaux", menu_bank: "Banque du Projet", menu_docs: "Dossier Technique", menu_achievements: "Réalisations",
+        menu_articles: "Lire Plus", menu_future: "Vision Future", menu_roadmap: "Feuille de Route", menu_dashboard: "Tableau de Bord",
+        menu_dataroom: "Data Room Investisseur", menu_calculator: "Calculateur", menu_contact: "Contact"
+    }
+};
+
+// ===== Change Language =====
+function changeLanguage(lang) {
+    localStorage.setItem('preferredLang', lang);
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    const t = translations[lang];
+    if (!t) return;
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (t[key] !== undefined) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = t[key];
+            } else {
+                el.innerHTML = t[key];
+            }
+        }
+    });
+}
+
+// ===== Language Switcher Dropdown =====
+document.addEventListener('DOMContentLoaded', function() {
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langCurrent = document.getElementById('langCurrent');
+    const langDropdown = document.getElementById('langDropdown');
+
+    if (langCurrent && langSwitcher) {
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langSwitcher.classList.toggle('open');
+        });
+
+        document.querySelectorAll('#langDropdown .flag-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelectorAll('#langDropdown .flag-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                const lang = this.dataset.lang;
+                const emoji = this.querySelector('.flag-emoji').textContent;
+                langCurrent.querySelector('.flag-emoji').textContent = emoji;
+                langCurrent.querySelector('.lang-code').textContent = lang.toUpperCase();
+                changeLanguage(lang);
+                langSwitcher.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open');
+        });
+    }
+
+    // Load saved language
+    const saved = localStorage.getItem('preferredLang');
+    if (saved && translations[saved]) {
+        const item = document.querySelector('#langDropdown .flag-item[data-lang="' + saved + '"]');
+        if (item) {
+            document.querySelectorAll('#langDropdown .flag-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            const emoji = item.querySelector('.flag-emoji').textContent;
+            langCurrent.querySelector('.flag-emoji').textContent = emoji;
+            langCurrent.querySelector('.lang-code').textContent = saved.toUpperCase();
+            changeLanguage(saved);
+        }
+    }
+});
+
+// ===== Mobile Menu =====
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+        });
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+        });
+        menuOverlay.addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+        });
+        document.querySelectorAll('.mobile-menu ul li a').forEach(link => link.addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+        }));
+    }
+});
+
+// ===== Globe =====
+(function() {
+    const container = document.getElementById('globeContainer');
+    if (!container) return;
+    const width = container.clientWidth, height = container.clientHeight || 450;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
+    camera.position.z = 3;
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    const geometry = new THREE.SphereGeometry(1.2, 64, 64);
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+    const material = new THREE.MeshPhongMaterial({ map: texture, specular: new THREE.Color('gold'), shininess: 10 });
+    const globe = new THREE.Mesh(geometry, material);
+    scene.add(globe);
+    const light1 = new THREE.PointLight(0xffffff, 1); light1.position.set(5,3,5); scene.add(light1);
+    const ambient = new THREE.AmbientLight(0x404060, 0.4); scene.add(ambient);
+    function animate() {
+        requestAnimationFrame(animate);
+        globe.rotation.y += 0.003;
+        renderer.render(scene, camera);
+    }
+    animate();
+    window.addEventListener('resize', function() {
+        const w = container.clientWidth, h = container.clientHeight || 450;
+        camera.aspect = w/h; camera.updateProjectionMatrix(); renderer.setSize(w,h);
+    });
+})();
+
+// ===== Form =====
+function selectTag(el) {
+    document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('requestType').value = el.dataset.value;
+}
+function setContactType(type) {
+    document.querySelectorAll('.contact-opt').forEach(opt => opt.classList.remove('active'));
+    document.querySelector(`.contact-opt[data-contact="${type}"]`).classList.add('active');
+}
+function sendFormViaEmail() {
+    const company = document.getElementById('company').value.trim() || 'Not provided';
+    const email = document.getElementById('email').value.trim() || 'Not provided';
+    const phone = document.getElementById('phone').value.trim() || 'Not provided';
+    const country = document.getElementById('country').value.trim() || 'Not provided';
+    const extra = document.getElementById('extra').value.trim() || 'Not provided';
+    const message = document.getElementById('message').value.trim() || 'No message';
+    const requestType = document.getElementById('requestType').value || 'Not specified';
+    const subject = encodeURIComponent('AquaNexus Inquiry from ' + company);
+    const body = encodeURIComponent('Company: ' + company + '\nEmail: ' + email + '\nPhone: ' + phone + '\nCountry: ' + country + '\nType: ' + requestType + '\nExtra: ' + extra + '\n\nMessage:\n' + message);
+    const recipient = 'vahid.nezamivand@proton.me';
+    window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+    return true;
+}
+function handleSubmit(e) {
+    e.preventDefault();
+    sendFormViaEmail();
+    const msgBox = document.getElementById('statusMsg');
+    msgBox.className = 'status-msg success';
+    msgBox.textContent = '✅ Your message has been sent successfully!';
+    msgBox.style.display = 'block';
+    setTimeout(() => { msgBox.className = 'status-msg'; msgBox.style.display = 'none'; }, 8000);
+    return false;
+}
+function openDirectEmail() {
+    sendFormViaEmail();
+    const msgBox = document.getElementById('statusMsg');
+    msgBox.className = 'status-msg success';
+    msgBox.textContent = '✅ Your urgent message has been sent!';
+    msgBox.style.display = 'block';
+    setTimeout(() => { msgBox.className = 'status-msg'; msgBox.style.display = 'none'; }, 8000);
+}
+function calculateInvestment() {
+    const amount = parseFloat(document.getElementById('investAmount').value) || 0;
+    const currency = document.getElementById('currency').value;
+    const profitRate = parseFloat(document.querySelector('input[name="profitRate"]:checked').value);
+    const period = parseInt(document.querySelector('input[name="period"]:checked').value);
+    if (amount <= 0) { document.getElementById('calcResult').innerHTML = 'Please enter a valid amount.'; return; }
+    const profit = amount * (profitRate / 100);
+    const total = amount + profit;
+    const symbol = currency === 'USD' ? '$' : (currency === 'EUR' ? '€' : '£');
+    document.getElementById('calcResult').innerHTML = `Investment: ${symbol}${amount.toLocaleString()} | Profit: ${symbol}${profit.toLocaleString()} | Total Return: ${symbol}${total.toLocaleString()} | Period: ${period} months`;
+}
+
+// ===== Charts =====
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx1 = document.getElementById('revenueChart')?.getContext('2d');
+    if (ctx1) {
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Geothermal Energy', 'Water', 'Agriculture', 'Metals', 'Heating & Cooling', 'Sea Salt', 'Zero Carbon'],
+                datasets: [{ data: [30, 20, 15, 20, 5, 5, 5], backgroundColor: ['#1a6fb5','#2a9d8f','#e9c46a','#e76f51','#f4a261','#264653','#6d6875'], borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+    }
+    const ctx2 = document.getElementById('growthChart')?.getContext('2d');
+    if (ctx2) {
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{ label: 'Projected Growth (Million USD)', data: [5, 25, 70, 180, 420], backgroundColor: ['rgba(26,111,181,0.7)','rgba(42,157,143,0.7)','rgba(233,196,106,0.7)','rgba(231,111,81,0.7)','rgba(244,162,97,0.7)'], borderRadius: 8 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+    }
+});
+
+// ===== Data Room =====
+document.querySelectorAll('.data-room-tabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.data-room-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const tabId = this.dataset.tab;
+        document.querySelectorAll('.data-room-content').forEach(c => c.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+    });
+});
+function submitNDARequest(e) {
+    e.preventDefault();
+    const inputs = document.querySelectorAll('#tab-request input');
+    const textarea = document.querySelector('#tab-request textarea');
+    const name = inputs[0].value || 'Not provided';
+    const company = inputs[1].value || 'Not provided';
+    const email = inputs[2].value || 'Not provided';
+    const capacity = inputs[3].value || 'Not provided';
+    const message = textarea.value || 'Not provided';
+    const subject = encodeURIComponent('New NDA Request from ' + company);
+    const body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nCapacity: ' + capacity + '\n\nMessage:\n' + message);
+    const recipient = 'vahid.nezamivand@proton.me';
+    window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+    const status = document.getElementById('ndaStatus');
+    status.className = 'status-msg success';
+    status.textContent = '✅ Your request has been sent.';
+    status.style.display = 'block';
+    setTimeout(() => { status.style.display = 'none'; }, 10000);
+    return false;
+}
+
+// ===== Lightbox =====
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+lightbox.innerHTML = '<button class="close-lightbox" onclick="this.parentElement.classList.remove(\'open\')">✖</button><img src="" alt="Enlarged" id="lightboxImg" />';
+document.body.appendChild(lightbox);
+document.querySelectorAll('.country-gallery .img-row img').forEach(img => {
+    img.addEventListener('click', function() {
+        document.getElementById('lightboxImg').src = this.src;
+        lightbox.classList.add('open');
+    });
+});
+lightbox.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
+
+// ===== Auth =====
+function showRegister() {
+    document.getElementById('registerFormContainer').style.display = 'block';
+    document.getElementById('loginFormContainer').style.display = 'none';
+}
+function showLogin() {
+    document.getElementById('loginFormContainer').style.display = 'block';
+    document.getElementById('registerFormContainer').style.display = 'none';
+}
+async function registerUser(e) { e.preventDefault(); alert('Registration submitted.'); }
+async function loginUser(e) { e.preventDefault(); alert('Login submitted.'); }
+function logoutUser() {
+    document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('registerBtn').style.display = 'inline-block';
+    document.getElementById('loginBtn').style.display = 'inline-block';
+    document.getElementById('userNameDisplay').textContent = '';
+    alert('✅ Logged out successfully.');
+}
+
+// ===== Auth Behavior =====
+(function(){
+    const register = document.getElementById('registerFormContainer');
+    const login = document.getElementById('loginFormContainer');
+    if(!register || !login) return;
+    let backdrop = document.getElementById('authBackdrop');
+    if(!backdrop){
+        backdrop = document.createElement('div');
+        backdrop.id = 'authBackdrop';
+        backdrop.className = 'auth-backdrop';
+        document.body.appendChild(backdrop);
+    }
+    function closeAuthForms(){
+        [register,login].forEach(el=>{
+            el.style.display='none';
+            el.classList.remove('auth-open');
+            el.classList.add('hidden-form');
+        });
+        backdrop.classList.remove('open');
+        document.body.style.overflow='';
+    }
+    function openAuth(el){
+        [register,login].forEach(x=>{
+            x.style.display='none';
+            x.classList.remove('auth-open');
+            x.classList.add('hidden-form');
+        });
+        el.classList.remove('hidden-form');
+        el.classList.add('auth-open');
+        el.style.display='block';
+        backdrop.classList.add('open');
+        document.body.style.overflow='hidden';
+    }
+    window.closeAuthForms = closeAuthForms;
+    window.showLoginForm = function(){ openAuth(login); };
+    window.showRegisterForm = function(){ openAuth(register); };
+    backdrop.addEventListener('click', closeAuthForms);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAuthForms(); });
+    closeAuthForms();
+})();
+</script>
+
+</body>
+</html>
