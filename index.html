@@ -161,37 +161,29 @@ body {
 .country-gallery .country-item h4 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); font-weight: 700; }
 .country-gallery .country-item .img-row { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 .country-gallery .country-item .img-row img { width: 100%; max-width: 550px; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; cursor: zoom-in; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-.lang-switcher { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; gap: 12px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(16px); padding: 10px 18px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.25); flex-wrap: wrap; justify-content: center; align-items: center; }
-.lang-switcher .flag-item { cursor: pointer; padding: 6px 16px; border-radius: 30px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.15); transition: all 0.3s ease; font-weight: 600; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; }
-.lang-switcher .flag-item:hover { background: rgba(255, 255, 255, 0.25); transform: scale(1.05); }
-.lang-switcher .flag-item.active { background: rgba(255, 215, 0, 0.25); border-color: var(--gold); }
-.lang-switcher .flag-item .flag-emoji { font-size: 1.4rem; line-height: 1; }
-.roadmap { display: flex; flex-wrap: wrap; justify-content: space-between; position: relative; margin: 40px 0; }
-.roadmap::before { content: ''; position: absolute; top: 40px; left: 5%; width: 90%; height: 4px; background: var(--secondary); opacity: 0.3; z-index: 0; }
-.roadmap-item { flex: 1; min-width: 150px; text-align: center; position: relative; z-index: 1; padding: 0 10px; }
-.roadmap-item .step-icon { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 1.8rem; font-weight: 900; color: var(--dark); border: 4px solid white; }
-.roadmap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 4px; }
-.roadmap-item p { font-size: 0.85rem; color: #6a7a8a; }
-.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.dashboard-card { background: rgba(255,255,255,0.92); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
-.dashboard-card h3 { font-family: 'Poppins', sans-serif; margin-bottom: 16px; }
-.chart-container { position: relative; height: 250px; }
-.data-room-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
-.data-room-tabs .tab-btn { padding: 12px 28px; border-radius: 40px; border: 2px solid #dde4ec; background: transparent; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; }
-.data-room-tabs .tab-btn.active, .data-room-tabs .tab-btn:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
-.data-room-content { display: none; }
-.data-room-content.active { display: block; }
-.request-form input, .request-form textarea { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #dde4ec; margin-bottom: 14px; font-family: 'Inter', sans-serif; }
-.request-form .file-upload { border: 2px dashed #dde4ec; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; margin-bottom: 14px; }
-.request-form .nda-check { display: flex; align-items: flex-start; gap: 10px; margin: 16px 0; text-align: left; }
-.request-form .nda-check input { margin-top: 4px; width: auto; }
-.download-section { background: rgba(255,255,255,0.92); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
-.download-section .locked { color: #e74c3c; font-weight: 700; }
-.download-section .unlocked { color: #27ae60; font-weight: 700; }
-.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; }
-.lightbox.open { display: flex; }
-.lightbox img { max-width: 90%; max-height: 90%; border-radius: 12px; object-fit: contain; }
-.lightbox .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 3rem; cursor: pointer; background: none; border: none; z-index: 100000; }
+
+/* ===== LANGUAGE SWITCHER — Right side dropdown ===== */
+.lang-switcher { position: fixed; top: 24px; right: 24px; z-index: 9999; }
+.lang-switcher .lang-current { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(10,42,68,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; color: white; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.lang-switcher .lang-current:hover { background: rgba(10,42,68,1); }
+.lang-switcher .lang-current .flag-emoji { font-size: 1.3rem; line-height: 1; }
+.lang-switcher .lang-current .lang-code { letter-spacing: 1px; }
+.lang-switcher .lang-current .fa-chevron-down { font-size: 0.7rem; transition: transform 0.3s; opacity: 0.8; }
+.lang-switcher.open .lang-current .fa-chevron-down { transform: rotate(180deg); }
+.lang-switcher .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; min-width: 180px; background: white; border-radius: 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; border: 1px solid #e5ecf2; }
+.lang-switcher.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-switcher .lang-dropdown .flag-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0b1a2a; border-bottom: 1px solid #f0f4f8; }
+.lang-switcher .lang-dropdown .flag-item:last-child { border-bottom: none; }
+.lang-switcher .lang-dropdown .flag-item:hover { background: #f0f7ff; }
+.lang-switcher .lang-dropdown .flag-item.active { background: linear-gradient(135deg, #e9c46a, #f0d38a); font-weight: 700; }
+.lang-switcher .lang-dropdown .flag-item .flag-emoji { font-size: 1.4rem; line-height: 1; }
+@media (max-width: 600px) {
+    .lang-switcher { top: 14px; right: 14px; }
+    .lang-switcher .lang-current { padding: 8px 12px; font-size: 0.8rem; }
+    .lang-switcher .lang-dropdown { min-width: 160px; }
+    .lang-switcher .lang-dropdown .flag-item { padding: 12px 14px; font-size: 0.9rem; }
+}
+
 .auth-buttons { position: fixed; top: 70px; right: 20px; z-index: 999; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .auth-buttons button { padding: 6px 16px; border-radius: 30px; border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; }
 .auth-buttons .btn-login { background: var(--secondary); color: white; }
@@ -219,12 +211,19 @@ body {
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER ===== -->
+<!-- ===== LANGUAGE SWITCHER — dropdown on the right ===== -->
 <div class="lang-switcher" id="langSwitcher">
-    <div class="flag-item active" data-lang="en"><span class="flag-emoji">🇬🇧</span>EN</div>
-    <div class="flag-item" data-lang="ar"><span class="flag-emoji">🇸🇦</span>AR</div>
-    <div class="flag-item" data-lang="de"><span class="flag-emoji">🇩🇪</span>DE</div>
-    <div class="flag-item" data-lang="fr"><span class="flag-emoji">🇫🇷</span>FR</div>
+    <button class="lang-current" id="langCurrent" type="button">
+        <span class="flag-emoji">🇬🇧</span>
+        <span class="lang-code">EN</span>
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+        <div class="flag-item active" data-lang="en"><span class="flag-emoji">🇬🇧</span><span>English</span></div>
+        <div class="flag-item" data-lang="ar"><span class="flag-emoji">🇸🇦</span><span>العربية</span></div>
+        <div class="flag-item" data-lang="de"><span class="flag-emoji">🇩🇪</span><span>Deutsch</span></div>
+        <div class="flag-item" data-lang="fr"><span class="flag-emoji">🇫🇷</span><span>Français</span></div>
+    </div>
 </div>
 
 <!-- ===== MOBILE MENU ===== -->
@@ -799,6 +798,37 @@ body {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+// ===== Language Switcher Dropdown =====
+document.addEventListener('DOMContentLoaded', function() {
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langCurrent = document.getElementById('langCurrent');
+    const langDropdown = document.getElementById('langDropdown');
+
+    if (langCurrent && langSwitcher) {
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langSwitcher.classList.toggle('open');
+        });
+
+        document.querySelectorAll('#langDropdown .flag-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelectorAll('#langDropdown .flag-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                const emoji = this.querySelector('.flag-emoji').textContent;
+                const code = this.dataset.lang.toUpperCase();
+                langCurrent.querySelector('.flag-emoji').textContent = emoji;
+                langCurrent.querySelector('.lang-code').textContent = code;
+                langSwitcher.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open');
+        });
+    }
+});
+
 // ===== Mobile Menu =====
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
@@ -982,8 +1012,6 @@ document.querySelectorAll('.country-gallery .img-row img').forEach(img => {
 lightbox.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
 
 // ===== Auth =====
-const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-let currentUser = null;
 function showRegister() {
     document.getElementById('registerFormContainer').style.display = 'block';
     document.getElementById('loginFormContainer').style.display = 'none';
@@ -1001,7 +1029,6 @@ async function loginUser(e) {
     alert('Login submitted. Please contact us directly for now.');
 }
 function logoutUser() {
-    currentUser = null;
     document.getElementById('logoutBtn').style.display = 'none';
     document.getElementById('registerBtn').style.display = 'inline-block';
     document.getElementById('loginBtn').style.display = 'inline-block';
