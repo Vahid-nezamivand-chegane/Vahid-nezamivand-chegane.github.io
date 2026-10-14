@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -138,8 +139,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
 .country-gallery .country-item h4 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); font-weight: 700; }
 .country-gallery .country-item .img-row { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 .country-gallery .country-item .img-row img { width: 100%; max-width: 550px; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; cursor: zoom-in; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-
-/* ===== LANGUAGE SWITCHER — right side dropdown ===== */
 .lang-switcher { position: fixed; top: 24px; right: 24px; z-index: 9999; }
 .lang-switcher .lang-current { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(10,42,68,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; color: white; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 .lang-switcher .lang-current:hover { background: rgba(10,42,68,1); }
@@ -160,7 +159,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     .lang-switcher .lang-dropdown { min-width: 160px; }
     .lang-switcher .lang-dropdown .flag-item { padding: 12px 14px; font-size: 0.9rem; }
 }
-
 .auth-buttons { position: fixed; top: 70px; right: 20px; z-index: 999; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .auth-buttons button { padding: 6px 16px; border-radius: 30px; border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif; }
 .auth-buttons .btn-login { background: var(--secondary); color: white; }
@@ -186,7 +184,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
 </head>
 <body>
 
-<!-- ===== LANGUAGE SWITCHER ===== -->
 <div class="lang-switcher" id="langSwitcher">
     <button class="lang-current" id="langCurrent" type="button">
         <span class="flag-emoji">🇬🇧</span>
@@ -201,7 +198,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </div>
 
-<!-- ===== MOBILE MENU ===== -->
 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu">
@@ -232,7 +228,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero" id="hero">
     <video autoplay muted loop playsinline>
         <source src="cmr8wl51w000p2t71wnfo7a7h.mp4" type="video/mp4">
@@ -252,7 +247,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== METRICS ===== -->
 <div style="position:relative;z-index:5;margin-top:-65px;padding:0 20px;">
     <div style="max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(5,21,34,0.82);border:1px solid rgba(255,255,255,0.12);border-radius:24px;overflow:hidden;backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,0.25);">
         <div style="padding:25px 18px;text-align:center;color:white;border-right:1px solid rgba(255,255,255,0.08);"><strong style="display:block;font:800 clamp(1.45rem,3vw,2.5rem) Poppins,sans-serif;color:#f4cf6b;">24/7</strong><span data-key="metric_1" style="display:block;color:rgba(255,255,255,0.58);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;">Baseload Energy</span></div>
@@ -262,7 +256,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </div>
 
-<!-- ===== COMMAND ===== -->
 <section class="section" style="background:white;">
     <div class="container">
         <div style="text-align:center;margin-bottom:40px;">
@@ -280,7 +273,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== GLOBE ===== -->
 <section class="globe-section" id="globe">
     <div class="container">
         <h2 data-key="globe_title">Global Vision</h2>
@@ -289,7 +281,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== ENERGY ===== -->
 <section class="section" style="background: white;" id="energy">
     <div class="container"><div class="grid-2"><div>
         <span class="badge" data-key="energy_badge">Revenue Stream 1</span>
@@ -308,7 +299,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div></div></div>
 </section>
 
-<!-- ===== WATER ===== -->
 <section class="section" style="background: var(--light-bg);" id="water">
     <div class="container"><div class="grid-2"><div class="img-wrapper">
         <video autoplay muted loop playsinline style="width:100%; border-radius: var(--radius);"><source src="Tazriq,abe.mp4" type="video/mp4"></video>
@@ -326,7 +316,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div></div></div>
 </section>
 
-<!-- ===== AGRICULTURE ===== -->
 <section class="section" style="background: white;" id="agriculture">
     <div class="container"><div class="grid-2"><div>
         <span class="badge" data-key="agri_badge">Revenue Stream 3</span>
@@ -343,7 +332,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div></div></div>
 </section>
 
-<!-- ===== METALS ===== -->
 <section class="section" style="background: var(--light-bg);" id="metals">
     <div class="container text-center">
         <span class="badge" data-key="metals_badge">Revenue Stream 4</span>
@@ -358,7 +346,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== EXTRACTION ===== -->
 <section class="section" style="background: white;" id="extraction">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="ext_hl">Resource</span> <span data-key="ext_title">Recovery</span></h2>
@@ -374,7 +361,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== EMPLOYMENT ===== -->
 <section class="section" style="background: var(--light-bg);" id="employment">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="emp_hl">Employment</span> <span data-key="emp_title">&amp; Job Creation</span></h2>
@@ -395,7 +381,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== HVAC ===== -->
 <section class="section" style="background: white;" id="hvac">
     <div class="container"><div class="grid-2"><div>
         <span class="badge" data-key="hvac_badge">Revenue Stream 5</span>
@@ -412,7 +397,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div></div></div>
 </section>
 
-<!-- ===== SALT ===== -->
 <section class="section" style="background: var(--light-bg);" id="salt">
     <div class="container"><div class="grid-2"><div>
         <span class="badge" data-key="salt_badge">Revenue Stream 6</span>
@@ -426,7 +410,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div><div><img src="Namak.jpg" class="real-image"></div></div></div>
 </section>
 
-<!-- ===== CARBON ===== -->
 <section class="section" style="background: white;" id="carbon">
     <div class="container"><div class="grid-2"><div><img src="iziro(6).jpg" class="real-image"></div><div>
         <span class="badge" data-key="carbon_badge">Revenue Stream 7</span>
@@ -440,7 +423,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div></div></div>
 </section>
 
-<!-- ===== TOURISM ===== -->
 <section class="section" style="background: var(--light-bg);" id="tourism">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="tour_hl">Tourism</span> <span data-key="tour_title">&amp; Thermal Springs</span></h2>
@@ -464,7 +446,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== OFFICES ===== -->
 <section class="section" style="background: white;" id="offices">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="off_hl">International</span> <span data-key="off_title">Offices</span></h2>
@@ -479,7 +460,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== BANK ===== -->
 <section class="section" style="background: var(--light-bg);" id="bank">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="bank_hl">Project</span> <span data-key="bank_title">Dedicated Bank</span></h2>
@@ -492,7 +472,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== DOCS ===== -->
 <section class="section" style="background: white;" id="docs">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="docs_hl">Complete</span> <span data-key="docs_title">Technical Dossier</span></h2>
@@ -506,7 +485,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== ACHIEVEMENTS ===== -->
 <section class="section" style="background: var(--light-bg);" id="achievements">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="ach_hl">Achievements</span></h2>
@@ -514,12 +492,14 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
             <div class="achievement-item"><img src="Tamask.jpg" alt="Award"><div class="ach-text"><h4 data-key="ach_1_t">Top 8 Finalist – Low Carbon Challenge</h4><p data-key="ach_1_d">Recognized among the top 8 global low-carbon innovators.</p></div></div>
             <div class="achievement-item"><img src="Enrgeglob.jpg" alt="Energy Globe"><div class="ach-text"><h4 data-key="ach_2_t">Winner – Energy Globe Award</h4><p data-key="ach_2_d">First place in the national sustainable energy category.</p></div></div>
             <div class="achievement-item"><img src="Shikhzayeed.jpg" alt="Zayed"><div class="ach-text"><h4 data-key="ach_3_t">Semi-Finalist – Sustainability Prize</h4><p data-key="ach_3_d">Selected among the top sustainable energy projects.</p></div></div>
+            <div class="achievement-item"><img src="GPIW.jpg" alt="GPIW"><div class="ach-text"><h4 data-key="ach_5_t">Selected Innovator – Global Prize for Innovation in Water 2026</h4><p data-key="ach_5_d">Recognized by the Saudi Water Authority among innovators worldwide.</p></div></div>
+            <div class="achievement-item"><img src="Gulbenkian.jpg" alt="Gulbenkian"><div class="ach-text"><h4 data-key="ach_6_t">Nominee – Gulbenkian Prize for Humanity 2026</h4><p data-key="ach_6_d">Selected among 304 climate leaders from 73 nationalities.</p></div></div>
+            <div class="achievement-item"><img src="Humboldt.jpg" alt="Humboldt"><div class="ach-text"><h4 data-key="ach_7_t">Host Researcher – Alexander von Humboldt Foundation 2026</h4><p data-key="ach_7_d">Offer received and respectfully declined to focus on AquaNexus.</p></div></div>
             <div class="achievement-item"><img src="Sertifikrt.jpg" alt="Certifications"><div class="ach-text"><h4 data-key="ach_4_t">180+ International Certifications</h4><p data-key="ach_4_d">From leading universities and research institutions.</p></div></div>
         </div>
     </div>
 </section>
 
-<!-- ===== ARTICLES ===== -->
 <section class="section" style="background: white;" id="articles">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="art_hl">Read</span> <span data-key="art_title">More</span></h2>
@@ -535,7 +515,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== FUTURE VISION ===== -->
 <section class="section" style="background: var(--light-bg);" id="future-vision">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="fv_hl">Future Vision</span> <span data-key="fv_title">of Countries</span></h2>
@@ -551,7 +530,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== ROADMAP ===== -->
 <section class="section" style="background: white;" id="roadmap">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="road_hl">Roadmap</span> <span data-key="road_title">to Global Scale</span></h2>
@@ -566,7 +544,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== DASHBOARD ===== -->
 <section class="section" style="background: var(--light-bg);" id="dashboard">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="dash_hl">Financial</span> <span data-key="dash_title">Dashboard</span></h2>
@@ -579,7 +556,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== DATA ROOM ===== -->
 <section class="section" style="background: white;" id="dataroom">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="dr_hl">Investor</span> <span data-key="dr_title">Data Room</span></h2>
@@ -619,7 +595,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== CALCULATOR ===== -->
 <section class="section" style="background: var(--light-bg);" id="calculator">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="calc_hl">Financial</span> <span data-key="calc_title">Calculator</span></h2>
@@ -645,7 +620,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </div>
 
-<!-- ===== CONTACT ===== -->
 <section id="contact" class="section" style="background: white;">
     <div class="container text-center">
         <h2 class="section-title"><span class="highlight" data-key="contact_hl">Contact</span> <span data-key="contact_title">Investment Team</span></h2>
@@ -689,7 +663,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="container">
         <p style="font-size:1.8rem;font-weight:700;color:white;letter-spacing:2px;font-family:'Poppins',sans-serif;">AQUANEXUS</p>
@@ -698,7 +671,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
     </div>
 </footer>
 
-<!-- ===== AUTH ===== -->
 <div class="auth-buttons" id="authButtons">
     <span class="user-name" id="userNameDisplay" style="display:none;"></span>
     <button class="btn-login" id="loginBtn" onclick="showLoginForm()" data-key="auth_login">Login</button>
@@ -742,9 +714,6 @@ body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// ============================================================
-// ===== COMPLETE TRANSLATIONS =====
-// ============================================================
 const translations = {
     en: {
         hero_title: "AQUANEXUS", hero_sub: "Vahid Nezamivand Chegane", hero_title2: "Founder & Systems Architect",
@@ -813,10 +782,14 @@ const translations = {
         docs_hl: "Complete", docs_title: "Technical Dossier", docs_sub: "University studies · GIS maps · Financial scenarios · Available for verified investors",
         docs_1: "194-page Dossier", docs_2: "34 Excel Sheets", docs_3: "Multi-Country Maps",
         docs_note: "🔒 Technical information only available to verified investors after NDA signature",
-        ach_hl: "Achievements", ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Recognized among the top 8 global low-carbon innovators.",
+        ach_hl: "Achievements",
+        ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Recognized among the top 8 global low-carbon innovators.",
         ach_2_t: "Winner – Energy Globe Award", ach_2_d: "First place in the national sustainable energy category.",
         ach_3_t: "Semi-Finalist – Sustainability Prize", ach_3_d: "Selected among the top sustainable energy projects.",
         ach_4_t: "180+ International Certifications", ach_4_d: "From leading universities and research institutions.",
+        ach_5_t: "Selected Innovator – Global Prize for Innovation in Water 2026", ach_5_d: "Recognized by the Saudi Water Authority among innovators worldwide.",
+        ach_6_t: "Nominee – Gulbenkian Prize for Humanity 2026", ach_6_d: "Selected among 304 climate leaders from 73 nationalities.",
+        ach_7_t: "Host Researcher – Alexander von Humboldt Foundation 2026", ach_7_d: "Offer received and respectfully declined to focus on AquaNexus.",
         art_hl: "Read", art_title: "More", art_sub: "Scientific articles on geothermal energy, water-energy-food nexus, circular economy, and sustainable extraction",
         art_1_t: "Geothermal Energy for Desalination", art_1_d: "How low-enthalpy geothermal can power large-scale desalination with zero emissions.",
         art_2_t: "Circular Economy in Water-Energy Nexus", art_2_d: "Integrated approaches for sustainable resource recovery from geothermal brines.",
@@ -928,10 +901,14 @@ const translations = {
         docs_hl: "الملف", docs_title: "التقني الكامل", docs_sub: "دراسات جامعية · خرائط GIS · سيناريوهات مالية · متاح للمستثمرين المعتمدين",
         docs_1: "ملف 194 صفحة", docs_2: "34 ورقة إكسل", docs_3: "خرائط متعددة الدول",
         docs_note: "🔒 المعلومات التقنية متاحة فقط للمستثمرين المعتمدين بعد توقيع NDA",
-        ach_hl: "الإنجازات", ach_1_t: "أفضل 8 نهائي – تحدي الكربون المنخفض", ach_1_d: "تم الاعتراف به بين أفضل 8 مبتكرين عالميين.",
+        ach_hl: "الإنجازات",
+        ach_1_t: "أفضل 8 نهائي – تحدي الكربون المنخفض", ach_1_d: "تم الاعتراف به بين أفضل 8 مبتكرين عالميين.",
         ach_2_t: "الفائز – جائزة الطاقة", ach_2_d: "المركز الأول في فئة الطاقة المستدامة.",
         ach_3_t: "نصف النهائي – جائزة الاستدامة", ach_3_d: "تم اختياره من بين أفضل مشاريع الطاقة.",
         ach_4_t: "180+ شهادة دولية", ach_4_d: "من أفضل الجامعات ومؤسسات البحث.",
+        ach_5_t: "مبتكر مختار – الجائزة العالمية للابتكار في المياه 2026", ach_5_d: "تم الاعتراف به من قبل هيئة المياه السعودية.",
+        ach_6_t: "مرشح – جائزة جولبنكيان للبشرية 2026", ach_6_d: "تم اختياره من بين 304 من قادة المناخ من 73 دولة.",
+        ach_7_t: "باحث ضيف – مؤسسة ألكسندر فون هومبولت 2026", ach_7_d: "تم استلام العرض ورفضه باحترام للتركيز على أكوانيكس.",
         art_hl: "اقرأ", art_title: "المزيد", art_sub: "مقالات علمية حول الطاقة الحرارية الأرضية والاقتصاد الدائري",
         art_1_t: "الطاقة الحرارية الأرضية لتحلية المياه", art_1_d: "كيف يمكن للطاقة الحرارية الأرضية تشغيل تحلية المياه على نطاق واسع.",
         art_2_t: "الاقتصاد الدائري", art_2_d: "نهج متكامل لاستعادة الموارد المستدامة.",
@@ -1043,10 +1020,14 @@ const translations = {
         docs_hl: "Vollständiges", docs_title: "Technisches Dossier", docs_sub: "Universitätsstudien · GIS-Karten · Finanzszenarien · Verfügbar für verifizierte Investoren",
         docs_1: "194-seitiges Dossier", docs_2: "34 Excel-Tabellen", docs_3: "Multi-Länder-Karten",
         docs_note: "🔒 Technische Informationen nur für verifizierte Investoren nach NDA-Unterzeichnung",
-        ach_hl: "Errungenschaften", ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Anerkennung unter den Top-8-Innovatoren.",
+        ach_hl: "Errungenschaften",
+        ach_1_t: "Top 8 Finalist – Low Carbon Challenge", ach_1_d: "Anerkennung unter den Top-8-Innovatoren.",
         ach_2_t: "Gewinner – Energy Globe Award", ach_2_d: "Erster Platz in der Kategorie nachhaltige Energie.",
         ach_3_t: "Halbfinalist – Nachhaltigkeitspreis", ach_3_d: "Auswahl unter den besten nachhaltigen Energieprojekten.",
         ach_4_t: "180+ internationale Zertifizierungen", ach_4_d: "Von führenden Universitäten und Forschungseinrichtungen.",
+        ach_5_t: "Ausgewählter Innovator – Global Prize for Innovation in Water 2026", ach_5_d: "Anerkennung durch die Saudische Wasserbehörde.",
+        ach_6_t: "Nominiert – Gulbenkian Prize for Humanity 2026", ach_6_d: "Ausgewählt unter 304 Klimaführern aus 73 Nationen.",
+        ach_7_t: "Gastforscher – Alexander von Humboldt Foundation 2026", ach_7_d: "Angebot erhalten und respektvoll abgelehnt, um sich auf AquaNexus zu konzentrieren.",
         art_hl: "Mehr", art_title: "lesen", art_sub: "Wissenschaftliche Artikel zu Geothermie, Wasser-Energie-Nahrungsmittel-Nexus, Kreislaufwirtschaft",
         art_1_t: "Geothermie für die Entsalzung", art_1_d: "Wie Geothermie großflächige Entsalzung antreiben kann.",
         art_2_t: "Kreislaufwirtschaft", art_2_d: "Integrierte Ansätze zur nachhaltigen Ressourcenrückgewinnung.",
@@ -1158,10 +1139,14 @@ const translations = {
         docs_hl: "Dossier", docs_title: "Technique Complet", docs_sub: "Études universitaires · Cartes SIG · Scénarios financiers · Disponible pour les investisseurs vérifiés",
         docs_1: "Dossier de 194 pages", docs_2: "34 Feuilles Excel", docs_3: "Cartes Multi-Pays",
         docs_note: "🔒 Informations techniques disponibles uniquement pour les investisseurs vérifiés après signature de la NDA",
-        ach_hl: "Réalisations", ach_1_t: "Top 8 Finaliste – Défi Bas Carbone", ach_1_d: "Reconnu parmi les 8 meilleurs innovateurs mondiaux.",
+        ach_hl: "Réalisations",
+        ach_1_t: "Top 8 Finaliste – Défi Bas Carbone", ach_1_d: "Reconnu parmi les 8 meilleurs innovateurs mondiaux.",
         ach_2_t: "Lauréat – Energy Globe Award", ach_2_d: "Première place dans la catégorie énergie durable.",
         ach_3_t: "Demi-finaliste – Prix de Durabilité", ach_3_d: "Sélectionné parmi les meilleurs projets d'énergie durable.",
         ach_4_t: "180+ Certifications Internationales", ach_4_d: "Des meilleures universités et instituts de recherche.",
+        ach_5_t: "Innovateur Sélectionné – Global Prize for Innovation in Water 2026", ach_5_d: "Reconnu par l'Autorité Saoudienne de l'Eau.",
+        ach_6_t: "Nominé – Prix Gulbenkian pour l'Humanité 2026", ach_6_d: "Sélectionné parmi 304 leaders climatiques de 73 nationalités.",
+        ach_7_t: "Chercheur Hôte – Alexander von Humboldt Foundation 2026", ach_7_d: "Offre reçue et respectueusement déclinée pour se concentrer sur AquaNexus.",
         art_hl: "Lire", art_title: "Plus", art_sub: "Articles scientifiques sur l'énergie géothermique, le nexus eau-énergie-alimentation, l'économie circulaire",
         art_1_t: "Énergie Géothermique pour le Dessalement", art_1_d: "Comment la géothermie peut alimenter le dessalement à grande échelle.",
         art_2_t: "Économie Circulaire", art_2_d: "Approches intégrées pour la récupération durable des ressources.",
@@ -1208,7 +1193,6 @@ const translations = {
     }
 };
 
-// ===== Change Language =====
 function changeLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -1227,18 +1211,14 @@ function changeLanguage(lang) {
     });
 }
 
-// ===== Language Switcher Dropdown =====
 document.addEventListener('DOMContentLoaded', function() {
     const langSwitcher = document.getElementById('langSwitcher');
     const langCurrent = document.getElementById('langCurrent');
-    const langDropdown = document.getElementById('langDropdown');
-
     if (langCurrent && langSwitcher) {
         langCurrent.addEventListener('click', function(e) {
             e.stopPropagation();
             langSwitcher.classList.toggle('open');
         });
-
         document.querySelectorAll('#langDropdown .flag-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -1252,13 +1232,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 langSwitcher.classList.remove('open');
             });
         });
-
         document.addEventListener('click', function(e) {
             if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open');
         });
     }
-
-    // Load saved language
     const saved = localStorage.getItem('preferredLang');
     if (saved && translations[saved]) {
         const item = document.querySelector('#langDropdown .flag-item[data-lang="' + saved + '"]');
@@ -1273,7 +1250,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== Mobile Menu =====
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1299,7 +1275,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== Globe =====
 (function() {
     const container = document.getElementById('globeContainer');
     if (!container) return;
@@ -1331,7 +1306,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
-// ===== Form =====
 function selectTag(el) {
     document.querySelectorAll('.request-tags .tag').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
@@ -1385,7 +1359,6 @@ function calculateInvestment() {
     document.getElementById('calcResult').innerHTML = `Investment: ${symbol}${amount.toLocaleString()} | Profit: ${symbol}${profit.toLocaleString()} | Total Return: ${symbol}${total.toLocaleString()} | Period: ${period} months`;
 }
 
-// ===== Charts =====
 document.addEventListener('DOMContentLoaded', function() {
     const ctx1 = document.getElementById('revenueChart')?.getContext('2d');
     if (ctx1) {
@@ -1411,7 +1384,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== Data Room =====
 document.querySelectorAll('.data-room-tabs .tab-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.data-room-tabs .tab-btn').forEach(b => b.classList.remove('active'));
@@ -1442,7 +1414,6 @@ function submitNDARequest(e) {
     return false;
 }
 
-// ===== Lightbox =====
 const lightbox = document.createElement('div');
 lightbox.className = 'lightbox';
 lightbox.innerHTML = '<button class="close-lightbox" onclick="this.parentElement.classList.remove(\'open\')">✖</button><img src="" alt="Enlarged" id="lightboxImg" />';
@@ -1455,7 +1426,6 @@ document.querySelectorAll('.country-gallery .img-row img').forEach(img => {
 });
 lightbox.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
 
-// ===== Auth =====
 function showRegister() {
     document.getElementById('registerFormContainer').style.display = 'block';
     document.getElementById('loginFormContainer').style.display = 'none';
@@ -1474,7 +1444,6 @@ function logoutUser() {
     alert('✅ Logged out successfully.');
 }
 
-// ===== Auth Behavior =====
 (function(){
     const register = document.getElementById('registerFormContainer');
     const login = document.getElementById('loginFormContainer');
@@ -1518,3 +1487,4 @@ function logoutUser() {
 
 </body>
 </html>
+```
